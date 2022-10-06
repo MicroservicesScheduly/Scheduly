@@ -8,14 +8,10 @@
           "Microsoft.CSharp": "4.7.0"
         },
         "compile": {
-          "lib/netstandard2.1/AutoMapper.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/AutoMapper.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/AutoMapper.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.1/AutoMapper.dll": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {
@@ -41,14 +37,10 @@
       "Microsoft.OpenApi/1.2.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/6.2.3": {
@@ -69,14 +61,10 @@
           "Microsoft.OpenApi": "1.2.3"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -88,27 +76,19 @@
           "Swashbuckle.AspNetCore.Swagger": "6.2.3"
         },
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         }
       },
       "Swashbuckle.AspNetCore.SwaggerUI/6.2.3": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -368,19 +348,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\torgm\\.nuget\\packages\\": {}
+    "C:\\Users\\UserPc\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
+      "projectUniqueName": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
       "projectName": "FacultyService",
-      "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
-      "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-      "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\obj\\",
+      "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
+      "packagesPath": "C:\\Users\\UserPc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\UserPc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -394,8 +379,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
-              "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj"
+            "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj": {
+              "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj"
             }
           }
         }
@@ -421,8 +406,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -434,7 +418,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

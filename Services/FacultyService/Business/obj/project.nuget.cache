@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "N5VpdP0tOIslpOev5Wnx+ZlWms8Yc0zVa4gB+UI5zIOnn3239Zo6y2orMKXpWKCbZs2400FuCmhRYQAhDYjIOw==",
+  "dgSpecHash": "ExVmVQRbFVAZQjHzt4Ovr9Ffyxl9kr1cnuNjcPz1cuYNO4J/OT6QckUgq6wZpN8apuOrzw9PaTTuiAC83MbiTA==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
+  "projectFilePath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\torgm\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
-    "C:\\Users\\torgm\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\UserPc\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

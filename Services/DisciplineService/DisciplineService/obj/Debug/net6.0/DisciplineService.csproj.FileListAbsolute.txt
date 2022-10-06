@@ -1,0 +1,33 @@
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\appsettings.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.staticwebassets.runtime.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.exe
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.deps.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.runtimeconfig.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\ref\DisciplineService.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\DisciplineService.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Business.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Data access.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Business.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\bin\Debug\net6.0\Data access.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.csproj.AssemblyReference.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.AssemblyInfoInputs.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.AssemblyInfo.cs
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.csproj.CoreCompileInputs.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\scopedcss\bundle\DisciplineService.styles.css
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.csproj.CopyComplete
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\ref\DisciplineService.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\DisciplineService\obj\Debug\net6.0\DisciplineService.genruntimeconfig.cache

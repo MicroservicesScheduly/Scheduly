@@ -1,0 +1,11 @@
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\Business.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\Business.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\AutoMapper.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\Data access.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\Data access.pdb
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\bin\Debug\AutoMapper.xml
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\obj\Debug\Business.csproj.AssemblyReference.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\obj\Debug\Business.csproj.CopyComplete
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\obj\Debug\Business.dll
+C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Business\obj\Debug\Business.pdb

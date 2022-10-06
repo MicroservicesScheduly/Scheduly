@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {}
+    "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
+    "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
+        "projectUniqueName": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj",
         "projectName": "Business",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
-        "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\obj\\",
+        "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj",
+        "packagesPath": "C:\\Users\\UserPc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\UserPc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj"
+              "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\Data access.csproj": {
+                "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\Data access.csproj"
               }
             }
           }
@@ -55,8 +59,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -65,21 +68,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj": {
+    "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\Data access.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj",
+        "projectUniqueName": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\Data access.csproj",
         "projectName": "Data access",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj",
-        "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\obj\\",
+        "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\Data access.csproj",
+        "packagesPath": "C:\\Users\\UserPc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Data access\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\UserPc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -110,8 +117,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -120,21 +126,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {
+    "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
+        "projectUniqueName": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
         "projectName": "FacultyService",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
-        "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\obj\\",
+        "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
+        "packagesPath": "C:\\Users\\UserPc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\FacultyService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\UserPc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -148,8 +158,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj"
+              "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj": {
+                "projectPath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\FacultyService\\Business\\Business.csproj"
               }
             }
           }
@@ -175,8 +185,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -188,7 +197,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

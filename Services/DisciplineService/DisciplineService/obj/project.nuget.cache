@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "tx6Gi7Vy3pCb8smIPVl84Kc59uNnFeKxb4xE4H0OJKxgfgqriovcDh2nN0S+0U774KrSViWsbksEMg0wWqVJQA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\UserPc\\Desktop\\3course\\1sem\\MicroS\\Scheduly-git\\Scheduly\\Services\\DisciplineService\\DisciplineService\\DisciplineService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\UserPc\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
+    "C:\\Users\\UserPc\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
