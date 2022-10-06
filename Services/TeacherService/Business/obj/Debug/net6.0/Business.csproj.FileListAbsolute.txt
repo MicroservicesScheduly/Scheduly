@@ -1,0 +1,30 @@
+C:\Users\Antocomp\Desktop\FacultyService\Business\bin\Debug\net6.0\Business.deps.json
+C:\Users\Antocomp\Desktop\FacultyService\Business\bin\Debug\net6.0\Business.dll
+C:\Users\Antocomp\Desktop\FacultyService\Business\bin\Debug\net6.0\Business.pdb
+C:\Users\Antocomp\Desktop\FacultyService\Business\bin\Debug\net6.0\Data access.dll
+C:\Users\Antocomp\Desktop\FacultyService\Business\bin\Debug\net6.0\Data access.pdb
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.csproj.AssemblyReference.cache
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.AssemblyInfoInputs.cache
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.AssemblyInfo.cs
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.csproj.CopyComplete
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.dll
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\refint\Business.dll
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\Business.pdb
+C:\Users\Antocomp\Desktop\FacultyService\Business\obj\Debug\net6.0\ref\Business.dll
+C:\Users\Antocomp\Desktop\TeacherService\Business\bin\Debug\net6.0\Business.deps.json
+C:\Users\Antocomp\Desktop\TeacherService\Business\bin\Debug\net6.0\Business.dll
+C:\Users\Antocomp\Desktop\TeacherService\Business\bin\Debug\net6.0\Business.pdb
+C:\Users\Antocomp\Desktop\TeacherService\Business\bin\Debug\net6.0\Data access.dll
+C:\Users\Antocomp\Desktop\TeacherService\Business\bin\Debug\net6.0\Data access.pdb
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.csproj.AssemblyReference.cache
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.AssemblyInfoInputs.cache
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.AssemblyInfo.cs
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.csproj.CopyComplete
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.dll
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\refint\Business.dll
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.pdb
+C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\ref\Business.dll
