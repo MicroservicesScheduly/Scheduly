@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bzGkDbybHMrKe3kXHJdtKCMtnjC+bQUZULRHokahF/VDWbaINLa3balmSoQDTMoNB2mKCtcpAAYoS7fGU6lvtQ==",
+  "dgSpecHash": "zLnG7SIyS7Vn+qqpzetK2jz3pE5t7b2mPjtb5aCyxloXStgfoX2OScIjWhnFLJZ2Tte1nssZ3jn78en/2YT/9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Antocomp\\Desktop\\TeacherService\\Business\\Business.csproj",
+  "projectFilePath": "D:\\source\\repos\\Scheduly\\Services\\TeacherService\\Business\\Business.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Antocomp\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Antocomp\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"

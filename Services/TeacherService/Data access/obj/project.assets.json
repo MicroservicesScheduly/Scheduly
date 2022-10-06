@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Antocomp\\Desktop\\TeacherService\\Data access\\Data access.csproj",
+      "projectUniqueName": "D:\\source\\repos\\Scheduly\\Services\\TeacherService\\Data access\\Data access.csproj",
       "projectName": "Data access",
-      "projectPath": "C:\\Users\\Antocomp\\Desktop\\TeacherService\\Data access\\Data access.csproj",
+      "projectPath": "D:\\source\\repos\\Scheduly\\Services\\TeacherService\\Data access\\Data access.csproj",
       "packagesPath": "C:\\Users\\Antocomp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Antocomp\\Desktop\\TeacherService\\Data access\\obj\\",
+      "outputPath": "D:\\source\\repos\\Scheduly\\Services\\TeacherService\\Data access\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Antocomp\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -28,3 +28,18 @@ C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.dll
 C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\refint\Business.dll
 C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\Business.pdb
 C:\Users\Antocomp\Desktop\TeacherService\Business\obj\Debug\net6.0\ref\Business.dll
+D:\source\repos\Scheduly\Services\TeacherService\Business\bin\Debug\net6.0\Business.deps.json
+D:\source\repos\Scheduly\Services\TeacherService\Business\bin\Debug\net6.0\Business.dll
+D:\source\repos\Scheduly\Services\TeacherService\Business\bin\Debug\net6.0\Business.pdb
+D:\source\repos\Scheduly\Services\TeacherService\Business\bin\Debug\net6.0\Data access.dll
+D:\source\repos\Scheduly\Services\TeacherService\Business\bin\Debug\net6.0\Data access.pdb
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.csproj.AssemblyReference.cache
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.AssemblyInfoInputs.cache
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.AssemblyInfo.cs
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.csproj.CoreCompileInputs.cache
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.csproj.CopyComplete
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.dll
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\refint\Business.dll
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\Business.pdb
+D:\source\repos\Scheduly\Services\TeacherService\Business\obj\Debug\net6.0\ref\Business.dll

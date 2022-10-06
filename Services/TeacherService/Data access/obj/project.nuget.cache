@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FvQKIF2QKy9/qR/1tu36bXHEVPE/Rnii25bX3vXzpK4lDowJeuafir/df00Rb8PZBde6Ck0bthwv7906pJOnlA==",
+  "dgSpecHash": "a9dbkmfGklK41AN183Rnwfw0bdcW307NzCMvOiqczGkD4dABjKelGkN24OME5Z00Csi/o77k0wLKh3dXGD4Naw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Antocomp\\Desktop\\TeacherService\\Data access\\Data access.csproj",
+  "projectFilePath": "D:\\source\\repos\\Scheduly\\Services\\TeacherService\\Data access\\Data access.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
