@@ -1,6 +1,0 @@
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\bin\Debug\Data access.dll
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\bin\Debug\Data access.pdb
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\obj\Debug\Data access.csproj.AssemblyReference.cache
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\obj\Debug\Data access.csproj.CoreCompileInputs.cache
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\obj\Debug\Data access.dll
-C:\Users\UserPc\Desktop\3course\1sem\MicroS\Scheduly-git\Scheduly\Services\DisciplineService\Data access\obj\Debug\Data access.pdb
