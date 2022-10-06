@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lnLHHLBBCXAmxobWrJi9uIf1OW+20luPnz0/UXz+O3s=",
+  "Source": "SimpleService",
+  "BasePath": "_content/SimpleService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
