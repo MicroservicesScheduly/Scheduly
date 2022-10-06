@@ -11,33 +11,33 @@ namespace SimpleService.Controllers
     [Route("api/[controller]")]
     public class DisciplinesController : ControllerBase
     {
-        private IDisciplineService _facultyService;
+        private IDisciplineService _disciplineService;
 
-        public DisciplinesController(IDisciplineService facultyService)
+        public DisciplinesController(IDisciplineService disciplineService)
         {
-            _facultyService = facultyService;
+            _disciplineService = disciplineService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DisciplineModel>>> Get()
         {
-            var faculties = await _facultyService.GetAllAsync();
+            var disciplines = await _disciplineService.GetAllAsync();
 
-            return Ok(faculties);
+            return Ok(disciplines);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<DisciplineModel>> Get(int id)
         {
-            var faculty = await _facultyService.GetByIdAsync(id);
+            var discipline = await _disciplineService.GetByIdAsync(id);
 
-            return Ok(faculty);
+            return Ok(discipline);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            await _facultyService.DeleteByIdAsync(id);
+            await _disciplineService.DeleteByIdAsync(id);
 
             return NoContent();
         }
@@ -45,7 +45,7 @@ namespace SimpleService.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, DisciplineModel model)
         {
-            await _facultyService.UpdateAsync(id, model);
+            await _disciplineService.UpdateAsync(id, model);
 
             return NoContent();
         }
@@ -53,7 +53,7 @@ namespace SimpleService.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(DisciplineModel model)
         {
-            var created = await _facultyService.AddAsync(model);
+            var created = await _disciplineService.AddAsync(model);
 
             return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
         }

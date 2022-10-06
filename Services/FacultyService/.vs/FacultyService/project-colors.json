@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d4219433-9a4a-40a0-933d-22e415103e2f": {
+      "ProjectGuid": "d4219433-9a4a-40a0-933d-22e415103e2f",
+      "DisplayName": "Data access",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

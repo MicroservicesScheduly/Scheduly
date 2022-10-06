@@ -22,11 +22,11 @@ namespace Business.Service
 
         public async Task<DisciplineModel> AddAsync(DisciplineModel model)
         {
-            var faculty = _mapper.Map<Discipline>(model);
+            var discipline = _mapper.Map<Discipline>(model);
 
-            var facultyCreated = await _disciplineRepository.AddAsync(faculty);
+            var disciplineCreated = await _disciplineRepository.AddAsync(discipline);
 
-            return _mapper.Map<DisciplineModel>(facultyCreated);
+            return _mapper.Map<DisciplineModel>(disciplineCreated);
         }
 
         public async Task DeleteByIdAsync(int modelId)
@@ -36,23 +36,23 @@ namespace Business.Service
 
         public async Task<IEnumerable<DisciplineModel>> GetAllAsync()
         {
-            var faculties = await _disciplineRepository.GetAllAsync();
+            var disciplines = await _disciplineRepository.GetAllAsync();
 
-            return _mapper.Map<IEnumerable<DisciplineModel>>(faculties);
+            return _mapper.Map<IEnumerable<DisciplineModel>>(disciplines);
         }
 
         public async Task<DisciplineModel> GetByIdAsync(int id)
         {
-            var faculty = await _disciplineRepository.GetByIdAsync(id);
+            var discipline = await _disciplineRepository.GetByIdAsync(id);
 
-            return _mapper.Map<DisciplineModel>(faculty);
+            return _mapper.Map<DisciplineModel>(discipline);
         }
 
         public async Task UpdateAsync(int id, DisciplineModel model)
         {
-            var faculty = _mapper.Map<Discipline>(model);
+            var discipline = _mapper.Map<Discipline>(model);
 
-            await Task.Run(() => _disciplineRepository.Update(faculty));
+            await Task.Run(() => _disciplineRepository.Update(discipline));
         }
     }
 }
