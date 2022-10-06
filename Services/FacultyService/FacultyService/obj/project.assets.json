@@ -245,11 +245,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\FacultyService\\FacultyService.csproj",
+      "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
       "projectName": "FacultyService",
-      "projectPath": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\FacultyService\\FacultyService.csproj",
+      "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
       "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-      "outputPath": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\FacultyService\\obj\\",
+      "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -266,8 +266,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\Business\\Business.csproj": {
-              "projectPath": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\Business\\Business.csproj"
+            "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
+              "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj"
             }
           }
         }

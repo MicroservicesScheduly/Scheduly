@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Wkwc8AyJnozlmidZATSrW14IUqjuHwiTmH7au1C5ln7ygM0GBcHsxumDtza/f239dFa5XsazyxHDBcDWwE75sw==",
+  "dgSpecHash": "v5cUAEFo81M7QztKHxfZdGtmFKq3GZxAbW/EYn/HJ1enjB+jM/7GiUe6RHi1c8NKQhKyGu3fjoK2BUSfXKCRpw==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\FacultyService\\FacultyService.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\torgm\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\torgm\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

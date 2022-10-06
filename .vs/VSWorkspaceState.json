@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Services",
+    "\\Services\\FacultyService"
   ],
-  "SelectedNode": "\\D:\\Visual Studio Projects\\5_semestr\\yahz",
+  "SelectedNode": "\\Services\\FacultyService\\FacultyService.sln",
   "PreviewInSolutionExplorer": false
 }

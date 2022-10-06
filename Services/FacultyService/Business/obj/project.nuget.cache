@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9dKpuhaXG1hH4T9+NGJ6PPiVN+JkyrBBkBBqSJLVTbO//qqNhkUCjnM1+w1h7JHv3Jns+CiNVzjN0z/YZMTxOg==",
+  "dgSpecHash": "tSm9BYru50OAqKmRfo3s91KUefSexJ8oaVgwSQHmN33RI13u5z5uxw9ZgGkXHOu9cCL7O11mXp9L9KahT3s4fQ==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\FacultyService\\Business\\Business.csproj",
+  "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
