@@ -1,0 +1,7 @@
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.AssemblyInfoInputs.cache
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.AssemblyInfo.cs
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.MvcApplicationPartsAssemblyInfo.cs
+D:\Visual Studio Projects\5_semestr\yahz\Services\FacultyService\FacultyService\obj\Debug\net6.0\FacultyService.MvcApplicationPartsAssemblyInfo.cache
