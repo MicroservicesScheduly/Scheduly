@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "lnLHHLBBCXAmxobWrJi9uIf1OW+20luPnz0/UXz+O3s=",
-  "Source": "SimpleService",
-  "BasePath": "_content/SimpleService",
+  "Hash": "XsolLuEBGGBe6qVuVfTR9l7s1dSZuMqQcboNITc+gAM=",
+  "Source": "FacultyService",
+  "BasePath": "_content/FacultyService",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

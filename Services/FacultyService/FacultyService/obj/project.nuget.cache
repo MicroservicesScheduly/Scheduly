@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "v5cUAEFo81M7QztKHxfZdGtmFKq3GZxAbW/EYn/HJ1enjB+jM/7GiUe6RHi1c8NKQhKyGu3fjoK2BUSfXKCRpw==",
+  "dgSpecHash": "WpAaYANd6Wdb7BfGQNTQGPTx/A9LwH8epPSgiHkboYZql6JPlshDGY/t5HED45iUW9wPfScau3RWFQoe3thlmQ==",
   "success": true,
   "projectFilePath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\torgm\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\torgm\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\torgm\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\torgm\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\torgm\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",

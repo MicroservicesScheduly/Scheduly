@@ -10,7 +10,7 @@ namespace Data_access.Repositories
 {
     public class FacultyRepository : IFacultyRepository
     {
-        private List<Faculty> _list;
+        private List<Faculty> _list = new List<Faculty>() { new Faculty { Id =1, Name = "Faculty1"} };
         public async Task<Faculty> AddAsync(Faculty entity)
         {
             await Task.Run(() => _list.Add(entity));

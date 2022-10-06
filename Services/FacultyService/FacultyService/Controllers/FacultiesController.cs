@@ -31,7 +31,7 @@ namespace SimpleService.Controllers
         {
             var faculty = await _facultyService.GetByIdAsync(id);
 
-            return Ok(post);
+            return Ok(faculty);
         }
 
         [HttpDelete("{id}")]
