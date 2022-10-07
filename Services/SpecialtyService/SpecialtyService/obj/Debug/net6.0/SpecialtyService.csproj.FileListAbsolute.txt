@@ -1,0 +1,32 @@
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\appsettings.Development.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\appsettings.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\SpecialtyService.exe
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\SpecialtyService.deps.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\SpecialtyService.runtimeconfig.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\SpecialtyService.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\SpecialtyService.pdb
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\AutoMapper.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Business.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Data access.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Business.pdb
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\bin\Debug\net6.0\Data access.pdb
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.csproj.AssemblyReference.cache
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.GeneratedMSBuildEditorConfig.editorconfig
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.AssemblyInfoInputs.cache
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.AssemblyInfo.cs
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.csproj.CoreCompileInputs.cache
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.MvcApplicationPartsAssemblyInfo.cs
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.MvcApplicationPartsAssemblyInfo.cache
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\staticwebassets.build.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\staticwebassets.development.json
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\scopedcss\bundle\SpecialtyService.styles.css
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.csproj.CopyComplete
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\refint\SpecialtyService.dll
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.pdb
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\SpecialtyService.genruntimeconfig.cache
+D:\bodya\5\microservices\lab1\SpecialtyService\SpecialtyService\obj\Debug\net6.0\ref\SpecialtyService.dll
