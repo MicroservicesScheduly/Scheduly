@@ -4,79 +4,14 @@
     "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
+    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
-        "projectName": "Business",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj",
+        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
+        "projectName": "FacultyService",
+        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
         "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
-          "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj",
-        "projectName": "Data access",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\Data access.csproj",
-        "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Data access\\obj\\",
+        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,66 +39,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
-        "projectName": "FacultyService",
-        "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\FacultyService.csproj",
-        "packagesPath": "C:\\Users\\torgm\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\FacultyService\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\torgm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net6.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj": {
-                "projectPath": "D:\\Visual Studio Projects\\5_semestr\\yahz\\Services\\FacultyService\\Business\\Business.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"

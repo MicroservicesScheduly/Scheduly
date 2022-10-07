@@ -2,8 +2,8 @@ using AutoMapper;
 using Business;
 using Business.Interfaces;
 using Business.Service;
-using Data_access.Interfaces;
-using Data_access.Repositories;
+using SimpleService.Interfaces;
+using SimpleService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IFacultyRepository, FacultyRepository>();
-builder.Services.AddTransient<IFacultyService, FacultyService>();
+builder.Services.AddSingleton<IFacultyRepository, FacultyRepository>();
+builder.Services.AddSingleton<IFacultyService, FacultyService>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
