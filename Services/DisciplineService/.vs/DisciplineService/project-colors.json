@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e5e5330b-fc12-4e95-94df-53e7bd6e82f4": {
+      "ProjectGuid": "e5e5330b-fc12-4e95-94df-53e7bd6e82f4",
+      "DisplayName": "Business",
+      "ColorIndex": 0
+    },
+    "af1a1828-ed5c-4481-b7a8-8df93760218e": {
+      "ProjectGuid": "af1a1828-ed5c-4481-b7a8-8df93760218e",
+      "DisplayName": "Data access",
+      "ColorIndex": 1
+    },
+    "2adaf991-3203-40ed-8400-5287f95a88df": {
+      "ProjectGuid": "2adaf991-3203-40ed-8400-5287f95a88df",
+      "DisplayName": "DisciplineService",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
