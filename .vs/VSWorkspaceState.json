@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Services",
-    "\\Services\\FacultyService"
+    "\\Services\\DisciplineService",
+    "\\Services\\FacultyService",
+    "\\Services\\SpecialtyService"
   ],
   "SelectedNode": "\\Services\\FacultyService\\FacultyService.sln",
   "PreviewInSolutionExplorer": false
