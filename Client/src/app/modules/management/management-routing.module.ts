@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DisciplinesComponent } from './components/disciplines/disciplines.component';
+import { FacultyComponent } from './components/faculty/faculty.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
               path: 'disciplines',
               component: DisciplinesComponent,
           },
+          {
+            path: 'faculties',
+            component: FacultyComponent,
+        },
           {
               path: '**',
               redirectTo: 'disciplines',

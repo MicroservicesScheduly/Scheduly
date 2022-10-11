@@ -1,1 +1,14 @@
-<p>disciplines works!</p>
+<ng-container *ngIf="disciplines.length; else noDisciplines">
+    YES
+</ng-container>
+<ng-template #noDisciplines>
+    <div class="not-found">
+        <div class="not-found-text">
+            <h1>NOT FOUND</h1>
+            <h5>Please add at least one discipline to see the list</h5>
+        </div>
+        <div class="not-found-img-container">
+            <img class="not-found-img" src="assets/Not-Found.png" />
+        </div>
+    </div>
+</ng-template>
