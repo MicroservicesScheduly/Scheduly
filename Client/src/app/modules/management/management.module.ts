@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DisciplinesComponent } from './disciplines/disciplines.component';
 import { ManagementRoutingModule } from './management-routing.module';
+import { ManagementPageComponent } from './management/management-page.component';
 
 @NgModule({
   declarations: [
-    DisciplinesComponent
+    DisciplinesComponent,
+    ManagementPageComponent,
   ],
   imports: [
     CommonModule,
