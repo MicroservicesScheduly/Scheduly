@@ -43,7 +43,7 @@ x64/
 *.log
 *.svclog
 *.scc
-.sqlite
+/.vs/slnx.sqlite
 
 # Visual C++ cache files
 ipch/
