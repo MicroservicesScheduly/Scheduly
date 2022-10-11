@@ -7,4 +7,5 @@ export interface IDiscipline {
     creditType: CreditType;
     hours: number;
     isSelective: boolean;
+    catalog: string;
 }
