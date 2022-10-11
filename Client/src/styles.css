@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+h4 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
