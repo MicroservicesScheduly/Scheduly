@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ManagementPageComponent implements OnInit {
   modelName: string = '';
+  lowerModelName: string = '';
 
   constructor(private router: Router) { }
 

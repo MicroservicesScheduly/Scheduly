@@ -1,11 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-h4 {
+h1, h2, h3, h4, h5 {
     font-family: 'Inter';
     font-style: normal;
+    color: #FFFFFF;
+}
+
+h5 {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+h4 {
     font-weight: 700;
     font-size: 25px;
     line-height: 30px;
-    color: #FFFFFF;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 77px;
 }
 
 html, body { height: calc(95% + 3px) !important }
