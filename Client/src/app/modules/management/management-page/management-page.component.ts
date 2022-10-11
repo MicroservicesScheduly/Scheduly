@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-management-page',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./management-page.component.css']
 })
 export class ManagementPageComponent implements OnInit {
+  modelName: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    switch (this.router.url)
+    {
+      case '/management/disciplines':
+        this.modelName = "Discipline";
+        break;
+      case '/management/faculties':
+          this.modelName = "Faculty";
+          break;
+      case '/management/teachers':
+          this.modelName = "Teacher";
+          break;
+      case '/management/Specialty':
+          this.modelName = "Specialty";
+          break;
+    }
   }
 
 }
