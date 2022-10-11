@@ -1,0 +1,59 @@
+header {
+    width: 100%;
+    max-height: 75px;
+    background-color: #6DAFA7;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    left: 0;
+    padding: 0 40px;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    align-items: center;
+    justify-content: left;
+}
+
+.logo-container img {
+    width: 52px;
+    height: 47px;
+    margin-right: 20px;
+}
+
+.nav-bar a {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #FFFFFF;
+    padding: 0 30px
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-container {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    align-items: center;
+    justify-content: right;
+}
+
+.avatar-container img {
+    height: 45px;
+    margin-left: 20px;
+}
