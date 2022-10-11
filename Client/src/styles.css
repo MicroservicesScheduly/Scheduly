@@ -7,3 +7,5 @@ h4 {
     line-height: 30px;
     color: #FFFFFF;
 }
+
+html, body { height: calc(95% + 3px) !important }
