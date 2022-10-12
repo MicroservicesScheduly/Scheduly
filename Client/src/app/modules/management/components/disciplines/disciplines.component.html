@@ -1,5 +1,78 @@
 <ng-container *ngIf="disciplines.length; else noDisciplines">
-    YES
+    <div class="disciplines-container">
+        <div class="disciplines-container-header">
+            <div class="select-container">
+                <select class="select-catalog">
+                    <option value="">Select catalog</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="hamster">Hamster</option>
+                    <option value="parrot">Parrot</option>
+                    <option value="spider">Spider</option>
+                    <option value="goldfish">Goldfish</option>
+                </select>
+            </div>
+            <div class="checkboxes-container">
+                <div class="checkbox-container">
+                    <input type="checkbox" class="check" checked><label>Mandatory</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" class="check"><label>Selective</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input type="text" class="search-name" placeholder="Search by name...">
+            </div>
+        </div>
+        <div class="discipline-cards">
+            <div class="discipline-card" *ngFor="let discipline of disciplines">
+                <div class="main-info">
+                    <div class="main-name">
+                        <h2>{{discipline.name}}</h2>
+                    </div>
+                    <div class="main-description">
+                        <h5>{{discipline.description}}</h5>
+                    </div>
+                    <div class="main-button">
+                        <button type="button" class="edit-btn"><span>
+                            <img class="edit-icon" src="assets/Edit.png" />
+                        </span> Edit</button>
+                    </div>
+                </div>
+                <div class="additional-info">
+                    <div class="selective-type">
+                        <ng-container *ngIf="discipline.isSelective; else notSelective">
+                            <button type="button" class="selective-type-btn">
+                                Selective<span class="catalog">{{discipline.catalog}}</span>
+                            </button>
+                        </ng-container>
+                        <ng-template #notSelective>
+                            <button type="button" class="selective-type-btn">Mandatory</button>
+                        </ng-template>
+                    </div>
+                    <div class="additional-info-text">
+                        <div class="course-type-hours">
+                            <ul>
+                                <li><a>Course: <span class="info-value">{{discipline.course}}</span></a></li>
+                                <li><a>Type of credit: <span class="info-value">{{discipline.creditType}}</span></a></li>
+                                <li><a>Hours: <span class="info-value">{{discipline.hours}}</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="lecturer-practician">
+                            <ul>
+                                <li><a>Lecturer: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
+                                <li><a>Practician: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
+                            </ul>
+                            <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="disciplines-image">
+            <img src="assets/Disciplines.png" />
+        </div>
+    </div>
 </ng-container>
 <ng-template #noDisciplines>
     <div class="not-found">
