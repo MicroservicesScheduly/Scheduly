@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Faculty } from '../../models/faculty.model';
+import { FacultyService } from '../../services/faculty.service';
 
 @Component({
   selector: 'app-faculty',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faculty.component.css']
 })
 export class FacultyComponent implements OnInit {
+  faculties: Faculty[]=[];
 
-  constructor() { }
+  constructor(private facultyService: FacultyService) { }
 
   ngOnInit(): void {
+    this.facultyService.get()
+    .subscribe(result => {
+      this.faculties=result
+    });
   }
 
 }
