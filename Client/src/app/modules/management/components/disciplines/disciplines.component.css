@@ -26,13 +26,20 @@ h5 {
     min-height: 100%;
 }
 
+.discipline-cards {
+    max-height: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .disciplines-container-header {
-    height: 10%;
-    min-height: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
 }
 
 .discipline-card {
-    width: 100%;
+    width: 97%;
     height: 200px;
     background: #FFFFFF;
     border: 3px solid #6DAFA7;
@@ -40,6 +47,10 @@ h5 {
     display: flex;
     flex-direction: row;
     margin-bottom: 30px;
+}
+
+.course-type-hours {
+    width: 50%;
 }
 
 .main-info {
@@ -112,4 +123,127 @@ h5 {
     line-height: 19px;
     text-align: center;
     color: #6DAFA7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.catalog {
+    background-color: #FFE779;
+    color:#22272E;
+    border-radius: 50px;
+    padding: 0 10px;
+    width: 40px;
+}
+
+ul {
+    margin-left: -35px;
+}
+
+li {
+    list-style-type: none;
+    padding-bottom: 5px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 28px;
+    color: #22272E;
+}
+
+.info-value {
+    color: #8E8E8E;
+    font-weight: 500;
+}
+
+.additional-info-text {
+    display: flex;
+    flex-direction: row;
+}
+
+.lecturer-practician {
+    margin-left: 50px;
+}
+
+.delete-icon img {
+    width: 20px;
+    height: 23px;
+}
+
+.delete-icon {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-top: -30px;
+    margin-right: -10px;
+}
+
+.disciplines-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -40px;
+}
+
+.disciplines-image img {
+    width: 440px;
+    height: 200px;
+}
+
+.select-catalog, .search-name {
+    background: #FFFFFF;
+    border: 3px solid #6DAFA7;
+    border-radius: 50px;
+    width: 240px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8E8E8E;
+    padding: 0 10px;
+}
+
+.select-catalog {
+    height: 40px;
+}
+
+.search-name {
+    height: 34px;
+}
+
+.checkboxes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 235px;
+    margin-right: 30px;
+    margin-top: -12px;
+}
+
+.checkbox-container {
+    margin-left: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #22272E;
+}
+
+.check, .check:checked {
+	appearance: none;
+    border: 2px solid #6DAFA7;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.check:checked {
+	background-color: #FFE779;
+}
+
+.check {
+	background-color: white;
 }

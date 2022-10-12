@@ -24,7 +24,7 @@ export class ManagementPageComponent implements OnInit {
       case '/management/teachers':
           this.modelName = "Teacher";
           break;
-      case '/management/Specialty':
+      case '/management/specialty':
           this.modelName = "Specialty";
           break;
     }

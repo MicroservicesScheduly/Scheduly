@@ -16,7 +16,7 @@ const routes: Routes = [
           {
             path: 'faculties',
             component: FacultyComponent,
-        },
+          },
           {
               path: '**',
               redirectTo: 'disciplines',
