@@ -13,6 +13,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IDisciplineRepository, DisciplineRepository>();
 builder.Services.AddSingleton<IDisciplineService, DisciplineService.Services.DisciplineService>();
 
+builder.Services.AddCors();
+
 var mapperConfig = new MapperConfiguration(mc =>
 {
     mc.AddProfile(new AutomapperProfile());
@@ -29,6 +31,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder =>
+    {
+        builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
 
 app.UseHttpsRedirection();
 
