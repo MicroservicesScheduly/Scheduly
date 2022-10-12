@@ -5,6 +5,9 @@ import { ManagementRoutingModule } from './management-routing.module';
 import { FacultyComponent } from './components/faculty/faculty.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
 import { HeaderComponent } from '../../shared/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SPECIALTIES_API_URL, DISCIPLINES_API_URL, TEACHERS_API_URL, FACULTIES_API_URL} from './app-injection';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -15,8 +18,26 @@ import { HeaderComponent } from '../../shared/header/header.component';
   ],
   imports: [
     CommonModule,
-    ManagementRoutingModule
+    ManagementRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: FACULTIES_API_URL,
+      useValue: environment.facultyUrl
+    },
+    {
+      provide: DISCIPLINES_API_URL,
+      useValue: environment.disciplinesUrl
+    },
+    {
+      provide: TEACHERS_API_URL,
+      useValue: environment.teachersUrl
+    },
+    {
+      provide: SPECIALTIES_API_URL,
+      useValue: environment.specialtiesUrl
+    }
+  ],
 })
 export class ManagementModule { }

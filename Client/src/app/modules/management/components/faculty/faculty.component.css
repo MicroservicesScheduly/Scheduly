@@ -1,0 +1,23 @@
+h1 {
+    color: #22272E;
+}
+
+h5 {
+    color: #8E8E8E;
+}
+
+.not-found-img {
+    width: 720px;
+    height: 485px;
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-text {
+    text-align: center;
+}

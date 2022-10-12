@@ -1,1 +1,14 @@
-<p>faculty works!</p>
+<ng-container *ngIf="faculties.length; else noFaculties">
+    YES
+</ng-container>
+<ng-template #noFaculties>
+    <div class="not-found">
+        <div class="not-found-text">
+            <h1>NOT FOUND</h1>
+            <h5>Please add at least one faculty to see the list</h5>
+        </div>
+        <div class="not-found-img-container">
+            <img class="not-found-img" src="assets/Not-Found.png" />
+        </div>
+    </div>
+</ng-template>
