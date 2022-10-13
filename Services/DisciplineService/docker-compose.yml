@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  disciplineservice:
+    image: ${DOCKER_REGISTRY-}disciplineservice
+    build:
+      context: .
+      dockerfile: DisciplineService/Dockerfile
