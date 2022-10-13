@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  facultyservice:
+    image: ${DOCKER_REGISTRY-}facultyservice
+    build:
+      context: .
+      dockerfile: FacultyService/Dockerfile
