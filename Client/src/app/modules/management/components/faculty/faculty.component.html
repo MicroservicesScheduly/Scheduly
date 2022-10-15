@@ -1,6 +1,44 @@
 <ng-container *ngIf="faculties.length; else noFaculties">
-    YES
+    <div class="faculty-cards">
+        <div class="faculty-card" *ngFor="let faculty of faculties">
+            <div class="main-info">
+                <div class="main-name">
+                    <h2>{{faculty.Name}}</h2>
+                </div>
+                <div class="main-description">
+                    <h5>{{faculty.Description}}</h5>
+                </div>
+                <div class="main-button">
+                    <button type="button" class="edit-btn"><span>
+                        <img class="edit-icon" src="assets/Edit.png" />
+                    </span> Edit</button>
+                </div>
+            </div>
+            <div class="additional-info">
+                <div class="additional-info-text">
+                     <div class = "properties">
+                       <h1 id="lin">{{faculty.Disciplines}}</h1>
+                       <h2 id="lin2">desciplines</h2>
+                    </div>
+                     <div class = "properties">
+                        <h1 id="lin">{{faculty.Teachers}}</h1>
+                        <h2 id="lin2">teachers</h2>
+                    </div>
+                     <div class = "properties">
+                        <h1 id="lin">{{faculty.Specialties}}</h1>
+                        <h2 id="lin2">specialties</h2>
+                    </div>
+
+                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="faculties-image">
+            <img src="assets/Faculties.png" />
+        </div>
 </ng-container>
+
 <ng-template #noFaculties>
     <div class="not-found">
         <div class="not-found-text">
