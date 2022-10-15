@@ -1,0 +1,44 @@
+<ng-container *ngIf="teachers.length; else noTeachers">
+    <div class="teachers-container">
+        <div class="teachers-container-header">
+            <div class="input-container">
+                <input type="text" class="search-name" placeholder="Search by name...">
+            </div>
+        </div>
+        <div class="teacher-cards">
+            <div class="teacher-card" *ngFor="let teacher of teachers">
+                <div class="name">
+                    <h2>{{teacher.Name}}</h2>
+                </div>
+                <div class="disciplines-count">Disciplines: 3</div>
+                <div class="disciplines-list">
+                    <ul>
+                        <li>Descipline 1 Name</li>
+                        <li>Descipline 2 Name</li>
+                        <li>Descipline 3 Name</li>
+                    </ul>
+                </div>
+                <div class="button">
+                    <button type="button" class="edit-btn"><span>
+                        <img class="edit-icon" src="assets/Edit.png" />
+                    </span> Edit</button>
+                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="teachers-image">
+            <img src="assets/Teachers.png" />
+        </div>
+    </div>
+</ng-container>
+<ng-template #noTeachers>
+    <div class="not-found">
+        <div class="not-found-text">
+            <h1>NOT FOUND</h1>
+            <h5>Please add at least one faculty to see the list</h5>
+        </div>
+        <div class="not-found-img-container">
+            <img class="not-found-img" src="assets/Not-Found.png" />
+        </div>
+    </div>
+</ng-template>
