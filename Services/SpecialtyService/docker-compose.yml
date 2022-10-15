@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  specialtyservice:
+    image: ${DOCKER_REGISTRY-}specialtyservice
+    build:
+      context: .
+      dockerfile: SpecialtyService/Dockerfile
