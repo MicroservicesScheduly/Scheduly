@@ -8,13 +8,17 @@ import { HeaderComponent } from '../../shared/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SPECIALTIES_API_URL, DISCIPLINES_API_URL, TEACHERS_API_URL, FACULTIES_API_URL} from './app-injection';
 import { environment } from 'src/environments/environment';
+import { TeachersComponent } from './components/teachers/teachers.component';
+import { SpecialtiesComponent } from './components/specialties/specialties.component';
 
 @NgModule({
   declarations: [
     DisciplinesComponent,
     FacultyComponent,
     ManagementPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    TeachersComponent,
+    SpecialtiesComponent
   ],
   imports: [
     CommonModule,

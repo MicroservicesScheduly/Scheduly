@@ -1,0 +1,38 @@
+<ng-container *ngIf="specialties.length; else noSpecialties">
+    <div class="specialities-container">
+        <div class="specialities-container-header">
+            <div class="input-container">
+                <input type="text" class="search-name" placeholder="Search by name...">
+            </div>
+        </div>
+        <div class="speciality-cards">
+            <div class="speciality-card" *ngFor="let specialty of specialties">
+                <div class="name">
+                    <h2>Speciality {{specialty.Id}}</h2>
+                </div>
+                <div class="speciality-number">{{specialty.Number}}</div>
+                <div class="speciality-description">{{specialty.Description}}</div>
+                <div class="button">
+                    <button type="button" class="edit-btn"><span>
+                        <img class="edit-icon" src="assets/Edit.png" />
+                    </span> Edit</button>
+                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="specialities-image">
+            <img src="assets/Specialities.png" />
+        </div>
+    </div>
+</ng-container>
+<ng-template #noSpecialties>
+    <div class="not-found">
+        <div class="not-found-text">
+            <h1>NOT FOUND</h1>
+            <h5>Please add at least one faculty to see the list</h5>
+        </div>
+        <div class="not-found-img-container">
+            <img class="not-found-img" src="assets/Not-Found.png" />
+        </div>
+    </div>
+</ng-template>
