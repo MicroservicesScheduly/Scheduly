@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  teacherservice:
+    image: ${DOCKER_REGISTRY-}teacherservice
+    build:
+      context: .
+      dockerfile: TeacherService/Dockerfile
