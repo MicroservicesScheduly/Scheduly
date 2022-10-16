@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: disciplines-ingress
+  name: faculties-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
     - http:
         paths:
-          - path: /api/disciplines
+          - path: /api/faculties
             pathType: "Prefix"
             backend:
               service:
-                name: disciplines-service
+                name: faculties-service
                 port:
                   number: 80
