@@ -1,19 +1,20 @@
 minikube start
 minikube addons enable ingress
-cd Client
-docker build -t client:01 -f Client/Dockerfile .
+cd .\Client
+docker build -t client:01 -f Dockerfile .
 cd ..
-cd Services/FacultyService
-docker build -t faculty:01 -f Dockerfile .
+cd .\Servicesc\FacultyService
+docker build -t faculties:01 -f Dockerfile .
 cd ..
-cd DisciplineSevice
-docker build -t discipline:01 -f Dockerfile .
+cd .\DisciplineSevice
+docker build -t disciplines:01 -f Dockerfile .
 cd ..
-cd TeacherService
-docker build -t teacher:01 -f Dockerfile .
+cd .\TeacherService
+docker build -t teachers:01 -f Dockerfile .
 cd ..
-cd SpecialtyService
-docker build -t specialty:01 -f Dockerfile .
+cd .\SpecialtyService
+docker build -t specialties:01 -f Dockerfile .
+cd ../..
 kubectl apply -f k8s/disciplines
 kubectl apply -f k8s/faculties
 kubectl apply -f k8s/specialties
