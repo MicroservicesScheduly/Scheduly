@@ -19,6 +19,11 @@ h5 {
     color: #8E8E8E;
 }
 
+.input-container{
+    margin-left: 835px;
+}
+
+
 .not-found-img {
     width: 720px;
     height: 485px;
@@ -141,10 +146,6 @@ h5 {
     
 }
 
-.lecturer-practician {
-    margin-left: 50px;
-}
-
 .delete-icon img {
     width: 20px;
     height: 23px;
@@ -172,4 +173,25 @@ h5 {
 
 .search-name {
     height: 34px;
+}
+
+.faculties-container-header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.search-name {
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    border: 3px solid #6DAFA7;
+    border-radius: 50px;
+    width: 170px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8E8E8E;
+    padding: 0 10px;
 }
