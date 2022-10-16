@@ -1,4 +1,10 @@
 <ng-container *ngIf="faculties.length; else noFaculties">
+<div class="faculties-container">
+    <div class="faculty-container-header">
+        <div class="input-container">
+            <input type="text" class="search-name" placeholder="Search by name...">
+        </div>
+    </div>
     <div class="faculty-cards">
         <div class="faculty-card" *ngFor="let faculty of faculties">
             <div class="main-info">
@@ -35,8 +41,9 @@
         </div>
     </div>
         <div class="faculties-image">
-            <img src="assets/Faculties.png" />
+            <img src="assets/Faculty.png" />
         </div>
+</div>
 </ng-container>
 
 <ng-template #noFaculties>
