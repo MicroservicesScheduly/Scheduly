@@ -1,10 +1,28 @@
 # Scheduly
 
-Lab1.sh - скрипт, який повинен запускати усі команди для запуску додатку, але чомусь він не працює. Тому запускаємо по рядково команди зі скрипта і все працює (магія...)
+> Scheduly - застосунок, який допоможе організувати розклад для Вашого навчального закладу.
+- Заповність базу даних із викладачами, факультетами, дисциплінами та спеціальностями.
+- Складіть розклад для навчальних груп. 
+- Поділіться розкладом закладу із усіма студентами та викладачами.
 
-посилання на dockerhub:
+## Матеріали лабораторної роботи №1
+
+### Образи на Dockerhub 
 https://hub.docker.com/repository/docker/hurmaze/disciplines
 https://hub.docker.com/repository/docker/hurmaze/teachers
 https://hub.docker.com/repository/docker/hurmaze/specialties
 https://hub.docker.com/repository/docker/hurmaze/client
 https://hub.docker.com/repository/docker/hurmaze/faculties
+
+### Основні команди
+```
+minikube start
+```
+
+```
+docker build -t disciplines:0.1 -f Dockerfile .
+```
+
+```
+kubectl apply -f k8s/disciplines
+```
