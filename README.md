@@ -20,7 +20,7 @@ minikube start
 ```
 
 ```
-docker build -t disciplines:0.1 -f Dockerfile .
+docker build -t disciplines:01 -f Dockerfile .
 ```
 
 ```
