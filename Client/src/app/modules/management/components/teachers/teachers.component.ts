@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Teacher } from '../../models/teacher.model';
+import { TeachersService } from '../../services/teachers.service';
 
 @Component({
   selector: 'app-teachers',
@@ -9,15 +10,10 @@ import { Teacher } from '../../models/teacher.model';
 export class TeachersComponent implements OnInit {
   teachers: Teacher[]=[];
 
-  constructor() { }
+  constructor(private teachersService: TeachersService) { }
 
   ngOnInit(): void {
-    this.teachers = [
-      { Id: 0, Name: "Tolmachov Anton Mykhailovych"},
-      { Id: 1, Name: "Koval Vadym Yuriyovich"},
-      { Id: 2, Name: "Gusak Mykhailo Alexandrovich"},
-      { Id: 3, Name: "Vasyliv Boghdan Petrovich"}
-    ];
+    this.teachersService.get().subscribe(res => this.teachers = res);
   }
 
 }
