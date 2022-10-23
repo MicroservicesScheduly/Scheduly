@@ -1,0 +1,135 @@
+<div class="disciplines-form-container">
+    <div class="main-info">
+        <div class="label">
+            CREATE
+        </div>
+        <div class="image">
+            <img class="image-form" src="assets/DisciplinesForm.png" />
+        </div>
+        <div class="buttons">
+            <div class="form-group save-btn">
+                <button [disabled]="createDisciplineForm.invalid" 
+                        class="save-button" (click)="submit(createDisciplineForm)">Save</button>
+            </div>
+            <div class="form-group cancel-btn">
+                <button class="cancel-button" (click)="redirectToManagement()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="form-label">
+            DISCIPLINE
+        </div>
+            <form #createDisciplineForm="ngForm">
+            <div class="form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" name="name" [(ngModel)]="discipline.name" required
+                    #name="ngModel" placeholder="Enter name"/>
+                </div>
+                <div class="errors-container">
+                    <div *ngIf="name.errors?.['required']" class="error">
+                        Name is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control" name="description" [(ngModel)]="discipline.description" required
+                    #description="ngModel" placeholder="Enter description"/>
+                </div>
+                <div class="errors-container">
+                    <div *ngIf="description.errors?.['required']" class="error">
+                        Description is required.
+                    </div>
+                </div>
+                <div class="small-form-groups">
+                    <div class="form-group small-form-group">
+                        <label class="small-form-group-label">Course</label>
+                        <input class="form-control centered" name="course" [(ngModel)]="discipline.course" required
+                        pattern="[1-4]{1}" #course="ngModel" placeholder="Course"/>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label class="small-form-group-label-2">Type</label>
+                        <select class="form-control centered" name="creditType" [(ngModel)]="discipline.creditType" required>
+                        <option class="form-control centered"  *ngFor="let creditType of creditTypes" [value]="creditType">
+                            {{creditType}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group small-form-group">
+                        <label>Hours</label>
+                        <input class="form-control centered" name="hours" [(ngModel)]="discipline.hours" required
+                        #hours="ngModel" placeholder="Hours"/>
+                    </div>
+                </div>
+                <div class="errors-container">
+                    <div *ngIf="course.errors?.['required']" class="error">
+                        Course is required.
+                    </div>
+                    <div *ngIf="course.errors?.['pattern']" class="error">
+                        Course can be between 1 and 4 only.
+                    </div>
+                    <div *ngIf="hours.errors?.['required']" class="error">
+                        Hours is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="check" [checked]="discipline.isSelective"
+                        (change)="discipline.isSelective = !discipline.isSelective"><label>Is selective</label>
+                    </div>
+                </div>
+                <div class="form-group row-form-group" *ngIf="discipline.isSelective">
+                    <label>Catalog</label>
+                    <select class="form-control centered" name="catalog" [(ngModel)]="discipline.catalog" required>
+                        <option class="form-control centered"  *ngFor="let catalog of catalogs" [value]="catalog">
+                            {{catalog.name}}</option>
+                    </select>
+
+                    <select [ngModel]="discipline.catalog">
+                        <option *ngFor="let ct of catalogs" [value]="ct">{{ct.name}}</option>
+                    </select>
+
+                    <div class="add-catalog-icon">+</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="lecturer-practician-container">
+        <div class="lecturers">
+            <div class="form-group">
+                <label>Lecturers</label>
+                <button (click)="addTeacher()" class="add-teacher-btn">Add lecturer</button>
+            </div>
+            <div *ngIf="lecturers.length" class="lecturers-list">
+                <div class="list-item" *ngFor="let item of lecturers">
+                    <div class="item-name">{{item.Name}}</div>
+                    <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
+                        (click)="deleteTeacher(item.Id, true)"/></div>
+                </div>
+            </div>
+            <div class="errors-container">
+                <div *ngIf="!lecturers.length" class="error">
+                    At least one lecturer is required.
+                </div>
+            </div>
+        </div>
+        <div class="practicians">
+            <div class="form-group">
+                <label>Practicians</label>
+                <button (click)="addTeacher()" class="add-teacher-btn">Add pracitian</button>
+            </div>
+            <div *ngIf="practicians.length" class="practicians-list">
+                <div class="list-item" *ngFor="let item of practicians">
+                    <div class="item-name">{{item.Name}}</div>
+                    <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
+                        (click)="deleteTeacher(item.Id, false)"/></div>
+                </div>
+            </div>
+            <div class="errors-container">
+                <div *ngIf="!practicians.length" class="error">
+                    At least one practician is required.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

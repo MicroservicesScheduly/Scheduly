@@ -10,6 +10,11 @@ const routes: Routes = [{
     path: 'management',
     loadChildren: () => import('./modules/management/management.module').then((m) => m.ManagementModule),
   },
+  {
+    path: 'management-edit',
+    loadChildren: () => import('./modules/management-edit/management-edit.module')
+        .then((m) => m.ManagementEditModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

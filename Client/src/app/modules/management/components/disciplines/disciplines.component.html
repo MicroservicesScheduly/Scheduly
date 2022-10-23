@@ -34,16 +34,16 @@
                         <h5>{{discipline.description}}</h5>
                     </div>
                     <div class="main-button">
-                        <button type="button" class="edit-btn"><span>
+                        <button type="button" class="edit-btn" (click)="redirectToEditDiscipline(discipline.id)"><span>
                             <img class="edit-icon" src="assets/Edit.png" />
                         </span> Edit</button>
                     </div>
                 </div>
                 <div class="additional-info">
                     <div class="selective-type">
-                        <ng-container *ngIf="discipline.isSelective; else notSelective">
+                        <ng-container *ngIf="discipline.isSelective && discipline.catalog; else notSelective">
                             <button type="button" class="selective-type-btn">
-                                Selective<span class="catalog">{{discipline.catalog}}</span>
+                                Selective<span class="catalog">{{discipline.catalog.name}}</span>
                             </button>
                         </ng-container>
                         <ng-template #notSelective>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ManagementPageComponent implements OnInit {
   modelName: string = '';
-  lowerModelName: string = '';
+  editModelUri: string = 'management-edit/';
 
   constructor(private router: Router) { }
 
@@ -17,16 +17,23 @@ export class ManagementPageComponent implements OnInit {
     {
       case '/management/disciplines':
         this.modelName = "Discipline";
+        this.editModelUri += 'create-discipline';
         break;
       case '/management/faculties':
-          this.modelName = "Faculty";
-          break;
+        this.modelName = "Faculty";
+        break;
       case '/management/teachers':
-          this.modelName = "Teacher";
-          break;
+        this.modelName = "Teacher";
+        break;
       case '/management/specialties':
-          this.modelName = "Specialty";
-          break;
+        this.modelName = "Specialty";
+        break;
+    }
+  }
+
+  redirectToCreateModel() {
+    if (this.editModelUri != 'management-edit/') {
+      this.router.navigateByUrl(this.editModelUri);
     }
   }
 

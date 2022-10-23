@@ -12,8 +12,8 @@ const routes: Routes = [
       component: ManagementPageComponent,
       children: [
           {
-              path: 'disciplines',
-              component: DisciplinesComponent,
+            path: 'disciplines',
+            component: DisciplinesComponent,
           },
           {
             path: 'faculties',
@@ -28,8 +28,8 @@ const routes: Routes = [
             component: SpecialtiesComponent,
           },
           {
-              path: '**',
-              redirectTo: 'disciplines',
+            path: '**',
+            redirectTo: 'faculties',
           },
       ],
   },

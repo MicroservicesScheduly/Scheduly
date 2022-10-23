@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DisciplinesComponent } from './modules/management/components/disciplines/disciplines.component';
-import { ManagementModule } from './modules/management/management.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,7 +14,11 @@ import { ManagementModule } from './modules/management/management.module';
     BrowserModule,
     CommonModule,
     AppRoutingModule,
-    ManagementModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
