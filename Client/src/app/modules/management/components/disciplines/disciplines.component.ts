@@ -12,6 +12,8 @@ import { DisciplinesService } from '../../services/disciplines.service';
 export class DisciplinesComponent implements OnInit {
   disciplines: IDiscipline[] = [];
 
+  CreditType = CreditType;
+
   constructor(private disciplinesService: DisciplinesService, private router: Router) { }
 
   ngOnInit(): void {

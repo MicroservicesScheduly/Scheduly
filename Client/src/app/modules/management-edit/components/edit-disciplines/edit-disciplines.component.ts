@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CreditType } from 'src/app/modules/management/enums/credit-type.model';
 import { IDiscipline } from 'src/app/modules/management/models/discipline.model';
+import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
 import { getCatalogs } from '../../catalogs.helper';
 
 @Component({
@@ -10,12 +12,18 @@ import { getCatalogs } from '../../catalogs.helper';
 })
 export class EditDisciplinesComponent implements OnInit {
 
-  discipline: IDiscipline = { id: 1, name: "Name 1", description: "Description 1 Description 1 Description 1 Description 1 Description 1 Description 1",
-  course: 2, creditType: CreditType.Exam, hours: 150, isSelective: true, catalog: getCatalogs()[1] };
+  discipline: IDiscipline;
+
+  id: number;
   
-  constructor() { }
+  constructor(private disciplinesService: DisciplinesService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+   }); 
+  }
 
   ngOnInit(): void {
+    this.disciplinesService.getById(this.id).subscribe(res => this.discipline = res);
   }
 
 }

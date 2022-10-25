@@ -5,7 +5,7 @@ import { ManagementRoutingModule } from './management-routing.module';
 import { FacultyComponent } from './components/faculty/faculty.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SPECIALTIES_API_URL, DISCIPLINES_API_URL, TEACHERS_API_URL, FACULTIES_API_URL} from './app-injection';
+/*import { SPECIALTIES_API_URL, DISCIPLINES_API_URL, TEACHERS_API_URL, FACULTIES_API_URL} from './app-injection';*/
 import { environment } from 'src/environments/environment';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { SpecialtiesComponent } from './components/specialties/specialties.component';
@@ -26,7 +26,7 @@ import { HeaderComponent } from 'src/app/shared/header/header-component/header.c
     HttpClientModule,
     HeaderModule,
   ],
-  providers: [
+  /*providers: [
     {
       provide: FACULTIES_API_URL,
       useValue: environment.facultyUrl
@@ -43,6 +43,7 @@ import { HeaderComponent } from 'src/app/shared/header/header-component/header.c
       provide: SPECIALTIES_API_URL,
       useValue: environment.specialtiesUrl
     }
-  ],
+  ],*/
+  providers: [],
 })
 export class ManagementModule { }

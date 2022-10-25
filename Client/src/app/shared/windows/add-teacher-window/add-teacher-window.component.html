@@ -1,5 +1,37 @@
-
+<div class="window-container">
     <div class="logo-container">
-        <img class="logo" src="assets/Logo.png" />
-        Scheduly
+        <div class="logo"><img class="logo-img" src="assets/Logo.png" /></div>
+        <div class="title"><span>{{data.title}}</span></div>
     </div>
+    <div class="message-container">
+        <div class="message"><span>{{data.message}}</span></div>
+    </div>
+    <div class="teachers-list" *ngIf="data.isLecturerAdded; else practicianAdded">
+        <ng-container *ngIf="availableLecturers.length; else noLecturers">
+            <div class="teacher" *ngFor="let teacher of availableLecturers">
+                <button class="teacher-item" (click)="addTeacherToList(true, teacher)">{{teacher.Name}}</button>
+            </div>
+        </ng-container>
+        <ng-template #noLecturers>
+            <div class="message"><span>No available lecturers</span></div>
+        </ng-template>
+    </div>
+    <ng-template class="teachers-list" #practicianAdded>
+        <ng-container *ngIf="availablePracticians.length; else noPracticians">
+            <div class="teacher" *ngFor="let teacher of availablePracticians">
+                 <button class="teacher-item" (click)="addTeacherToList(false, teacher)">{{teacher.Name}}</button>
+            </div>
+        </ng-container>
+        <ng-template #noPracticians>
+            <div class="message"><span>No available practicians</span></div>
+        </ng-template>
+    </ng-template>
+    <div *ngIf="data.buttons" class="buttons">
+        <button
+            *ngFor="let button of data.buttons"
+            (click)="onClick(button.onClickEvent)"
+            class="window-button">
+            {{button.title}}
+        </button>
+    </div>
+</div>

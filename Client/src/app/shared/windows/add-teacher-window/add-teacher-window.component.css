@@ -1,4 +1,105 @@
-* {
+.window-container {
     width: 400px;
-    height: 500px;
+    height: 400px;
+    position: relative;
+}
+
+::ng-deep .mat-dialog-container {
+    border-radius: 25px;
+}
+
+.logo-container {
+    max-height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo {
+    padding: 0 10px;
+}
+
+.title, .message {
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+    font-style: normal;
+}
+
+.title {
+    font-weight: 800;
+    font-size: 30px;
+}
+
+.message {
+    font-weight: 500;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.message-container {
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.window-button {
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    width: 80%;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    border: 2px solid #6DAFA7;
+    padding: 5px 0px;
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.teacher-item {
+    background-color: #6DAFA7;
+    border: 2px solid #6DAFA7;
+    border-radius: 25px;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.teachers-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+.teacher {
+    width: 400px;
 }

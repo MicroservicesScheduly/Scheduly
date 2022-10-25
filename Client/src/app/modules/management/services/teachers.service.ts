@@ -1,19 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TEACHERS_API_URL } from '../app-injection';
+import { environment } from 'src/environments/environment';
 import { Teacher } from '../models/teacher.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeachersService {
-  constructor(
-    private _http: HttpClient,
-    @Inject(TEACHERS_API_URL) private teachersUrl: string
-    ) { }
+  constructor(private _http: HttpClient) { }
 
     get(): Observable<Teacher[]>{
-      return this._http.get<Teacher[]>(this.teachersUrl);
+      return this._http.get<Teacher[]>(environment.urlPrefix + environment.teachersUrl);
     }
 }

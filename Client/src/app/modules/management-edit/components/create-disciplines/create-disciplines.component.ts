@@ -24,11 +24,16 @@ export class CreateDisciplinesComponent implements OnInit {
   /* ADD real catalogs */
   catalogs: ICatalog[] = getCatalogs();
 
-  lecturers: Teacher[] = [{ Id: 1, Name: "Lecturer 1"}, { Id: 2, Name: "Lecturer 2"},
-  { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+  lecturers: Teacher[] = [{ Id: 2, Name: "Lecturer 2"}, { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
 
   practicians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
   { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}];
+
+  allLecturers: Teacher[] = [{ Id: 1, Name: "Lecturer 1"}, { Id: 2, Name: "Lecturer 2"},
+  { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+
+  allPracticians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
+  { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}, { Id: 5, Name: "Practician 5"}];
 
   constructor(private router: Router, private windowService: WindowService) { }
 
@@ -56,20 +61,25 @@ export class CreateDisciplinesComponent implements OnInit {
     }
   }
 
-  addTeacher() {
+  addTeacher(addAsLecturer: boolean = true) {
       this.windowService.openAddTeacherDialog({
           buttons: [
               {
-                  title: "Yes",
-                  onClickEvent: new EventEmitter<void>(),
-              },
-              {
                 title: "Cancel",
-                  onClickEvent: new EventEmitter<void>(),
+                onClickEvent: new EventEmitter<void>(),
               },
           ],
-          title: 'TITLE',
-          message: 'MESSAGE',
+          title: 'Add Teacher',
+          message: addAsLecturer ? 'as a lecturer' : 'as a practician',
+          isLecturerAdded: addAsLecturer,
       });
+  }
+
+  addCatalog() {
+
+  }
+
+  changeCatalog() {
+    
   }
 }

@@ -11,6 +11,7 @@ export class WindowService {
         return this.dialog
             .open(AddTeacherWindowComponent, {
                 data,
+                disableClose: true,
             })
             .afterClosed();
     }

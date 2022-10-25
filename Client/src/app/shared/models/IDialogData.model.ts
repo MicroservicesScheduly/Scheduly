@@ -4,4 +4,5 @@ export interface IDialogData {
     title: string;
     message?: string;
     buttons?: IDialogButton[];
+    isLecturerAdded?: boolean;
 }

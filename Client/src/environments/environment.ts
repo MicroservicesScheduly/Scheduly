@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  facultyUrl: 'http://localhost/api/faculties',
-  teachersUrl: 'http://localhost/api/teachers',
-  specialtiesUrl: 'http://localhost/api/specialties',
-  disciplinesUrl: 'http://localhost/api/disciplines',
-  whiteListedDomains: ['']
+  facultyUrl: 'api/faculties',
+  teachersUrl: 'api/teachers',
+  specialtiesUrl: 'api/specialties',
+  disciplinesUrl: 'api/disciplines',
+  whiteListedDomains: [''],
+  urlPrefix: 'http://localhost/',
 };
 
 /*

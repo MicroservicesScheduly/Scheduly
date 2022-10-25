@@ -5,6 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -12,19 +13,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddTeacherWindowComponent,
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     SharedRoutingModule,
     MatDialogModule,
-    RouterModule,
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [
-    CommonModule,
-    AddTeacherWindowComponent,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ]
 })
 export class SharedModule { }
