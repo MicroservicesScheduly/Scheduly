@@ -6,13 +6,13 @@ using SimpleService.Interfaces;
 
 namespace Business.Service
 {
-    public class FacultyService : IFacultyService
+    public class FacultiesService : IFacultyService
     {
         private readonly IFacultyRepository _facultyRepository;
 
         private readonly IMapper _mapper;
 
-        public FacultyService(IFacultyRepository facultyRepository, IMapper mapper)
+        public FacultiesService(IFacultyRepository facultyRepository, IMapper mapper)
         {
             _facultyRepository = facultyRepository;
             _mapper = mapper;
