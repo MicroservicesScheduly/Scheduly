@@ -1,5 +1,5 @@
-export class Specialty {
-    public Id: number;
-    public Number: number;
-    public Description: string;
+export interface ISpecialty {
+    id: number;
+    number: number;
+    description: string;
 }

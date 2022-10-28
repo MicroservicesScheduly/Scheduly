@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Specialty } from '../../models/specialty.model';
+import { ISpecialty } from '../../models/specialty.model';
 import { SpecialtiesService } from '../../services/specialties.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { SpecialtiesService } from '../../services/specialties.service';
   styleUrls: ['./specialties.component.css']
 })
 export class SpecialtiesComponent implements OnInit {
-  specialties: Specialty[]=[];
+  specialties: ISpecialty[]=[];
 
   constructor(private specialtiesService: SpecialtiesService) { }
 

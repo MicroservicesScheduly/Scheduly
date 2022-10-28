@@ -9,12 +9,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CreateDisciplinesComponent } from './components/create-disciplines/create-disciplines.component';
 import { EditDisciplinesComponent } from './components/edit-disciplines/edit-disciplines.component';
 import { HeaderModule } from 'src/app/shared/header/header.module';
+import { CreateTeachersComponent } from './components/create-teachers/create-teachers.component';
+import { EditTeachersComponent } from './components/edit-teachers/edit-teachers.component';
 
 @NgModule({
   declarations: [
     ManagementEditPageComponent,
     EditDisciplinesComponent,
     CreateDisciplinesComponent,
+    CreateTeachersComponent,
+    EditTeachersComponent,
   ],
   imports: [
     CommonModule,

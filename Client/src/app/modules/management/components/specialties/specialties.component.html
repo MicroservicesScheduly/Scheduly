@@ -8,10 +8,10 @@
         <div class="speciality-cards">
             <div class="speciality-card" *ngFor="let specialty of specialties">
                 <div class="name">
-                    <h2>Speciality {{specialty.Id}}</h2>
+                    <h2>Speciality {{specialty.id}}</h2>
                 </div>
-                <div class="speciality-number">{{specialty.Number}}</div>
-                <div class="speciality-description">{{specialty.Description}}</div>
+                <div class="speciality-number">{{specialty.number}}</div>
+                <div class="speciality-description">{{specialty.description}}</div>
                 <div class="button">
                     <button type="button" class="edit-btn"><span>
                         <img class="edit-icon" src="assets/Edit.png" />
@@ -29,7 +29,7 @@
     <div class="not-found">
         <div class="not-found-text">
             <h1>NOT FOUND</h1>
-            <h5>Please add at least one faculty to see the list</h5>
+            <h5>Please add at least one speciality to see the list</h5>
         </div>
         <div class="not-found-img-container">
             <img class="not-found-img" src="assets/Not-Found.png" />

@@ -8,7 +8,7 @@
         <div class="teacher-cards">
             <div class="teacher-card" *ngFor="let teacher of teachers">
                 <div class="name">
-                    <h2>{{teacher.Name}}</h2>
+                    <h2>{{teacher.name}}</h2>
                 </div>
                 <div class="disciplines-count">Disciplines: 3</div>
                 <div class="disciplines-list">
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <div class="button">
-                    <button type="button" class="edit-btn"><span>
+                    <button type="button" class="edit-btn" (click)="redirectToEditTeacher(teacher.id)"><span>
                         <img class="edit-icon" src="assets/Edit.png" />
                     </span> Edit</button>
                     <div class="delete-icon"><img src="assets/Trash.png" /></div>
@@ -35,7 +35,7 @@
     <div class="not-found">
         <div class="not-found-text">
             <h1>NOT FOUND</h1>
-            <h5>Please add at least one faculty to see the list</h5>
+            <h5>Please add at least one teacher to see the list</h5>
         </div>
         <div class="not-found-img-container">
             <img class="not-found-img" src="assets/Not-Found.png" />

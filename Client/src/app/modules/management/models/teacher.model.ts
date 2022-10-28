@@ -1,4 +1,4 @@
-export class Teacher {
-    public Id: number;
-    public Name: string;
+export interface ITeacher {
+    id: number;
+    name: string;
 }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CreditType } from 'src/app/modules/management/enums/credit-type.model';
 import { ICatalog } from 'src/app/modules/management/models/catalog.model';
 import { IDiscipline } from 'src/app/modules/management/models/discipline.model';
-import { Teacher } from 'src/app/modules/management/models/teacher.model';
+import { ITeacher } from 'src/app/modules/management/models/teacher.model';
 import { WindowService } from 'src/app/shared/services/window.service';
 import { getCatalogs } from '../../catalogs.helper';
 
@@ -24,16 +24,16 @@ export class CreateDisciplinesComponent implements OnInit {
   /* ADD real catalogs */
   catalogs: ICatalog[] = getCatalogs();
 
-  lecturers: Teacher[] = [{ Id: 2, Name: "Lecturer 2"}, { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+  lecturers: ITeacher[] = [{ id: 2, name: "Lecturer 2"}, { id: 3, name: "Lecturer 3"}, { id: 4, name: "Lecturer 4"}];
 
-  practicians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
-  { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}];
+  practicians: ITeacher[] = [{ id: 1, name: "Practician 1"}, { id: 2, name: "Practician 2"},
+  { id: 3, name: "Koval Vadym Yuriyovich"}, { id: 4, name: "Practician 4"}];
 
-  allLecturers: Teacher[] = [{ Id: 1, Name: "Lecturer 1"}, { Id: 2, Name: "Lecturer 2"},
-  { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+  allLecturers: ITeacher[] = [{ id: 1, name: "Lecturer 1"}, { id: 2, name: "Lecturer 2"},
+  { id: 3, name: "Lecturer 3"}, { id: 4, name: "Lecturer 4"}];
 
-  allPracticians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
-  { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}, { Id: 5, Name: "Practician 5"}];
+  allPracticians: ITeacher[] = [{ id: 1, name: "Practician 1"}, { id: 2, name: "Practician 2"},
+  { id: 3, name: "Koval Vadym Yuriyovich"}, { id: 4, name: "Practician 4"}, { id: 5, name: "Practician 5"}];
 
   constructor(private router: Router, private windowService: WindowService) { }
 
@@ -54,10 +54,10 @@ export class CreateDisciplinesComponent implements OnInit {
 
   deleteTeacher(id: number, isLecturer: boolean) {
     if (isLecturer) {
-      this.lecturers = this.lecturers.filter(p => p.Id != id);
+      this.lecturers = this.lecturers.filter(p => p.id != id);
     }
     else {
-      this.practicians = this.practicians.filter(p => p.Id != id);
+      this.practicians = this.practicians.filter(p => p.id != id);
     }
   }
 
