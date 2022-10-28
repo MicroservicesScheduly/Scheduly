@@ -2,7 +2,9 @@ using AutoMapper;
 using Business;
 using Business.Interfaces;
 using Business.Service;
+using FacultyService.DbAccess;
 using FacultyService.Repositories;
+using Microsoft.EntityFrameworkCore;
 using SimpleService.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,10 @@ builder.Services.AddSingleton<IFacultyRepository, FacultyDbRepository>();
 builder.Services.AddSingleton<IFacultyService, FacultiesService>();
 
 builder.Services.AddCors();
+
+var forumConnectionString = builder.Configuration.GetConnectionString("FacultyDb");
+builder.Services.AddDbContext<FacultyDbContext>(x => x.UseNpgsql(forumConnectionString));
+builder.Services.AddTransient<FacultyDbContext>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {

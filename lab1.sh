@@ -1,5 +1,6 @@
 minikube start
 minikube addons enable ingress
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
 cd .\Client
 docker build -t client:01 -f Dockerfile .
 cd ..
