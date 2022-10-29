@@ -14,12 +14,6 @@ export class TeachersComponent implements OnInit {
   constructor(private teachersService: TeachersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.teachers = [
-      { id: 0, name: "Anton", surname: "Tolmachov", patronymic: "Mykhailovych"},
-      { id: 1, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"},
-      { id: 2, name: "Mykhailo", surname: "Gusak", patronymic: "Alexandrovich"},
-      { id: 3, name: "Boghdan", surname: "Vasyliv", patronymic: "Petrovich"}
-    ];
     this.teachersService.get().subscribe(res => this.teachers = res);
   }
 
