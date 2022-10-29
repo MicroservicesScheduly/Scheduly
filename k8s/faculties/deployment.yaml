@@ -23,5 +23,3 @@ spec:
           envFrom:
             - configMapRef:
                 name: faculty-config
-            - secretRef:
-                name: faculty-secret
