@@ -25,21 +25,21 @@
                 </div>
                 <div class="form-group">
                     <label>Surname</label>
-                    <input class="form-control" name="surname" [(ngModel)]="teacher.name" required
+                    <input class="form-control" name="surname" [(ngModel)]="teacher.surname" required
                     #surname="ngModel" placeholder="Enter surname"/>
                 </div>
                 <div class="errors-container">
-                    <div *ngIf="name.errors?.['required']" class="error">
+                    <div *ngIf="surname.errors?.['required']" class="error">
                         Surname is required.
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Patronymic</label>
-                    <input class="form-control" name="patronymic" [(ngModel)]="teacher.name" required
+                    <input class="form-control" name="patronymic" [(ngModel)]="teacher.patronymic" required
                     #patronymic="ngModel" placeholder="Enter patronymic"/>
                 </div>
                 <div class="errors-container">
-                    <div *ngIf="name.errors?.['required']" class="error">
+                    <div *ngIf="patronymic.errors?.['required']" class="error">
                         Patronymic is required.
                     </div>
                 </div>

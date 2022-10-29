@@ -8,7 +8,7 @@
         <div class="teacher-cards">
             <div class="teacher-card" *ngFor="let teacher of teachers">
                 <div class="name">
-                    <h2>{{teacher.name}}</h2>
+                    <h2>{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</h2>
                 </div>
                 <div class="disciplines-count">Disciplines: 3</div>
                 <div class="disciplines-list">

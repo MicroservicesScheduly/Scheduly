@@ -24,16 +24,18 @@ export class CreateDisciplinesComponent implements OnInit {
   /* ADD real catalogs */
   catalogs: ICatalog[] = getCatalogs();
 
-  lecturers: ITeacher[] = [{ id: 2, name: "Lecturer 2"}, { id: 3, name: "Lecturer 3"}, { id: 4, name: "Lecturer 4"}];
+  lecturers: ITeacher[] = [{ id: 2, name: "Lecturer 2", surname: "", patronymic: ""}, { id: 3, name: "Lecturer 3", surname: "", patronymic: ""},
+   { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
 
-  practicians: ITeacher[] = [{ id: 1, name: "Practician 1"}, { id: 2, name: "Practician 2"},
-  { id: 3, name: "Koval Vadym Yuriyovich"}, { id: 4, name: "Practician 4"}];
+  practicians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
+  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""}];
 
-  allLecturers: ITeacher[] = [{ id: 1, name: "Lecturer 1"}, { id: 2, name: "Lecturer 2"},
-  { id: 3, name: "Lecturer 3"}, { id: 4, name: "Lecturer 4"}];
+  allLecturers: ITeacher[] = [{ id: 1, name: "Lecturer 1", surname: "", patronymic: ""}, { id: 2, name: "Lecturer 2", surname: "", patronymic: ""},
+  { id: 3, name: "Lecturer 3", surname: "", patronymic: ""}, { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
 
-  allPracticians: ITeacher[] = [{ id: 1, name: "Practician 1"}, { id: 2, name: "Practician 2"},
-  { id: 3, name: "Koval Vadym Yuriyovich"}, { id: 4, name: "Practician 4"}, { id: 5, name: "Practician 5"}];
+  allPracticians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
+  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""},
+   { id: 5, name: "Practician 5", surname: "", patronymic: ""}];
 
   constructor(private router: Router, private windowService: WindowService) { }
 

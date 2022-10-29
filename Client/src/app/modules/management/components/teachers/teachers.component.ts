@@ -15,10 +15,10 @@ export class TeachersComponent implements OnInit {
 
   ngOnInit(): void {
     this.teachers = [
-      { id: 0, name: "Tolmachov Anton Mykhailovych"},
-      { id: 1, name: "Koval Vadym Yuriyovich"},
-      { id: 2, name: "Gusak Mykhailo Alexandrovich"},
-      { id: 3, name: "Vasyliv Boghdan Petrovich"}
+      { id: 0, name: "Anton", surname: "Tolmachov", patronymic: "Mykhailovych"},
+      { id: 1, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"},
+      { id: 2, name: "Mykhailo", surname: "Gusak", patronymic: "Alexandrovich"},
+      { id: 3, name: "Boghdan", surname: "Vasyliv", patronymic: "Petrovich"}
     ];
     this.teachersService.get().subscribe(res => this.teachers = res);
   }

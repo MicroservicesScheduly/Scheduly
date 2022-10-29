@@ -102,7 +102,7 @@
             </div>
             <div *ngIf="lecturers.length" class="lecturers-list">
                 <div class="list-item" *ngFor="let item of lecturers">
-                    <div class="item-name">{{item.name}}</div>
+                    <div class="item-name">{{item.surname}} {{item.name}} {{item.patronymic}}</div>
                     <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
                         (click)="deleteTeacher(item.id, true)"/></div>
                 </div>
@@ -120,7 +120,7 @@
             </div>
             <div *ngIf="practicians.length" class="practicians-list">
                 <div class="list-item" *ngFor="let item of practicians">
-                    <div class="item-name">{{item.name}}</div>
+                    <div class="item-name">{{item.surname}} {{item.name}} {{item.patronymic}}</div>
                     <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
                         (click)="deleteTeacher(item.id, false)"/></div>
                 </div>

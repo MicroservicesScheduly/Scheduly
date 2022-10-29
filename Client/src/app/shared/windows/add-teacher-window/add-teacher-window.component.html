@@ -9,7 +9,7 @@
     <div class="teachers-list" *ngIf="data.isLecturerAdded; else practicianAdded">
         <ng-container *ngIf="availableLecturers.length; else noLecturers">
             <div class="teacher" *ngFor="let teacher of availableLecturers">
-                <button class="teacher-item" (click)="addTeacherToList(true, teacher)">{{teacher.name}}</button>
+                <button class="teacher-item" (click)="addTeacherToList(true, teacher)">{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</button>
             </div>
         </ng-container>
         <ng-template #noLecturers>
@@ -19,7 +19,7 @@
     <ng-template class="teachers-list" #practicianAdded>
         <ng-container *ngIf="availablePracticians.length; else noPracticians">
             <div class="teacher" *ngFor="let teacher of availablePracticians">
-                 <button class="teacher-item" (click)="addTeacherToList(false, teacher)">{{teacher.name}}</button>
+                 <button class="teacher-item" (click)="addTeacherToList(false, teacher)">{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</button>
             </div>
         </ng-container>
         <ng-template #noPracticians>
