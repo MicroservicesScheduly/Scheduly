@@ -1,10 +1,29 @@
+kind: PersistentVolume
 apiVersion: v1
-kind: PersistentVolumeClaim
 metadata:
-  name: facultiesdb-volume-claim
+  name: faculties-postgres-pv-volume
+  labels:
+    type: local
+    app: faculties-postgres
 spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: faculties-postgres-pv-claim
+  labels:
+    app: faculties-postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi

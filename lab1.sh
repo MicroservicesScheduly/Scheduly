@@ -4,7 +4,7 @@ minikube addons enable ingress
 cd .\Client
 docker build -t client:01 -f Dockerfile .
 cd ..
-cd .\Servicesc\FacultyService
+cd .\Services\FacultyService
 docker build -t faculties:01 -f Dockerfile .
 cd ..
 cd .\DisciplineSevice

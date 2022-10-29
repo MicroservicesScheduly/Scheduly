@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: faculty-config
+data:
+  POSTGRES_DB: faculties_service
+  POSTGRES_HOST: postgres

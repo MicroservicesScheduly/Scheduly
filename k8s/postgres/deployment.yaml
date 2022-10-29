@@ -1,34 +1,29 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: faculties-db-deployment
+  name: faculties-postgres
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: faculties-db
   template:
     metadata:
       labels:
-        app: faculties-db
+        app: faculties-postgres
     spec:
       containers:
-        - name: postgres-db
+        - name: faculties-postgres
           image: postgres:14.1-alpine3.15
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: faculties-config
-            - secretRef:
-                name: faculties-secret
+                name: faculties-postgres-config
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: facultiesdb
+              name: facultiesservice
       volumes:
-        - name: facultiesdb
+        - name: facultiesservice
           persistentVolumeClaim:
-            claimName: facultiesdb-volume-claim
+            claimName: faculties-postgres-pv-claim
 
         

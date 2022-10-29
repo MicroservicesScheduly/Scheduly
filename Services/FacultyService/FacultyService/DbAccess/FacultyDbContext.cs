@@ -7,10 +7,10 @@ namespace FacultyService.DbAccess
     {
         public DbSet<Faculty> Faculties { get; set; }
 
-        //public FacultyDbContext(DbContextOptions<FacultyDbContext> options) : base(options)
-        //{
+        public FacultyDbContext(DbContextOptions<FacultyDbContext> options) : base(options)
+        {
 
-        //}
+        }
 
         public FacultyDbContext()
         {

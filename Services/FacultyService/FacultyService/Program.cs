@@ -14,13 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IFacultyRepository, FacultyDbRepository>();
-builder.Services.AddSingleton<IFacultyService, FacultiesService>();
+builder.Services.AddTransient<IFacultyRepository, FacultyDbRepository>();
+builder.Services.AddTransient<IFacultyService, FacultiesService>();
 
 builder.Services.AddCors();
 
-var forumConnectionString = builder.Configuration.GetConnectionString("FacultyDb");
-builder.Services.AddDbContext<FacultyDbContext>(x => x.UseNpgsql(forumConnectionString));
+var facultyConnectionString = builder.Configuration.GetConnectionString("FacultyDb");
+builder.Services.AddDbContext<FacultyDbContext>(x => x.UseNpgsql(facultyConnectionString));
 builder.Services.AddTransient<FacultyDbContext>();
 
 var mapperConfig = new MapperConfiguration(mc =>
