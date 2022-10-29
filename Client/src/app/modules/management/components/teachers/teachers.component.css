@@ -75,6 +75,7 @@ h5 {
     line-height: 24px;
     text-align: center;
     color: #22272E;
+    cursor: pointer;
 }
 
 .edit-icon {

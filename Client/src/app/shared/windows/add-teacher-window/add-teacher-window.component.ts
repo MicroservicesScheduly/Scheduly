@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Teacher } from 'src/app/modules/management/models/teacher.model';
+import { ITeacher } from 'src/app/modules/management/models/teacher.model';
 import { IDialogButton } from '../../models/IDialogButton.model';
 import { IDialogData } from '../../models/IDialogData.model';
 
@@ -11,21 +11,23 @@ import { IDialogData } from '../../models/IDialogData.model';
 })
 export class AddTeacherWindowComponent implements OnInit {
 
-  lecturers: Teacher[] = [{ Id: 2, Name: "Lecturer 2"}, { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+  lecturers: ITeacher[] = [{ id: 2, name: "Lecturer 2", surname: "", patronymic: ""}, { id: 3, name: "Lecturer 3", surname: "", patronymic: ""},
+   { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
 
-  practicians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
-  { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}];
+  practicians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
+  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""}];
 
-  allLecturers: Teacher[] = [{ Id: 1, Name: "Lecturer 1"}, { Id: 2, Name: "Lecturer 2"},
-  { Id: 3, Name: "Lecturer 3"}, { Id: 4, Name: "Lecturer 4"}];
+  allLecturers: ITeacher[] = [{ id: 1, name: "Lecturer 1", surname: "", patronymic: ""}, { id: 2, name: "Lecturer 2", surname: "", patronymic: ""},
+  { id: 3, name: "Lecturer 3", surname: "", patronymic: ""}, { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
 
-  allPracticians: Teacher[] = [{ Id: 1, Name: "Practician 1"}, { Id: 2, Name: "Practician 2"},
-  { Id: 3, Name: "Koval Vadym Yuriyovich"}, { Id: 4, Name: "Practician 4"}, { Id: 5, Name: "Practician 5"}];
+  allPracticians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
+  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""},
+   { id: 5, name: "Practician 5", surname: "", patronymic: ""}];
 
 
-  availableLecturers: Teacher[];
+  availableLecturers: ITeacher[];
 
-  availablePracticians: Teacher[];
+  availablePracticians: ITeacher[];
   
   constructor(
       @Inject(MAT_DIALOG_DATA) public data: IDialogData,
@@ -33,8 +35,8 @@ export class AddTeacherWindowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.availableLecturers = this.allLecturers.filter(p => !this.lecturers.some(m => m.Id == p.Id));
-    this.availablePracticians = this.allPracticians.filter(p => !this.practicians.some(m => m.Id == p.Id));
+    this.availableLecturers = this.allLecturers.filter(p => !this.lecturers.some(m => m.id == p.id));
+    this.availablePracticians = this.allPracticians.filter(p => !this.practicians.some(m => m.id == p.id));
   }
 
   onClick(event: EventEmitter<void>) {
@@ -42,7 +44,7 @@ export class AddTeacherWindowComponent implements OnInit {
       this.dialogRef.close();
   }
 
-  addTeacherToList(asLecturer: boolean = true, teacher: Teacher) {
+  addTeacherToList(asLecturer: boolean = true, teacher: ITeacher) {
     if (asLecturer) {
       this.lecturers = [...this.lecturers, teacher];
     }
