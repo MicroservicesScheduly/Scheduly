@@ -2,16 +2,20 @@ using AutoMapper;
 using DisciplineService;
 using DisciplineService.Interfaces;
 using DisciplineService.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DisciplineServiceContext>(options =>
+             options.UseSqlServer(builder.Configuration.GetConnectionString("DisciplineServiceContext")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IDisciplineRepository, DisciplineRepository>();
-builder.Services.AddSingleton<IDisciplineService, DisciplineService.Services.DisciplineService>();
+builder.Services.AddTransient<IDisciplineRepository, DisciplineRepository>();
+builder.Services.AddTransient<IDisciplineService, DisciplineService.Services.DisciplineService>();
 
 builder.Services.AddCors();
 
