@@ -21,6 +21,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: faculties-postgres-config
+            - secretRef:
+                name: postgres-secret
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: facultiesservice

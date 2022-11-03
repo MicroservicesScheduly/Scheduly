@@ -16,7 +16,7 @@ cd ..
 cd .\SpecialtyService
 docker build -t specialties:01 -f Dockerfile .
 cd ../..
-kubectl apply -f k8s/disciplines
+kubectl apply -f k8s/disciplines    
 kubectl apply -f k8s/faculties
 kubectl apply -f k8s/specialties
 kubectl apply -f k8s/teachers
