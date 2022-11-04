@@ -2,8 +2,10 @@ using AutoMapper;
 using Business;
 using Business.Interfaces;
 using Business.Service;
+using FacultyService.DbAccess;
+using FacultyService.Repositories;
+using Microsoft.EntityFrameworkCore;
 using SimpleService.Interfaces;
-using SimpleService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IFacultyRepository, FacultyRepository>();
-builder.Services.AddSingleton<IFacultyService, FacultyService>();
+builder.Services.AddTransient<IFacultyRepository, FacultyDbRepository>();
+builder.Services.AddTransient<IFacultyService, FacultiesService>();
 
 builder.Services.AddCors();
+
+var facultyConnectionString = builder.Configuration.GetConnectionString("FacultyDb");
+builder.Services.AddDbContext<FacultyDbContext>(x => x.UseNpgsql(facultyConnectionString));
+builder.Services.AddTransient<FacultyDbContext>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -26,6 +32,7 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
+app.ApplyMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

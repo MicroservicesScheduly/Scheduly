@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: faculty-config
+data:
+  PORT: "8080"
+  POSTGRES_DB: facultiesservice
+  DB_HOST: faculties-postgres
+  DB_DIALECT: postgres
+  DB_PORT: "5432"
