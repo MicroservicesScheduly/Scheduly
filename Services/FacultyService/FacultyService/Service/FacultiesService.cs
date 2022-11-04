@@ -24,12 +24,16 @@ namespace Business.Service
 
             var facultyCreated = await _facultyRepository.AddAsync(faculty);
 
+            await _facultyRepository.SaveAsync();
+
             return _mapper.Map<FacultyModel>(facultyCreated);
         }
 
         public async Task DeleteByIdAsync(int modelId)
         {
             await _facultyRepository.DeleteByIdAsync(modelId);
+
+            await _facultyRepository.SaveAsync();
         }
 
         public async Task<IEnumerable<FacultyModel>> GetAllAsync()
@@ -50,7 +54,9 @@ namespace Business.Service
         {
             var faculty = _mapper.Map<Faculty>(model);
 
-            await Task.Run(()=> _facultyRepository.Update(faculty));
+            _facultyRepository.Update(faculty);
+
+            await _facultyRepository.SaveAsync();
         }
     }
 }
