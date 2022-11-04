@@ -1,0 +1,68 @@
+<div class="disciplines-form-container">
+    <div class="main-info">
+        <div class="label">
+            CREATE
+        </div>
+        <div class="image">
+            <img class="image-form" src="assets/FacultiesForm.png" />
+        </div>
+        <div class="buttons">
+            <div class="form-group save-btn">
+                <button [disabled]="createFacultyForm.invalid || !specialties.length" 
+                        class="save-button" (click)="submit(createFacultyForm)">Save</button>
+            </div>
+            <div class="form-group cancel-btn">
+                <button class="cancel-button" (click)="redirectToManagement()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="form-label">
+            DISCIPLINE
+        </div>
+            <form #createFacultyForm="ngForm">
+            <div class="form">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" name="name" [(ngModel)]="faculty.Name" required
+                    #name="ngModel" placeholder="Enter name"/>
+                </div>
+                <div class="errors-container">
+                    <div *ngIf="name.errors?.['required']" class="error">
+                        Name is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control" name="description" [(ngModel)]="faculty.Description" required
+                    #description="ngModel" placeholder="Enter description"/>
+                </div>
+                <div class="errors-container">
+                    <div *ngIf="description.errors?.['required']" class="error">
+                        Description is required.
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="lecturer-practician-container">
+        <div class="lecturers">
+            <div class="form-group">
+                <label>Specialties</label>
+                <button (click)="addSpecialty()" class="add-teacher-btn">Add specialty</button>
+            </div>
+            <div *ngIf="specialties.length" class="lecturers-list">
+                <div class="list-item" *ngFor="let item of specialties">
+                    <div class="item-name">{{item.number}} {{item.name}}</div>
+                    <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
+                        (click)="deleteSpecialty(item.id)"/></div>
+                </div>
+            </div>
+            <div class="errors-container">
+                <div *ngIf="!specialties.length" class="error">
+                    At least one specialty is required.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

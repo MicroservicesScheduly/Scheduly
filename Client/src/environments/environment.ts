@@ -2,6 +2,8 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { HttpHeaders } from "@angular/common/http";
+
 export const environment = {
   production: false,
   facultyUrl: 'api/faculties',
@@ -9,8 +11,10 @@ export const environment = {
   specialtiesUrl: 'api/specialties',
   disciplinesUrl: 'api/disciplines',
   whiteListedDomains: [''],
-  urlPrefix: 'http://localhost/',
+  urlPrefix: 'http://192.168.59.108/',
 };
+
+export const HEADERS = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
 
 /*
  * For easier debugging in development mode, you can import the following file
