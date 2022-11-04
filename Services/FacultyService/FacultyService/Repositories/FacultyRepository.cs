@@ -39,6 +39,11 @@ namespace SimpleService.Repositories
             return entity;
         }
 
+        public async Task SaveAsync()
+        {
+            await Task.Delay(1);
+        }
+
         public async void Update(Faculty entity)
         {
             var toUpdate = await Task.Run(() => _list.FirstOrDefault(x => x.Id == entity.Id));
