@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: disciplines-ingress
+  name: auth-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
     - http:
         paths:
-          - path: /api/disciplines
-            pathType: "Prefix"
+          - path: /api/auth
+            pathType: Prefix
             backend:
               service:
-                name: disciplines-service
+                name: auth-clusterip-srv
                 port:
                   number: 80

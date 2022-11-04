@@ -1,32 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: auth-service-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres
+      app: auth-service-db
   template:
     metadata:
       labels:
-        app: postgres
+        app: auth-service-db
     spec:
       containers:
-        - name: postgres
+        - name: auth-service-db
           image: postgres:14.1-alpine3.15
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: postgres-config
+                name: auth-service-db-config
             - secretRef:
-                name: postgres-secret
+                name: auth-service-db-secret
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+          - mountPath: /var/lib/postgresql/data
+            name: postgredb
       volumes:
-        - name: postgredb
-          persistentVolumeClaim:
-            claimName: postgres-volume-claim
+      - name: postgredb
+        persistentVolumeClaim:
+          claimName: auth-service-db-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-db
+  labels:
+    app: postgres-db
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: auth-service-db
