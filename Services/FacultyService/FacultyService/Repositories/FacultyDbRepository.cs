@@ -43,6 +43,11 @@ namespace FacultyService.Repositories
             return await _dbContext.Faculties.FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task SaveAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+        }
+
         public void Update(Faculty entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
