@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disciplines-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: disciplines-postgres
+  template:
+    metadata:
+      labels:
+        app: disciplines-postgres
+    spec:
+      containers:
+        - name: disciplines-postgres
+          image: postgres:14.1-alpine3.15
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: disciplines-postgres-config
+            - secretRef:
+                name: postgres-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: disciplinesservice
+      volumes:
+        - name: disciplinesservice
+          persistentVolumeClaim:
+            claimName: disciplines-postgres-pv-claim
+
+        

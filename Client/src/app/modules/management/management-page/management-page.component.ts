@@ -21,6 +21,7 @@ export class ManagementPageComponent implements OnInit {
         break;
       case '/management/faculties':
         this.modelName = "Faculty";
+        this.editModelUri += 'create-faculty';
         break;
       case '/management/teachers':
         this.modelName = "Teacher";
@@ -28,6 +29,7 @@ export class ManagementPageComponent implements OnInit {
         break;
       case '/management/specialties':
         this.modelName = "Specialty";
+        this.editModelUri += 'create-specialty';
         break;
     }
   }

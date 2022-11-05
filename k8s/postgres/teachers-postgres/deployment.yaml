@@ -1,34 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faculties-postgres
+  name: teachers-postgres
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: faculties-postgres
+      app: teachers-postgres
   template:
     metadata:
       labels:
-        app: faculties-postgres
+        app: teachers-postgres
     spec:
       containers:
-        - name: faculties-postgres
+        - name: teachers-postgres
           image: postgres:14.1-alpine3.15
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
           envFrom:
             - configMapRef:
-                name: faculties-postgres-config
+                name: teachers-postgres-config
             - secretRef:
                 name: postgres-secret
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: facultiesservice
+              name: teachersservice
       volumes:
-        - name: facultiesservice
+        - name: teachersservice
           persistentVolumeClaim:
-            claimName: faculties-postgres-pv-claim
+            claimName: teachers-postgres-pv-claim
 
         

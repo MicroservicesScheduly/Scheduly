@@ -24,12 +24,16 @@ namespace DisciplineService.Services
 
             var disciplineCreated = await _disciplineRepository.AddAsync(discipline);
 
+            await _disciplineRepository.SaveAsync();
+
             return _mapper.Map<DisciplineModel>(disciplineCreated);
         }
 
         public async Task DeleteByIdAsync(int modelId)
         {
             await _disciplineRepository.DeleteByIdAsync(modelId);
+
+            await _disciplineRepository.SaveAsync();
         }
 
         public async Task<IEnumerable<DisciplineModel>> GetAllAsync()
@@ -51,6 +55,8 @@ namespace DisciplineService.Services
             var discipline = _mapper.Map<Discipline>(model);
 
             await Task.Run(() => _disciplineRepository.Update(discipline));
+
+            await _disciplineRepository.SaveAsync();
         }
     }
 }

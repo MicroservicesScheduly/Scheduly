@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: disciplines-postgres-config
+  labels:
+    app: disciplines-postgres
+data:
+  POSTGRES_DB: disciplinesservice
