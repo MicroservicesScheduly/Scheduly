@@ -41,9 +41,9 @@
                 </div>
                 <div class="additional-info">
                     <div class="selective-type">
-                        <ng-container *ngIf="discipline.isSelective && discipline.catalog; else notSelective">
+                        <ng-container *ngIf="discipline.isSelective; else notSelective">
                             <button type="button" class="selective-type-btn">
-                                Selective<span class="catalog">{{discipline.catalog.name}}</span>
+                                Selective<span class="catalog">{{discipline.catalogId}}</span>
                             </button>
                         </ng-container>
                         <ng-template #notSelective>
@@ -63,7 +63,7 @@
                                 <li><a>Lecturer: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
                                 <li><a>Practician: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
                             </ul>
-                            <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                            <div class="delete-icon" (click)="deleteDiscipline(discipline.id)"><img src="assets/Trash.png" /></div>
                         </div>
                     </div>
                 </div>

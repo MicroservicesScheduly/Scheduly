@@ -20,12 +20,13 @@ export class DisciplinesComponent implements OnInit {
     this.disciplinesService.get().subscribe(res => this.disciplines = res);
   }
 
-  redirectToCreateDiscipline() {
-    this.router.navigateByUrl("management-edit/create-discipline");
-  }
-
   redirectToEditDiscipline(id: number) {
     this.router.navigateByUrl(`management-edit/edit-discipline/${id}`);
+  }
+
+  deleteDiscipline(id: number): void {
+    this.disciplinesService.delete(id).subscribe();
+    this.disciplines = this.disciplines.filter(p => p.id !== id);
   }
 
 }

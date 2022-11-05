@@ -15,6 +15,18 @@ export class TeachersService {
     }
 
     getById(id: number): Observable<ITeacher> {
-      return this._http.get<ITeacher>(environment.urlPrefix + environment.disciplinesUrl + `/${id}`);
+      return this._http.get<ITeacher>(environment.urlPrefix + environment.teachersUrl + `/${id}`);
+    }
+
+    create(teacher: ITeacher) {
+      return this._http.post<ITeacher>(environment.urlPrefix + environment.teachersUrl, teacher);
+    } 
+
+    update(id: number, teacher: ITeacher) {
+      return this._http.put<ITeacher>(environment.urlPrefix + environment.teachersUrl + `/${id}`, teacher);
+    } 
+
+    delete(id: number) {
+      return this._http.delete(environment.urlPrefix + environment.teachersUrl + `/${id}`);
     }
 }
