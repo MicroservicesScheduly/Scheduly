@@ -24,12 +24,16 @@ namespace Business.Service
 
             var teacherCreated = await _teacherRepository.AddAsync(teacher);
 
+            await _teacherRepository.SaveAsync();
+
             return _mapper.Map<TeacherModel>(teacherCreated);
         }
 
         public async Task DeleteByIdAsync(int modelId)
         {
             await _teacherRepository.DeleteByIdAsync(modelId);
+
+            await _teacherRepository.SaveAsync();
         }
 
         public async Task<IEnumerable<TeacherModel>> GetAllAsync()
@@ -51,6 +55,8 @@ namespace Business.Service
             var teacher = _mapper.Map<Teacher>(model);
 
             await Task.Run(()=> _teacherRepository.Update(teacher));
+
+            await _teacherRepository.SaveAsync();
         }
     }
 }

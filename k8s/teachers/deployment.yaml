@@ -20,3 +20,8 @@ spec:
           name: teachers           # ім'я контейнеру
           ports:
             - containerPort: 80     # порт по якому можна звертатись до поди
+          envFrom:
+            - configMapRef:
+                name: teacher-config
+            - secretRef:
+                name: teacher-secret

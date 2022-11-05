@@ -4,7 +4,10 @@ using Business.Interfaces;
 using Business.Service;
 using Data_access.Interfaces;
 using Data_access.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TeacherService.DbAccess;
+using TeacherService.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +16,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ITeacherRepository, TeacherRepository>();
-builder.Services.AddSingleton<ITeacherService, TeacherService>();
+builder.Services.AddTransient<ITeacherRepository, TeacherDbRepository>();
+builder.Services.AddTransient<ITeacherService, Business.Service.TeacherService>();
 
 builder.Services.AddCors();
+
+var teacherConnectionString = builder.Configuration.GetConnectionString("TeacherDb");
+builder.Services.AddDbContext<TeacherDbContext>(x => x.UseNpgsql(teacherConnectionString));
+builder.Services.AddTransient<TeacherDbContext>();
 
 var mapperConfig = new MapperConfiguration(mc =>
 {
@@ -27,6 +34,7 @@ IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
+app.ApplyMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

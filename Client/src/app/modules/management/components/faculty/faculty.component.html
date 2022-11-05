@@ -9,13 +9,13 @@
         <div class="faculty-card" *ngFor="let faculty of faculties">
             <div class="main-info">
                 <div class="main-name">
-                    <h2>{{faculty.Name}}</h2>
+                    <h2>{{faculty.name}}</h2>
                 </div>
                 <div class="main-description">
-                    <h5>{{faculty.Description}}</h5>
+                    <h5>{{faculty.description}}</h5>
                 </div>
                 <div class="main-button">
-                    <button type="button" class="edit-btn"><span>
+                    <button type="button" class="edit-btn" (click)="redirectToEditFaculty(faculty.id)"><span>
                         <img class="edit-icon" src="assets/Edit.png" />
                     </span> Edit</button>
                 </div>
@@ -36,7 +36,7 @@
                         <h1 id="lin">0</h1>
                     </div>
 
-                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                    <div class="delete-icon" (click)="deleteFaculty(faculty.id)"><img src="assets/Trash.png" /></div>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="faculties-image">
             <img src="assets/Faculty.png" />
         </div>
-</div>
+    </div>
 </ng-container>
 
 <ng-template #noFaculties>

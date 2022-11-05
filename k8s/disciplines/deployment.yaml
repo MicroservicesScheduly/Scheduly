@@ -20,3 +20,8 @@ spec:
           name: disciplines           # ім'я контейнеру
           ports:
             - containerPort: 80     # порт по якому можна звертатись до поди
+          envFrom:
+            - configMapRef:
+                name: discipline-config
+            - secretRef:
+                name: discipline-secret

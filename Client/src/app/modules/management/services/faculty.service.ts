@@ -20,11 +20,14 @@ export class FacultyService {
     }
 
     create(faculty: Faculty) {
-      console.log('create method of Faculty Service');
       return this._http.post<Faculty>(environment.urlPrefix + environment.facultyUrl, faculty);
+    } 
 
-      /*const body = JSON.stringify(faculty);
+    update(id: number, faculty: Faculty) {
+      return this._http.put<Faculty>(environment.urlPrefix + environment.facultyUrl + `/${id}`, faculty);
+    } 
 
-      return this._http.post<Faculty>(environment.urlPrefix + environment.facultyUrl, body, {"headers": HEADERS});*/
-  }
+    delete(id: number) {
+      return this._http.delete(environment.urlPrefix + environment.facultyUrl + `/${id}`);
+    }
 }
