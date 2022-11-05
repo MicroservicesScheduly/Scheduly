@@ -45,41 +45,12 @@ export class CreateDisciplinesComponent implements OnInit {
     if (!this.discipline.creditType) {
       this.discipline.creditType = 0;
     }
-
-    /*const test: IDiscipline = { id: 11, name: "TEST", description: "TEST", course: 1, creditType: CreditType.Exam, hours: 100, isSelective: true};
-
-    console.log(test);
-
-    this.disciplineService.create(test)
-    .subscribe(() => {
-      this.redirectToManagement();
-    });*/
   }
 
   submit(form: NgForm) {
-
-    /*console.log(CreditType.Exam);*/
-    
-    console.log(form.value);
-
     var discipline: IDiscipline = { name: form.value["name"], description: form.value["description"],
-        course: form.value["course"], creditType: 0, hours: form.value["hours"], 
+        course: form.value["course"], creditType: form.value["creditType"] == "Test" ? 0 : 1, hours: form.value["hours"], 
         isSelective: form.value["isSelective"], id: CreateDisciplinesComponent.addedId };
-
-    console.log(discipline);
-    
-    /*let formDiscipline: IDiscipline = form.value;
-
-    if (form.value.creditType == 'Test') {
-      formDiscipline.creditType = CreditType.Test;
-    } else {
-      formDiscipline.creditType = CreditType.Exam;
-    }
-    
-    this.disciplineService.create(formDiscipline)
-    .subscribe(() => {
-      this.redirectToManagement();
-    });*/
 
     this.disciplineService.create(discipline)
     .subscribe(() => {
@@ -122,16 +93,4 @@ export class CreateDisciplinesComponent implements OnInit {
   changeCatalog() {
     
   }
-
-  /*private creditTypeToNumber(value: string): CreditType {
-    switch(value)
-    {
-      case "Test":
-        return CreditType.Test;
-      case "Exam":
-        return CreditType.Exam;
-      default:
-        return CreditType.Test;
-    }
-  }*/
 }

@@ -29,4 +29,16 @@ export class DisciplinesComponent implements OnInit {
     this.disciplines = this.disciplines.filter(p => p.id !== id);
   }
 
+  creditTypeByIndex(index: number): string {
+    switch(index)
+    {
+      case 0:
+        return 'Test';
+      case 1:
+        return 'Exam';
+      default:
+        return 'Not found';
+    }
+  }
+
 }
