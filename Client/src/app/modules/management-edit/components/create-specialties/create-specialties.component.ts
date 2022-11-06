@@ -11,7 +11,7 @@ import { WindowService } from 'src/app/shared/services/window.service';
 })
 export class CreateSpecialtiesComponent implements OnInit {
 
-  @Input() teacher: ISpecialty = {} as ISpecialty;
+  @Input() specialty: ISpecialty = {} as ISpecialty;
 
   constructor(private router: Router, private windowService: WindowService) { }
 

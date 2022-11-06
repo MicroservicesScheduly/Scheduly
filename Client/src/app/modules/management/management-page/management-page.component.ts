@@ -28,6 +28,7 @@ export class ManagementPageComponent implements OnInit {
         break;
       case '/management/specialties':
         this.modelName = "Specialty";
+        this.editModelUri += 'create-specialty';
         break;
     }
   }

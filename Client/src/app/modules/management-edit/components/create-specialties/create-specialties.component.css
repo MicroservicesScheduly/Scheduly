@@ -1,16 +1,7 @@
-.teachers-form-container {
-    padding: 130px 230px;
+.specialties-form-container {
+    padding: 80px 230px 10px 230px;
     display: flex;
     justify-content: left;
-    align-items: left;
-    width: 60%;
-    margin-left: -100px;
-}
-
-.image-form {
-    width: 236.57px;
-    height: 298px;
-    padding-left: 15px;
 }
 
 .label {
@@ -18,15 +9,43 @@
     font-style: normal;
     font-weight: 800;
     font-size: 70px;
-    line-height: 116px;
+    line-height: 55px;
     text-align: center;
     color: #22272E;
-    margin-top: 50px;
+}
+
+.form-label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+
+    text-align: center;
+    color: #8E8E8E;
+    margin-top: 0px;
 }
 
 .main-info {
-    max-width: 40%;
-    margin-left:185px;
+    text-align: center;
+    width: 100%;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.errors-container {
+    min-height: 15px;
+    margin-bottom: 10px;
+
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .form {
@@ -49,17 +68,14 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 36px;
-    line-height: 58px;
+    font-size: 38px;
+
     text-align: center;
     color: #8E8E8E;
+    margin-top: 0px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 7px;
-}
+
 
 .form-group label {
     font-family: 'Inter';
@@ -85,13 +101,11 @@
 }
 
 .save-btn, .cancel-btn {
-    width: 240px;
-    margin-left: 52px;
+    width: 280px;
+
 }
 
-.save-btn {
-    margin-top: 30px;
-}
+
 
 .save-button, .cancel-button {
     font-family: 'Inter';
@@ -106,22 +120,24 @@
 .save-button {
     background-color: #6DAFA7;
     border: none;
-    height: 35px;
+    height: 40px;
     color: #FFFFFF;
     border: 2px solid #6DAFA7;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .save-button:disabled {
     background-color: #D9D9D9;
     border-color: #D9D9D9;
     cursor: default;
+    margin-right: 20px;
 }
 
 .cancel-button {
     background-color: #6DAFA7;
     border: none;
-    height: 35px;
+    height: 40px;
     color: #22272E;
     background: #FFFFFF;
     border: 2px solid #6DAFA7;
@@ -135,11 +151,84 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 12px;
+    
 }
 
-.errors-container {
-    min-height: 15px;
-    padding-left: 10px;
+.buttons{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+
 }
 
+.wrapper-table{
+    border: 3px solid  #D9D9D9;
+    border-radius: 20px;
+    display:flex;
+    justify-content: space-around;
+    height: 380px;
+
+    
+}
+
+.wrapper-down{
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top:5px;
+    margin-bottom:5px;
+
+}
+
+.wrapper-up{
+    border: 3px solid  #FFE779;
+    background-color: #FFE779;
+    text-align: center;
+    border-radius: 25px;
+    height:auto;
+    margin-top:5px;
+    margin-bottom:5px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 16px;
+    width:auto;
+}
+
+.semester{
+    border: 3px solid  #6DAFA7;
+    border-radius: 25px;
+    margin: 5px 0px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 16px;
+  
+}
+
+
+.search{
+    border: 3px solid  #D9D9D9;
+    color: #8E8E8E;
+    border-radius: 25px;
+    margin: 5px 0px;
+    font-weight: 500;
+    font-family: 'Inter';
+    position: relative;
+    width: 94%;
+}
+
+.right{
+    position: relative;
+    width: 48%;
+}
+
+.left{
+    position: relative;
+    width: 48%;
+}
+
+.wrapper-course{
+    width: 23%
+}

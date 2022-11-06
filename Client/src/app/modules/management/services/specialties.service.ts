@@ -15,6 +15,6 @@ export class SpecialtiesService {
     }
 
     getById(id: number): Observable<ISpecialty> {
-      return this._http.get<ISpecialty>(environment.urlPrefix + environment.disciplinesUrl + `/${id}`);
+      return this._http.get<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl + `/${id}`);
     }
 }
