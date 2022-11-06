@@ -32,6 +32,9 @@ ingress:
 secret:
   stringData:
     DISCIPLINES_DB_URL: "postgresql://demo:demo@disciplines-postgres:5432/disciplines?sslmode=disable"
+    DB_NAME: ZGlzY2lwbGluZXNzZXJ2aWNl
+    DB_USERNAME: cG9zdGdyZXNhZG1pbg==
+    DB_PASSWORD: YWRtaW4xMjM=
 
 secretMounts:
   mountPath: /app/build/helpers/keys

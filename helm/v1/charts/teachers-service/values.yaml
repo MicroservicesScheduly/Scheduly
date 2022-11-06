@@ -32,6 +32,9 @@ ingress:
 secret:
   stringData:
     TEACHERS_DB_URL: "postgresql://demo:demo@teachers-postgres:5432/teachers?sslmode=disable"
+    DB_NAME: dGVhY2hlcnNzZXJ2aWNl
+    DB_USERNAME: cG9zdGdyZXNhZG1pbg==
+    DB_PASSWORD: YWRtaW4xMjM=
 
 secretMounts:
   mountPath: /app/build/helpers/keys
