@@ -1,0 +1,39 @@
+# Default values for tasks-service.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+postgresql:
+  fullnameOverride: disciplines-postgres
+  postgresqlDatabase: "disciplinesservice"
+  postgresqlUsername: "postgresadmin"
+  postgresqlPassword: "admin123"
+  persistence:
+    size: 1Gi
+    mountPath: /var/lib/postgresql/data
+
+container:
+  name: disciplines
+
+image:
+  name: hurmaze/disciplines
+  tag: latest
+
+service:
+  ports:
+    - name: app
+      port: 3000
+      containerPort: 3000
+
+ingress:
+  path: "/api/disciplines/v1(/|$)(.*)"
+  port: app
+  pathRewrite: "/$2"
+
+secret:
+  stringData:
+    DISCIPLINES_DB_URL: "postgresql://demo:demo@disciplines-postgres:5432/disciplines?sslmode=disable"
+
+secretMounts:
+  mountPath: /app/build/helpers/keys
+  paths:
+    PUBLIC_KEY: public.txt

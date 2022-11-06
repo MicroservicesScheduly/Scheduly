@@ -1,0 +1,39 @@
+# Default values for tasks-service.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+postgresql:
+  fullnameOverride: teachers-postgres
+  postgresqlDatabase: "teachersservice"
+  postgresqlUsername: "postgresadmin"
+  postgresqlPassword: "admin123"
+  persistence:
+    size: 1Gi
+    mountPath: /var/lib/postgresql/data
+
+container:
+  name: teachers
+
+image:
+  name: hurmaze/teachers
+  tag: latest
+
+service:
+  ports:
+    - name: app
+      port: 3000
+      containerPort: 3000
+
+ingress:
+  path: "/api/teachers/v1(/|$)(.*)"
+  port: app
+  pathRewrite: "/$2"
+
+secret:
+  stringData:
+    TEACHERS_DB_URL: "postgresql://demo:demo@teachers-postgres:5432/teachers?sslmode=disable"
+
+secretMounts:
+  mountPath: /app/build/helpers/keys
+  paths:
+    PUBLIC_KEY: public.txt
