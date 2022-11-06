@@ -39,4 +39,6 @@ secret:
 secretMounts:
   mountPath: /app/build/helpers/keys
   paths:
-    PUBLIC_KEY: public.txt
+    DB_NAME: ZmFjdWx0aWVzc2VydmljZQ==
+    DB_USERNAME: cG9zdGdyZXNhZG1pbg==
+    DB_PASSWORD: YWRtaW4xMjM=
