@@ -8,11 +8,11 @@
 ## Матеріали лабораторної роботи №1
 
 ### Образи на Dockerhub 
-https://hub.docker.com/repository/docker/hurmaze/disciplines
-https://hub.docker.com/repository/docker/hurmaze/teachers
-https://hub.docker.com/repository/docker/hurmaze/specialties
-https://hub.docker.com/repository/docker/hurmaze/client
-https://hub.docker.com/repository/docker/hurmaze/faculties
+- https://hub.docker.com/repository/docker/hurmaze/disciplines
+- https://hub.docker.com/repository/docker/hurmaze/teachers
+- https://hub.docker.com/repository/docker/hurmaze/specialties
+- https://hub.docker.com/repository/docker/hurmaze/client
+- https://hub.docker.com/repository/docker/hurmaze/faculties
 
 ### Основні команди
 ```
@@ -27,7 +27,7 @@ docker build -t disciplines:01 -f Dockerfile .
 kubectl apply -f k8s/disciplines
 ```
 
-Результати: Додано сервіси для основних сутностей застосунку.
+### Результати: Додано сервіси для основних сутностей застосунку.
 ------
 ## Матеріали лабораторної роботи №2
 
@@ -36,5 +36,5 @@ kubectl apply -f k8s/disciplines
 kubectl apply -f k8s/postgres/disciplines-postgres
 ```
 
-Результати: Міграції запускаються автоматично при піднятті контейнеру за допомогою фреймворку Entity Framework для .NET. Додано основні CRUD операції для сутностей - роботу перевірено через Postgres.
+### Результати: Міграції запускаються автоматично при піднятті контейнеру за допомогою фреймворку Entity Framework для .NET. Додано основні CRUD операції для сутностей - роботу перевірено через Postgres.
 
