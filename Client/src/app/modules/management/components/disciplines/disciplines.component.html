@@ -14,10 +14,12 @@
             </div>
             <div class="checkboxes-container">
                 <div class="checkbox-container">
-                    <input type="checkbox" class="check" checked><label>Mandatory</label>
+                    <input type="checkbox" class="check" [checked]="showMandatory"
+                    (change)="changeFilter(false)"><label>Mandatory</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" class="check"><label>Selective</label>
+                    <input type="checkbox" class="check" [checked]="showSelective"
+                    (change)="changeFilter(true)"><label>Selective</label>
                 </div>
             </div>
             <div class="input-container">

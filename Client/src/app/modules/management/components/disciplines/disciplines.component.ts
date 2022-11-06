@@ -14,6 +14,10 @@ export class DisciplinesComponent implements OnInit {
 
   CreditType = CreditType;
 
+  showSelective = true;
+
+  showMandatory = true;
+
   constructor(private disciplinesService: DisciplinesService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,6 +42,34 @@ export class DisciplinesComponent implements OnInit {
         return 'Exam';
       default:
         return 'Not found';
+    }
+  }
+
+  changeFilter(selectiveChanged: boolean) {
+    if (selectiveChanged) {
+      this.showSelective = !this.showSelective;
+    } else {
+      this.showMandatory = !this.showMandatory;
+    }
+
+    this.filter(this.showSelective, this.showMandatory)
+  }
+
+  filter(showSelective: boolean, showMandatory: boolean) {
+    if (showSelective) {
+      this.disciplinesService.getSelective().subscribe(
+        res => this.disciplines = res
+      );
+    } else if (showMandatory) {
+      this.disciplinesService.getMandatory().subscribe(
+        res => this.disciplines = res
+      );
+    } else if (showSelective && showMandatory) {
+      this.disciplinesService.get().subscribe(
+        res => this.disciplines = res
+      );
+    } else {
+      this.disciplines = [];
     }
   }
 

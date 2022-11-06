@@ -29,4 +29,12 @@ export class DisciplinesService {
     delete(id: number) {
       return this._http.delete(environment.urlPrefix + environment.disciplinesUrl + `/${id}`);
     }
+
+    getMandatory(): Observable<IDiscipline[]>{
+      return this._http.get<IDiscipline[]>(environment.urlPrefix + environment.disciplinesUrl + '/mandatory');
+    }
+
+    getSelective(): Observable<IDiscipline[]>{
+      return this._http.get<IDiscipline[]>(environment.urlPrefix + environment.disciplinesUrl + '/selective');
+    }
 }
