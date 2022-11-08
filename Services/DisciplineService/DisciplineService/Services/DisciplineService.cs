@@ -50,6 +50,20 @@ namespace DisciplineService.Services
             return _mapper.Map<DisciplineModel>(discipline);
         }
 
+        public async Task<IEnumerable<DisciplineModel>> GetSelective()
+        {
+            var disciplines = await _disciplineRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<DisciplineModel>>(disciplines.Where(p => p.IsSelective));
+        }
+
+        public async Task<IEnumerable<DisciplineModel>> GetMandatory()
+        {
+            var disciplines = await _disciplineRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<DisciplineModel>>(disciplines.Where(p => !p.IsSelective));
+        }
+
         public async Task UpdateAsync(int id, DisciplineModel model)
         {
             var discipline = _mapper.Map<Discipline>(model);

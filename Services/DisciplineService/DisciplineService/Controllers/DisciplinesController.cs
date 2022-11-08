@@ -32,6 +32,22 @@ namespace DisciplineService.Controllers
             return Ok(discipline);
         }
 
+        [HttpGet("selective")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetSelective()
+        {
+            var discipline = await _disciplineService.GetSelective();
+
+            return Ok(discipline);
+        }
+
+        [HttpGet("mandatory")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetMandatory()
+        {
+            var discipline = await _disciplineService.GetMandatory();
+
+            return Ok(discipline);
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

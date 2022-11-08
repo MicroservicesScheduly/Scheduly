@@ -25,4 +25,8 @@ export class TeachersComponent implements OnInit {
     this.router.navigateByUrl(`management-edit/edit-teacher/${id}`);
   }
 
+  deleteTeacher(id: number): void {
+    this.teachersService.delete(id).subscribe();
+    this.teachers = this.teachers.filter(p => p.id !== id);
+  }
 }

@@ -22,7 +22,7 @@
                     <button type="button" class="edit-btn" (click)="redirectToEditTeacher(teacher.id)"><span>
                         <img class="edit-icon" src="assets/Edit.png" />
                     </span> Edit</button>
-                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                    <div class="delete-icon" (click)="deleteTeacher(teacher.id)"><img src="assets/Trash.png" /></div>
                 </div>
             </div>
         </div>

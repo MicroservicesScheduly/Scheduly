@@ -46,7 +46,7 @@
                     <div class="form-group small-form-group">
                         <label class="small-form-group-label">Course</label>
                         <input class="form-control centered" name="course" [(ngModel)]="discipline.course" required
-                        pattern="[1-4]{1}" #course="ngModel" placeholder="Course"/>
+                        pattern="[1-4]{1}" #course="ngModel" placeholder="Course" type="number"/>
                     </div>
                     <div class="form-group small-form-group">
                         <label class="small-form-group-label-2">Type</label>
@@ -58,7 +58,7 @@
                     <div class="form-group small-form-group">
                         <label>Hours</label>
                         <input class="form-control centered" name="hours" [(ngModel)]="discipline.hours" required
-                        #hours="ngModel" placeholder="Hours"/>
+                        #hours="ngModel" placeholder="Hours" type="number"/>
                     </div>
                 </div>
                 <div class="errors-container">
@@ -74,16 +74,16 @@
                 </div>
                 <div class="form-group">
                     <div class="checkbox-container">
-                        <input type="checkbox" class="check" [checked]="discipline.isSelective"
-                        (change)="discipline.isSelective = !discipline.isSelective"><label>Is selective</label>
+                        <input type="checkbox" class="check" [checked]="discipline.isSelective" name="isSelective"
+                        [(ngModel)]="discipline.isSelective"><label>Is selective</label>
                     </div>
                 </div>
                 <div class="form-group row-form-group" *ngIf="discipline.isSelective">
                     <label>Catalog</label>
                     <button class="form-control catalog-btn" name="catalog" required
                     (click)="changeCatalog()">
-                        <ng-container *ngIf="discipline.catalog; else noCatalog">
-                            {{discipline.catalog.name}}
+                        <ng-container *ngIf="discipline.catalogId; else noCatalog">
+                            {{discipline.catalogId}}
                         </ng-container>
                         <ng-template #noCatalog>
                             None

@@ -154,6 +154,7 @@ li:before {
     justify-content: right;
     margin-top: -30px;
     margin-right: -30px;
+    cursor: pointer;
 }
 
 .teachers-image {

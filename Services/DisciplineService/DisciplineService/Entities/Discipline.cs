@@ -10,5 +10,6 @@ namespace DisciplineService.Entities
         public CreditType CreditType { get; set; }
         public int Hours { get; set; }
         public bool IsSelective { get; set; }
+        public int? CatalogId { get; set; }
     }
 }

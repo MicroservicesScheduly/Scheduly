@@ -178,6 +178,7 @@ li {
     justify-content: right;
     margin-top: -30px;
     margin-right: -10px;
+    cursor: pointer;
 }
 
 .disciplines-image {

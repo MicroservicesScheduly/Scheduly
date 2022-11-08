@@ -3,6 +3,7 @@ using System;
 using DisciplineService.DbAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DisciplineService.Migrations
 {
     [DbContext(typeof(DisciplineDbContext))]
-    partial class DisciplineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221105195157_InitialCreateTwo")]
+    partial class InitialCreateTwo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

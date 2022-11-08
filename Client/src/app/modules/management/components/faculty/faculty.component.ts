@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CreateDisciplinesComponent } from 'src/app/modules/management-edit/components/create-disciplines/create-disciplines.component';
 import { Faculty } from '../../models/faculty.model';
 import { FacultyService } from '../../services/faculty.service';
 
@@ -14,7 +15,6 @@ export class FacultyComponent implements OnInit {
   constructor(private facultyService: FacultyService, private router: Router) { }
 
   ngOnInit(): void {
-    var newFaculty: Faculty = {} as Faculty;
     this.facultyService.get().subscribe(res => {
       this.faculties = res;
     });
@@ -28,5 +28,4 @@ export class FacultyComponent implements OnInit {
     this.facultyService.delete(id).subscribe();
     this.faculties = this.faculties.filter(p => p.id !== id);
   }
-
 }
