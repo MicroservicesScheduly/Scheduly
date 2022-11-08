@@ -22,6 +22,6 @@ spec:
             - containerPort: 80     # порт по якому можна звертатись до 
           envFrom:
             - configMapRef:
-                name: faculty-config
+                name: faculties-config
             - secretRef:
-                name: faculty-secret
+                name: faculties-secret

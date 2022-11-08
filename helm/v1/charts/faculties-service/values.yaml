@@ -1,0 +1,44 @@
+# Default values for tasks-service.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+postgresql:
+  fullnameOverride: faculties-postgres
+  postgresqlDatabase: "facultiesservice"
+  postgresqlUsername: "postgresadmin"
+  postgresqlPassword: "admin123"
+  persistence:
+    size: 1Gi
+    mountPath: /var/lib/postgresql/data
+
+container:
+  name: faculties
+
+image:
+  name: hurmaze/faculties
+  tag: latest
+
+service:
+  ports:
+    - name: app
+      port: 3000
+      containerPort: 3000
+
+ingress:
+  path: "/api/faculties/v1(/|$)(.*)"
+  port: app
+  pathRewrite: "/$2"
+
+secret:
+  stringData:
+    FACULTIES_DB_URL: "postgresql://demo:demo@faculties-postgres:5432/faculties?sslmode=disable"
+    DB_NAME: ZmFjdWx0aWVzc2VydmljZQ==
+    DB_USERNAME: cG9zdGdyZXNhZG1pbg==
+    DB_PASSWORD: YWRtaW4xMjM=
+
+secretMounts:
+  mountPath: /app/build/helpers/keys
+  paths:
+    DB_NAME: ZmFjdWx0aWVzc2VydmljZQ==
+    DB_USERNAME: cG9zdGdyZXNhZG1pbg==
+    DB_PASSWORD: YWRtaW4xMjM=
