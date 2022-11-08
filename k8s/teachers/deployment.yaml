@@ -15,13 +15,13 @@ spec:
 
     spec:
       containers:
-        - image: teachers:01      # образ Docker
+        - image: hurmaze/teachers:latest     # образ Docker
           imagePullPolicy: Never      # вказує k8s, що образ не потрібно завантажувати (варто використовувати лише для випадків, коли образи локальні)
           name: teachers           # ім'я контейнеру
           ports:
             - containerPort: 80     # порт по якому можна звертатись до поди
           envFrom:
             - configMapRef:
-                name: teacher-config
+                name: teachers-config
             - secretRef:
-                name: teacher-secret
+                name: teachers-secret

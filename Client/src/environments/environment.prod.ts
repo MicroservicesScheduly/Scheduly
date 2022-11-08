@@ -5,5 +5,5 @@ export const environment = {
   specialtiesUrl: 'api/specialties',
   disciplinesUrl: 'api/disciplines',
   whiteListedDomains: [''],
-  urlPrefix: 'http://localhost',
+  urlPrefix: 'http://localhost/',
 };

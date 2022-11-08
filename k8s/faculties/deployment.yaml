@@ -15,13 +15,13 @@ spec:
 
     spec:
       containers:
-        - image: faculties:01     # образ Docker
+        - image: hurmaze/faculties:latest    # образ Docker
           imagePullPolicy: Never      # вказує k8s, що образ не потрібно завантажувати (варто використовувати лише для випадків, коли образи локальні)
           name: faculties           # ім'я контейнеру
           ports:
             - containerPort: 80     # порт по якому можна звертатись до 
           envFrom:
             - configMapRef:
-                name: faculty-config
+                name: faculties-config
             - secretRef:
-                name: faculty-secret
+                name: faculties-secret

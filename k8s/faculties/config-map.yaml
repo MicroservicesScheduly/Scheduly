@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: faculty-config
+  name: faculties-config
 data:
   PORT: "8080"
   POSTGRES_DB: facultiesservice

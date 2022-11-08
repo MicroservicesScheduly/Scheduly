@@ -15,13 +15,13 @@ spec:
 
     spec:
       containers:
-        - image: disciplines:01      # образ Docker
+        - image: hurmaze/disciplines:latest     # образ Docker
           imagePullPolicy: Never      # вказує k8s, що образ не потрібно завантажувати (варто використовувати лише для випадків, коли образи локальні)
           name: disciplines           # ім'я контейнеру
           ports:
             - containerPort: 80     # порт по якому можна звертатись до поди
           envFrom:
             - configMapRef:
-                name: discipline-config
+                name: disciplines-config
             - secretRef:
-                name: discipline-secret
+                name: disciplines-secret
