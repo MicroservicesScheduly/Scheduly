@@ -7,6 +7,8 @@ import { EditTeachersComponent } from './components/edit-teachers/edit-teachers.
 import { ManagementEditPageComponent } from './management-edit-page/management-edit-page.component';
 import { CreateFacultiesComponent } from './components/create-faculties/create-faculties.component';
 import { EditFacultiesComponent } from './components/edit-faculties/edit-faculties.component';
+import { CreateSpecialtiesComponent } from './components/create-specialties/create-specialties.component';
+import { EditSpecialtiesComponent } from './edit-specialties/edit-specialties.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
         {
           path: 'edit-teacher/:id',
           component: EditTeachersComponent,
+        },
+        {
+          path: 'create-specialty',
+          component: CreateSpecialtiesComponent,
+        },
+        {
+          path: 'edit-specialty/:id',
+          component: EditSpecialtiesComponent,
         },
         {
           path: 'create-faculty',
