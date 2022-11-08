@@ -1,0 +1,139 @@
+<div class="specialties-form-container">
+    <div class="main-info">
+        <div class="label">
+            CREATE
+        </div>
+        <div class="form-label">
+            SPECIALITY
+        </div>
+
+        <form #createSpecialtyForm="ngForm">
+
+            <div class="inputs">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" name="name" [(ngModel)]="specialty.name" required
+                    #name="ngModel" placeholder="Enter name"/>
+
+                 <div class="errors-container">
+                    <div *ngIf="name.errors?.['required']" class="error">
+                        Name is required.
+                    </div>
+                 </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label>Number</label>
+                    <input class="form-control" name="number" [(ngModel)]="specialty.number" required
+                    #number="ngModel" placeholder="Enter number"/>
+
+                  <div class="errors-container">
+                    <div *ngIf="number.errors?.['required']" class="error">
+                        Number is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <input class="form-control" name="description" [(ngModel)]="specialty.description" required
+                    #description="ngModel" placeholder="Enter description"/>
+
+                  <div class="errors-container">
+                    <div *ngIf="description.errors?.['required']" class="error">
+                        Description is required.
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+        <div class="wrapper-table"> 
+            <div class="wrapper-course"> 
+                <div class="wrapper-up"> 
+                    <label>1 course</label>
+                </div>
+                <div class="wrapper-down"> 
+                    <div class="left"> 
+                        <div class ="semester">1 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+                    <div class="right"> 
+                        <div class ="semester">2 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper-course"> 
+
+                <div class="wrapper-up"> 
+                    <label>2 course</label>
+                </div>
+
+                <div class="wrapper-down"> 
+                    <div class="left"> 
+                        <div class ="semester">3 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                    <div class="right"> 
+                        <div class ="semester">4 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="wrapper-course"> 
+                <div class="wrapper-up"> 
+                    <label>3 course</label>
+                </div>
+
+                <div class="wrapper-down"> 
+                    <div class="left"> 
+                        <div class ="semester">5 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                    <div class="right"> 
+                        <div class ="semester">6 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="wrapper-course"> 
+                <div class="wrapper-up"> 
+                    <label>4 course</label>
+                </div>
+
+                <div class="wrapper-down"> 
+                    <div class="left"> 
+                        <div class ="semester">7 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                    <div class="right"> 
+                        <div class ="semester">8 semester</div>
+                        <input class="search" name="search" placeholder="Search"/>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="form-group save-btn">
+                <button [disabled]="createSpecialtyForm.invalid" 
+                        class="save-button" (click)="submit(createSpecialtyForm)">Save</button>
+            </div>
+            <div class="form-group cancel-btn">
+                <button class="cancel-button" (click)="redirectToManagement()">Cancel</button>
+            </div>
+        </div>

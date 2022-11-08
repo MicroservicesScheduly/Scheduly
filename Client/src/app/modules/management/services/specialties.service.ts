@@ -13,4 +13,8 @@ export class SpecialtiesService {
     get(): Observable<ISpecialty[]>{
       return this._http.get<ISpecialty[]>(environment.urlPrefix + environment.specialtiesUrl);
     }
+
+    getById(id: number): Observable<ISpecialty> {
+      return this._http.get<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl + `/${id}`);
+    }
 }
