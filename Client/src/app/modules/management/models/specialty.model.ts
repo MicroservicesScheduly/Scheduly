@@ -1,6 +1,6 @@
 export interface ISpecialty {
     id: number;
-    number: number;
+    cipher: string;
     description: string;
     name: string;
 }

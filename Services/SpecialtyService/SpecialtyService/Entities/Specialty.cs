@@ -8,7 +8,8 @@ namespace Data_access.Entities
 {
     public class Specialty : BaseEntity
     {
+        public string Cipher { get; set; }
         public string Name { get; set; }
-
+        public string Description { get; set; }
     }
 }

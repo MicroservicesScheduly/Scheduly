@@ -15,7 +15,7 @@ spec:
 
     spec:
       containers:
-        - image: hurmaze/disciplines:latest     # образ Docker
+        - image: disciplines:01     # образ Docker
           imagePullPolicy: Never      # вказує k8s, що образ не потрібно завантажувати (варто використовувати лише для випадків, коли образи локальні)
           name: disciplines           # ім'я контейнеру
           ports:

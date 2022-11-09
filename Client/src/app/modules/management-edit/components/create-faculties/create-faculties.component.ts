@@ -17,8 +17,8 @@ export class CreateFacultiesComponent implements OnInit {
 
   id: number;
 
-  specialties: ISpecialty[] = [{ id: 2, number: 122, description: "dd", name: 'name1' },
-    { id: 3, number: 122, description: "dd", name: 'name2'}];
+  specialties: ISpecialty[] = [{ id: 2, cipher: '122', description: "dd", name: 'name1' },
+    { id: 3, cipher: '122', description: "dd", name: 'name2'}];
 
   constructor(private router: Router, private facultyService: FacultyService,
     private route: ActivatedRoute) { }
