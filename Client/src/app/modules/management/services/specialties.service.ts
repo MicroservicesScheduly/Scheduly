@@ -17,4 +17,16 @@ export class SpecialtiesService {
     getById(id: number): Observable<ISpecialty> {
       return this._http.get<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl + `/${id}`);
     }
+
+    create(specialty: ISpecialty) {
+      return this._http.post<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl, specialty);
+    } 
+
+    update(id: number, specialty: ISpecialty) {
+      return this._http.put<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl + `/${id}`, specialty);
+    } 
+
+    delete(id: number) {
+      return this._http.delete(environment.urlPrefix + environment.specialtiesUrl + `/${id}`);
+    }
 }

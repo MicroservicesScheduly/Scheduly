@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: disciplines-config
+  name: specialties-config
 data:
   PORT: "8080"
-  POSTGRES_DB: disciplinesservice
-  DB_HOST: disciplines-postgres
+  POSTGRES_DB: specialtiesservice
+  DB_HOST: specialties-postgres
   DB_DIALECT: postgres
   DB_PORT: "5432"

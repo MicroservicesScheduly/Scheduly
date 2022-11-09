@@ -41,5 +41,11 @@ namespace Data_access.Interfaces
         /// TEntity
         /// </returns>
         Task<TEntity> DeleteByIdAsync(int id);
+
+        /// <summary>
+        /// Saves the asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        Task SaveAsync();
     }
 }

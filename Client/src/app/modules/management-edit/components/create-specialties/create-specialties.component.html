@@ -25,13 +25,13 @@
 
 
                 <div class="form-group">
-                    <label>Number</label>
-                    <input class="form-control" name="number" [(ngModel)]="specialty.number" required
-                    #number="ngModel" placeholder="Enter number"/>
+                    <label>Cipher</label>
+                    <input class="form-control" name="cipher" [(ngModel)]="specialty.cipher" required
+                    #cipher="ngModel" placeholder="Enter cipher"/>
 
                   <div class="errors-container">
-                    <div *ngIf="number.errors?.['required']" class="error">
-                        Number is required.
+                    <div *ngIf="cipher.errors?.['required']" class="error">
+                        Cipher is required.
                     </div>
                   </div>
                 </div>

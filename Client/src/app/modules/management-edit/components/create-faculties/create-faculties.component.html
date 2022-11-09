@@ -53,7 +53,7 @@
             </div>
             <div *ngIf="specialties.length" class="lecturers-list">
                 <div class="list-item" *ngFor="let item of specialties">
-                    <div class="item-name">{{item.number}} {{item.name}}</div>
+                    <div class="item-name">{{item.cipher}} {{item.name}}</div>
                     <div class="delete-icon"><img class="delete-img" src="assets/Delete.png" 
                         (click)="deleteSpecialty(item.id)"/></div>
                 </div>

@@ -10,13 +10,13 @@
                 <div class="name">
                     <h2>Speciality {{specialty.id}}</h2>
                 </div>
-                <div class="speciality-number">{{specialty.number}}</div>
+                <div class="speciality-number">{{specialty.cipher}}</div>
                 <div class="speciality-description">{{specialty.description}}</div>
                 <div class="button">
-                    <button type="button" class="edit-btn"><span>
+                    <button type="button" class="edit-btn" (click)="redirectToEditSpecialty(specialty.id)"><span>
                         <img class="edit-icon" src="assets/Edit.png" />
                     </span> Edit</button>
-                    <div class="delete-icon"><img src="assets/Trash.png" /></div>
+                    <div class="delete-icon" (click)="deleteSpecialty(specialty.id)"><img src="assets/Trash.png" /></div>
                 </div>
             </div>
         </div>

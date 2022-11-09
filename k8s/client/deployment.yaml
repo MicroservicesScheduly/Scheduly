@@ -13,7 +13,7 @@ spec:
        app: client
     spec:
       containers:
-        - image: hurmaze/client:latest
+        - image: client:01
           imagePullPolicy: Never
           name: client
           ports:

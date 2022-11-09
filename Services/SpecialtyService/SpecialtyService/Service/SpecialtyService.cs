@@ -24,12 +24,16 @@ namespace Business.Service
 
             var SpecialtyCreated = await _SpecialtyRepository.AddAsync(Specialty);
 
+            await _SpecialtyRepository.SaveAsync();
+
             return _mapper.Map<SpecialtyModel>(SpecialtyCreated);
         }
 
         public async Task DeleteByIdAsync(int modelId)
         {
             await _SpecialtyRepository.DeleteByIdAsync(modelId);
+
+            await _SpecialtyRepository.SaveAsync();
         }
 
         public async Task<IEnumerable<SpecialtyModel>> GetAllAsync()
@@ -51,6 +55,8 @@ namespace Business.Service
             var Specialty = _mapper.Map<Specialty>(model);
 
             await Task.Run(() => _SpecialtyRepository.Update(Specialty));
+
+            await _SpecialtyRepository.SaveAsync();
         }
     }
 }

@@ -11,7 +11,7 @@ export const environment = {
   specialtiesUrl: 'api/specialties',
   disciplinesUrl: 'api/disciplines',
   whiteListedDomains: [''],
-  urlPrefix: 'http://192.168.59.109/',
+  urlPrefix: 'http://192.168.59.110/',
 };
 
 export const HEADERS = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
