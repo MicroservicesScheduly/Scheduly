@@ -28,6 +28,14 @@ ingress:
   path: /api/faculties
   port: app
 
+config:
+  data:
+    PORT: "8080"
+    POSTGRES_DB: facultiesservice
+    DB_HOST: faculties-postgres
+    DB_DIALECT: postgres
+    DB_PORT: "5432"
+
 secret:
   stringData:
     FACULTIES_DB_URL: "postgresql://demo:demo@faculties-postgres:5432/faculties?sslmode=disable"

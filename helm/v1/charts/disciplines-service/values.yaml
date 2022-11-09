@@ -28,6 +28,14 @@ ingress:
   path: /api/disciplines
   port: app
 
+config:
+  data:
+    PORT: "8080"
+    POSTGRES_DB: disciplinesservice
+    DB_HOST: disciplines-postgres
+    DB_DIALECT: postgres
+    DB_PORT: "5432"
+
 secret:
   stringData:
     DISCIPLINES_DB_URL: "postgresql://demo:demo@disciplines-postgres:5432/disciplines?sslmode=disable"

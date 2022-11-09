@@ -28,6 +28,14 @@ ingress:
   path: /api/teachers
   port: app
 
+config:
+  data:
+    PORT: "8080"
+    POSTGRES_DB: teachersservice
+    DB_HOST: teachers-postgres
+    DB_DIALECT: postgres
+    DB_PORT: "5432"
+
 secret:
   stringData:
     TEACHERS_DB_URL: "postgresql://demo:demo@teachers-postgres:5432/teachers?sslmode=disable"

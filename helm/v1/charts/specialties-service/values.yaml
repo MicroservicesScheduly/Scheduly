@@ -28,6 +28,14 @@ ingress:
   path: /api/specialties
   port: app
 
+config:
+  data:
+    PORT: "8080"
+    POSTGRES_DB: specialtiesservice
+    DB_HOST: specialties-postgres
+    DB_DIALECT: postgres
+    DB_PORT: "5432"
+
 secret:
   stringData:
     SPECIALTIES_DB_URL: "postgresql://demo:demo@specialties-postgres:5432/specialties?sslmode=disable"
