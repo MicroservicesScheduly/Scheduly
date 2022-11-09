@@ -16,5 +16,5 @@ service:
       containerPort: 80
 
 ingress:
-  path: "/"
+  path: /
   port: app

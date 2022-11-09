@@ -21,24 +21,23 @@ image:
 service:
   ports:
     - name: app
-      port: 3000
-      containerPort: 3000
+      port: 80
+      containerPort: 80
 
 ingress:
-  path: "/api/specialties/v1(/|$)(.*)"
+  path: /api/specialties
   port: app
-  pathRewrite: "/$2"
 
 secret:
   stringData:
     SPECIALTIES_DB_URL: "postgresql://demo:demo@specialties-postgres:5432/specialties?sslmode=disable"
-    DB_NAME: dGVhY2hlcnNzZXJ2aWNl
+    DB_NAME: c3BlY2lhbHRpZXNzZXJ2aWNl
     DB_USERNAME: cG9zdGdyZXNhZG1pbg==
     DB_PASSWORD: YWRtaW4xMjM=
 
 secretMounts:
   mountPath: /app/build/helpers/keys
   paths:
-    DB_NAME: dGVhY2hlcnNzZXJ2aWNl
+    DB_NAME: c3BlY2lhbHRpZXNzZXJ2aWNl
     DB_USERNAME: cG9zdGdyZXNhZG1pbg==
     DB_PASSWORD: YWRtaW4xMjM=
