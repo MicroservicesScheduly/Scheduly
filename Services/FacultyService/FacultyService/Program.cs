@@ -6,6 +6,9 @@ using FacultyService.DbAccess;
 using FacultyService.Repositories;
 using Microsoft.EntityFrameworkCore;
 using SimpleService.Interfaces;
+using Dodo.HttpClientResiliencePolicies;
+using Polly.Contrib.WaitAndRetry;
+using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,12 +19,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IFacultyRepository, FacultyDbRepository>();
 builder.Services.AddTransient<IFacultyService, FacultiesService>();
+builder.Services.AddHttpClient<IFacultyService, FacultiesService>(client => 
+{
+    client.BaseAddress = new Uri("http://localhost/api/token");
+})
+    .AddTransientHttpErrorPolicy(policyBuilder => policyBuilder.WaitAndRetryAsync(Backoff.DecorrelatedJitterBackoffV2(TimeSpan.FromSeconds(1), 5)));
 
 builder.Services.AddCors();
 
 var facultyConnectionString = builder.Configuration.GetConnectionString("FacultyDb");
 builder.Services.AddDbContext<FacultyDbContext>(x => x.UseNpgsql(facultyConnectionString));
-builder.Services.AddTransient<FacultyDbContext>();
+builder.Services.AddTransient<FacultyDbContext>();    
+
 
 var mapperConfig = new MapperConfiguration(mc =>
 {

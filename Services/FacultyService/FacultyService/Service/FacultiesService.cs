@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Business.Interfaces;
 using Business.Models;
+using Polly;
+using Polly.Contrib.WaitAndRetry;
 using SimpleService.Entities;
 using SimpleService.Interfaces;
+using System.Net;
 
 namespace Business.Service
 {
@@ -12,14 +15,17 @@ namespace Business.Service
 
         private readonly IMapper _mapper;
 
-        public FacultiesService(IFacultyRepository facultyRepository, IMapper mapper)
+        private readonly HttpClient _httpClient;
+
+        public FacultiesService(IFacultyRepository facultyRepository, IMapper mapper, HttpClient client)
         {
             _facultyRepository = facultyRepository;
             _mapper = mapper;
+            _httpClient = client;
         }
 
         public async Task<FacultyModel> AddAsync(FacultyModel model)
-        {
+        { 
             var faculty = _mapper.Map<Faculty>(model);
 
             var facultyCreated = await _facultyRepository.AddAsync(faculty);
