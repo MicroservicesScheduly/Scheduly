@@ -1,0 +1,141 @@
+.signin-form-container {
+    padding: 50px 230px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 60%;
+    margin-left: -100px;
+}
+
+.image-form {
+    width: 900px;
+    height: 700px;
+}
+
+.main-info {
+    max-width: 80%;
+    margin-left:-200px;
+    margin-bottom: 100px;
+}
+
+.form {
+    background: #FFFFFF;
+    border: 2px solid #8E8E8E;
+    border-radius: 50px;
+    width: 280px;
+    padding: 10px 20px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-container {
+    margin-left: 180px;
+    margin-top: 0px;
+    padding-right: 30px;
+    max-height: 450px;
+}
+
+.form-logo {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 42px;
+    color: #22272E;
+    display: flex;
+    align-items: center;
+    margin-left:56px;
+}
+
+.form-labels{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color:black;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top:10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.form-group label {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #22272E;
+    padding-left: 15px;
+}
+
+.form-group input{
+    background: #FFFFFF;
+    border: 2px solid #8E8E8E;
+    border-radius: 50px;
+    padding: 7px 12px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 24px;
+    color: #22272E;
+}
+
+.sign-btn {
+    width: 255px;
+}
+
+.buttons{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.buttons-text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #8E8E8E;
+}
+
+.sign-button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: #6DAFA7;
+    border: none;
+    height: 35px;
+    color: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    cursor: pointer;
+}
+
+.google-button{
+    margin-top:12px;
+}
+
+.google-button img{
+    width:44px; 
+    border: 2px solid #6DAFA7; 
+    border-radius: 20px; 
+    padding: 2%;
+}
