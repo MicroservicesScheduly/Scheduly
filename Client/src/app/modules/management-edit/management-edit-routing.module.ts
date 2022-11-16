@@ -9,6 +9,7 @@ import { CreateFacultiesComponent } from './components/create-faculties/create-f
 import { EditFacultiesComponent } from './components/edit-faculties/edit-faculties.component';
 import { CreateSpecialtiesComponent } from './components/create-specialties/create-specialties.component';
 import { EditSpecialtiesComponent } from './edit-specialties/edit-specialties.component';
+import { CreateGroupComponent } from './components/create-group/create-group.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
         {
           path: 'edit-faculty/:id',
           component: EditFacultiesComponent,
+        },
+        {
+          path: 'create-group',
+          component: CreateGroupComponent,
         },
     ],
   },
