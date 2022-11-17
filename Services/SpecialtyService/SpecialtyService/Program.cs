@@ -7,6 +7,7 @@ using SpecialtyService.DbAccess;
 using Microsoft.EntityFrameworkCore;
 using SpecialtyService.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using SpecialtyService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,6 +78,8 @@ app.UseCors(builder =>
     });
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

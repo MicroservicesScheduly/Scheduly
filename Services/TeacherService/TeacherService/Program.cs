@@ -9,13 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TeacherService.DbAccess;
 using TeacherService.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TeacherService;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var authOptions = builder.Configuration.GetSection("Auth");
 builder.Services.Configure<JwtOptions>(authOptions);
@@ -42,6 +38,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
     };
 });
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
 
 builder.Services.AddTransient<ITeacherRepository, TeacherDbRepository>();
 builder.Services.AddTransient<ITeacherService, Business.Service.TeacherService>();
@@ -79,6 +82,8 @@ app.UseCors(builder =>
     });
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
