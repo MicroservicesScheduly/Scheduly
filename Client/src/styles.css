@@ -48,6 +48,8 @@ html, body { height: calc(95% + 3px) !important }
 snack-bar-container {
     color: white;
     text-align: center;
+    font-family: 'Inter';
+    font-weight: 600;
 }
 
 .error-snack-bar {
