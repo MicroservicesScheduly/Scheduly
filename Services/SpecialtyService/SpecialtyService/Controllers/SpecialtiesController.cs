@@ -9,6 +9,7 @@ namespace SimpleService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class SpecialtiesController : ControllerBase
     {
         private ISpecialtyService _specialtyService;

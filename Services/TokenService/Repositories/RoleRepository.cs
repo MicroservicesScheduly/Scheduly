@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TokenService.DbAccess;
 using TokenService.Entities;
+using TokenService.Interfaces;
 
 namespace TokenService.Repositories
 {
-    public class RoleRepository
+    public class RoleRepository : IRoleRepository
     {
         /// <summary>
         /// The authentication database context

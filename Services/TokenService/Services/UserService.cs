@@ -5,7 +5,9 @@ using Services.Validation.Exceptions;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using TokenService.Entities;
+using TokenService.Interfaces;
 using TokenService.Models;
 using TokenService.Repositories;
 
@@ -17,13 +19,13 @@ namespace TokenService.Services
         /// The mapper
         /// </summary>
         private readonly IMapper _mapper;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         /// <summary>
         /// The authentication options
         /// </summary>
         private readonly IOptions<JwtOptions> _authOptions;
 
-        public UserService(UnitOfWork unitOfWork, IMapper mapper, IOptions<JwtOptions> authOptions)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IOptions<JwtOptions> authOptions)
         {  
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -32,17 +34,19 @@ namespace TokenService.Services
 
         public async Task<string> GetTokenAsync(LoginRequest login)
         {
-            var user = await _unitOfWork.UserRepository.GetByEmailAsync(login.Email);
+            //var user = await _unitOfWork.UserRepository.GetByEmailAsync(login.Email);
 
-            if (user == null)
-            {
-                throw new Exception(String.Format(ExceptionMessages.NotFound, typeof(User).Name, "Email", login.Email?.ToString()));
-            }
+            var user = new User() { Email = "string@gmail.com", Credentials = new Credentials() { Role = new Role() { RoleName = "Admin" } } };
 
-            if (!VerifyPassword(login.Password, user.Credentials.PasswordHash, user.Credentials.PasswordSalt))
-            {
-                throw new WrongPasswordException(ExceptionMessages.WrongPassword);
-            }
+            //if (user == null)
+            //{
+            //    throw new Exception(String.Format(ExceptionMessages.NotFound, typeof(User).Name, "Email", login.Email?.ToString()));
+            //}
+
+            //if (!VerifyPassword(login.Password, user.Credentials.PasswordHash, user.Credentials.PasswordSalt))
+            //{
+            //    throw new WrongPasswordException(ExceptionMessages.WrongPassword);
+            //}
 
             return GenerateToken(user);
         }
@@ -229,6 +233,17 @@ namespace TokenService.Services
                 signingCredentials: credantials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+
+            //var tokenHandler = new JwtSecurityTokenHandler();
+            //var key = Encoding.ASCII.GetBytes(_authOptions.Value.Secret);
+            //var tokenDescriptor = new SecurityTokenDescriptor
+            //{
+            //    Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+            //    Expires = DateTime.UtcNow.AddDays(7),
+            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            //};
+            //var token = tokenHandler.CreateToken(tokenDescriptor);
+            //return tokenHandler.WriteToken(token);
         }
     }  
 }

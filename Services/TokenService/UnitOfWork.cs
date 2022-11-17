@@ -1,17 +1,18 @@
 ﻿using TokenService.DbAccess;
+using TokenService.Interfaces;
 using TokenService.Repositories;
 
 namespace TokenService
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         /// <summary>
         /// The forum database context
         /// </summary>
         private readonly UserDbContext _userDbContext;
-        private UserRepository _userRepository;
-        private CredentialsRepository _credentialsRepository;
-        private RoleRepository _roleRepository;
+        private IUserRepository _userRepository;
+        private ICredentialsRepository _credentialsRepository;
+        private IRoleRepository _roleRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
@@ -25,9 +26,9 @@ namespace TokenService
             _credentialsRepository = new CredentialsRepository(userDbContext);
             _roleRepository = new RoleRepository(userDbContext);
         }
-        public UserRepository UserRepository { get => _userRepository; }
-        public CredentialsRepository CredentialsRepository { get => _credentialsRepository; }
-        public RoleRepository RoleRepository { get => _roleRepository; }
+        public IUserRepository UserRepository { get => _userRepository; }
+        public ICredentialsRepository CredentialsRepository { get => _credentialsRepository; }
+        public IRoleRepository RoleRepository { get => _roleRepository; }
 
         /// <summary>
         /// Saves asynchronously.

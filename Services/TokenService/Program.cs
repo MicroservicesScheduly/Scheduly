@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using FluentValidation.AspNetCore;
 using Services.Validation.FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using TokenService.Interfaces;
+using TokenService.Mocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +31,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuer = true,
         ValidIssuer = auth.Issuer,
 
-        ValidateAudience = true,
+        ValidateAudience = false,
         ValidAudience = auth.Audience,
 
         ValidateLifetime = true,
@@ -55,17 +57,16 @@ builder.Services.AddControllers().AddFluentValidation(fv =>
     fv.RegisterValidatorsFromAssemblyContaining<RegistrationModelValidator>(lifetime: ServiceLifetime.Singleton);
     
     fv.RegisterValidatorsFromAssemblyContaining<LoginModelValidator>(lifetime: ServiceLifetime.Singleton);
-    
    
     fv.RegisterValidatorsFromAssemblyContaining<UserModelValidator>(lifetime: ServiceLifetime.Singleton);
 });
 ValidatorOptions.Global.LanguageManager.Enabled = false;
 
-builder.Services.AddTransient<CredentialsRepository>();
-builder.Services.AddTransient<RoleRepository>();
-builder.Services.AddTransient<UserRepository>();
+builder.Services.AddTransient<ICredentialsRepository, CredRepMock>();
+builder.Services.AddTransient<IRoleRepository, RoleRepMock>();
+builder.Services.AddTransient<IUserRepository, UserRepMock>();
 
-builder.Services.AddTransient<UnitOfWork>();
+builder.Services.AddTransient<IUnitOfWork, UnitOWMock>();
 
 builder.Services.AddTransient<UserService>();
 
@@ -86,6 +87,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.ApplyMigrations();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -95,6 +97,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

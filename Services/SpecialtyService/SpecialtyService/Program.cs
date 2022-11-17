@@ -6,6 +6,7 @@ using Data_access.Repositories;
 using SpecialtyService.DbAccess;
 using Microsoft.EntityFrameworkCore;
 using SpecialtyService.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,32 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var authOptions = builder.Configuration.GetSection("Auth");
+builder.Services.Configure<JwtOptions>(authOptions);
+var auth = authOptions.Get<JwtOptions>();
+
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+
+        ValidateIssuer = true,
+        ValidIssuer = auth.Issuer,
+
+        ValidateAudience = false,
+        ValidAudience = auth.Audience,
+
+        ValidateLifetime = true,
+
+        IssuerSigningKey = auth.GetSymmetricSecurityKey(),
+        ValidateIssuerSigningKey = true,
+
+    };
+});
 
 builder.Services.AddTransient<ISpecialtyRepository, SpecialtyDbRepository>();
 builder.Services.AddTransient<ISpecialtyService, Business.Service.SpecialtyService>();

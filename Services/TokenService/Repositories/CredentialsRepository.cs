@@ -2,10 +2,11 @@
 using System.Net;
 using TokenService.DbAccess;
 using TokenService.Entities;
+using TokenService.Interfaces;
 
 namespace TokenService.Repositories
 {
-    public class CredentialsRepository
+    public class CredentialsRepository : ICredentialsRepository
     {
         private readonly UserDbContext _userDbContext;
         /// <summary>

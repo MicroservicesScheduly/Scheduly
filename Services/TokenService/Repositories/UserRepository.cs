@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TokenService.DbAccess;
 using TokenService.Entities;
+using TokenService.Interfaces;
 
 namespace TokenService.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         /// <summary>
         /// The forum database context
