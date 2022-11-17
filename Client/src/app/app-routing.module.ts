@@ -15,6 +15,11 @@ const routes: Routes = [{
     loadChildren: () => import('./modules/management-edit/management-edit.module')
         .then((m) => m.ManagementEditModule),
   },
+  {
+    path: 'authorization',
+    loadChildren: () => import('./modules/authorization/authorization.module')
+        .then((m) => m.AuthorizationModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

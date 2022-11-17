@@ -1,0 +1,50 @@
+<div class="registration-form-container">
+    <div class="main-info">
+        <div class="image">
+            <img class="image-form" src="assets/AuthorizationImage.png" />
+        </div>
+    </div>
+    <div class="form-container">
+        <div class="form-logo">
+            <div><img src="assets/Logo.png" style="width:50px;"/></div>
+            <div style="margin-left:6px;">SCHEDULY</div>
+        </div>
+        <form>
+            <div class="form">
+                <div class="form-labels">
+                    <a href='authorization/signin' style="color: #8E8E8E; font-weight: 500; text-decoration: none;">
+                        Sign in
+                    </a>
+                    <span style="border-bottom: 3px solid #000; padding-bottom: 0.3px;">Registration</span>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>EI* name</label>
+                        <input class="form-control" name="ei name" required
+                        placeholder="Enter EI name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input class="form-control" name="email" required
+                        placeholder="Enter e-mail"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" name="password" type="password" required
+                        placeholder="Enter password"/>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="form-group sign-btn">
+                        <button class="sign-button" (click)="redirectToManagement()">Sign in</button>
+                    </div>
+                    <div class="buttons-text">or</div>
+                    <div class="google-button">
+                        <img src="assets/Google-Logo.png"/>
+                    </div>
+                </div>
+            </div>
+            <div class="transcript">*EI - educational institution</div>
+        </form>
+    </div>
+</div>
