@@ -24,20 +24,15 @@
             </div>
             <div class="additional-info">
                 <div class="additional-info-text">
-                    <div class = "properties">
-                        <h2 id="lin2">Disciplines</h2>
-                        <h1 id="lin">0</h1>
-                       
+                    <div class = "properties" (click)="showDisciplinesList(faculty)">
+                        <h2 id="lin2">Show faculty`s disciplines list</h2>
                     </div>
-                     <div class = "properties">
-                        <h2 id="lin2">Teachers</h2>
-                        <h1 id="lin">0</h1>
+                     <div class = "properties" (click)="showTeachersList(faculty)">
+                        <h2 id="lin2">Show faculty`s teachers list</h2>
                     </div>
-                     <div class = "properties">
-                        <h2 id="lin2">Specialties</h2>
-                        <h1 id="lin">0</h1>
+                     <div class = "properties" (click)="showSpecialtiesList(faculty)">
+                        <h2 id="lin2">Show faculty`s specialties list</h2>
                     </div>
-
                     <div class="delete-icon" (click)="deleteFaculty(faculty.id)"><img src="assets/Trash.png" /></div>
                 </div>
             </div>

@@ -15,6 +15,8 @@ export const environment = {
   disciplineTeachersUrl: 'api/teachers/disciplineTeachers',
   specialtyDisciplinesUrl: 'api/disciplines/specialtyDisciplines',
   facultySpecialtyUrl: 'api/specialties/facultySpecialties',
+  facultyDisciplineUrl: 'api/disciplines/facultyDisciplines',
+  facultyTeacherUrl: 'api/teachers/facultyTeachers',
   whiteListedDomains: [''],
   urlPrefix: 'http://192.168.59.119/',
 };

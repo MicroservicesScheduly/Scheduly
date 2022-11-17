@@ -10,6 +10,9 @@ import { AddCatalogWindowComponent } from './windows/add-catalog-window/add-cata
 import { ChangeCatalogWindowComponent } from './windows/change-catalog-window/change-catalog-window.component';
 import { ShowDisciplineTeachersWindowComponent } from './windows/show-discipline-teachers-window/show-discipline-teachers-window.component';
 import { ShowTeacherDisciplinesWindowComponent } from './windows/show-teacher-disciplines-window/show-teacher-disciplines-window.component';
+import { ShowFacultyDisciplinesWindowComponent } from './windows/show-faculty-disciplines-window/show-faculty-disciplines-window.component';
+import { ShowFacultySpecialtiesWindowComponent } from './windows/show-faculty-specialties-window/show-faculty-specialties-window.component';
+import { ShowFacultyTeachersWindowComponent } from './windows/show-faculty-teachers-window/show-faculty-teachers-window.component';
 
 
 @NgModule({
@@ -19,6 +22,9 @@ import { ShowTeacherDisciplinesWindowComponent } from './windows/show-teacher-di
     ChangeCatalogWindowComponent,
     ShowDisciplineTeachersWindowComponent,
     ShowTeacherDisciplinesWindowComponent,
+    ShowFacultyDisciplinesWindowComponent,
+    ShowFacultySpecialtiesWindowComponent,
+    ShowFacultyTeachersWindowComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@
 
 ::ng-deep .mat-dialog-container {
     border-radius: 25px;
+    background-color: white;
 }
 
 .logo-container {
