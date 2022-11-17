@@ -8,5 +8,8 @@ public class AutomapperProfile : Profile
     {
         CreateMap<Teacher, TeacherModel>()
             .ReverseMap();
+
+        CreateMap<DisciplineTeacher, DisciplineTeacherModel>()
+            .ReverseMap();
     }
 }

@@ -1,4 +1,5 @@
-﻿using DisciplineService.Models;
+﻿using DisciplineService.Dtos;
+using DisciplineService.Models;
 
 namespace DisciplineService.Interfaces
 {
@@ -9,6 +10,7 @@ namespace DisciplineService.Interfaces
         Task<IEnumerable<DisciplineModel>> GetSelective();
         Task<IEnumerable<DisciplineModel>> GetMandatory();
         Task<DisciplineModel> GetByIdAsync(int id);
+        Task<IEnumerable<DisciplineModel>> GetDisciplinesByFacultyId(int facultyId);
         Task UpdateAsync(int id, DisciplineModel model);
         Task DeleteByIdAsync(int modelId);
     }

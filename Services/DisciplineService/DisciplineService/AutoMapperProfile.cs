@@ -10,6 +10,15 @@ namespace DisciplineService
         {
             CreateMap<Discipline, DisciplineModel>()
                 .ReverseMap();
+
+            CreateMap<Catalog, CatalogModel>()
+                .ReverseMap();
+
+            CreateMap<Entities.CatalogDiscipline, CatalogDisciplineModel>()
+                .ReverseMap();
+
+            CreateMap<SpecialtyDiscipline, SpecialtyDisciplineModel>()
+                .ReverseMap();
         }
     }
 }

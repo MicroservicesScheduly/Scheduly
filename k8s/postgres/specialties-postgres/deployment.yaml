@@ -22,7 +22,7 @@ spec:
             - configMapRef:
                 name: specialties-postgres-config
             - secretRef:
-                name: postgres-secret
+                name: postgres-secret-specialties
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: specialtiesservice

@@ -6,6 +6,8 @@ using Data_access.Interfaces;
 using Data_access.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Polly;
+using Polly.Timeout;
 using TeacherService.DbAccess;
 using TeacherService.Repositories;
 
@@ -17,7 +19,22 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ITeacherRepository, TeacherDbRepository>();
-builder.Services.AddTransient<ITeacherService, Business.Service.TeacherService>();
+builder.Services.AddHttpClient<ITeacherService, Business.Service.TeacherService>(a =>
+{
+    a.BaseAddress = new Uri("http://192.168.59.119/api/disciplines/");
+})
+.AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+    5,
+    c => TimeSpan.FromSeconds(Math.Pow(2, c))
+))
+.AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+    3,
+    TimeSpan.FromSeconds(15)
+    ))
+.AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+
+builder.Services.AddTransient<IDisciplineTeacherRepository, DisciplineTeacherDbRepository>();
+builder.Services.AddTransient<IDisciplineTeacherService, DisciplineTeacherService>();
 
 builder.Services.AddCors();
 

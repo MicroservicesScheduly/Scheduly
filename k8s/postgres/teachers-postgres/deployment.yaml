@@ -22,7 +22,7 @@ spec:
             - configMapRef:
                 name: teachers-postgres-config
             - secretRef:
-                name: postgres-secret
+                name: postgres-secret-teachers
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: teachersservice

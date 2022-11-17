@@ -11,5 +11,8 @@ namespace Data_access.Entities
         public string Cipher { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public ICollection<FacultySpecialty> FacultySpecialties { get; set; }
+
     }
 }

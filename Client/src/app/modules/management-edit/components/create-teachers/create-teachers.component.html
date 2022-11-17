@@ -1,8 +1,15 @@
 <div class="teachers-form-container">
     <div class="main-info">
-        <div class="label">
-            CREATE
-        </div>
+        <ng-container *ngIf="isEditRoute(); else create">
+            <div class="label">
+                EDIT
+            </div>
+        </ng-container>
+        <ng-template #create>
+            <div class="label">
+                CREATE
+            </div>
+        </ng-template>
         <div class="image">
             <img class="image-form" src="assets/TeachersForm.png" />
         </div>

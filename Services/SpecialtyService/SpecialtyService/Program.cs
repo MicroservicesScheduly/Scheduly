@@ -17,6 +17,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ISpecialtyRepository, SpecialtyDbRepository>();
 builder.Services.AddTransient<ISpecialtyService, Business.Service.SpecialtyService>();
 
+builder.Services.AddTransient<IFacultySpecialtyRepository, FacultySpecialtyDbRepository>();
+builder.Services.AddTransient<IFacultySpecialtyService, FacultySpecialtyService>();
+
 builder.Services.AddCors();
 
 var specialtyConnectionString = builder.Configuration.GetConnectionString("SpecialtyDb");

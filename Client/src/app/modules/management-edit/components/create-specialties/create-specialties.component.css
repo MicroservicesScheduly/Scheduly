@@ -25,6 +25,25 @@
     margin-top: 0px;
 }
 
+.semester-disciplines {
+    padding-top: 5px;
+}
+
+.sem-disc {
+    width: 93%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    background-color: #6DAFA7;
+    border-radius: 25px;
+    margin-bottom: 7px;
+    margin-left: 3px;
+}
+
 .main-info {
     text-align: center;
     width: 100%;
@@ -216,7 +235,7 @@
     font-weight: 500;
     font-family: 'Inter';
     position: relative;
-    width: 94%;
+    width: 95%;
 }
 
 .right{
@@ -237,4 +256,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
+}
+
+.delete-icon {
+}
+
+.delete-img {
+    filter: brightness(0) invert(1);
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+    cursor: pointer;
 }

@@ -23,6 +23,8 @@ export class CreateTeachersComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
    }); 
+
+   this.isEditRoute();
   }
 
   submit(form: NgForm) {
@@ -34,6 +36,10 @@ export class CreateTeachersComponent implements OnInit {
 
   redirectToManagement() {
     this.router.navigateByUrl("/management/teachers");
+  }
+
+  isEditRoute() {
+    return this.router.url.includes("edit-");
   }
 
 }

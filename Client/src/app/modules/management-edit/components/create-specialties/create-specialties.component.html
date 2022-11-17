@@ -1,46 +1,44 @@
 <div class="specialties-form-container">
     <div class="main-info">
-        <div class="label">
-            CREATE
-        </div>
+        <ng-container *ngIf="isEditRoute(); else create">
+            <div class="label">
+                EDIT
+            </div>
+        </ng-container>
+        <ng-template #create>
+            <div class="label">
+                CREATE
+            </div>
+        </ng-template>
         <div class="form-label">
             SPECIALITY
         </div>
-
         <form #createSpecialtyForm="ngForm">
-
             <div class="inputs">
                 <div class="form-group">
                     <label>Name</label>
                     <input class="form-control" name="name" [(ngModel)]="specialty.name" required
                     #name="ngModel" placeholder="Enter name"/>
-
                  <div class="errors-container">
                     <div *ngIf="name.errors?.['required']" class="error">
                         Name is required.
                     </div>
                  </div>
                 </div>
-
-
-
                 <div class="form-group">
                     <label>Cipher</label>
                     <input class="form-control" name="cipher" [(ngModel)]="specialty.cipher" required
                     #cipher="ngModel" placeholder="Enter cipher"/>
-
                   <div class="errors-container">
                     <div *ngIf="cipher.errors?.['required']" class="error">
                         Cipher is required.
                     </div>
                   </div>
                 </div>
-
                 <div class="form-group">
                     <label>Description</label>
                     <input class="form-control" name="description" [(ngModel)]="specialty.description" required
                     #description="ngModel" placeholder="Enter description"/>
-
                   <div class="errors-container">
                     <div *ngIf="description.errors?.['required']" class="error">
                         Description is required.
@@ -51,7 +49,6 @@
         </form>
     </div>
 </div>
-
         <div class="wrapper-table"> 
             <div class="wrapper-course"> 
                 <div class="wrapper-up"> 
@@ -60,74 +57,180 @@
                 <div class="wrapper-down"> 
                     <div class="left"> 
                         <div class ="semester">1 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput1sem (change)="onAddDiscipline($event, takeInput1sem.value, 1)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(1)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(1)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     <div class="right"> 
                         <div class ="semester">2 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput2sem (change)="onAddDiscipline($event, takeInput2sem.value, 2)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(1)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(2)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div class="wrapper-course"> 
-
                 <div class="wrapper-up"> 
                     <label>2 course</label>
                 </div>
-
                 <div class="wrapper-down"> 
                     <div class="left"> 
                         <div class ="semester">3 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput3sem (change)="onAddDiscipline($event, takeInput3sem.value, 3)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(2)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(3)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                     <div class="right"> 
                         <div class ="semester">4 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput4sem (change)="onAddDiscipline($event, takeInput4sem.value, 4)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(2)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(4)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
-
             <div class="wrapper-course"> 
                 <div class="wrapper-up"> 
                     <label>3 course</label>
                 </div>
-
                 <div class="wrapper-down"> 
                     <div class="left"> 
                         <div class ="semester">5 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput5sem (change)="onAddDiscipline($event, takeInput5sem.value, 5)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(3)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(5)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                     <div class="right"> 
                         <div class ="semester">6 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput6sem (change)="onAddDiscipline($event, takeInput6sem.value, 6)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(3)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(6)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
-
             <div class="wrapper-course"> 
                 <div class="wrapper-up"> 
                     <label>4 course</label>
                 </div>
-
                 <div class="wrapper-down"> 
                     <div class="left"> 
                         <div class ="semester">7 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput7sem (change)="onAddDiscipline($event, takeInput7sem.value, 7)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(4)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(7)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                     <div class="right"> 
                         <div class ="semester">8 semester</div>
-                        <input class="search" name="search" placeholder="Search"/>
+                        <!--<input class="search" name="search" placeholder="Search"/>-->
+                        <select class="search" #takeInput8sem (change)="onAddDiscipline($event, takeInput8sem.value, 8)">
+                            <option>Search</option>
+                            <option *ngFor="let discipline of getFilteredDisciplines(4)" [value]="discipline.id">
+                                {{discipline.name}}
+                            </option>
+                        </select>
+                        <div class="semester-disciplines">
+                            <div *ngFor="let discipline of semesterDisciplines(8)" class="sem-disc">
+                                {{discipline.name}}
+                                <span class="delete-icon">
+                                    <img class="delete-img" src="assets/Delete.png" 
+                                    (click)="deleteDiscipline(discipline.id, 8)"/>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
         <div class="buttons">
             <div class="form-group save-btn">
                 <button [disabled]="createSpecialtyForm.invalid" 

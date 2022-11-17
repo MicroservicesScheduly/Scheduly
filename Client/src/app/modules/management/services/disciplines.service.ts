@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IDiscipline } from '../models/discipline.model';
+import { IDiscipline, ISaveDiscipline } from '../models/discipline.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class DisciplinesService {
       return this._http.get<IDiscipline>(environment.urlPrefix + environment.disciplinesUrl + `/${id}`);
     }
 
-    create(discipline: IDiscipline) {
+    create(discipline: ISaveDiscipline) {
       return this._http.post<IDiscipline>(environment.urlPrefix + environment.disciplinesUrl, discipline);
     } 
 

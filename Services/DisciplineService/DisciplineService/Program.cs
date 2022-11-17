@@ -1,9 +1,12 @@
 using AutoMapper;
+using CatalogDiscipline.Services;
 using DisciplineService;
 using DisciplineService.DbAccess;
 using DisciplineService.Interfaces;
 using DisciplineService.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Polly;
+using Polly.Timeout;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,28 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IDisciplineRepository, DisciplineDbRepository>();
-builder.Services.AddTransient<IDisciplineService, DisciplineService.Services.DisciplineService>();
+builder.Services.AddHttpClient<IDisciplineService, DisciplineService.Services.DisciplineService>(a =>
+{
+    a.BaseAddress = new Uri("http://192.168.59.119/api/specialties/");
+})
+.AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+    5,
+    c => TimeSpan.FromSeconds(Math.Pow(2, c))
+))
+.AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+    3,
+    TimeSpan.FromSeconds(15)
+    ))
+.AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+
+builder.Services.AddTransient<ICatalogRepository, CatalogDbRepository>();
+builder.Services.AddTransient<ICatalogService, CatalogService.Services.CatalogService>();
+
+builder.Services.AddTransient<ICatalogDisciplineRepository, CatalogDisciplineDbRepository>();
+builder.Services.AddTransient<ICatalogDisciplineService, CatalogDisciplineService>();
+
+builder.Services.AddTransient<ISpecialtyDisciplineRepository, SpecialtyDisciplineDbRepository>();
+builder.Services.AddTransient<ISpecialtyDisciplineService, SpecialtyDisciplineService>();
 
 builder.Services.AddCors();
 
@@ -28,6 +52,11 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
+
+//builder.Services.AddHttpClient<DisciplineService.Services.DisciplineService>(a =>
+//{
+//    a.BaseAddress = new Uri("http://192.168.59.119/api/specialties");
+//});
 
 var app = builder.Build();
 app.ApplyMigrations();

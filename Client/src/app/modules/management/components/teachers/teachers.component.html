@@ -2,7 +2,9 @@
     <div class="teachers-container">
         <div class="teachers-container-header">
             <div class="input-container">
-                <input type="text" class="search-name" placeholder="Search by name...">
+                <input type="text" class="search-name" placeholder="Search by name..." #inputDiscName
+                (change)="getByName(inputDiscName.value)">
+                <div class="search-button"><img class="search-icon" src="assets/Search.png" /></div>
             </div>
         </div>
         <div class="teacher-cards">
@@ -10,13 +12,16 @@
                 <div class="name">
                     <h2>{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</h2>
                 </div>
-                <div class="disciplines-count">Disciplines: 3</div>
+                <!--<div class="disciplines-count">Disciplines: 3</div>
                 <div class="disciplines-list">
                     <ul>
                         <li>Descipline 1 Name</li>
                         <li>Descipline 2 Name</li>
                         <li>Descipline 3 Name</li>
                     </ul>
+                </div>-->
+                <div class="show-disciplines" (click)="showDisciplinesList(teacher)">
+                    Show teacher`s disciplines list
                 </div>
                 <div class="button">
                     <button type="button" class="edit-btn" (click)="redirectToEditTeacher(teacher.id)"><span>

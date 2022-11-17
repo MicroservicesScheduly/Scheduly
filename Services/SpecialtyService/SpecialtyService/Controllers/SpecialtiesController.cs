@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using SpecialtyService.Models;
 
 namespace SimpleService.Controllers
 {
@@ -12,10 +13,12 @@ namespace SimpleService.Controllers
     public class SpecialtiesController : ControllerBase
     {
         private ISpecialtyService _specialtyService;
+        private IFacultySpecialtyService _faultySpecialtyService;
 
-        public SpecialtiesController(ISpecialtyService specialtyService)
+        public SpecialtiesController(ISpecialtyService specialtyService, IFacultySpecialtyService faultySpecialtyService)
         {
             _specialtyService = specialtyService;
+            _faultySpecialtyService = faultySpecialtyService;
         }
 
         [HttpGet]
@@ -56,6 +59,40 @@ namespace SimpleService.Controllers
             var created = await _specialtyService.AddAsync(model);
 
             return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        /* ------- faculty specialties ------- */
+
+        [HttpGet("facultySpecialties")]
+        public async Task<ActionResult<IEnumerable<FacultySpecialtyModel>>> GetAllFacultySpecialtiesAsync()
+        {
+            var facultySpecialties = await _faultySpecialtyService.GetAllAsync();
+
+            return Ok(facultySpecialties);
+        }
+
+        [HttpGet("facultySpecialties/{id}")]
+        public async Task<ActionResult<IEnumerable<SpecialtyModel>>> GetSpecialtiesByFacultyIdAsync(int id)
+        {
+            var facultySpecialties = await _faultySpecialtyService.GetSpecialtiesByFacultyIdAsync(id);
+
+            return Ok(facultySpecialties);
+        }
+
+        [HttpPost("facultySpecialties")]
+        public async Task<ActionResult> AddFacultySpecialty(FacultySpecialtyModel model)
+        {
+            var created = await _faultySpecialtyService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        [HttpDelete("facultySpecialties/{id}")]
+        public async Task<ActionResult> DeleteFacultySpecialty(int id)
+        {
+            await _faultySpecialtyService.DeleteByIdAsync(id);
+
+            return NoContent();
         }
     }
 }

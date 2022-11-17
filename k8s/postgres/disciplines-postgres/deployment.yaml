@@ -22,7 +22,7 @@ spec:
             - configMapRef:
                 name: disciplines-postgres-config
             - secretRef:
-                name: postgres-secret
+                name: postgres-secret-disciplines
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: disciplinesservice

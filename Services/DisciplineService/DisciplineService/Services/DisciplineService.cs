@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-
+using DisciplineService.Dtos;
 using DisciplineService.Entities;
 using DisciplineService.Interfaces;
 using DisciplineService.Models;
@@ -12,10 +12,17 @@ namespace DisciplineService.Services
 
         private readonly IMapper _mapper;
 
-        public DisciplineService(IDisciplineRepository disciplineRepository, IMapper mapper)
+        private readonly ISpecialtyDisciplineService _specialtyDisciplineService;
+
+        private readonly HttpClient _httpClient;
+
+        public DisciplineService(IDisciplineRepository disciplineRepository, IMapper mapper, HttpClient httpClient,
+            ISpecialtyDisciplineService specialtyDisciplineService)
         {
             _disciplineRepository = disciplineRepository;
             _mapper = mapper;
+            _httpClient = httpClient;
+            _specialtyDisciplineService = specialtyDisciplineService;
         }
 
         public async Task<DisciplineModel> AddAsync(DisciplineModel model)
@@ -62,6 +69,24 @@ namespace DisciplineService.Services
             var disciplines = await _disciplineRepository.GetAllAsync();
 
             return _mapper.Map<IEnumerable<DisciplineModel>>(disciplines.Where(p => !p.IsSelective));
+        }
+
+        public async Task<IEnumerable<DisciplineModel>> GetDisciplinesByFacultyId(int facultyId)
+        {
+            var facultySpecialties = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<SpecialtyDto>>(_httpClient.BaseAddress + "facultySpecialties/" + facultyId);
+
+            List<DisciplineModel> facultyDisciplines = new List<DisciplineModel>();
+
+            foreach (var specialty in facultySpecialties)
+            {
+                var disciplinesOfSpecialty = await _specialtyDisciplineService.GetDisciplinesBySpecialtyIdAsync(specialty.Id);
+                foreach (var discipline in disciplinesOfSpecialty)
+                {
+                    facultyDisciplines.Add(discipline);
+                }
+            }
+
+            return facultyDisciplines;
         }
 
         public async Task UpdateAsync(int id, DisciplineModel model)

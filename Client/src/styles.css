@@ -44,3 +44,32 @@ html, body { height: calc(95% + 3px) !important }
     background: #6DAFA7;
     border-radius: 50px;
 }
+
+snack-bar-container {
+    color: white;
+    text-align: center;
+}
+
+.error-snack-bar {
+    background: #F4C2C9;
+    color: #22272E;
+}
+
+.warning-snack-bar {
+    background: #FFE779;
+    color: #22272E;
+}
+
+.info-snack-bar {
+    background: #22272E;
+    color: white;
+}
+
+.success-snack-bar {
+    background: #6DAfA7;
+    color: #22272E;
+}
+
+snack-bar-container span {
+    width: 100%;
+}

@@ -10,10 +10,17 @@ namespace DisciplineService.Controllers
     public class DisciplinesController : ControllerBase
     {
         private readonly IDisciplineService _disciplineService;
+        private readonly ICatalogService _catalogService;
+        private readonly ICatalogDisciplineService _catalogDisciplineService;
+        private readonly ISpecialtyDisciplineService _specialtyDisciplineService;
 
-        public DisciplinesController(IDisciplineService disciplineService)
+        public DisciplinesController(IDisciplineService disciplineService, ICatalogService catalogService,
+            ICatalogDisciplineService catalogDisciplineService, ISpecialtyDisciplineService specialtyDisciplineService)
         {
             _disciplineService = disciplineService;
+            _catalogService = catalogService;
+            _catalogDisciplineService = catalogDisciplineService;
+            _specialtyDisciplineService = specialtyDisciplineService;
         }
 
         [HttpGet]
@@ -70,6 +77,124 @@ namespace DisciplineService.Controllers
             var created = await _disciplineService.AddAsync(model);
 
             return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        /* ------- catalogs ------- */
+
+        [HttpGet("catalogs")]
+        public async Task<ActionResult<IEnumerable<CatalogModel>>> GetCatalogs()
+        {
+            var catalogs = await _catalogService.GetAllAsync();
+
+            return Ok(catalogs);
+        }
+
+        [HttpGet("catalogs/{id}")]
+        public async Task<ActionResult<CatalogModel>> GetCatalogById(int id)
+        {
+            var catalog = await _catalogService.GetByIdAsync(id);
+
+            return Ok(catalog);
+        }
+
+        [HttpPost("catalogs")]
+        public async Task<ActionResult> AddCatalog(CatalogModel model)
+        {
+            var created = await _catalogService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        [HttpDelete("catalogs/{id}")]
+        public async Task<ActionResult> DeleteCatalog(int id)
+        {
+            await _catalogService.DeleteByIdAsync(id);
+
+            return NoContent();
+        }
+
+        /* ------- catalog disciplines ------- */
+
+        [HttpGet("catalogDisciplines")]
+        public async Task<ActionResult<IEnumerable<CatalogDisciplineModel>>> GetAllCatalogDisciplinesAsync()
+        {
+            var catalogDisciplines = await _catalogDisciplineService.GetAllAsync();
+
+            return Ok(catalogDisciplines);
+        }
+
+        [HttpGet("catalogDisciplines/{id}")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesByCatalogIdAsync(int id)
+        {
+            var catalogDisciplines = await _catalogDisciplineService.GetDisciplinesByCatalogIdAsync(id);
+
+            return Ok(catalogDisciplines);
+        }
+
+        [HttpPost("catalogDisciplines")]
+        public async Task<ActionResult> AddCatalogDiscipline(CatalogDisciplineModel model)
+        {
+            var created = await _catalogDisciplineService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        [HttpDelete("catalogDisciplines/{id}")]
+        public async Task<ActionResult> DeleteCatalogDiscipline(int id)
+        {
+            await _catalogDisciplineService.DeleteByIdAsync(id);
+
+            return NoContent();
+        }
+
+        /* ------- specialty disciplines ------- */
+
+        [HttpGet("specialtyDisciplines")]
+        public async Task<ActionResult<IEnumerable<SpecialtyDisciplineModel>>> GetAllSpecialtyDisciplinesAsync()
+        {
+            var specialtyDisciplines = await _specialtyDisciplineService.GetAllAsync();
+
+            return Ok(specialtyDisciplines);
+        }
+
+        [HttpGet("specialtyDisciplines/{specialtyId}")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(int specialtyId)
+        {
+            var specialtyDisciplines = await _specialtyDisciplineService.GetDisciplinesBySpecialtyIdAsync(specialtyId);
+
+            return Ok(specialtyDisciplines);
+        }
+
+        [HttpGet("facultyDisciplines/{facultyId}")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesByFacultyIdAsync(int facultyId)
+        {
+            var specialtyDisciplines = await _disciplineService.GetDisciplinesByFacultyId(facultyId);
+
+            return Ok(specialtyDisciplines);
+        }
+
+        [HttpGet("specialtyDisciplines/{specialtyId}/{semesterId}")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(int specialtyId, int semester)
+        {
+            var specialtyDisciplines = await _specialtyDisciplineService.GetDisciplinesBySpecialtyIdAndSemesterAsync(specialtyId, semester);
+
+            return Ok(specialtyDisciplines);
+        }
+
+        [HttpPost("specialtyDisciplines")]
+        public async Task<ActionResult> AddSpecialtyDiscipline(SpecialtyDisciplineModel model)
+        {
+            var created = await _specialtyDisciplineService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        [HttpDelete("specialtyDisciplines/{id}")]
+        public async Task<ActionResult> DeleteSpecialtyDiscipline(int id)
+        {
+            await _specialtyDisciplineService.DeleteByIdAsync(id);
+
+            return NoContent();
         }
     }
 }

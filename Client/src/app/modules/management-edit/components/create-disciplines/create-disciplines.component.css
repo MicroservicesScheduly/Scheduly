@@ -166,6 +166,12 @@
     margin-top: -2px;
 }
 
+.add-catalog-icon:hover {
+    color: white;
+    background-color: #6DAFA7;
+    cursor: pointer;
+}
+
 .save-btn, .cancel-btn {
     margin-left: 670px;
     width: 240px;

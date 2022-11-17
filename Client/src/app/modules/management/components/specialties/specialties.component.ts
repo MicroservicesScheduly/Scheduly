@@ -26,4 +26,7 @@ export class SpecialtiesComponent implements OnInit {
     this.specialties = this.specialties.filter(p => p.id !== id);
   }
 
+  getByName(value: any) {
+    console.log(value);
+  }
 }

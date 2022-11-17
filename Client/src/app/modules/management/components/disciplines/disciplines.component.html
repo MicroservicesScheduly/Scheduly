@@ -2,14 +2,11 @@
     <div class="disciplines-container">
         <div class="disciplines-container-header">
             <div class="select-container">
-                <select class="select-catalog">
-                    <option value="">Select catalog</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="parrot">Parrot</option>
-                    <option value="spider">Spider</option>
-                    <option value="goldfish">Goldfish</option>
+                <select class="select-catalog" #ctl (change)="onChangeCatalog($event, ctl.value)">
+                    <option>All catalogs</option>
+                    <option *ngFor="let catalog of catalogs" [value]="catalog.id">
+                        {{catalog.name}}
+                    </option>
                 </select>
             </div>
             <div class="checkboxes-container">
@@ -23,7 +20,9 @@
                 </div>
             </div>
             <div class="input-container">
-                <input type="text" class="search-name" placeholder="Search by name...">
+                <input type="text" class="search-name" placeholder="Search by name..." #inputDiscName2 type="text">
+                <div class="search-button" (click)="getByName($event, inputDiscName2.value)">
+                    <img class="search-icon" src="assets/Search.png" /></div>
             </div>
         </div>
         <div class="discipline-cards">
@@ -45,7 +44,8 @@
                     <div class="selective-type">
                         <ng-container *ngIf="discipline.isSelective; else notSelective">
                             <button type="button" class="selective-type-btn">
-                                Selective<span class="catalog">{{discipline.catalogId}}</span>
+                                Selective<span class="catalog" *ngIf="discipline.catalogId">
+                                    {{getCatalogNameById(discipline.catalogId)}}</span>
                             </button>
                         </ng-container>
                         <ng-template #notSelective>
@@ -62,8 +62,10 @@
                         </div>
                         <div class="lecturer-practician">
                             <ul>
-                                <li><a>Lecturer: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
-                                <li><a>Practician: <span class="info-value">Koval Vadym Yuriyovich</span></a></li>
+                                <li><a>Lecturers: <span class="info-value teacher-btn"
+                                    (click)="showLecturersList(discipline)">Show list</span></a></li>
+                                <li><a>Practicians: <span class="info-value teacher-btn"
+                                    (click)="showPracticiansList(discipline)">Show list</span></a></li>
                             </ul>
                             <div class="delete-icon" (click)="deleteDiscipline(discipline.id)"><img src="assets/Trash.png" /></div>
                         </div>

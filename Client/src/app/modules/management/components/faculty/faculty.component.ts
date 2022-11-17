@@ -28,4 +28,8 @@ export class FacultyComponent implements OnInit {
     this.facultyService.delete(id).subscribe();
     this.faculties = this.faculties.filter(p => p.id !== id);
   }
+
+  getByName(value: any) {
+    console.log(value);
+  }
 }

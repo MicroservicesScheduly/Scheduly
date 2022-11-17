@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WindowService } from 'src/app/shared/services/window.service';
+import { IDiscipline } from '../../models/discipline.model';
 import { ITeacher } from '../../models/teacher.model';
+import { DisciplineTeacherService } from '../../services/discipline-teacher.service';
+import { DisciplinesService } from '../../services/disciplines.service';
 import { TeachersService } from '../../services/teachers.service';
 
 @Component({
@@ -9,12 +13,28 @@ import { TeachersService } from '../../services/teachers.service';
   styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
-  teachers: ITeacher[]=[];
+  teachers: ITeacher[] = [];
 
-  constructor(private teachersService: TeachersService, private router: Router) { }
+  private disciplines: { discipline: IDiscipline, teacherId: number}[] = [];
+
+  constructor(private teachersService: TeachersService, private router: Router,
+    private windowService: WindowService, private disciplineTeachersService: DisciplineTeacherService,
+    private disciplineService: DisciplinesService) { }
 
   ngOnInit(): void {
     this.teachersService.get().subscribe(res => this.teachers = res);
+
+    var teacherId: number;
+
+    this.disciplineTeachersService.get().subscribe((res) => {
+      res.forEach(element => {
+        teacherId = element.teacherId;
+        this.disciplineService.getById(element.disciplineId).subscribe((res) => {
+          /*console.log(res);*/
+          this.disciplines.push({ discipline: res, teacherId: teacherId });
+        });
+      });
+    })
   }
 
   redirectToCreateTeacher() {
@@ -28,5 +48,24 @@ export class TeachersComponent implements OnInit {
   deleteTeacher(id: number): void {
     this.teachersService.delete(id).subscribe();
     this.teachers = this.teachers.filter(p => p.id !== id);
+  }
+
+  showDisciplinesList(teacher: ITeacher) {
+    this.windowService.openShowDisciplinesListDialog({
+        buttons: [
+            {
+              title: "OK",
+              onClickEvent: new EventEmitter<void>(),
+            },
+        ],
+        title: 'Disciplines list',
+        message: `Teacher name:\n${teacher.name} ${teacher.surname} ${teacher.patronymic}`,
+        teacher: teacher,
+        disciplinesOfTeacher: this.disciplines.filter(p => p.teacherId == teacher.id).map(i => i.discipline)
+    });
+  }
+
+  getByName(value: any) {
+    console.log(value);
   }
 }

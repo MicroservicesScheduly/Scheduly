@@ -21,6 +21,30 @@ namespace TeacherService.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Data_access.Entities.DisciplineTeacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DisciplineId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("isLecturer")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("DisciplineTeachers");
+                });
+
             modelBuilder.Entity("Data_access.Entities.Teacher", b =>
                 {
                     b.Property<int>("Id")
@@ -47,6 +71,22 @@ namespace TeacherService.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("Data_access.Entities.DisciplineTeacher", b =>
+                {
+                    b.HasOne("Data_access.Entities.Teacher", "Teacher")
+                        .WithMany("DisciplineTeachers")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Data_access.Entities.Teacher", b =>
+                {
+                    b.Navigation("DisciplineTeachers");
                 });
 #pragma warning restore 612, 618
         }

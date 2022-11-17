@@ -12,5 +12,7 @@ namespace Data_access.Entities
         public string Surname { get; set; }
         public string Patronymic { get; set; }
 
+        public ICollection<DisciplineTeacher> DisciplineTeachers { get; set; }
+
     }
 }

@@ -12,10 +12,12 @@ namespace SimpleService.Controllers
     public class TeachersController : ControllerBase
     {
         private ITeacherService _teacherService;
+        private IDisciplineTeacherService _disciplineTeacherService;
 
-        public TeachersController(ITeacherService teacherService)
+        public TeachersController(ITeacherService teacherService, IDisciplineTeacherService disciplineTeacherService)
         {
             _teacherService = teacherService;
+            _disciplineTeacherService = disciplineTeacherService;
         }
 
         [HttpGet]
@@ -56,6 +58,65 @@ namespace SimpleService.Controllers
             var created = await _teacherService.AddAsync(model);
 
             return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        /* ------- discipline teachers ------- */
+
+        [HttpGet("disciplineTeachers")]
+        public async Task<ActionResult<IEnumerable<DisciplineTeacherModel>>> GetAllDisciplineTeachersAsync()
+        {
+            var disciplineTeachers = await _disciplineTeacherService.GetAllAsync();
+
+            return Ok(disciplineTeachers);
+        }
+
+        [HttpGet("disciplineTeachers/{id}")]
+        public async Task<ActionResult<IEnumerable<TeacherModel>>> GetTeachersByDisciplineIdAsync(int id)
+        {
+            var disciplineTeachers = await _disciplineTeacherService.GetTeachersIdByDisciplineIdAsync(id);
+
+            return Ok(disciplineTeachers);
+        }
+
+        [HttpGet("disciplineTeachersLecturers/{id}")]
+        public async Task<ActionResult<IEnumerable<int>>> GetLecturersByDisciplineIdAsync(int id)
+        {
+            var disciplineTeachers = await _disciplineTeacherService.GetLecturersIdByDisciplineIdAsync(id);
+
+            return Ok(disciplineTeachers);
+        }
+
+
+        [HttpGet("disciplineTeachersPracticians/{id}")]
+        public async Task<ActionResult<IEnumerable<int>>> GetPracticiansByDisciplineIdAsync(int id)
+        {
+            var disciplineTeachers = await _disciplineTeacherService.GetPracticiansIdByDisciplineIdAsync(id);
+
+            return Ok(disciplineTeachers);
+        }
+
+        [HttpGet("facultyTeachers/{id}")]
+        public async Task<ActionResult<IEnumerable<TeacherModel>>> GetTeachersByFacultyIdAsync(int id)
+        {
+            var facultyTeachers = await _teacherService.GetTeachersByFacultyId(id);
+
+            return Ok(facultyTeachers);
+        }
+
+        [HttpPost("disciplineTeachers")]
+        public async Task<ActionResult> AddDisciplineTeacher(DisciplineTeacherModel model)
+        {
+            var created = await _disciplineTeacherService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
+        }
+
+        [HttpDelete("disciplineTeachers/{id}")]
+        public async Task<ActionResult> DeleteDisciplineTeacher(int id)
+        {
+            await _disciplineTeacherService.DeleteByIdAsync(id);
+
+            return NoContent();
         }
     }
 }
