@@ -11,6 +11,7 @@ export const environment = {
   specialtiesUrl: 'api/specialties',
   disciplinesUrl: 'api/disciplines',
   catalogsUrl: 'api/disciplines/catalogs',
+  groupsUrl: 'api/groups',
   catalogDisciplinesUrl: 'api/disciplines/catalogDisciplines',
   disciplineTeachersUrl: 'api/teachers/disciplineTeachers',
   specialtyDisciplinesUrl: 'api/disciplines/specialtyDisciplines',
