@@ -82,7 +82,7 @@ export class CreateDisciplinesComponent implements OnInit {
         course: form.value["course"], creditType: form.value["creditType"] == "Test" ? 0 : 1, hours: form.value["hours"], 
         isSelective: form.value["isSelective"], catalogId: this.selectedCatalogId ? this.selectedCatalogId : undefined };
 
-    this.disciplineService.create(discipline)
+    /*this.disciplineService.create(discipline)
     .subscribe((res) => {
       const catalogDiscipline: ISaveCatalogDiscipline = { catalogId: this.selectedCatalogId,
         disciplineId: res.id };
@@ -106,7 +106,56 @@ export class CreateDisciplinesComponent implements OnInit {
 
         this.redirectToManagement();
       });
-    });
+    });*/
+
+    if (discipline.isSelective) {
+        this.disciplineService.create(discipline)
+        .subscribe((res) => {
+          const catalogDiscipline: ISaveCatalogDiscipline = { catalogId: this.selectedCatalogId,
+            disciplineId: res.id };
+          this.catalogDisciplineService.create(catalogDiscipline)
+          .subscribe(() => {
+            if (this.lecturers) {
+              this.lecturers.forEach(element => {
+                const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+                  isLecturer: true };
+                this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+              });
+            }
+
+            if (this.practicians) {
+              this.practicians.forEach(element => {
+                const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+                  isLecturer: false };
+                this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+              });
+            }
+
+          this.redirectToManagement();
+        });
+      });
+    } else {
+      this.disciplineService.create(discipline)
+      .subscribe((res) => {
+          if (this.lecturers) {
+            this.lecturers.forEach(element => {
+              const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+                isLecturer: true };
+              this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+            });
+          }
+
+          if (this.practicians) {
+            this.practicians.forEach(element => {
+              const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+                isLecturer: false };
+              this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+            });
+          }
+
+        this.redirectToManagement();
+      });
+    }
   }
 
   redirectToManagement() {

@@ -5,6 +5,7 @@ import { IDiscipline } from '../../models/discipline.model';
 import { ITeacher } from '../../models/teacher.model';
 import { DisciplineTeacherService } from '../../services/discipline-teacher.service';
 import { DisciplinesService } from '../../services/disciplines.service';
+import { NotificationService } from '../../services/notification.service';
 import { TeachersService } from '../../services/teachers.service';
 
 @Component({
@@ -15,14 +16,18 @@ import { TeachersService } from '../../services/teachers.service';
 export class TeachersComponent implements OnInit {
   teachers: ITeacher[] = [];
 
+  allTeachers: ITeacher[] = [];
+
   private disciplines: { discipline: IDiscipline, teacherId: number}[] = [];
 
   constructor(private teachersService: TeachersService, private router: Router,
     private windowService: WindowService, private disciplineTeachersService: DisciplineTeacherService,
-    private disciplineService: DisciplinesService) { }
+    private disciplineService: DisciplinesService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.teachersService.get().subscribe(res => this.teachers = res);
+
+    this.teachersService.get().subscribe(res => this.allTeachers = res);
 
     var teacherId: number;
 
@@ -30,7 +35,6 @@ export class TeachersComponent implements OnInit {
       res.forEach(element => {
         teacherId = element.teacherId;
         this.disciplineService.getById(element.disciplineId).subscribe((res) => {
-          /*console.log(res);*/
           this.disciplines.push({ discipline: res, teacherId: teacherId });
         });
       });
@@ -65,7 +69,14 @@ export class TeachersComponent implements OnInit {
     });
   }
 
-  getByName(value: any) {
-    console.log(value);
+  getByName(event: Event, value: any) {
+    if (value == "") {
+      this.teachers = this.allTeachers;
+    } else if (this.allTeachers.some(p => p.name.toLowerCase().includes(value.toLowerCase()))) {
+      this.teachers = this.allTeachers.filter(p => p.name.toLowerCase().includes(value.toLowerCase()));
+    }
+    else {
+      this.notificationService.showErrorMessage("Nothing found by input name");
+    }
   }
 }

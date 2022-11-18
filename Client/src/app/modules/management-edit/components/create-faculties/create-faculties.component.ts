@@ -38,11 +38,6 @@ export class CreateFacultiesComponent implements OnInit {
 
   submit(form: NgForm) {
     this.facultyService.create(form.value)
-    .subscribe(() => {
-      this.redirectToManagement();
-    });
-
-    this.facultyService.create(form.value)
     .subscribe((res) => {
       this.redirectToManagement();
       this.selectedSpecialties.forEach(element => {

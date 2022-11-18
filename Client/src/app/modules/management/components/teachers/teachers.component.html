@@ -2,8 +2,8 @@
     <div class="teachers-container">
         <div class="teachers-container-header">
             <div class="input-container">
-                <input type="text" class="search-name" placeholder="Search by name..." #inputDiscName
-                (change)="getByName(inputDiscName.value)">
+                <input type="text" class="search-name" placeholder="Search by name..." #inputTeachName
+                (change)="getByName($event, inputTeachName.value)">
                 <div class="search-button"><img class="search-icon" src="assets/Search.png" /></div>
             </div>
         </div>

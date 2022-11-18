@@ -4,6 +4,7 @@ import { CreateDisciplinesComponent } from 'src/app/modules/management-edit/comp
 import { WindowService } from 'src/app/shared/services/window.service';
 import { Faculty } from '../../models/faculty.model';
 import { FacultyService } from '../../services/faculty.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-faculty',
@@ -12,13 +13,19 @@ import { FacultyService } from '../../services/faculty.service';
 })
 export class FacultyComponent implements OnInit {
   faculties: Faculty[] = [];
+  
+  allFaculties: Faculty[] = [];
 
   constructor(private facultyService: FacultyService, private router: Router,
-    private windowService: WindowService) { }
+    private windowService: WindowService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.facultyService.get().subscribe(res => {
       this.faculties = res;
+    });
+
+    this.facultyService.get().subscribe(res => {
+      this.allFaculties = res;
     });
   }
 
@@ -31,8 +38,16 @@ export class FacultyComponent implements OnInit {
     this.faculties = this.faculties.filter(p => p.id !== id);
   }
 
-  getByName(value: any) {
+  getByName(event: Event, value: any) {
     console.log(value);
+    if (value == "") {
+      this.faculties = this.allFaculties;
+    } else if (this.allFaculties.some(p => p.name.toLowerCase().includes(value.toLowerCase()))) {
+      this.faculties = this.allFaculties.filter(p => p.name.toLowerCase().includes(value.toLowerCase()));
+    }
+    else {
+      this.notificationService.showErrorMessage("Nothing found by input name");
+    }
   }
 
   showDisciplinesList(faculty: Faculty) {
