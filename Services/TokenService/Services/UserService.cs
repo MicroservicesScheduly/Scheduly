@@ -34,19 +34,19 @@ namespace TokenService.Services
 
         public async Task<string> GetTokenAsync(LoginRequest login)
         {
-            //var user = await _unitOfWork.UserRepository.GetByEmailAsync(login.Email);
+            var user = await _unitOfWork.UserRepository.GetByEmailAsync(login.Email);
 
-            var user = new User() { Email = "string@gmail.com", Credentials = new Credentials() { Role = new Role() { RoleName = "Admin" } } };
+            //var user = new User() { Email = "string@gmail.com", Credentials = new Credentials() { Role = new Role() { RoleName = "Admin" } } };
 
-            //if (user == null)
-            //{
-            //    throw new Exception(String.Format(ExceptionMessages.NotFound, typeof(User).Name, "Email", login.Email?.ToString()));
-            //}
+            if (user == null)
+            {
+                throw new Exception(String.Format(ExceptionMessages.NotFound, typeof(User).Name, "Email", login.Email?.ToString()));
+            }
 
-            //if (!VerifyPassword(login.Password, user.Credentials.PasswordHash, user.Credentials.PasswordSalt))
-            //{
-            //    throw new WrongPasswordException(ExceptionMessages.WrongPassword);
-            //}
+            if (!VerifyPassword(login.Password, user.Credentials.PasswordHash, user.Credentials.PasswordSalt))
+            {
+                throw new WrongPasswordException(ExceptionMessages.WrongPassword);
+            }
 
             return GenerateToken(user);
         }
