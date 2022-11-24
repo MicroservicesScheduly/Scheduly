@@ -10,7 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
-    AddTeacherWindowComponent,
+    AddTeacherWindowComponent
   ],
   imports: [
     BrowserModule,
