@@ -10,6 +10,7 @@ namespace TokenService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly UserService _userAccountService;
@@ -28,6 +29,7 @@ namespace TokenService.Controllers
         /// <response code="400">Password is incorrect. </response>
         /// <response code="404">The user not found. </response>
         [HttpPost("login")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorDetails))]
@@ -44,7 +46,6 @@ namespace TokenService.Controllers
         /// <returns>The list of all UserModel. </returns>
         /// <response code="200">Returns the list of all UserModel.</response>
         [HttpGet]
-        [Authorize(Roles = "admin, moderator")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserModel>))]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetAllAsync()
         {
@@ -59,7 +60,6 @@ namespace TokenService.Controllers
         /// <returns>The list of all RoleModel. </returns>
         /// <response code="200">Returns the list of all RoleModel.</response>
         [HttpGet("roles")]
-        [Authorize(Roles = "admin")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RoleModel>))]
         public async Task<ActionResult<IEnumerable<RoleModel>>> GetAllRolesAsync()
         {
