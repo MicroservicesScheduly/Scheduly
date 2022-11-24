@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-postgres
+  template:
+    metadata:
+      labels:
+        app: users-postgres
+    spec:
+      containers:
+        - name: users-postgres
+          image: postgres:14.1-alpine3.15
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: users-postgres-config
+            - secretRef:
+                name: users-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: usersservice
+      volumes:
+        - name: usersservice
+          persistentVolumeClaim:
+            claimName: users-postgres-pv-claim
+
+        
