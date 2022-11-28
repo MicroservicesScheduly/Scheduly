@@ -25,6 +25,7 @@ import { ShowFacultyTeachersWindowComponent } from './windows/show-faculty-teach
     ShowFacultyDisciplinesWindowComponent,
     ShowFacultySpecialtiesWindowComponent,
     ShowFacultyTeachersWindowComponent,
+    AddTeacherWindowComponent
   ],
   imports: [
     BrowserModule,
