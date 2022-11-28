@@ -16,6 +16,8 @@ import { EditFacultiesComponent } from './components/edit-faculties/edit-faculti
 import { CreateSpecialtiesComponent } from './components/create-specialties/create-specialties.component';
 import { EditSpecialtiesComponent } from './edit-specialties/edit-specialties.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { ChooseFacultyComponent } from './components/create-group/choose-faculty/choose-faculty.component';
+import { EditGroupComponent } from './components/edit-group/edit-group.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
     CreateFacultiesComponent,
     EditFacultiesComponent,
     CreateGroupComponent,
+    ChooseFacultyComponent,
+    EditGroupComponent
   ],
   imports: [
     CommonModule,

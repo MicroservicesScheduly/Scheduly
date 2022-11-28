@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IGroup } from 'src/app/modules/management/models/group.model';
+import { IGroup, ISaveGroup } from 'src/app/modules/management/models/group.model';
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
 import { Faculty } from 'src/app/modules/management/models/faculty.model';
 import { ISpecialty } from 'src/app/modules/management/models/specialty.model';
+import { IFacultySpecialty } from 'src/app/modules/management/models/facultySpecialty.model';
+import { FacultyService } from 'src/app/modules/management/services/faculty.service';
+import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
+import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
 
 @Component({
   selector: 'app-create-group',
@@ -15,39 +19,49 @@ export class CreateGroupComponent implements OnInit {
 
   @Input() group: IGroup = {} as IGroup;
 
-  faculties: Faculty[] = [
-    { id: 1, name: "Faculty 1", description: "Faculty 1 Dription. Faculty 1 Description. Faulty 1 dssd Desription"},
-    { id: 2, name: "Faculty 2", description: "Faculty 2 Dription. Faculty 2 Description. Faulty 2 dssd Desription"},
-    { id: 3, name: "Faculty 3", description: "Faculty 3 Dription. Faculty 3 Description. Faulty 3 dssd Desription"}
-  ];
-
-  specialties: ISpecialty[] = [
-    { id: 1, cipher: "121", description: "Description 1 Description 1 Description 1 Description 1", name: ""},
-    { id: 2, cipher: "123", description: "Description 2 Description 2 Description 2 Description 2", name: ""},
-    { id: 3, cipher: "126", description: "Description 3 Description 3 Description 3 Description 3", name: ""},
-    { id: 4, cipher: "125", description: "Description 4 Description 4 Description 4 Description 4", name: ""}
-  ];
-
   id: number;
 
+  specialties: ISpecialty[] = [];
+
+  faculties: Faculty[] = [];
+
+  facultyChoosed: boolean = false;
+
+  facultyId: number;
+
   constructor(private router: Router, private groupService: GroupsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private facultyService: FacultyService,
+    private specialtyService: SpecialtiesService, private facultySpecialties: FacultySpecialtyService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-   }); 
+    }); 
   }
 
   submit(form: NgForm) {
-    this.groupService.create(form.value)
+    var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
+    specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId };
+
+    this.groupService.create(group).subscribe(res => this.redirectToGroups());
+
+    /*this.groupService.create(form.value)
     .subscribe(() => {
       this.redirectToManagement();
-    });
+    });*/
   }
 
   redirectToManagement() {
     this.router.navigateByUrl("/management/faculties");
   }
 
+  redirectToGroups() {
+    this.router.navigateByUrl("/groups/management");
+  }
+
+  addItem(newItem: number) {
+    this.facultySpecialties.getSpecialtiesByFacultyId(newItem).subscribe(res => this.specialties = res);
+    this.facultyId = newItem;
+    this.facultyChoosed = true;
+  }
 }

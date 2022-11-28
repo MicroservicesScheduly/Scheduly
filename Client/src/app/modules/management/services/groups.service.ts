@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IGroup } from '../models/group.model';
+import { IGroup, ISaveGroup } from '../models/group.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class GroupsService {
       return this._http.get<IGroup>(environment.urlPrefix + environment.groupsUrl + `/${id}`);
     }
 
-    create(group: IGroup) {
+    create(group: ISaveGroup) {
       return this._http.post<IGroup>(environment.urlPrefix + environment.groupsUrl, group);
     } 
 

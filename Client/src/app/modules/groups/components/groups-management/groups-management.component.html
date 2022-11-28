@@ -24,7 +24,7 @@
                 </div>
                 <div class="Teacher">
                     <p class="Teacher_text">Teacher</p>
-                    <button class="Teacher_btn">+ Add Group</button>
+                    <button class="Teacher_btn" (click)="redirectToAddGroup()">+ Add Group</button>
                 </div>
             </div>
 
@@ -44,281 +44,24 @@
                 <p id="Faculty" class="Offer_text">Faculty</p>
                 <p id="Speciality" class="Offer_text">Speciality</p>
             </div>
-
             <hr class="main_line">
-
             <div class="Items">
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/orange.png" alt="">
-                        <p class="Item_group">IS-01</p>
+                <div class="i" *ngFor="let group of groups">
+                    <div class="Item">
+                        <div class="Is">
+                            <img src="assets/orange.png" alt="">
+                            <p class="Item_group">{{ group.cipher }}</p>
+                        </div>
+                        <div class="Course"><span class="course">{{ group.course }}</span></div>
+                        <div class="Form"><span class="name">{{ group.faculty?.name }}</span></div>
+                        <div class="Form"><span class="name">{{ group.specialty?.name }}</span></div>
+                        <div class="Images">
+                            <img class="Item_img" src="assets/Edit.png" alt="" (click)="redirectToEditGroup(group.id)" >
+                            <img class="Item_img" src="assets/Trash_bl.png" alt="" (click)="deleteGroup(group.id)">
+                        </div>
                     </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
+                    <hr class="dot_line">
                 </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/red.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/red.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/green.jpg" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/red.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/orange.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/orange.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
-
-                <div class="Item">
-                    <div class="Is">
-                        <img src="assets/orange.png" alt="">
-                        <p class="Item_group">IS-01</p>
-                    </div>
-
-                    <select class="Course">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                    </select>
-
-                    <select class="Form">
-                        <option value="">Faculty name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <select class="Form" id="spc">
-                        <option value="">Speciality name</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-
-                    <div class="Images">
-                        <img class="Item_img" src="assets/Edit.png" alt="">
-                        <img class="Item_img" src="assets/Trash_bl.png" alt="">
-                    </div>
-                </div>
-                <hr class="dot_line">
             </div>
         </div>
     </div>

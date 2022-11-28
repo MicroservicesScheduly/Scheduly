@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from 'src/app/shared/header/header.module';
 import { GroupsRoutingModule } from './groups-routing.module';
 import { GroupsPageComponent } from './groups-page/groups-page.component';
+import { GroupsManagementComponent } from './components/groups-management/groups-management.component';
 
 @NgModule({
   declarations: [
-    GroupsPageComponent
+    GroupsPageComponent,
+    GroupsManagementComponent
   ],
   imports: [
     CommonModule,
