@@ -11,6 +11,7 @@ import { TeachersComponent } from './components/teachers/teachers.component';
 import { SpecialtiesComponent } from './components/specialties/specialties.component';
 import { HeaderModule } from 'src/app/shared/header/header.module';
 import { HeaderComponent } from 'src/app/shared/header/header-component/header.component';
+import { GroupComponent } from './components/group/group.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from 'src/app/shared/header/header-component/header.c
     ManagementPageComponent,
     TeachersComponent,
     SpecialtiesComponent,
+    GroupComponent,
   ],
   imports: [
     CommonModule,
