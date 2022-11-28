@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt/lib/jwthelper.service';
+//import { JwtHelperService } from '@auth0/angular-jwt/lib/jwthelper.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { tap } from 'rxjs/internal/operators/tap';
 import { Token } from '../models/token.model';
@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { Registration } from '../models/registration.model';
 import { User } from '../models/user.model';
 import { Role } from '../models/role.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 export const ACCESS_TOKEN = 'jwt acces token';
 
