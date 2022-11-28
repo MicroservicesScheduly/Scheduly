@@ -5,6 +5,7 @@ import { FacultyComponent } from './components/faculty/faculty.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { SpecialtiesComponent } from './components/specialties/specialties.component';
 import { ManagementPageComponent } from './management-page/management-page.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
           {
             path: 'faculties',
             component: FacultyComponent,
+            canActivate: [AuthGuard]
           },
           {
             path: 'teachers',
