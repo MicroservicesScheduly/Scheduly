@@ -1,0 +1,225 @@
+p{
+    margin: 0;
+}
+.Page{
+    padding: 0px 46px 0px 46px;
+}
+.Type{
+    display: flex;
+    justify-content: start;
+    height: 24px;
+    margin-top: 7px;
+}
+
+.Type_text{
+    margin: 2px 0px 0px 5px;
+    font-family: Inter;
+    font-size: 20px;    
+    font-weight: 700;
+    color: #22272E;
+}
+
+.Schedule{
+    width: 154px;
+}
+.Schedule_head{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #22272E;
+}
+
+.Title{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+.Activity{
+    display: flex;
+    justify-content: space-between;
+    width: 554px;
+    margin-top: 14px;
+}
+.Group{
+    text-align: right;
+}
+.Group_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-decoration-line: underline;
+    color: #22272E;
+    margin-bottom: 14px;
+    margin-right: 43px;
+}
+.Group_btn{
+    width: 274px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 3px solid #6DAFA7;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #22272E;
+}
+
+
+.Teacher_btn{
+    width: 259.76px;
+    height: 49.14px;
+    background: #FFE779;
+    border-radius: 50px;
+    border-color: transparent;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #22272E;
+}
+.Teacher_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    color: #8E8E8E;
+    margin-bottom: 14px;
+    margin-left: 8px;
+}
+
+.Link_text{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: right;
+
+}
+
+.Ref{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+
+}
+
+.linka{
+    color: #8E8E8E;
+}
+
+
+.Table{
+    width: 958px;
+    margin: auto;
+    margin-top: 33px;
+
+}
+.Offer{
+    display: flex;
+    margin-left: 15px;
+}
+.Offer_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    color: #22272E;
+}
+
+#Cipher{
+    margin-right: 44px;
+}
+#Course{
+    margin-right: 104px;
+}
+#Faculty{
+    margin-right: 146px;
+}
+.main_line{
+    width: 925px;
+    border: 0.5px solid #22272E;
+    margin-left: 0;
+}
+
+
+.Item{
+    display: flex;
+    height: 50px;
+    margin-bottom: 23px;
+    margin-top: 13px;
+}
+.Item_group{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+}
+.Is{
+    display: flex;
+    justify-content: space-between;
+    width: 97px;
+    height: 25px;
+    margin-top: 13px;
+}
+.Course{
+    margin-left: 80px;
+    margin-right: 76px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    color: #22272E;
+    border: 1px solid white;
+}
+.Form{
+    width: 240px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #8E8E8E;
+    border: 3px solid #6DAFA7;
+    border-radius: 50px;
+    padding-left: 23px;
+    appearance: none;
+}
+#spc{
+    margin-left: 37px;
+}
+
+.dot_line{
+    width: 925px;
+    border: 3px dotted #22272E;
+    border-style: none none dotted; 
+    margin-left: 0;
+}
+
+.Item_img{
+    width: 23px;
+    height: 23px;
+    color:#22272E;
+}
+.Images{
+    display: flex;
+    justify-content: space-between;
+    width: 60px;
+    margin-left: 30px;
+    margin-top: 13px;
+}
+
+.Items{
+    height: 420px;
+    overflow-y: scroll;
+    scrollbar-color: #D9D9D9 #6DAFA7;
+}
