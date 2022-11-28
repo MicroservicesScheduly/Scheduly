@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IDisciplineRepository, DisciplineDbRepository>();
 builder.Services.AddHttpClient<IDisciplineService, DisciplineService.Services.DisciplineService>(a =>
 {
-    a.BaseAddress = new Uri("http://192.168.59.119/api/specialties/");
+    a.BaseAddress = new Uri("http://192.168.59.120/api/specialties/");
 })
 .AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().WaitAndRetryAsync(
     5,

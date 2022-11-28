@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: groups-config
+data:
+  PORT: "8080"
+  POSTGRES_DB: groupsservice
+  DB_HOST: groups-postgres
+  DB_DIALECT: postgres
+  DB_PORT: "5432"

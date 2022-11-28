@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: groups-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: groups-postgres
+  template:
+    metadata:
+      labels:
+        app: groups-postgres
+    spec:
+      containers:
+        - name: groups-postgres
+          image: postgres:14.1-alpine3.15
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: groups-postgres-config
+            - secretRef:
+                name: postgres-secret-groups
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: groupsservice
+      volumes:
+        - name: groupsservice
+          persistentVolumeClaim:
+            claimName: groups-postgres-pv-claim
+
+        
