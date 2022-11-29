@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using FacultyService.Attributes;
 
 namespace SimpleService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    //[CustomAuth]
+    [Authorize]
     public class FacultiesController : ControllerBase
     {
         private IFacultyService _facultyService;

@@ -10,13 +10,43 @@ using Polly;
 using Polly.Timeout;
 using TeacherService.DbAccess;
 using TeacherService.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using TeacherService;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var authOptions = builder.Configuration.GetSection("Auth");
+builder.Services.Configure<JwtOptions>(authOptions);
+var auth = authOptions.Get<JwtOptions>();
+
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+
+        ValidateIssuer = true,
+        ValidIssuer = auth.Issuer,
+
+        ValidateAudience = false,
+        ValidAudience = auth.Audience,
+
+        ValidateLifetime = true,
+
+        IssuerSigningKey = auth.GetSymmetricSecurityKey(),
+        ValidateIssuerSigningKey = true,
+
+    };
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 builder.Services.AddTransient<ITeacherRepository, TeacherDbRepository>();
 builder.Services.AddHttpClient<ITeacherService, Business.Service.TeacherService>(a =>
@@ -69,6 +99,8 @@ app.UseCors(builder =>
     });
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

@@ -21,8 +21,11 @@
     },
     "IIS Express": {
       "commandName": "IISExpress",
+      "windowsAuthentication": false,
+      "anonymousAuthentication": true,
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:15574",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

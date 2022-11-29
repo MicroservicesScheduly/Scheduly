@@ -5,7 +5,10 @@ cd .\Client
 docker build -t client:01 -f Dockerfile .
 cd ..
 cd .\Services\FacultyService
-docker build -t faculties:01 -f Dockerfile .
+docker build -t faculties:01 -f Dockerfile . 
+cd ..
+cd .\Services\TokenService
+docker build -t users:01 -f Dockerfile .
 cd ..
 cd .\DisciplineSevice
 docker build -t disciplines:01 -f Dockerfile .
