@@ -24,7 +24,7 @@ export class SigninComponent implements OnInit {
 
   login(){
     this.usersService.login(this.loginModel.Email, this.loginModel.Password).subscribe(
-      result => {this.router.navigate(['/'])}
+      result => {this.router.navigate(['/management/faculties'])}
     )
   }
 

@@ -11,6 +11,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatOptionModule } from '@angular/material/core';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { ACCESS_TOKEN } from './shared/services/users.service';
+
+export function getToken() {
+  return localStorage.getItem(ACCESS_TOKEN);
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +32,14 @@ import { MatOptionModule } from '@angular/material/core';
     HttpClientModule,
     SharedModule,
     MatSnackBarModule,
-    MatOptionModule
+    MatOptionModule,
+
+    // JwtModule.forRoot({
+    //   config:{
+    //     tokenGetter: getToken,
+    //     allowedDomains:["localhost:4200"]
+    //   }
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]
