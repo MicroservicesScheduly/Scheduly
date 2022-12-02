@@ -1,0 +1,130 @@
+p{
+    margin: 0 auto;
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+}
+div{
+    margin: auto;
+}
+.Offer{
+    border: 3px solid #6DAFA7;
+    border-radius: 20px;
+    width: 569px;
+    background-color: #fff;
+}
+.Title{
+    font-weight: 700;
+    font-size: 40px;
+    color: #22272E;
+    margin-top: 31px;
+    margin-bottom: 21px;
+}
+.Header{
+    font-size: 20px;
+    text-align: center;
+    color: #22272E;
+    display: flex;
+    justify-content: space-between;
+    width: 385px;
+    margin: auto;
+}
+.Text{
+    font-weight: 500;
+}
+span{
+    font-weight: 700;
+}
+
+.Mandatory{
+    margin-top: 18px;
+}
+.Mandatory-header{
+    width: 471px;
+    background: #FFE779;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 4px;
+    margin-bottom: 9px;
+}
+
+.Mandatory-list{
+    height: 167px;
+    width: 516px;
+    overflow-y: scroll;
+}
+.Discipline{
+    border: 1px solid #22272E;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align-last: left;
+    width: 441px;
+    padding: 14px 20px 13px;
+    margin-bottom: 7px;
+}
+
+::-webkit-scrollbar-thumb  {
+    background: #FFE779;
+}
+
+.Selective-header{
+    width: 471px;
+    background: #F8AB5D;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 4px;
+    margin-top: 30px;
+}
+code{
+    color: #6DAFA7;
+}
+.Selective-catalog{
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+.Selective-list{
+    height: 109px;
+    width: 516px;
+    overflow-y: scroll;
+}
+.Down{
+    margin-top: 34px;
+}
+.Down-text{
+    font-weight: 700;
+    margin-bottom: 19px;
+    font-size: 20px;
+}
+.Buttons{
+    width: 471px;
+    margin: auto;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Cancel{
+    width: 229.26px;
+    background: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+    padding: 15px;
+}
+
+.Confirm{
+    width: 229.44px;
+    background: #6DAFA7;
+    border-radius: 50px;
+    border: #6DAFA7;
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFFFFF;
+}

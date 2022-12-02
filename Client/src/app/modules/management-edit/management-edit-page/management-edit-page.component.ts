@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { WindowService } from 'src/app/shared/services/window.service';
 
 @Component({
   selector: 'app-management-page',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagementEditPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private windowService: WindowService) { }
 
   ngOnInit(): void {
+    this.windowService.openChooseDisciplineTeacherDialog({
+      buttons: [
+        {
+          title: "Cancel",
+          onClickEvent: new EventEmitter<void>(), 
+        },
+      ],
+      title: '',
+      message: '',
+    });
   }
 
 }
