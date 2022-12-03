@@ -24,6 +24,10 @@ const routes: Routes = [{
     path: 'groups',
     loadChildren: () => import('./modules/groups/groups.module').then((m) => m.GroupsModule),
   },
+  {
+    path: 'schedule',
+    loadChildren: () => import('./modules/schedule/schedule.module').then((m) => m.ScheduleModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
