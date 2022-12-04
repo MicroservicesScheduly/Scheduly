@@ -1,0 +1,101 @@
+p{
+    margin: 0 auto;
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+}
+div{
+    margin: auto;
+}
+.Offer{
+    border: 3px solid #6DAFA7;
+    border-radius: 20px;
+    width: 569px;
+    background-color: #fff;
+}
+.Title{
+    font-weight: 700;
+    font-size: 40px;
+    color: #22272E;
+    margin-top: 31px;
+    margin-bottom: 21px;
+}
+.Header{
+    font-size: 20px;
+    text-align: center;
+    color: #22272E;
+    justify-content: space-between;
+    width: 385px;
+    margin: auto;
+}
+.Chapter-1{
+    display: flex;
+}
+.Chapter-2{
+    display: flex;
+    width: 285px;
+    margin-top: 12px;
+}
+.Text{
+    font-weight: 500;
+}
+span{
+    font-weight: 700;
+}
+
+.About{
+    display: flex;
+    justify-content: space-between;
+    width: 432px;
+    margin-top: 85px;
+    margin-bottom: 90px;
+}
+.Item{
+    border: 2px solid #6DAFA7;
+    border-radius: 25px;
+    padding: 24px 42px 24px 42px;
+}
+.Item-text{
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+.Item-logo{
+    margin-left: 5px;
+}
+.Down{
+    margin-top: 34px;
+}
+.Down-text{
+    font-weight: 700;
+    margin-bottom: 19px;
+    font-size: 20px;
+}
+.Buttons{
+    width: 471px;
+    margin: auto;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Cancel{
+    width: 229.26px;
+    background: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+    padding: 15px;
+}
+
+.Confirm{
+    width: 229.44px;
+    background: #6DAFA7;
+    border-radius: 50px;
+    border: #6DAFA7;
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFFFFF;
+}

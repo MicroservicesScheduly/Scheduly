@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WindowService } from 'src/app/shared/services/window.service';
 import { IDiscipline } from '../models/discipline.model';
 import { ISpecialty } from '../models/specialty.model';
 import { ITeacher } from '../models/teacher.model';
@@ -23,7 +24,8 @@ export class ManagementPageComponent implements OnInit {
 
   constructor(private router: Router, private teachersService: TeachersService,
     private disciplinesService: DisciplinesService, private specialtiesService: SpecialtiesService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,
+    private windowService: WindowService) { }
 
   ngOnInit(): void {
     this.teachersService.get().subscribe(res => this.teachers = res);

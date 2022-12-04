@@ -1,0 +1,118 @@
+
+.Offer{
+    border: 3px solid #6DAFA7;
+    border-radius: 20px;
+    width: 569px;
+    background-color: #fff;
+}
+.logo{
+    position: absolute;
+    margin: 20px 0 0 20px;
+}
+.Subscribe{
+    text-align: center;
+}
+
+.Subscribe-title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    color: #22272E;
+}
+
+.Subscribe-text{
+    background: #FFE779;
+    border-radius: 25px;
+    width: 443px;
+    padding: 12px;
+    margin: auto;
+    color: #22272E;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 24px;
+}
+
+.IS{
+    font-weight: 500;
+}
+
+.Center{
+    width: 443px;
+    margin: auto;
+    margin-top: 53px;
+}
+.Center-semester{
+    border: 2px solid #6DAFA7;
+    border-radius: 25px;
+    text-align: center;
+    margin: auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    color: #22272E;
+    padding: 3px;
+}
+
+.Center-line{
+    width: 400px;
+    margin-top: 128px;
+    border-top: 2px dotted #6DAFA7;
+}
+
+.Center-Email{
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #22272E;
+    margin-top: 11px;
+    margin-bottom: 0;
+}
+
+#email{
+    margin: 0 auto;
+    border: 2px solid #6DAFA7;
+    border-radius: 25px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: #8E8E8E;
+    padding: 8px 20px 8px;
+    margin-top: 7px;
+    text-align: left;
+    width: 399px;
+}
+
+.Buttons{
+    width: 471px;
+    margin: auto;
+    margin-top: 125px;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Cancel{
+    width: 229.26px;
+    background: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+    padding: 15px;
+}
+
+.Confirm{
+    width: 229.44px;
+    background: #6DAFA7;
+    border-radius: 50px;
+    border: #6DAFA7;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFFFFF;
+}

@@ -1,0 +1,122 @@
+p{
+    margin: 0 auto;
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+}
+div{
+    margin: auto;
+}
+.Offer{
+    border: 3px solid #6DAFA7;
+    border-radius: 20px;
+    width: 569px;
+    background-color: #fff;
+}
+.Title{
+    font-weight: 700;
+    font-size: 40px;
+    color: #22272E;
+    margin-top: 31px;
+    margin-bottom: 21px;
+}
+.Header{
+    font-size: 20px;
+    text-align: center;
+    color: #22272E;
+    width: 385px;
+    margin: auto;
+}
+.Chapter-1{
+    display: flex;
+}
+.Chapter-2{
+    display: flex;
+    margin-top: 12px;
+    width: 364px;
+}
+.Text{
+    font-weight: 500;
+}
+span{
+    font-weight: 700;
+}
+
+.Teachers{
+    width: 471px;
+    margin-top: 45px;
+}
+.Teachers-header{
+    background: #6DAFA7;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 4px 0 4px 0;
+    margin-bottom: 41px;
+}
+.Teachers-list{
+    overflow-y: scroll;
+    height: 220px;
+    width: 490px;
+}
+.Item{
+    border: 1px solid #22272E;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align-last: left;
+    padding: 14px 20px 13px;
+    margin-bottom: 7px;
+    margin-right: 10px;
+}
+#Not-avaible{
+    background: #D9D9D9;
+    display: flex;
+}
+.none{
+    font-weight: 500;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #6DAFA7;
+    border-radius: 25px;
+    padding: 5px 12px 4px 11px;
+    margin-right: 0;
+}
+.Down{
+    margin-top: 31px;
+}
+.Down-text{
+    font-weight: 700;
+    margin-bottom: 19px;
+    font-size: 20px;
+}
+.Buttons{
+    width: 471px;
+    margin: auto;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+.Cancel{
+    width: 229.26px;
+    background: #FFFFFF;
+    border: 2px solid #6DAFA7;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000000;
+    padding: 15px;
+}
+.Confirm{
+    width: 229.44px;
+    background: #6DAFA7;
+    border-radius: 50px;
+    border: #6DAFA7;
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFFFFF;
+}
+.no-item{
+    margin-left: 0;
+}
