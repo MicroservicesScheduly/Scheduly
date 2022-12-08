@@ -11,5 +11,6 @@ namespace DisciplineService.Models
         public int Hours { get; set; }
         public bool IsSelective { get; set; }
         public int? CatalogId { get; set; }
+        public int? UniversityId { get; set; }
     }
 }

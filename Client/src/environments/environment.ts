@@ -19,7 +19,7 @@ export const environment = {
   facultyDisciplineUrl: 'api/disciplines/facultyDisciplines',
   facultyTeacherUrl: 'api/teachers/facultyTeachers',
   whiteListedDomains: [''],
-  urlPrefix: 'http://192.168.59.122/',
+  urlPrefix: 'http://192.168.59.123/',
 };
 
 export const HEADERS = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TeacherService.DbAccess;
@@ -11,9 +12,10 @@ using TeacherService.DbAccess;
 namespace TeacherService.Migrations
 {
     [DbContext(typeof(TeacherDbContext))]
-    partial class TeacherDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221208144917_AddUniversityId")]
+    partial class AddUniversityId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -11,6 +11,7 @@ namespace DisciplineService.Entities
         public int Hours { get; set; }
         public bool IsSelective { get; set; }
         public int? CatalogId { get; set; }
+        public int? UniversityId { get; set; }
 
         public ICollection<CatalogDiscipline> CatalogDisciplines { get; set; }
         public ICollection<SpecialtyDiscipline> SpecialtyDisciplines { get; set; }

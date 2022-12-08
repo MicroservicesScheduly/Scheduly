@@ -6,6 +6,7 @@
         public int Course { get; set; }
         public int FacultyId { get; set; }
         public int SpecialtyId { get; set; }
+        public int? UniversityId { get; set; }
 
     }
 }
