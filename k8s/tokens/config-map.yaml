@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-config
+data:
+  PORT: "8080"
+  POSTGRES_DB: usersservice
+  DB_HOST: users-postgres
+  DB_DIALECT: postgres
+  DB_PORT: "5432"

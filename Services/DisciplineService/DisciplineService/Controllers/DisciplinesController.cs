@@ -1,5 +1,6 @@
 ﻿using DisciplineService.Interfaces;
 using DisciplineService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace DisciplineService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class DisciplinesController : ControllerBase
     {
         private readonly IDisciplineService _disciplineService;
