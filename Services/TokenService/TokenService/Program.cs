@@ -42,16 +42,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(build =>
-    {
-        build.AllowAnyOrigin().
-        AllowAnyMethod().
-        AllowAnyHeader();
-    });
-});
-
 builder.Services.AddControllers().AddFluentValidation(fv =>
 {
     fv.RegisterValidatorsFromAssemblyContaining<RegistrationModelValidator>(lifetime: ServiceLifetime.Singleton);
@@ -69,6 +59,8 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddTransient<IUserService, UserService>();
+
+builder.Services.AddCors();
 
 var forumConnectionString = builder.Configuration.GetConnectionString("UsersDb");
 builder.Services.AddDbContext<UserDbContext>(x => x.UseNpgsql(forumConnectionString));
@@ -98,6 +90,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 

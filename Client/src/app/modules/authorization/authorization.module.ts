@@ -9,7 +9,12 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { SigninComponent } from './components/signin/signin.component';
 import { AuthorizationPageComponent } from './authorization-page/authorization-page.component';
 import { AuthorizationRoutingModule } from './authorization-routing.module';
+import { ACCESS_TOKEN, UsersService } from 'src/app/shared/services/users.service';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 
+export function getToken() {
+  return localStorage.getItem(ACCESS_TOKEN);
+}
 @NgModule({
   declarations: [
     AuthorizationPageComponent,
@@ -23,7 +28,18 @@ import { AuthorizationRoutingModule } from './authorization-routing.module';
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,
+
+
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: getToken,
+        allowedDomains:["localhost:4200", "http://192.168.59.129", "http://192.168.59.129/"]
+      }
+    })
   ],
-  providers: [],
+
+  providers: [UsersService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
 })
 export class AuthorizationModule { }

@@ -134,11 +134,11 @@ namespace TokenService.Controllers
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(UserModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
-        public async Task<ActionResult<UserModel>> Register([FromBody] RegistrationModel model)
+        public async Task<ActionResult<int>> Register([FromBody] RegistrationModel model)
         {
             var user = await _userAccountService.RegisterAsync(model);
 
-            return CreatedAtAction(nameof(Register), new { id = user.Id, }, user);
+            return CreatedAtAction(nameof(Register), user.Id);
         }
 
         /// <summary>

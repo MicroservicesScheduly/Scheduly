@@ -18,6 +18,7 @@ const routes: Routes = [
           {
             path: 'faculties',
             component: FacultyComponent,
+            //canActivate: [AuthGuard]
           },
           {
             path: 'teachers',
