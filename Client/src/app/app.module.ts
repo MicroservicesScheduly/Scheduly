@@ -11,7 +11,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { SharedModule } from './shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatOptionModule } from '@angular/material/core';
-import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ACCESS_TOKEN } from './shared/services/users.service';
 import { TokenInterceptorService } from './shared/services/http-intrecepter.service';
 
@@ -39,7 +39,9 @@ export function getToken() {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true,
-  },],
+  },
+  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+  JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

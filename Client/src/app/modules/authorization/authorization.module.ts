@@ -28,8 +28,6 @@ export function getToken() {
     FormsModule,
     ReactiveFormsModule,
     HeaderModule,
-
-
     JwtModule.forRoot({
       config:{
         tokenGetter: getToken,
