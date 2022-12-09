@@ -45,6 +45,14 @@ export class UsersService {
       return this.user;
     }
 
+    getToken(): string {
+      var token = localStorage.getItem(ACCESS_TOKEN);
+      if(token === null){
+        return ''
+      }
+      return token;
+    }
+
     getUserRole(): string{
       return this.user.role;
     }
