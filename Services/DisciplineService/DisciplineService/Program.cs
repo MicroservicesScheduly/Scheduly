@@ -45,7 +45,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IDisciplineRepository, DisciplineDbRepository>();
 builder.Services.AddHttpClient<IDisciplineService, DisciplineService.Services.DisciplineService>(a =>
 {
-    a.BaseAddress = new Uri("http://192.168.59.127/api/specialties/");
+    a.BaseAddress = new Uri("http://192.168.59.129/api/specialties/");
 })
 .AddTransientHttpErrorPolicy(b => b.Or<TimeoutRejectedException>().WaitAndRetryAsync(
     5,
@@ -79,11 +79,6 @@ var mapperConfig = new MapperConfiguration(mc =>
 
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);
-
-//builder.Services.AddHttpClient<DisciplineService.Services.DisciplineService>(a =>
-//{
-//    a.BaseAddress = new Uri("http://192.168.59.119/api/specialties");
-//});
 
 var app = builder.Build();
 app.ApplyMigrations();

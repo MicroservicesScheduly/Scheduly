@@ -1,21 +1,23 @@
 using Emailer.Interfaces;
 using Emailer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Emailer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    [Authorize]
+    public class EmailsController : ControllerBase
     {
         private readonly IEmailSender _emailSender;
 
-        public WeatherForecastController(IEmailSender emailSender)
+        public EmailsController(IEmailSender emailSender)
         {
             _emailSender = emailSender;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public async Task Get()
         {
             var message = new Message(new string[] { "vzlobinkov@gmail.com" }, "Test email", "This is the content from our email.");

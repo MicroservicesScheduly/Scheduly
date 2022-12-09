@@ -40,9 +40,11 @@
 
 //app.Run();
 
+using Emailer;
 using Emailer.Interfaces;
 using Emailer.Models;
 using Emailer.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 
 public class Startup
@@ -70,6 +72,30 @@ public class Startup
             o.MemoryBufferThreshold = int.MaxValue;
         });
 
+        var authOptions = Configuration.GetSection("Auth");
+        services.Configure<JwtOptions>(authOptions);
+        var auth = authOptions.Get<JwtOptions>();
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            {
+
+                ValidateIssuer = true,
+                ValidIssuer = auth.Issuer,
+
+                ValidateAudience = false,
+                ValidAudience = auth.Audience,
+
+                ValidateLifetime = true,
+
+                IssuerSigningKey = auth.GetSymmetricSecurityKey(),
+                ValidateIssuerSigningKey = true,
+
+            };
+        });
+
         services.AddControllers();
 
         services.AddEndpointsApiExplorer();
@@ -88,6 +114,8 @@ public class Startup
         app.UseHttpsRedirection();
 
         app.UseRouting();
+
+        app.UseAuthentication();
 
         app.UseAuthorization();
 
