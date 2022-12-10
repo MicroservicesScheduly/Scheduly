@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   redirectToSchedule() {
-    this.router.navigateByUrl("schedule");
+    this.router.navigateByUrl("schedule/group");
   }
 
   changeEI(newEI: any) {

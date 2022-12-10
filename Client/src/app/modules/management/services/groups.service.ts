@@ -18,6 +18,10 @@ export class GroupsService {
       return this._http.get<IGroup>(environment.urlPrefix + environment.groupsUrl + `/${id}`);
     }
 
+    getByEIId(id: number): Observable<IGroup[]> {
+      return this._http.get<IGroup[]>(environment.urlPrefix + environment.groupsUrl + `/byEI/${id}`);
+    }
+
     create(group: ISaveGroup) {
       return this._http.post<IGroup>(environment.urlPrefix + environment.groupsUrl, group);
     } 

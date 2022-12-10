@@ -18,6 +18,10 @@ export class TeachersService {
       return this._http.get<ITeacher>(environment.urlPrefix + environment.teachersUrl + `/${id}`);
     }
 
+    getByEIId(id: number): Observable<ITeacher[]> {
+      return this._http.get<ITeacher[]>(environment.urlPrefix + environment.teachersUrl + `/byEI/${id}`);
+    }
+
     create(teacher: ISaveTeacher) {
       return this._http.post<ITeacher>(environment.urlPrefix + environment.teachersUrl, teacher);
     } 

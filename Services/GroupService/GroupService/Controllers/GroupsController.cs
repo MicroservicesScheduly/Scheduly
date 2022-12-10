@@ -33,6 +33,14 @@ namespace GroupService.Controllers
             return Ok(group);
         }
 
+        [HttpGet("byEI/{id}")]
+        public async Task<ActionResult<IEnumerable<GroupModel>>> GetByEI(int id)
+        {
+            var groups = await _groupService.GetAllAsync();
+
+            return Ok(groups.Where(p => p.UniversityId == id));
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

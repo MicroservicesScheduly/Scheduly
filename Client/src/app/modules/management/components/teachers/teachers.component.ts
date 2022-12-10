@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 import { IDiscipline } from '../../models/discipline.model';
 import { ITeacher } from '../../models/teacher.model';
@@ -22,12 +23,13 @@ export class TeachersComponent implements OnInit {
 
   constructor(private teachersService: TeachersService, private router: Router,
     private windowService: WindowService, private disciplineTeachersService: DisciplineTeacherService,
-    private disciplineService: DisciplinesService, private notificationService: NotificationService) { }
+    private disciplineService: DisciplinesService, private notificationService: NotificationService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.teachersService.get().subscribe(res => this.teachers = res);
+    this.teachersService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.teachers = res);
 
-    this.teachersService.get().subscribe(res => this.allTeachers = res);
+    this.teachersService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.allTeachers = res);
 
     var teacherId: number;
 

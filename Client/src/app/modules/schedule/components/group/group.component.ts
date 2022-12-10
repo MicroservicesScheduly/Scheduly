@@ -11,9 +11,13 @@ export class GroupComponent implements OnInit {
 
   groups: IGroup[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  redirectToGroupManagement() {
+    this.router.navigateByUrl("management-edit/create-group");
   }
 
 }

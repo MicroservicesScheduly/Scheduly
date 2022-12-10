@@ -4,6 +4,7 @@ import { IGroup } from 'src/app/modules/management/models/group.model';
 import { FacultyService } from 'src/app/modules/management/services/faculty.service';
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-groups-management',
@@ -15,10 +16,11 @@ export class GroupsManagementComponent implements OnInit {
   groups: IGroup[] = [];
 
   constructor(private router: Router, private groupService: GroupsService,
-    private facultyService: FacultyService, private specialtyService: SpecialtiesService) { }
+    private facultyService: FacultyService, private specialtyService: SpecialtiesService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.groupService.get().subscribe(res => {
+    this.groupService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
       res.forEach(element => {
         this.facultyService.getById(element.facultyId).subscribe(res => element.faculty = res);
         this.specialtyService.getById(element.specialtyId).subscribe(res => element.specialty = res);
