@@ -8,11 +8,13 @@ import { HeaderModule } from 'src/app/shared/header/header.module';
 import { GroupComponent } from './components/group/group.component';
 import { SchedulePageComponent } from './schedule-page/schedule-page.component';
 import { ScheduleRoutingModule } from './schedule-routing.module';
+import { ScheduleItemComponent } from './schedule-item/schedule-item.component';
 
 @NgModule({
   declarations: [
     SchedulePageComponent,
     GroupComponent,
+    ScheduleItemComponent
   ],
   imports: [
     CommonModule,
