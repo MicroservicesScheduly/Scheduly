@@ -16,6 +16,7 @@ import { DisciplineTeacherService } from 'src/app/modules/management/services/di
 import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
 import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { TeachersService } from 'src/app/modules/management/services/teachers.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 import { ChangeCatalogWindowComponent } from 'src/app/shared/windows/change-catalog-window/change-catalog-window.component';
 import { getCatalogs } from '../../catalogs.helper';
@@ -59,15 +60,16 @@ export class CreateDisciplinesComponent implements OnInit {
   constructor(private router: Router, private windowService: WindowService,
     private disciplineService: DisciplinesService, private notificationService: NotificationService,
     private catalogsService: CatalogsService, private catalogDisciplineService: CatalogDisciplineService,
-    private teacherService: TeachersService, private disciplineTeacherService: DisciplineTeacherService) { }
+    private teacherService: TeachersService, private disciplineTeacherService: DisciplineTeacherService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
     if (!this.discipline.creditType) {
       this.discipline.creditType = 0;
     }
 
-    this.catalogsService.get().subscribe(res => this.catalogs = res);
-    this.teacherService.get().subscribe(res => this.allTeachers = res);
+    this.catalogsService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.catalogs = res);
+    this.teacherService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.allTeachers = res);
 
     this.disciplineTeacherService.getLecturersByDisciplineId(this.discipline.id).subscribe(res =>
       this.lecturers = res);
@@ -198,7 +200,7 @@ export class CreateDisciplinesComponent implements OnInit {
       message: 'Enter name for the new catalog'
     });
 
-    this.catalogsService.get().subscribe(res => this.catalogs = res);
+    this.catalogsService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.catalogs = res);
   }
 
   changeCatalog() {

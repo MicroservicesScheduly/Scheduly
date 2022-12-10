@@ -7,6 +7,7 @@ import { ISaveSpecialtyDiscipline, ISpecialtyDiscipline } from 'src/app/modules/
 import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
 import { SpecialtyDisciplineService } from 'src/app/modules/management/services/specialty-discipline.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 
 @Component({
@@ -25,10 +26,11 @@ export class CreateSpecialtiesComponent implements OnInit {
   notfirst: boolean = false;
 
   constructor(private router: Router, private specialtyService: SpecialtiesService,
-    private disciplineService: DisciplinesService, private specialtyDisciplineService: SpecialtyDisciplineService) { }
+    private disciplineService: DisciplinesService, private specialtyDisciplineService: SpecialtyDisciplineService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.disciplineService.get().subscribe(res => this.disciplines = res);
+    this.disciplineService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.disciplines = res);
   }
 
   submit(form: NgForm) {

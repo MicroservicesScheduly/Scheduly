@@ -7,6 +7,7 @@ import { ISpecialty } from 'src/app/modules/management/models/specialty.model';
 import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
 import { FacultyService } from 'src/app/modules/management/services/faculty.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 
 @Component({
@@ -26,14 +27,14 @@ export class CreateFacultiesComponent implements OnInit {
 
   constructor(private router: Router, private facultyService: FacultyService,
     private route: ActivatedRoute, private specialtyService: SpecialtiesService,
-    private facultySpecialtyService: FacultySpecialtyService) { }
+    private facultySpecialtyService: FacultySpecialtyService, private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
    }); 
 
-   this.specialtyService.get().subscribe(res => this.specialties = res);
+   this.specialtyService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.specialties = res);
   }
 
   submit(form: NgForm) {

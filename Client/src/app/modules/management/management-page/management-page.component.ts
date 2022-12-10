@@ -26,12 +26,12 @@ export class ManagementPageComponent implements OnInit {
   constructor(private router: Router, private teachersService: TeachersService,
     private disciplinesService: DisciplinesService, private specialtiesService: SpecialtiesService,
     private notificationService: NotificationService,
-    private windowService: WindowService) { }
+    private windowService: WindowService, private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.teachersService.get().subscribe(res => this.teachers = res);
-    this.disciplinesService.get().subscribe(res => this.disciplines = res);
-    this.specialtiesService.get().subscribe(res => this.specialties = res);
+    this.teachersService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.teachers = res);
+    this.disciplinesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.disciplines = res);
+    this.specialtiesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.specialties = res);
 
     switch (this.router.url)
     {
