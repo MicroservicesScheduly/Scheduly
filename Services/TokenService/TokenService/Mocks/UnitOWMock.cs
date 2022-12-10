@@ -9,6 +9,7 @@ namespace TokenService.Mocks
         public IRoleRepository RoleRepository => throw new NotImplementedException();
 
         public IUserRepository UserRepository => throw new NotImplementedException();
+        public IEIRepository EIRepository => throw new NotImplementedException();
 
         public Task SaveAsync()
         {

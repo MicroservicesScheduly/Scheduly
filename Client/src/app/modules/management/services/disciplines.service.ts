@@ -14,6 +14,10 @@ export class DisciplinesService {
       return this._http.get<IDiscipline[]>(environment.urlPrefix + environment.disciplinesUrl);
     }
 
+    getByEIId(id: number): Observable<IDiscipline[]> {
+      return this._http.get<IDiscipline[]>(environment.urlPrefix + environment.disciplinesUrl + `/byEI/${id}`);
+    }
+
     getById(id: number): Observable<IDiscipline> {
       return this._http.get<IDiscipline>(environment.urlPrefix + environment.disciplinesUrl + `/${id}`);
     }

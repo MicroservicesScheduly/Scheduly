@@ -1,3 +1,5 @@
+import { EI } from "./EI.model";
+
 export class User {
     id: number;
     email: string;
@@ -5,12 +7,9 @@ export class User {
     credentialsId?: number;
     roleId?: number;
     roleName?: string;
-    /*educationalInstitution: string='';
-    eduInstId: number=0;*/
+    eis?: EI[];
     constructor(id:number, email: string, nickname: string){
         this.id = id;
         this.email = email
-        /*this.educationalInstitution = educationalInstitution;
-        this.eduInstId = eduInstId;*/
     }
 }

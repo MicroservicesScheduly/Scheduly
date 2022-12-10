@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Faculty } from '../models/faculty.model';
+import { Faculty, ISaveFaculty } from '../models/faculty.model';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment} from 'src/environments/environment';
 
@@ -19,7 +19,11 @@ export class FacultyService {
       return this._http.get<Faculty>(environment.urlPrefix + environment.facultyUrl + `/${id}`);
     }
 
-    create(faculty: Faculty) {
+    getByEIId(id: number): Observable<Faculty[]> {
+      return this._http.get<Faculty[]>(environment.urlPrefix + environment.facultyUrl + `/byEI/${id}`);
+    }
+
+    create(faculty: ISaveFaculty) {
       return this._http.post<Faculty>(environment.urlPrefix + environment.facultyUrl, faculty);
     } 
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 import { CreditType } from '../../enums/credit-type.model';
 import { ICatalog } from '../../models/catalog.model';
@@ -43,10 +44,11 @@ export class DisciplinesComponent implements OnInit {
   constructor(private disciplinesService: DisciplinesService, private catalogsService: CatalogsService,
     private catalogDisciplineService: CatalogDisciplineService, private router: Router,
     private disciplineTeacherService: DisciplineTeacherService, private teacherService: TeachersService,
-    private windowService: WindowService, private notificationService: NotificationService) { }
+    private windowService: WindowService, private notificationService: NotificationService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.disciplinesService.get().subscribe(res => this.allDisciplines = res);
+    this.disciplinesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.allDisciplines = res);
 
     /*this.disciplinesService.get().subscribe((res) => {
       this.disciplines = res;
@@ -55,9 +57,9 @@ export class DisciplinesComponent implements OnInit {
       });
     });*/
 
-    this.disciplinesService.get().subscribe(res => this.disciplines = res);
+    this.disciplinesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.disciplines = res);
   
-    this.catalogsService.get().subscribe(res => this.catalogs = res);
+    this.catalogsService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.catalogs = res);
   }
 
   redirectToEditDiscipline(id: number) {
@@ -101,7 +103,7 @@ export class DisciplinesComponent implements OnInit {
         res => this.disciplines = res
       );
     } else if (showSelective && showMandatory) {
-      this.disciplinesService.get().subscribe(
+      this.disciplinesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(
         res => this.disciplines = res
       );
     } else {

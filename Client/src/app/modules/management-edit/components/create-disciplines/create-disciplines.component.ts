@@ -80,7 +80,8 @@ export class CreateDisciplinesComponent implements OnInit {
   submit(form: NgForm) {
     var discipline: ISaveDiscipline = { name: form.value["name"], description: form.value["description"],
         course: form.value["course"], creditType: form.value["creditType"] == "Test" ? 0 : 1, hours: form.value["hours"], 
-        isSelective: form.value["isSelective"], catalogId: this.selectedCatalogId ? this.selectedCatalogId : undefined };
+        isSelective: form.value["isSelective"], catalogId: this.selectedCatalogId ? this.selectedCatalogId : undefined,
+        universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
 
     /*this.disciplineService.create(discipline)
     .subscribe((res) => {

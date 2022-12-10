@@ -11,6 +11,7 @@ import { Registration } from '../models/registration.model';
 import { User } from '../models/user.model';
 import { Role } from '../models/role.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { EI, SaveEI, SaveUserEI } from '../models/EI.model';
 
 export const ACCESS_TOKEN = 'jwt acces token';
 
@@ -35,7 +36,11 @@ export class UsersService {
         Email: email, Password: password
       }, this.options).pipe(
         tap(token => {
+          console.log(token);
           localStorage.setItem(ACCESS_TOKEN, token.access_token);
+          localStorage.setItem('id', token.id);
+          localStorage.setItem('userEIs', JSON.stringify(token.eis));
+          localStorage.setItem('selectedEI', JSON.stringify(token.eis[0].id));
           this.user = this.getUser(token.access_token)
         })
       )
@@ -59,8 +64,12 @@ export class UsersService {
 
     isAuthenticated(): boolean{
       var token = localStorage.getItem(ACCESS_TOKEN);
+      
+      /*if(token !== null && !this.jwtHelper.isTokenExpired(token)){
+        return true;
+      }*/
 
-      if(token !== null && !this.jwtHelper.isTokenExpired(token)){
+      if(token !== null){
         return true;
       }
       this.user = new UserToken(0,'','');
@@ -69,6 +78,14 @@ export class UsersService {
 
     register(registerModel: Registration): Observable<number>{
       return this.http.post<number>(environment.urlPrefix + environment.usersUrl, registerModel);
+    }
+
+    createEI(ei: SaveEI): Observable<EI> {
+      return this.http.post<EI>(environment.urlPrefix + environment.usersUrl + '/ei', ei);
+    }
+
+    createUserEI(ei: SaveUserEI){
+      return this.http.post(environment.urlPrefix + environment.usersUrl + '/userEi', ei);
     }
 
     getById(id: number): Observable<User>{
@@ -99,6 +116,10 @@ export class UsersService {
       localStorage.removeItem(ACCESS_TOKEN);
       this.user = this.getUser(localStorage.getItem(ACCESS_TOKEN)!);
       this.router.navigate(['/']);
+    }
+
+    getCurrentEIId(): number {
+      return JSON.parse(localStorage.getItem('selectedEI') as string);
     }
 
     private getUser(token:string): UserToken{

@@ -35,6 +35,14 @@ namespace SimpleService.Controllers
             return Ok(faculty);
         }
 
+        [HttpGet("byEI/{id}")]
+        public async Task<ActionResult<IEnumerable<FacultyModel>>> GetByEI(int id)
+        {
+            var faculties = await _facultyService.GetAllAsync();
+
+            return Ok(faculties.Where(p => p.UniversityId == id));
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

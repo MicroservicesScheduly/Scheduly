@@ -8,8 +8,9 @@ namespace TokenService.DbAccess
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-
         public DbSet<Credentials> Credentials { get; set; }
+        public DbSet<EI> EIs { get; set; }
+        public DbSet<UserEI> UserEIs { get; set; }
 
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
@@ -37,6 +38,9 @@ namespace TokenService.DbAccess
 
             modelBuilder.Entity<Role>()
                 .Property(r => r.RoleName).HasMaxLength(50).IsRequired();
+
+            modelBuilder.Entity<EI>()
+                .Property(r => r.Name).IsRequired();
             #endregion
 
             modelBuilder.Entity<Role>().HasData(new Role { Id = 1, RoleName = "user" });

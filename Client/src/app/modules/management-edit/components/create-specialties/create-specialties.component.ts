@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IDiscipline } from 'src/app/modules/management/models/discipline.model';
-import { ISpecialty } from 'src/app/modules/management/models/specialty.model';
+import { ISaveSpecialty, ISpecialty } from 'src/app/modules/management/models/specialty.model';
 import { ISaveSpecialtyDiscipline, ISpecialtyDiscipline } from 'src/app/modules/management/models/specialtyDiscipline.model';
 import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
@@ -32,7 +32,10 @@ export class CreateSpecialtiesComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    this.specialtyService.create(form.value)
+    var specialty: ISaveSpecialty = { cipher: form.value["cipher"], description: form.value["description"],
+    name: form.value["name"], universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+
+    this.specialtyService.create(specialty)
     .subscribe((res) => {
       this.redirectToManagement();
       this.semestersDisciplines.forEach(element => {

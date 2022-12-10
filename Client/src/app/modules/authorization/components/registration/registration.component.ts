@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concatMap } from 'rxjs';
+import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { Registration } from 'src/app/shared/models/registration.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 
@@ -12,9 +13,11 @@ import { UsersService } from 'src/app/shared/services/users.service';
 export class RegistrationComponent implements OnInit {
   registrationModel: Registration = new Registration('','','');
 
+  eiName: string;
+
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private usersService: UsersService) { }
+    private usersService: UsersService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -22,12 +25,16 @@ export class RegistrationComponent implements OnInit {
   register(){
     this.registrationModel.PasswordRepeat = this.registrationModel.Password;
 
-    console.log(this.registrationModel);
-
     this.usersService.register(this.registrationModel)
-    .subscribe(
-      result => { this.router.navigate(['/'])}
-    );
+    .subscribe(res1 => {
+      this.usersService.createEI({ name: this.eiName}).subscribe(res2 => {
+        this.usersService.createUserEI({ eiId: res2.id, userId: res1,
+          isAccepted: true, isAdmin: true}).subscribe(res => {
+            this.notificationService.showSuccessMessage("You are successfully registered!");
+            this.router.navigate(['authorization/sign-in']);
+          });
+      })
+    });
   }
 
   isAuthenticated(){

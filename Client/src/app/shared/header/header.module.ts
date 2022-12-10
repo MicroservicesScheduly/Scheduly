@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header-component/header.component';
 import { HeaderRoutingModule } from './header-routing.module';
 
@@ -10,6 +11,7 @@ import { HeaderRoutingModule } from './header-routing.module';
   imports: [
     HeaderRoutingModule,
     CommonModule,
+    FormsModule     
   ],
   exports: [
     HeaderComponent,

@@ -26,24 +26,6 @@ import { HeaderComponent } from 'src/app/shared/header/header-component/header.c
     HttpClientModule,
     HeaderModule,
   ],
-  /*providers: [
-    {
-      provide: FACULTIES_API_URL,
-      useValue: environment.facultyUrl
-    },
-    {
-      provide: DISCIPLINES_API_URL,
-      useValue: environment.disciplinesUrl
-    },
-    {
-      provide: TEACHERS_API_URL,
-      useValue: environment.teachersUrl
-    },
-    {
-      provide: SPECIALTIES_API_URL,
-      useValue: environment.specialtiesUrl
-    }
-  ],*/
   providers: [],
 })
 export class ManagementModule { }

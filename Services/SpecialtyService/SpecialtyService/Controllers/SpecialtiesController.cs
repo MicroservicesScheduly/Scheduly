@@ -38,6 +38,14 @@ namespace SimpleService.Controllers
             return Ok(specialty);
         }
 
+        [HttpGet("byEI/{id}")]
+        public async Task<ActionResult<IEnumerable<SpecialtyModel>>> GetByEI(int id)
+        {
+            var faculties = await _specialtyService.GetAllAsync();
+
+            return Ok(faculties.Where(p => p.UniversityId == id));
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -63,7 +71,7 @@ namespace SimpleService.Controllers
         }
 
         /* ------- faculty specialties ------- */
-
+        [AllowAnonymous]
         [HttpGet("facultySpecialties")]
         public async Task<ActionResult<IEnumerable<FacultySpecialtyModel>>> GetAllFacultySpecialtiesAsync()
         {
@@ -72,6 +80,7 @@ namespace SimpleService.Controllers
             return Ok(facultySpecialties);
         }
 
+        [AllowAnonymous]
         [HttpGet("facultySpecialties/{id}")]
         public async Task<ActionResult<IEnumerable<SpecialtyModel>>> GetSpecialtiesByFacultyIdAsync(int id)
         {
@@ -80,6 +89,7 @@ namespace SimpleService.Controllers
             return Ok(facultySpecialties);
         }
 
+        [AllowAnonymous]
         [HttpPost("facultySpecialties")]
         public async Task<ActionResult> AddFacultySpecialty(FacultySpecialtyModel model)
         {
@@ -88,6 +98,7 @@ namespace SimpleService.Controllers
             return CreatedAtAction(nameof(Add), new { id = created.Id }, created);
         }
 
+        [AllowAnonymous]
         [HttpDelete("facultySpecialties/{id}")]
         public async Task<ActionResult> DeleteFacultySpecialty(int id)
         {

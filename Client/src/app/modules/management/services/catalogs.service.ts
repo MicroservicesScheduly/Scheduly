@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ICatalog } from '../models/catalog.model';
+import { ICatalog, ISaveCatalog } from '../models/catalog.model';
 import { IDiscipline } from '../models/discipline.model';
 
 @Injectable({
@@ -15,7 +15,11 @@ export class CatalogsService {
       return this._http.get<ICatalog[]>(environment.urlPrefix + environment.catalogsUrl);
     }
 
-    create(catalog: ICatalog) {
+    getByEIId(id: number): Observable<ICatalog[]> {
+      return this._http.get<ICatalog[]>(environment.urlPrefix + environment.catalogsUrl + `/byEI/${id}`);
+    }
+
+    create(catalog: ISaveCatalog) {
       return this._http.post<ICatalog>(environment.urlPrefix + environment.catalogsUrl, catalog);
     } 
 

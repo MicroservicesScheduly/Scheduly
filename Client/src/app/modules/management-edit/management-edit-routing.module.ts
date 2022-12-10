@@ -11,11 +11,13 @@ import { CreateSpecialtiesComponent } from './components/create-specialties/crea
 import { EditSpecialtiesComponent } from './edit-specialties/edit-specialties.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { EditGroupComponent } from './components/edit-group/edit-group.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: ManagementEditPageComponent,
+    canActivate: [AuthGuard],
     children: [
         {
           path: 'create-discipline',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Faculty } from 'src/app/modules/management/models/faculty.model';
+import { Faculty, ISaveFaculty } from 'src/app/modules/management/models/faculty.model';
 import { ISaveFacultySpecialty } from 'src/app/modules/management/models/facultySpecialty.model';
 import { ISpecialty } from 'src/app/modules/management/models/specialty.model';
 import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
@@ -37,7 +37,12 @@ export class CreateFacultiesComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    this.facultyService.create(form.value)
+    var faculty: ISaveFaculty = { description: form.value["description"], name: form.value["name"],
+    universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+
+    console.log(faculty);
+
+    this.facultyService.create(faculty)
     .subscribe((res) => {
       this.redirectToManagement();
       this.selectedSpecialties.forEach(element => {

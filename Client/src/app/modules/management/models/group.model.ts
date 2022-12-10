@@ -7,6 +7,7 @@ export interface IGroup {
     course: number;
     facultyId: number;
     specialtyId: number;
+    universityId: number;
     faculty?: Faculty;
     specialty?: ISpecialty;
 }
@@ -16,4 +17,5 @@ export interface ISaveGroup {
     course: number;
     facultyId: number;
     specialtyId: number;
+    universityId: number;
 }

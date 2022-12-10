@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ICatalog } from 'src/app/modules/management/models/catalog.model';
+import { ICatalog, ISaveCatalog } from 'src/app/modules/management/models/catalog.model';
 import { ITeacher } from 'src/app/modules/management/models/teacher.model';
 import { CatalogsService } from 'src/app/modules/management/services/catalogs.service';
 import { NotificationService } from 'src/app/modules/management/services/notification.service';
@@ -36,7 +36,10 @@ export class AddCatalogWindowComponent implements OnInit {
   }
 
   addNewCatalog(form: NgForm) {
-    this.catalogsService.create(form.value)
+    var catalog: ISaveCatalog = { name: form.value["name"],
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+
+    this.catalogsService.create(catalog)
     .subscribe(() => {
       this.dialogRef.close();
       this.notificationService.showSuccessMessage("New catalog was added successfully");

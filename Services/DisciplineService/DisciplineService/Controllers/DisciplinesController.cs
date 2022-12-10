@@ -33,6 +33,14 @@ namespace DisciplineService.Controllers
             return Ok(disciplines);
         }
 
+        [HttpGet("byEI/{id}")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetByEI(int id)
+        {
+            var disciplines = await _disciplineService.GetAllAsync();
+
+            return Ok(disciplines.Where(p => p.UniversityId == id));
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<DisciplineModel>> Get(int id)
         {
@@ -99,6 +107,14 @@ namespace DisciplineService.Controllers
             return Ok(catalog);
         }
 
+        [HttpGet("catalogs/byEI/{id}")]
+        public async Task<ActionResult<IEnumerable<CatalogModel>>> GetCatalogsByEI(int id)
+        {
+            var catalogs = await _catalogService.GetAllAsync();
+
+            return Ok(catalogs.Where(p => p.UniversityId == id));
+        }
+
         [HttpPost("catalogs")]
         public async Task<ActionResult> AddCatalog(CatalogModel model)
         {
@@ -151,6 +167,7 @@ namespace DisciplineService.Controllers
 
         /* ------- specialty disciplines ------- */
 
+        [AllowAnonymous]
         [HttpGet("specialtyDisciplines")]
         public async Task<ActionResult<IEnumerable<SpecialtyDisciplineModel>>> GetAllSpecialtyDisciplinesAsync()
         {
@@ -159,6 +176,7 @@ namespace DisciplineService.Controllers
             return Ok(specialtyDisciplines);
         }
 
+        [AllowAnonymous]
         [HttpGet("specialtyDisciplines/{specialtyId}")]
         public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(int specialtyId)
         {
@@ -167,6 +185,7 @@ namespace DisciplineService.Controllers
             return Ok(specialtyDisciplines);
         }
 
+        [AllowAnonymous]
         [HttpGet("facultyDisciplines/{facultyId}")]
         public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesByFacultyIdAsync(int facultyId)
         {
@@ -175,6 +194,7 @@ namespace DisciplineService.Controllers
             return Ok(specialtyDisciplines);
         }
 
+        [AllowAnonymous]
         [HttpGet("specialtyDisciplines/{specialtyId}/{semesterId}")]
         public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(int specialtyId, int semester)
         {

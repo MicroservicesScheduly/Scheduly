@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TokenService.DbAccess;
@@ -11,9 +12,10 @@ using TokenService.DbAccess;
 namespace TokenService.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221209185317_AddEI")]
+    partial class AddEI
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,41 +117,15 @@ namespace TokenService.Migrations
                     b.Property<DateTime>("RegistrationTime")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("TokenService.Entities.UserEI", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EIId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("IsAccepted")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("boolean");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EIId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserEIs");
                 });
 
             modelBuilder.Entity("TokenService.Entities.Credentials", b =>
@@ -170,30 +146,6 @@ namespace TokenService.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TokenService.Entities.UserEI", b =>
-                {
-                    b.HasOne("TokenService.Entities.EI", "EI")
-                        .WithMany("UserEIs")
-                        .HasForeignKey("EIId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TokenService.Entities.User", "User")
-                        .WithMany("UserEIs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EI");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("TokenService.Entities.EI", b =>
-                {
-                    b.Navigation("UserEIs");
-                });
-
             modelBuilder.Entity("TokenService.Entities.Role", b =>
                 {
                     b.Navigation("Credentials");
@@ -203,8 +155,6 @@ namespace TokenService.Migrations
                 {
                     b.Navigation("Credentials")
                         .IsRequired();
-
-                    b.Navigation("UserEIs");
                 });
 #pragma warning restore 612, 618
         }

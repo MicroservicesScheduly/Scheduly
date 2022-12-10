@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ISpecialty } from '../models/specialty.model';
+import { ISaveSpecialty, ISpecialty } from '../models/specialty.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,11 @@ export class SpecialtiesService {
       return this._http.get<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl + `/${id}`);
     }
 
-    create(specialty: ISpecialty) {
+    getByEIId(id: number): Observable<ISpecialty[]> {
+      return this._http.get<ISpecialty[]>(environment.urlPrefix + environment.specialtiesUrl + `/byEI/${id}`);
+    }
+
+    create(specialty: ISaveSpecialty) {
       return this._http.post<ISpecialty>(environment.urlPrefix + environment.specialtiesUrl, specialty);
     } 
 

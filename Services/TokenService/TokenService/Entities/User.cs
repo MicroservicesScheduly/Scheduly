@@ -8,6 +8,6 @@ namespace TokenService.Entities
         public DateTime RegistrationTime { get; set; } = DateTime.Now;
         public int CredentialsId { get; set; }
         public Credentials Credentials { get; set; }
-        public int UniversityId { get; set; }
+        public ICollection<UserEI> UserEIs { get; set; }
     }
 }

@@ -8,6 +8,7 @@ export interface IDiscipline {
     creditType: number;
     hours: number;
     isSelective: boolean;
+    universityId: number;
     catalogId?: number;
     practicians?: number | undefined;
     lecturers?: number;
@@ -20,5 +21,6 @@ export interface ISaveDiscipline {
     creditType: number;
     hours: number;
     isSelective: boolean;
+    universityId: number;
     catalogId?: number;
 }

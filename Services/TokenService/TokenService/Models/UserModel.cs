@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using TokenService.Dtos;
+using TokenService.Entities;
 
 namespace TokenService.Models
 {
@@ -9,5 +11,6 @@ namespace TokenService.Models
         public int RoleId { get; set; }
         public string RoleName { get; set; }
         public DateTime RegistrationTime { get; set; }
+        public ICollection<EIModel> EIs { get; set; }
     }
 }

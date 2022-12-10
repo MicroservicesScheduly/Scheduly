@@ -5,12 +5,16 @@
     </div>
     <div class="nav-bar">
         <nav>
-        <a href="" class="">Management</a>
-        <a href="" class="">Schedule</a>
+        <a href="" class="" (click)="redirectToManagement()">Management</a>
+        <a href="" class="" (click)="redirectToSchedule()">Schedule</a>
         </nav>
     </div>
     <div class="avatar-container">
-        <h4>EI name</h4>
+        <select class="ei-select" name="selectedEIId" [(ngModel)]="selectedEIId" (change)="changeEI(ei.value)" #ei>
+            <option class="form-control centered"  *ngFor="let ei of eis" [value]="ei.id">
+                {{ ei.name }}
+            </option>
+        </select>
         <img class="logo" src="assets/Avatar.png" />
     </div>
 </header>

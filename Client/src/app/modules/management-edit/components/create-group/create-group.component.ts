@@ -41,8 +41,11 @@ export class CreateGroupComponent implements OnInit {
 
   submit(form: NgForm) {
     var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
-    specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId };
+    specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
+    universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
 
+    console.log(group);
+    
     this.groupService.create(group).subscribe(res => this.redirectToGroups());
 
     /*this.groupService.create(form.value)

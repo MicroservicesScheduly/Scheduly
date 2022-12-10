@@ -61,6 +61,8 @@ namespace TokenService.Repositories
             return await _userDbContext.Users
                 .Include(u => u.Credentials)
                 .ThenInclude(c => c.Role)
+                .Include(p => p.UserEIs)
+                .ThenInclude(m => m.EI)
                 .ToListAsync();
         }
 
@@ -74,6 +76,8 @@ namespace TokenService.Repositories
             return await _userDbContext.Users
                 .Include(u => u.Credentials)
                 .ThenInclude(c => c.Role)
+                .Include(p => p.UserEIs)
+                .ThenInclude(m => m.EI)
                 .FirstOrDefaultAsync(x => x.Email == email);
         }
 
@@ -87,6 +91,8 @@ namespace TokenService.Repositories
             return await _userDbContext.Users
                 .Include(u => u.Credentials)
                 .ThenInclude(c => c.Role)
+                .Include(p => p.UserEIs)
+                .ThenInclude(m => m.EI)
                 .FirstOrDefaultAsync(u => u.Id == id); ;
         }
 

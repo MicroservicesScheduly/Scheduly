@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ITeacher } from 'src/app/modules/management/models/teacher.model';
+import { ISaveTeacher, ITeacher } from 'src/app/modules/management/models/teacher.model';
 import { TeachersService } from 'src/app/modules/management/services/teachers.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 
@@ -28,7 +28,10 @@ export class CreateTeachersComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    this.teacherService.create(form.value)
+    var teacher: ISaveTeacher = { name: form.value["name"], surname: form.value["surname"],
+    patronymic: form.value["patronymic"], universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+
+    this.teacherService.create(teacher)
     .subscribe(() => {
       this.redirectToManagement();
     });

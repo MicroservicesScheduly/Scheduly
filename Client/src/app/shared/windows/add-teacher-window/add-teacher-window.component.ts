@@ -11,18 +11,13 @@ import { IDialogData } from '../../models/IDialogData.model';
 })
 export class AddTeacherWindowComponent implements OnInit {
 
-  lecturers: ITeacher[] = [{ id: 2, name: "Lecturer 2", surname: "", patronymic: ""}, { id: 3, name: "Lecturer 3", surname: "", patronymic: ""},
-   { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
+  lecturers: ITeacher[] = [];
 
-  practicians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
-  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""}];
+  practicians: ITeacher[] = [];
 
-  allLecturers: ITeacher[] = [{ id: 1, name: "Lecturer 1", surname: "", patronymic: ""}, { id: 2, name: "Lecturer 2", surname: "", patronymic: ""},
-  { id: 3, name: "Lecturer 3", surname: "", patronymic: ""}, { id: 4, name: "Lecturer 4", surname: "", patronymic: ""}];
+  allLecturers: ITeacher[] = [];
 
-  allPracticians: ITeacher[] = [{ id: 1, name: "Practician 1", surname: "", patronymic: ""}, { id: 2, name: "Practician 2", surname: "", patronymic: ""},
-  { id: 3, name: "Vadym", surname: "Koval", patronymic: "Yuriyovich"}, { id: 4, name: "Practician 4", surname: "", patronymic: ""},
-   { id: 5, name: "Practician 5", surname: "", patronymic: ""}];
+  allPracticians: ITeacher[] = [];
 
 
   availableLecturers: ITeacher[];

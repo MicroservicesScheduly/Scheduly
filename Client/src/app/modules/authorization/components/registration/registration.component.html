@@ -22,7 +22,7 @@
                         <label>EI* name</label>
                         <!--<input [(ngModel)]="registrationModel.EducationalInstitution" class="form-control" name="ei name" required
                         placeholder="Enter EI name"/>-->
-                        <input class="form-control" name="ei name" required
+                        <input [(ngModel)]="eiName" class="form-control" name="ei name" required
                         placeholder="Enter EI name"/>
                     </div>
                     <div class="form-group">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="buttons">
                     <div class="form-group sign-btn">
-                        <button class="sign-button" (click)="register()">Sign in</button>
+                        <button class="sign-button" (click)="register()">Register</button>
                     </div>
                 </div>
             </div>

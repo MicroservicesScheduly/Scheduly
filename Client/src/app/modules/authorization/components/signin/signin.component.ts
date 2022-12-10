@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { Login } from 'src/app/shared/models/login.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 
@@ -13,15 +14,18 @@ export class SigninComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private usersService: UsersService) { }
+    private usersService: UsersService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
   }
 
   login(){
+    console.log("login");
     this.usersService.login(this.loginModel.Email, this.loginModel.Password).subscribe(
-      result => {console.log(result); this.router.navigate(['/management/faculties'])}
-    )
+      result => {
+        this.notificationService.showSuccessMessage("You are successfully logged in!");
+        this.router.navigate(['/management/faculties']);
+      })
   }
 
   isAuthenticated(){
@@ -30,6 +34,7 @@ export class SigninComponent implements OnInit {
 
   logout(){
     this.usersService.logout();
+    this.router.navigate(['/authorization/sign-in']);
   }
   
   redirectToManagement() {

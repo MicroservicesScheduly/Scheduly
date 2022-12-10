@@ -13,6 +13,7 @@ namespace TokenService
         private IUserRepository _userRepository;
         private ICredentialsRepository _credentialsRepository;
         private IRoleRepository _roleRepository;
+        private IEIRepository _eiRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
@@ -25,10 +26,12 @@ namespace TokenService
             _userRepository = new UserRepository(userDbContext);
             _credentialsRepository = new CredentialsRepository(userDbContext);
             _roleRepository = new RoleRepository(userDbContext);
+            _eiRepository = new EIRepository(userDbContext);
         }
         public IUserRepository UserRepository { get => _userRepository; }
         public ICredentialsRepository CredentialsRepository { get => _credentialsRepository; }
         public IRoleRepository RoleRepository { get => _roleRepository; }
+        public IEIRepository EIRepository { get => _eiRepository; }
 
         /// <summary>
         /// Saves asynchronously.

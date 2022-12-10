@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateDisciplinesComponent } from 'src/app/modules/management-edit/components/create-disciplines/create-disciplines.component';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
 import { Faculty } from '../../models/faculty.model';
 import { FacultyService } from '../../services/faculty.service';
@@ -17,14 +18,15 @@ export class FacultyComponent implements OnInit {
   allFaculties: Faculty[] = [];
 
   constructor(private facultyService: FacultyService, private router: Router,
-    private windowService: WindowService, private notificationService: NotificationService) { }
+    private windowService: WindowService, private notificationService: NotificationService,
+    private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.facultyService.get().subscribe(res => {
+    this.facultyService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
       this.faculties = res;
     });
 
-    this.facultyService.get().subscribe(res => {
+    this.facultyService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
       this.allFaculties = res;
     });
   }
@@ -39,7 +41,6 @@ export class FacultyComponent implements OnInit {
   }
 
   getByName(event: Event, value: any) {
-    console.log(value);
     if (value == "") {
       this.faculties = this.allFaculties;
     } else if (this.allFaculties.some(p => p.name.toLowerCase().includes(value.toLowerCase()))) {

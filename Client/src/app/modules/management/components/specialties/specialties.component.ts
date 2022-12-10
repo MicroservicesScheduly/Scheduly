@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/shared/services/users.service';
 import { ISpecialty } from '../../models/specialty.model';
 import { NotificationService } from '../../services/notification.service';
 import { SpecialtiesService } from '../../services/specialties.service';
@@ -15,12 +16,12 @@ export class SpecialtiesComponent implements OnInit {
   allSpecialties: ISpecialty[] = [];
 
   constructor(private specialtiesService: SpecialtiesService, private router: Router,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService, private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.specialtiesService.get().subscribe(res => this.specialties = res);
+    this.specialtiesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.specialties = res);
 
-    this.specialtiesService.get().subscribe(res => this.allSpecialties = res);
+    this.specialtiesService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.allSpecialties = res);
   }
 
   redirectToEditSpecialty(id: number) {

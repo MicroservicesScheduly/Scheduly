@@ -55,10 +55,12 @@ ValidatorOptions.Global.LanguageManager.Enabled = false;
 builder.Services.AddTransient<ICredentialsRepository, CredentialsRepository>();
 builder.Services.AddTransient<IRoleRepository, RoleRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IEIRepository, EIRepository>();
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IEIService, EIService>();
 
 builder.Services.AddCors();
 

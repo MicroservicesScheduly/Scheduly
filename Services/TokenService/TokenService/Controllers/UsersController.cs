@@ -15,10 +15,12 @@ namespace TokenService.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userAccountService;
+        private readonly IEIService _eiService;
 
-        public UsersController(IUserService userAccountService)
+        public UsersController(IUserService userAccountService, IEIService eiService)
         {
             _userAccountService = userAccountService;
+            _eiService = eiService;
         }
 
         /// <summary>
@@ -40,7 +42,9 @@ namespace TokenService.Controllers
 
             var loginedId = await _userAccountService.GetIdByEmailAsync(model.Email);
 
-            return Ok(new { access_token = token, id = loginedId });
+            var user = await _userAccountService.GetByIdAsync(loginedId);
+
+            return Ok(new { access_token = token, id = loginedId, eis = user.EIs });
         }
 
         /// <summary>
@@ -139,6 +143,37 @@ namespace TokenService.Controllers
             var user = await _userAccountService.RegisterAsync(model);
 
             return CreatedAtAction(nameof(Register), user.Id);
+        }
+
+        /*[HttpGet("ei")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<EIModel>))]
+        public async Task<ActionResult<IEnumerable<EIModel>>> GetAllEIsAsync()
+        {
+            var eis = await _userAccountService.GetAllEisAsync();
+
+            return Ok(eis);
+        }*/
+
+        [HttpPost("ei")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(EIModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<EIModel>> AddEI([FromBody] EIModel model)
+        {
+            var ei = await _eiService.AddAsync(model);
+
+            return CreatedAtAction(nameof(Register), ei);
+        }
+
+        [HttpPost("userEi")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(EIModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<UserEIModel>> AddUserEI([FromBody] UserEIModel model)
+        {
+            var ei = await _eiService.AddUserEIAsync(model);
+
+            return CreatedAtAction(nameof(Register), ei);
         }
 
         /// <summary>
