@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schedule-postgres-config
+  labels:
+    app: schedule-postgres
+data:
+  POSTGRES_DB: scheduleservice

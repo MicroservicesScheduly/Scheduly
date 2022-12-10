@@ -60,7 +60,7 @@ namespace SimpleService.Controllers
         }
 
         /* schedule discipline */
-        [HttpGet]
+        [HttpGet("disciplines")]
         public async Task<ActionResult<IEnumerable<ScheduleDisciplineModel>>> GetDisciplines()
         {
             var scheduleDisciplines = await _scheduleService.GetAllDisciplinesAsync();
@@ -68,7 +68,7 @@ namespace SimpleService.Controllers
             return Ok(scheduleDisciplines);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("disciplines/{id}")]
         public async Task<ActionResult<ScheduleDisciplineModel>> GetDiscipline(int id)
         {
             var scheduleDiscipline = await _scheduleService.GetDisciplineByIdAsync(id);
@@ -76,7 +76,7 @@ namespace SimpleService.Controllers
             return Ok(scheduleDiscipline);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("disciplines/{id}")]
         public async Task<ActionResult> DeleteDiscipline(int id)
         {
             await _scheduleService.DeleteDisciplineByIdAsync(id);
@@ -84,7 +84,7 @@ namespace SimpleService.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("disciplines/{id}")]
         public async Task<ActionResult> UpdateDiscipline(int id, ScheduleDisciplineModel model)
         {
             await _scheduleService.UpdateDisciplineAsync(id, model);
@@ -92,7 +92,7 @@ namespace SimpleService.Controllers
             return NoContent();
         }
 
-        [HttpPost]
+        [HttpPost("disciplines")]
         public async Task<ActionResult> AddDiscipline(ScheduleDisciplineModel model)
         {
             var created = await _scheduleService.AddDisciplineAsync(model);

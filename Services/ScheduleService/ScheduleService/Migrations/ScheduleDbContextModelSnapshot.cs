@@ -65,9 +65,8 @@ namespace ScheduleService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("GroupId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

@@ -9,7 +9,7 @@ namespace Business.Models
 {
     public class ScheduleModel : BaseModel
     {
-        public string GroupId { get; set; }
-        public ICollection<ScheduleDisciplineModel> ScheduleDisciplines { get; set; }
+        public int GroupId { get; set; }
+        public ICollection<ScheduleDisciplineModel>? ScheduleDisciplines { get; set; }
     }
 }

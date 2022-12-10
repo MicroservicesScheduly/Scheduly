@@ -46,6 +46,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IScheduleRepository, ScheduleDbRepository>();
 builder.Services.AddTransient<IScheduleDisciplineRepository, ScheduleDisciplineDbRepository>();
 
+builder.Services.AddTransient<IScheduleService, Business.Service.ScheduleService>();
+
+
 builder.Services.AddCors();
 
 var scheduleConnectionString = builder.Configuration.GetConnectionString("ScheduleDb");

@@ -35,12 +35,12 @@ namespace FacultyService.Repositories
 
         public async Task<IEnumerable<Schedule>> GetAllAsync()
         {
-            return await _dbContext.Schedules.ToListAsync();
+            return await _dbContext.Schedules.Include(p => p.ScheduleDisciplines).ToListAsync();
         }
 
         public async Task<Schedule> GetByIdAsync(int id)
         {
-            return await _dbContext.Schedules.FirstOrDefaultAsync(x => x.Id == id);
+            return await _dbContext.Schedules.Include(p => p.ScheduleDisciplines).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task SaveAsync()

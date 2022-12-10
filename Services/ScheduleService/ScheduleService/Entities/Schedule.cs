@@ -9,8 +9,8 @@ namespace SimpleService.Entities
 {
     public class Schedule : BaseEntity
     {
-        public string GroupId { get; set; }
-        public ICollection<ScheduleDiscipline> ScheduleDisciplines { get; set; }
+        public int GroupId { get; set; }
+        public ICollection<ScheduleDiscipline>? ScheduleDisciplines { get; set; }
 
     }
 }
