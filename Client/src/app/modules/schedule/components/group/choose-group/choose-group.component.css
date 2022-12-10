@@ -1,4 +1,4 @@
-/*p{
+p{
     margin: 0;
 }
 .Page{
@@ -109,7 +109,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    text-align: center;
+    width: 400px;
 }
 
 .Semester_select select{
@@ -120,6 +120,11 @@
     font-weight: 500;
     font-size: 20px;
     color: #22272E;
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
 }
 
 .Week{
@@ -268,4 +273,4 @@ h5 {
 
 .h5-not-found {
     margin-top: -30px;
-}*/
+}

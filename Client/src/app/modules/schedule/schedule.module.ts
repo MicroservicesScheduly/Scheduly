@@ -8,13 +8,15 @@ import { HeaderModule } from 'src/app/shared/header/header.module';
 import { GroupComponent } from './components/group/group.component';
 import { SchedulePageComponent } from './schedule-page/schedule-page.component';
 import { ScheduleRoutingModule } from './schedule-routing.module';
-import { ScheduleItemComponent } from './schedule-item/schedule-item.component';
+import { ChooseGroupComponent } from './components/group/choose-group/choose-group.component';
+import { ChooseSemesterComponent } from './components/group/choose-semester/choose-semester.component';
 
 @NgModule({
   declarations: [
     SchedulePageComponent,
     GroupComponent,
-    ScheduleItemComponent
+    ChooseGroupComponent,
+    ChooseSemesterComponent
   ],
   imports: [
     CommonModule,

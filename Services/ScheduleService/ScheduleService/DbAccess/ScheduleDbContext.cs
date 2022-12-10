@@ -34,6 +34,7 @@ namespace FacultyService.DbAccess
             scheduleDiscipline.Property(x => x.Semester).IsRequired();
             scheduleDiscipline.Property(x => x.Lesson).IsRequired();
             scheduleDiscipline.Property(x => x.Day).IsRequired();
+            scheduleDiscipline.Property(x => x.IsLecture).IsRequired();
         }
     }
 }

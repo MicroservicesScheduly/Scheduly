@@ -9,6 +9,8 @@ import { IFacultySpecialty } from 'src/app/modules/management/models/facultySpec
 import { FacultyService } from 'src/app/modules/management/services/faculty.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
 import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
+import { ScheduleService } from 'src/app/modules/schedule/services/schedule.service';
+import { ISaveSchedule } from 'src/app/modules/schedule/models/schedule.model';
 
 @Component({
   selector: 'app-create-group',
@@ -31,7 +33,8 @@ export class CreateGroupComponent implements OnInit {
 
   constructor(private router: Router, private groupService: GroupsService,
     private route: ActivatedRoute, private facultyService: FacultyService,
-    private specialtyService: SpecialtiesService, private facultySpecialties: FacultySpecialtyService) { }
+    private specialtyService: SpecialtiesService, private facultySpecialties: FacultySpecialtyService,
+    private scheduleService: ScheduleService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -43,10 +46,11 @@ export class CreateGroupComponent implements OnInit {
     var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
     specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
     universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
-
-    console.log(group);
     
-    this.groupService.create(group).subscribe(res => this.redirectToGroups());
+    this.groupService.create(group).subscribe(res => {
+      var schedule: ISaveSchedule = { groupId: res.id };
+      this.scheduleService.create(schedule).subscribe(res => this.redirectToGroups());
+    });
 
     /*this.groupService.create(form.value)
     .subscribe(() => {
@@ -55,7 +59,7 @@ export class CreateGroupComponent implements OnInit {
   }
 
   redirectToManagement() {
-    this.router.navigateByUrl("/management/faculties");
+    this.router.navigateByUrl("groups/management");
   }
 
   redirectToGroups() {

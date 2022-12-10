@@ -40,6 +40,7 @@ p{
     justify-content: space-between;
     width: 554px;
     margin-top: 14px;
+    margin-left: 120px;
 }
 .Group{
     text-align: right;
@@ -228,4 +229,35 @@ p{
     height: 420px;
     overflow-y: auto;
     scrollbar-color: #D9D9D9 #6DAFA7;
+}
+
+h1, h2 {
+    color: #22272E;
+}
+
+h5 {
+    color: #8E8E8E;
+}
+
+.not-found-img {
+    width: 670px;
+    height: 435px;
+    margin-top: -80px;
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-left: 30px;
+}
+
+.not-found-text {
+    text-align: center;
+}
+
+.h5-not-found {
+    margin-top: -30px;
 }

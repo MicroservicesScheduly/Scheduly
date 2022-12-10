@@ -1,0 +1,9 @@
+<div class="Group">
+    <p class="Group_text">Group</p>
+    <select class="Group_select" name="group" #group (change)="onChangeGroup(group.value)">
+        <option>Select group</option>
+        <option *ngFor="let group of groups" [value]="group.id">
+            {{ group.cipher }}
+        </option>
+    </select>
+</div>

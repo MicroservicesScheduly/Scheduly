@@ -19,11 +19,11 @@
 
             <div class="Activity">
                 <div class="Group">
-                    <p class="Group_text">Group</p>
+                    <!--<p class="Group_text">Group</p>-->
                     <button class="Group_btn">Increment course for all</button>
                 </div>
                 <div class="Teacher">
-                    <p class="Teacher_text">Teacher</p>
+                    <!--<p class="Teacher_text">Teacher</p>-->
                     <button class="Teacher_btn" (click)="redirectToAddGroup()">+ Add Group</button>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="Table">
+        <div class="Table" *ngIf="groups.length; else noGroups">
             <div class="Offer">
                 <p id="Cipher" class="Offer_text">Cipher</p>
                 <p id="Course" class="Offer_text">Course</p>
@@ -64,5 +64,16 @@
                 </div>
             </div>
         </div>
+        <ng-template #noGroups>
+            <div class="not-found">
+                <div class="not-found-text">
+                    <h1>NOT FOUND</h1>
+                    <h5 class="h5-not-found">Please add at least one group to see the list</h5>
+                </div>
+                <div class="not-found-img-container">
+                    <img class="not-found-img" src="assets/Not-Found.png" />
+                </div>
+            </div>
+        </ng-template>
     </div>
 </body>

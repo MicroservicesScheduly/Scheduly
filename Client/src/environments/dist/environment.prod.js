@@ -15,7 +15,10 @@ exports.environment = {
     facultySpecialtyUrl: 'api/specialties/facultySpecialties',
     facultyDisciplineUrl: 'api/disciplines/facultyDisciplines',
     facultyTeacherUrl: 'api/teachers/facultyTeachers',
+    usersUrl: 'api/users',
+    scheduleUrl: 'api/schedule',
+    scheduleDisciplineUrl: 'api/schedule/disciplines',
     whiteListedDomains: [''],
     usersUrl: 'api/users',
-    urlPrefix: 'http://192.168.59.129/'
+    urlPrefix: 'http://192.168.59.128/'
 };

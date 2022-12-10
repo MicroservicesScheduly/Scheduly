@@ -13,15 +13,7 @@
             </div>
 
             <div class="Group_edit">
-                <div class="Group">
-                    <p class="Group_text">Group</p>
-                    <select class="Group_select" name="group" #group (change)="onChangeGroup(group.value)">
-                        <option>Select group</option>
-                        <option *ngFor="let group of groups" [value]="group.id">
-                            {{ group.cipher }}
-                        </option>
-                    </select>
-                </div>
+                <app-choose-group (newItemEvent)="addItemGroup($event)"></app-choose-group>
                 <div class="Teacher">
                     <p class="Teacher_text">Teacher</p>
                     <div class="ManageGroup">
@@ -43,22 +35,323 @@
             </div>
         </div>
 
-        <div class="Semester_select">
-            Semester:
-            <select name="semester" required>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-            </select>
-        </div>
+        <app-choose-semester (newItemSemEvent)="addItemSemester($event)"></app-choose-semester>
         
         <div class="schedule" *ngIf="selectedGroupId; else groupNotSelected">
-            <app-schedule-item></app-schedule-item>
+            <div class="schedule">
+                {{ selectedGroupId }} ///
+                {{ selectedSemester }}
+                
+                ---------
+                <ng-container *ngFor="let o of scheduleDisciplines">
+                    {{o.disciplineId}}
+                </ng-container>
+                ---------
+
+                <div class="Week">
+                    <div class="Day">
+                        <div class="Day_Name">Monday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 1</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 2</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                                <div class="Catalog">F-01</div>
+                                <div class="Class First_Selective_Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 3</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                    <div class="Selective_Border"></div>
+                                </div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 4</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                    <div class="Selective_Border"></div>
+                                </div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 5</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 6</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 7</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 8</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div style="height:20px;"></div>
+                        </div>
+                    </div>
+            
+                    <div class="Day">
+                        <div class="Day_Name">Tuesday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 1</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 2</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                                <div class="Catalog">F-01</div>
+                                <div class="Class First_Selective_Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 3</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                    <div class="Selective_Border"></div>
+                                </div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 4</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                    <div class="Selective_Border"></div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 5</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 6</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 7</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div style="height:20px;"></div>
+                        </div>
+                    </div>
+            
+                    <div class="Day">
+                        <div class="Day_Name">Wednesday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 1</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 2</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                                <div class="Catalog">F-01</div>
+                                <div class="Class First_Selective_Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 3</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                    <div class="Selective_Border"></div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 4</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/LectureMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 5</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                                <div class="Class">
+                                    <div class="Discipline">
+                                        <img src="assets/PracticeMark.png" alt="">
+                                        <p class="Discipline_Name">Discipline 6</p>
+                                    </div>
+                                    <div class="Teacher">Tolmachov Anton Mykhailovych</div>
+                                </div>
+                            </div>
+                            <div style="height:20px;"></div>
+                        </div>
+                    </div>
+            
+                    <div class="Day">
+                        <div class="Day_Name">Thusday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="Day">
+                        <div class="Day_Name">Friday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="Day">
+                        <div class="Day_Name">Saturday</div>
+                        <div class="Day_Schedule">
+                            <div class="Classes">
+                                <div class="Classes_Time">8:30 - 10:05</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">10:25 - 12:00</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time Selective_Class">12:20 - 13:55</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">14:15 - 15:50</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">16:10 - 17:45</div>
+                            </div>
+                            <div class="Classes">
+                                <div class="Classes_Time">18:30 - 20:05</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <ng-template #groupNotSelected>
             <div class="not-found">

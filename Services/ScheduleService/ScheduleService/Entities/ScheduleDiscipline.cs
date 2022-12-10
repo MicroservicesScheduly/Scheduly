@@ -10,8 +10,8 @@ namespace ScheduleService.Entities
         public int Day { get; set; }
         public int Semester { get; set; }
         public int Lesson { get; set; }
+        public bool IsLecture { get; set; }
 
         public int ScheduleId { get; set; }
-        public Schedule? Schedule { get; set; }
     }
 }

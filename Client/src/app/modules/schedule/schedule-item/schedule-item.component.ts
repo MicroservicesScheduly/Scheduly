@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IGroup } from 'src/app/modules/management/models/group.model';
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
 import { UsersService } from 'src/app/shared/services/users.service';
+import { IDisciplinesRequest } from '../models/disciplinesRequest.model';
+import { ScheduleService } from '../services/schedule.service';
 
 @Component({
   selector: 'app-schedule-item',
@@ -11,9 +13,22 @@ import { UsersService } from 'src/app/shared/services/users.service';
 })
 export class ScheduleItemComponent implements OnInit {
 
-  constructor(private router: Router, private groupService: GroupsService, private usersService: UsersService) { }
+  @Input() groupId: number;
+
+  @Input() semester: number;
+  
+  constructor(private router: Router, private groupService: GroupsService, private usersService: UsersService,
+    private scheduleService: ScheduleService) { }
 
   ngOnInit(): void {
+    if (!this.semester) {
+      this.semester = 1;
+    }
+
+    var request: IDisciplinesRequest = { groupId: this.groupId, semester: this.semester };
+    this.scheduleService.getScheduleDisciplinesByGroupAndSemesterId(request).subscribe(res =>
+      console.log(res));
   }
 
 }
+*/

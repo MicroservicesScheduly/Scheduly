@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using ScheduleService.Models;
 
 namespace SimpleService.Controllers
 {
@@ -60,6 +61,14 @@ namespace SimpleService.Controllers
         }
 
         /* schedule discipline */
+        [HttpPost("disciplines/groupsemester")]
+        public async Task<ActionResult<IEnumerable<ScheduleDisciplineModel>>> GetByGroupAndSemesterId(DisciplinesRequestModel model)
+        {
+            var scheduleDisciplines = await _scheduleService.GetAllDisciplinesAsync();
+
+            return Ok(scheduleDisciplines.Where(p => _scheduleService.GetByIdAsync(p.ScheduleId).Result.GroupId == model.GroupId && p.Semester == model.Semester));
+        }
+
         [HttpGet("disciplines")]
         public async Task<ActionResult<IEnumerable<ScheduleDisciplineModel>>> GetDisciplines()
         {
