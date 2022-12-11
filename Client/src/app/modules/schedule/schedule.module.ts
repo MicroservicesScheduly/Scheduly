@@ -10,13 +10,15 @@ import { SchedulePageComponent } from './schedule-page/schedule-page.component';
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ChooseGroupComponent } from './components/group/choose-group/choose-group.component';
 import { ChooseSemesterComponent } from './components/group/choose-semester/choose-semester.component';
+import { EditGroupScheduleComponent } from './components/edit-group-schedule/edit-group-schedule.component';
 
 @NgModule({
   declarations: [
     SchedulePageComponent,
     GroupComponent,
     ChooseGroupComponent,
-    ChooseSemesterComponent
+    ChooseSemesterComponent,
+    EditGroupScheduleComponent
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,9 @@ export interface IScheduleDiscipline {
     scheduleId: number;
     isLecture: boolean;
     disciplineId: number;
+    disciplineName?: string;
+    isSelective?: boolean;
+    catalogName?: string;
 }
 
 export interface ISaveScheduleDiscipline {
@@ -28,4 +31,7 @@ export interface ISaveScheduleDiscipline {
     scheduleId: number;
     isLecture: boolean;
     disciplineId: number;
+    disciplineName?: string;
+    isSelective?: boolean;
+    catalogName?: string;
 }
