@@ -195,10 +195,10 @@ namespace DisciplineService.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("specialtyDisciplines/{specialtyId}/{semesterId}")]
-        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(int specialtyId, int semester)
+        [HttpPost("specialtyDisciplines/bySpecialtyAndSemester")]
+        public async Task<ActionResult<IEnumerable<DisciplineModel>>> GetDisciplinesBySpecialtyIdAsync(SpecialtyDisciplinesRequestModel model)
         {
-            var specialtyDisciplines = await _specialtyDisciplineService.GetDisciplinesBySpecialtyIdAndSemesterAsync(specialtyId, semester);
+            var specialtyDisciplines = await _specialtyDisciplineService.GetDisciplinesBySpecialtyIdAndSemesterAsync(model.SpecialtyId, model.Semester);
 
             return Ok(specialtyDisciplines);
         }

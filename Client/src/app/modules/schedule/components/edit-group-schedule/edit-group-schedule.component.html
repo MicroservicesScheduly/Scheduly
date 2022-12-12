@@ -12,13 +12,24 @@
                 </div>
             </div>
 
-            <div class="Group_edit">
-                <app-choose-group (newItemEvent)="addItemGroup($event)"></app-choose-group>
-                <div class="Teacher">
-                    <p class="Teacher_text">Teacher</p>
-                    <div class="ManageGroup">
-                        <button class="ManageGroup_btn" (click)="redirectToGroupManagement()">+ Manage Groups</button>
-                        <img src="assets/Vector.png" alt="">
+            <div class="Group_edit" *ngIf="selectedGroupForEdit">
+                <div class="cipher-semester">
+                    <div class="cipher">
+                        Edit <span class="cipher-value">{{ selectedGroupForEdit.cipher }}</span> schedule
+                    </div>
+                    <div class="semester">
+                        Semester: <span class="value">{{ selectedSemester }}</span>
+                    </div>
+                </div>
+                <div class="facul-spec-course">
+                    <div class="facul">
+                        Faculty: <span class="value">{{ selectedGroupForEdit.faculty?.name }}</span>
+                    </div>
+                    <div class="spec">
+                        Specialty: <span class="value">{{ selectedGroupForEdit.specialty?.name }}</span>
+                    </div>
+                    <div class="course">
+                        Course: <span class="value">1</span>
                     </div>
                 </div>
             </div>
@@ -34,8 +45,6 @@
                 </div>
             </div>
         </div>
-
-        <app-choose-semester (newItemSemEvent)="addItemSemester($event)"></app-choose-semester>
         
         <div class="schedule" *ngIf="selectedGroupId >= 0; else groupNotSelected">
             <div class="schedule">
@@ -1074,7 +1083,7 @@
             <div class="not-found">
                 <div class="not-found-text">
                     <h1>NOT FOUND</h1>
-                    <h5 class="h5-not-found">Please add at least one discipline to see the list</h5>
+                    <h5 class="h5-not-found">Please open this by the Schedule page</h5>
                 </div>
                 <div class="not-found-img-container">
                     <img class="not-found-img" src="assets/Not-Found.png" />

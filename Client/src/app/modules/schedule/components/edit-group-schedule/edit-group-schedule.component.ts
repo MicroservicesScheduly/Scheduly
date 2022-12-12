@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { IGroup } from 'src/app/modules/management/models/group.model';
+import { FacultyService } from 'src/app/modules/management/services/faculty.service';
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
+import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { IDisciplinesRequest } from '../../models/disciplinesRequest.model';
 import { IScheduleDiscipline } from '../../models/schedule.model';
@@ -26,20 +28,29 @@ export class EditGroupScheduleComponent implements OnInit {
   selectedGroupForEdit: IGroup;
 
   constructor(private router: Router, private groupService: GroupsService, private usersService: UsersService,
-    private scheduleService: ScheduleService, private route: ActivatedRoute) {
-    }
+    private scheduleService: ScheduleService, private route: ActivatedRoute, private facultyService: FacultyService,
+    private specialtyService: SpecialtiesService) { }
 
   ngOnInit(): void {
     this.groupService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
       this.groups = res;
     });
 
-    if (!this.selectedSemester) {
+    /*if (!this.selectedSemester) {
       this.selectedSemester = 1;
-    }
+    }*/
 
     this.selectedGroupForEdit = JSON.parse(history.state["group"]);
-    console.log(this.selectedGroupForEdit);
+    this.selectedGroupId = this.selectedGroupForEdit.id;
+    this.selectedSemester = JSON.parse(history.state["semester"]);
+
+    var request: IDisciplinesRequest = { groupId: this.selectedGroupId, semester: this.selectedSemester };
+    this.scheduleService.getScheduleDisciplinesByGroupAndSemesterId(request).subscribe(res => {
+      this.scheduleDisciplines = res;
+    })
+
+    this.facultyService.getById(this.selectedGroupForEdit.facultyId).subscribe(res => this.selectedGroupForEdit.faculty = res);
+    this.specialtyService.getById(this.selectedGroupForEdit.specialtyId).subscribe(res => this.selectedGroupForEdit.specialty = res);
   }
 
   redirectToGroupManagement() {

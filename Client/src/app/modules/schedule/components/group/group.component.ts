@@ -62,7 +62,7 @@ export class GroupComponent implements OnInit {
       }
       else {
         this.router.navigateByUrl("schedule/edit-group-schedule",
-        { state: { group: JSON.stringify(selectedGroup as unknown as string) } });
+        { state: { group: JSON.stringify(selectedGroup as unknown as string), semester: this.selectedSemester } });
       }
     }
     else if (selectedGroup.course == 2)
@@ -72,7 +72,8 @@ export class GroupComponent implements OnInit {
         this.notificationService.showErrorMessage("You can edit schedule only for current group course semesters!")
       }
       else {
-        this.router.navigateByUrl("schedule/edit-group-schedule", { state: { group: selectedGroup } });
+        this.router.navigateByUrl("schedule/edit-group-schedule", 
+        { state: { group: JSON.stringify(selectedGroup as unknown as string), semester: this.selectedSemester } });
       }
     }
     else if (selectedGroup.course == 3)
@@ -82,7 +83,8 @@ export class GroupComponent implements OnInit {
         this.notificationService.showErrorMessage("You can edit schedule only for current group course semesters!")
       }
       else {
-        this.router.navigateByUrl("schedule/edit-group-schedule", { state: { group: selectedGroup } });
+        this.router.navigateByUrl("schedule/edit-group-schedule", 
+        { state: { group: JSON.stringify(selectedGroup as unknown as string), semester: this.selectedSemester } });
       }
     }
     else if (selectedGroup.course == 4)
@@ -92,7 +94,8 @@ export class GroupComponent implements OnInit {
         this.notificationService.showErrorMessage("You can edit schedule only for current group course semesters!")
       }
       else {
-        this.router.navigateByUrl("schedule/edit-group-schedule", { state: { group: selectedGroup } });
+        this.router.navigateByUrl("schedule/edit-group-schedule", 
+        { state: { group: JSON.stringify(selectedGroup as unknown as string), semester: this.selectedSemester } });
       }
     }
     else {

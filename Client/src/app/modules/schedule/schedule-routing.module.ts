@@ -9,6 +9,7 @@ const routes: Routes = [
   {
       path: '',
       component: SchedulePageComponent,
+      canActivate: [AuthGuard],
       children: [
           {
             path: 'group',

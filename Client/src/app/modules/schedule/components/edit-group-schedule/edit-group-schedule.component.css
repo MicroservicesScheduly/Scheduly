@@ -34,8 +34,9 @@ p{
 .Group_edit{
     display: flex;
     justify-content: space-between;
-    width: 540px;
+    width: 850px;
     margin-top: 14px;
+    margin-left: -60px;
 }
 
 .Group{
@@ -272,4 +273,50 @@ h5 {
 
 .blured {
     opacity: 50%;
+}
+
+.cipher, .semester {
+    font-family: 'Inter';
+    font-style: normal;
+    color: #22272E;
+    text-align: right;
+}
+
+.cipher {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.semester {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.facul-spec-course {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: left;
+    color: #22272E;
+    width: 350px;
+    padding-left: 20px;
+}
+
+.value {
+    font-weight: 700;
+}
+
+.cipher-value {
+    color: #6DAFA7;
+}
+
+.cipher-semester {
+    border-right: 4px solid #6DAFA7;
+    padding-right: 20px;
+    width: 500px;
+    padding-top: 10px;
 }
