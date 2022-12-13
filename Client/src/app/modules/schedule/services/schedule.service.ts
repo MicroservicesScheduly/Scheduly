@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment} from 'src/environments/environment';
 import { ISaveSchedule, ISaveScheduleDiscipline, ISchedule, IScheduleDiscipline } from '../models/schedule.model';
 import { IDisciplinesRequest } from '../models/disciplinesRequest.model';
+import { IDisciplinesAddRequest } from '../models/disciplinesRequest.model copy';
+import { IDiscipline } from '../../management/models/discipline.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,11 @@ export class ScheduleService {
       return this._http.post<IScheduleDiscipline[]>(environment.urlPrefix +
         environment.scheduleDisciplineUrl + `/groupsemester`, request);
     } 
+
+    getDisciplinesToAddBySpecialtyIdAndSemester(request: IDisciplinesAddRequest) {
+      return this._http.post<IDiscipline[]>(environment.urlPrefix +
+        environment.disciplinesUrl + `/specialtyDisciplines/bySpecialtyAndSemester`, request);
+    }
 
     update(id: number, schedule: ISchedule) {
       return this._http.put<ISchedule>(environment.urlPrefix + environment.scheduleUrl + `/${id}`, schedule);

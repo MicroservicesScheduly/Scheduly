@@ -2,35 +2,41 @@
     <p class="Title">Add discipline</p>
     <div class="Header">
         <div class="Chapter-1">
-            <p class="Text">Group: <span>IS-01</span> </p>
-            <p class="Text">Day of week: <span>Thursday</span> </p>
-            <p class="Text">Class time: <span>08:30 - 10:05</span> </p>
+            <p class="Text">Group: <span>{{ data.group.cipher }}</span> </p>
+            <p class="Text">Day of week: <span>{{ getDayTitleByNumber(data.day - 1) }}</span> </p>
+            <p class="Text">Class time: <span>{{ getLessonTimeTitleByNumber(data.lesson - 1) }}</span> </p>
         </div>
         <div class="Chapter-2">
-            <p class="Text">Status: <span>Mandatory</span> </p>
-            <p class="Text">Name: <span>Discipline 1</span> </p>
-            <p class="Text">Type: <span>Practise</span> </p>
+            <p class="Text">Status: <span>{{ getStatus() }}</span> </p>
+            <p class="Text">Name: <span *ngFor="let disc of data.choosedDisciplines">{{ disc.name }}<br></span> </p>
+            <p class="Text">Type: <span>{{ getLessonType() }}</span> </p>
         </div>
     </div>
     
     <div class="Teachers">
         <p class="Teachers-header">Teachers</p>
         <div class="Teachers-list">
-            <p class="Item">Teacher 1</p>
-            <div class="Item" id="Not-avaible">
-                <p class ="no-item">Teacher 2</p>
-                <p class="none">Not avaible</p>
-            </div>
-            <p class="Item">Teacher 3</p>
-            <p class="Item">Teacher 4</p>
+            <p class="Item" [ngClass]="isNotAvailable(t)"  *ngFor="let t of disciplineTeachers">
+                <ng-container *ngIf="teacherIsAvailable(t); else notAvailable">
+                    <p style="cursor:pointer" (click)="selectTeacher(t)">{{ t.name + t.surname + t.patronymic }}</p>
+                </ng-container>
+                <ng-template #notAvailable>
+                    <p class ="no-item">{{ t.name + t.surname + t.patronymic }}</p>
+                    <p class="none">Not available</p>
+                </ng-template>
         </div>
     </div>
 
     <div class="Down">
         <p class="Down-text">Step 3/3: Choose teacher</p>
         <div class="Buttons">
-            <button class="Cancel">Cancel</button>
-            <button class="Confirm">Next</button>
+            <button
+                *ngFor="let button of data.buttons"
+                (click)="onClick(button.onClickEvent)"
+                class="Cancel" [disabled]="processIsStarted">
+                {{button.title}}
+            </button>
+            <button class="Confirm" (click)="toAddDiscipline()" [disabled]="!data.teacher || processIsStarted">Save</button>
         </div>
     </div>
 </div>

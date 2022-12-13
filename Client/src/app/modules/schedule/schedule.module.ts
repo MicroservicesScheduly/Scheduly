@@ -11,6 +11,8 @@ import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ChooseGroupComponent } from './components/group/choose-group/choose-group.component';
 import { ChooseSemesterComponent } from './components/group/choose-semester/choose-semester.component';
 import { EditGroupScheduleComponent } from './components/edit-group-schedule/edit-group-schedule.component';
+import { ChooseDisciplineTeacherWindowComponent } from 'src/app/shared/windows/choose-discipline-teacher-window/choose-discipline-teacher-window.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { EditGroupScheduleComponent } from './components/edit-group-schedule/edi
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HeaderModule,
+    HeaderModule
   ],
   providers: [],
 })

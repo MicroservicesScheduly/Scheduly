@@ -42,18 +42,7 @@ export class GroupComponent implements OnInit {
 
   redirectToEditSchedule() {
     var selectedGroup: IGroup = this.groups.filter(p => p.id == this.selectedGroupId)[0];
-    /*if (!(selectedGroup.course == 1 && (this.selectedSemester == 1 || this.selectedSemester == 2)))
-    {
-      console.log(!(this.selectedSemester == 1 || this.selectedSemester == 2));
-      console.log(!(selectedGroup.course == 1 && (this.selectedSemester == 1 || this.selectedSemester == 2)));
-    }
-    else if(!(selectedGroup.course == 2 && (this.selectedSemester == 3 || this.selectedSemester == 4)))
-    {
 
-    }
-    else {
-      this.router.navigateByUrl("schedule/edit-group-schedule");
-    }*/
     if (selectedGroup.course == 1)
     {
       if (!(this.selectedSemester == 1 || this.selectedSemester == 2))
@@ -129,24 +118,10 @@ export class GroupComponent implements OnInit {
   }
 
   containsSelective(day: number, lesson: number) {
-    /*console.log(`${day} ${lesson} -> ${this.searchByDayAndLesson(day, lesson).some(p => p.isSelective)} ->
-    ${this.searchByDayAndLesson(day, lesson)[0].isSelective} --> CATALOG NAME = ${this.searchByDayAndLesson(day, lesson)[0].catalogName}`);*/
-    
-    /*if (day == 2 && lesson == 2) {
-      console.log(this.searchByDayAndLesson(day, lesson));
-      console.log(this.searchByDayAndLesson(day, lesson).some(p => p.isSelective));
-    }*/
     return this.searchByDayAndLesson(day, lesson).some(p => p.catalogName);
   }
 
   getCatalogName(day: number, lesson: number) {
-    /*console.log(`${day} ${lesson} -> ${this.searchByDayAndLesson(day, lesson).some(p => p.isSelective)} ->
-    ${this.searchByDayAndLesson(day, lesson)[0].isSelective} --> CATALOG NAME = ${this.searchByDayAndLesson(day, lesson)[0].catalogName}`);*/
-    
-    /*if (day == 2 && lesson == 2) {
-      console.log(this.searchByDayAndLesson(day, lesson));
-      console.log(this.searchByDayAndLesson(day, lesson).some(p => p.isSelective));
-    }*/
     return this.searchByDayAndLesson(day, lesson)[0].catalogName;
   }
 
@@ -164,7 +139,11 @@ export class GroupComponent implements OnInit {
     return { 'blured': !isEmptyDay };
   }
 
-  /*onChangeGroup(value: any) {
-    this.selectedGroupId = value;
-  }*/
+  isGroupSelected() {
+    return { 'disabled-edit' : !this.selectedGroupId }
+  }
+
+  addItemFinish(value: any) {
+    console.log(value);
+  }
 }

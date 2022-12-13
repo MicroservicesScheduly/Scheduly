@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { IChooseDisciplineDialogData } from '../models/IChooseDiscpline.model';
 import { IDialogDisciplinesData } from '../models/IDalogDisciplinesData.model';
 import { IDialogTeachersData } from '../models/IDalogTeachersData.model';
 import { IDialogData } from '../models/IDialogData.model';
@@ -90,7 +91,7 @@ export class WindowService {
         })
     }
 
-    openChooseDisciplineDialog(data: IDialogData) {
+    openChooseDisciplineDialog(data: IChooseDisciplineDialogData) {
         return this.dialog
         .open(ChooseDisciplineWindowComponent, {
             data,
@@ -98,7 +99,7 @@ export class WindowService {
         })
     }
 
-    openChooseDisciplineTypeDialog(data: IDialogData) {
+    openChooseDisciplineTypeDialog(data: IChooseDisciplineDialogData) {
         return this.dialog
         .open(ChooseDisciplineTypeWindowComponent, {
             data,
@@ -106,7 +107,7 @@ export class WindowService {
         })
     }
 
-    openChooseDisciplineTeacherDialog(data: IDialogData) {
+    openChooseDisciplineTeacherDialog(data: IChooseDisciplineDialogData) {
         return this.dialog
         .open(ChooseDisciplineTeacherWindowComponent, {
             data,

@@ -12,6 +12,7 @@ div{
     border-radius: 20px;
     width: 569px;
     background-color: #fff;
+    height: 700px;
 }
 .Title{
     font-weight: 700;
@@ -47,13 +48,16 @@ span{
     display: flex;
     justify-content: space-between;
     width: 432px;
-    margin-top: 85px;
-    margin-bottom: 90px;
+    margin-top: 65px;
+    margin-bottom: 125px;
 }
 .Item{
     border: 2px solid #6DAFA7;
     border-radius: 25px;
     padding: 24px 42px 24px 42px;
+}
+.Item:hover{
+    cursor: pointer;
 }
 .Item-text{
     font-weight: 700;
@@ -88,6 +92,7 @@ span{
     font-size: 20px;
     color: #000000;
     padding: 15px;
+    cursor: pointer;
 }
 
 .Confirm{
@@ -98,4 +103,20 @@ span{
     font-weight: 700;
     font-size: 25px;
     color: #FFFFFF;
+    cursor: pointer;
+}
+
+.selected-type {
+    background-color: #22272E;
+    border-color: #22272E;
+}
+
+.selected-type-text {
+    color: #FFFFFF;
+}
+
+.Confirm:disabled {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    cursor: default;
 }

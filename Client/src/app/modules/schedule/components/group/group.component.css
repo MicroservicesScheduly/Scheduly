@@ -141,7 +141,7 @@ p{
     background-color: #6DAFA7;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -276,4 +276,13 @@ h5 {
 
 .blured {
     opacity: 50%;
+}
+
+.disabled-edit {
+    filter: grayscale(100%);
+    opacity: 50%;
+}
+
+.disabled-edit:hover {
+    cursor: auto;
 }

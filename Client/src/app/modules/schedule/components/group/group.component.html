@@ -18,7 +18,8 @@
                     <p class="Teacher_text">Teacher</p>
                     <div class="ManageGroup">
                         <button class="ManageGroup_btn" (click)="redirectToGroupManagement()">+ Manage Groups</button>
-                        <img src="assets/Vector.png" alt="" class="edit-btn" (click)="redirectToEditSchedule()">
+                        <img src="assets/Vector.png" alt="" class="edit-btn" (click)="redirectToEditSchedule()"
+                            [ngClass]="isGroupSelected()">
                     </div>
                 </div>
             </div>
@@ -39,15 +40,6 @@
         
         <div class="schedule" *ngIf="selectedGroupId >= 0; else groupNotSelected">
             <div class="schedule">
-                <!--
-                {{ selectedGroupId }} /// {{ selectedSemester }}
-                ---------
-                <ng-container *ngFor="let o of scheduleDisciplines">
-                    {{o.disciplineId}}
-                </ng-container>
-                ---------
-                -->
-
                 <div class="Week">
 
                     <!-- MONDAY -->

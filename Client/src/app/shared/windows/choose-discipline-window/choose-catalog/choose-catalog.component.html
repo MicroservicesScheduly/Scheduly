@@ -1,0 +1,8 @@
+<p class="Selective-catalog">
+    <select class="Catalog_select" name="catalog" #catalog (change)="onChangeCatalog(catalog.value)">
+        <option *ngFor="let catalog of catalogsOfDisciplinesToAdd" [value]="catalog.id">
+            {{ catalog.name }}
+        </option>
+        <option [value]="2">TEST</option>
+    </select>
+</p>

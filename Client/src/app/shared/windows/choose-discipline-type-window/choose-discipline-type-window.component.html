@@ -2,32 +2,37 @@
     <p class="Title">Add discipline</p>
     <div class="Header">
         <div class="Chapter-1">
-            <p class="Text">Group: <span>IS-01</span> </p>
-            <p class="Text">Day of week: <span>Thursday</span> </p>
-            <p class="Text">Class time: <span>08:30 - 10:05</span> </p>
+            <p class="Text">Group: <span>{{ data.group.cipher }}</span> </p>
+            <p class="Text">Day of week: <span>{{ getDayTitleByNumber(data.day - 1) }}</span> </p>
+            <p class="Text">Class time: <span>{{ getLessonTimeTitleByNumber(data.lesson - 1) }}</span> </p>
         </div>
         <div class="Chapter-2">
-            <p class="Text">Status: <span>Mandatory</span> </p>
-            <p class="Text">Name: <span>Discipline 1</span> </p>
+            <p class="Text">Status: <span>{{ getStatus() }}</span> </p>
+            <p class="Text">Name: <span *ngFor="let disc of data.choosedDisciplines">{{ disc.name }}<br></span> </p>
         </div>
     </div>
     
     <div class="About">
-        <div class="Item">
-            <p class="Item-text">Lecture</p>
-            <img class="Item-logo" src="assets/Lecture.png" alt="">
+        <div class="Item" [ngClass]="isLecture()" *ngIf="!lessonTypeExists(true)">
+            <p class="Item-text" [ngClass]="isLectureText()">Lecture</p>
+            <img class="Item-logo" src="assets/Lecture.png" alt="" (click)="setIsLecture(true)">
         </div>
-        <div class="Item">
-            <p class="Item-text">Practise</p>
-            <img class="Item-logo" src="assets/Practice.png" alt="">
+        <div class="Item" [ngClass]="isPractice()" *ngIf="!lessonTypeExists(false)">
+            <p class="Item-text" [ngClass]="isPracticeText()">Practice</p>
+            <img class="Item-logo" src="assets/Practice.png" alt="" (click)="setIsLecture(false)">
         </div>
     </div>
 
     <div class="Down">
         <p class="Down-text">Step 2/3: Choose type</p>
         <div class="Buttons">
-            <button class="Cancel">Cancel</button>
-            <button class="Confirm">Next</button>
+            <button
+                *ngFor="let button of data.buttons"
+                (click)="onClick(button.onClickEvent)"
+                class="Cancel">
+                {{button.title}}
+            </button>
+            <button class="Confirm" (click)="toChooseTeacher()" [disabled]="!typeIsSelected">Next</button>
         </div>
     </div>
 </div>

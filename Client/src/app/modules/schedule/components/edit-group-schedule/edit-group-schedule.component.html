@@ -46,6 +46,61 @@
             </div>
         </div>
         
+        <div class="disciplines" *ngIf="selectedGroupId >= 0">
+            <div class="disc-header">
+                <div class="label">
+                    Mandatory: <span>{{ countAddedDisciplines(false) }}</span>/<span>{{ countDisciplinesToAdd(false) }}</span>
+                </div>
+                <div class="yellow-label">
+                    Disciplines to add
+                </div>
+                <div class="label">
+                    Selective: <span>{{ countAddedDisciplines(true) }}</span>/<span>{{ countDisciplinesToAdd(true) }}</span>
+                </div>
+            </div>
+            <div class="discipline-list">
+                <div class="discipline-item" *ngFor="let discipline of disciplinesToAdd">
+                    <div class="disc-label">
+                        <ng-container *ngIf="discipline.isSelective; else nonSelectiveDisc">
+                            <ng-container *ngIf="disciplineExists(discipline.id) &&
+                                disciplineExists(discipline.id); else notLined1">
+                                <span class="selective">●</span> <span class="lined discip-name">{{discipline.name}}</span>
+                            </ng-container>
+                            <ng-template #notLined1>
+                                <span class="selective">●</span> <span class="discip-name">{{discipline.name}}</span>
+                            </ng-template>
+                        </ng-container>
+                        <ng-template #nonSelectiveDisc>
+                            <ng-container *ngIf="disciplineExists(discipline.id) &&
+                                disciplineExists(discipline.id); else notLined2">
+                                <span class="mandatory">●</span> <span class="lined discip-name">{{discipline.name}}</span>
+                            </ng-container>
+                            <ng-template #notLined2>
+                                <span class="mandatory">●</span> <span class="discip-name">{{discipline.name}}</span>
+                            </ng-template>
+                        </ng-template>
+                    </div>
+                    <div class="lecture-icon">
+                        <ng-container *ngIf="disciplineExistsAsLecture(discipline.id); else lectureNotExists">
+                            <img class="blured" src="assets/LectureMark.png" alt="">
+                        </ng-container>
+                        <ng-template #lectureNotExists>
+                            <img src="assets/LectureMark.png" alt="">
+                        </ng-template>
+                    </div>
+                    <div class="practice-icon">
+                        <ng-container *ngIf="disciplineExistsAsPractice(discipline.id); else practiceNotExists">
+                            <img class="blured" src="assets/PracticeMark.png" alt="">
+                        </ng-container>
+                        <ng-template #practiceNotExists>
+                            <img src="assets/PracticeMark.png" alt="">
+                        </ng-template>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
         <div class="schedule" *ngIf="selectedGroupId >= 0; else groupNotSelected">
             <div class="schedule">
                 <!--
@@ -56,16 +111,16 @@
                 </ng-container>
                 ---------
                 -->
-
                 <div class="Week">
 
                     <!-- MONDAY -->
-                    <div class="Day" [ngClass]="isEmptyDay(1)">
+                    <div class="Day">
                         <div class="Day_Name">Monday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 1); else notEmpty11">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(1, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty11>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 1); else notSelective11">
@@ -88,11 +143,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 1)
                                     && !endOfDisc(1, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 1) && containsSelective(1, 1)"
+                                    (click)="openChooseDisciplineDialog(1, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 2); else notEmpty12">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(1, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty12>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 2); else notSelective12">
@@ -115,10 +173,13 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 2)
                                     && !endOfDisc(1, 2, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 2) && containsSelective(1, 2)"
+                                    (click)="openChooseDisciplineDialog(1, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <div class="Classes_Time blured" *ngIf="isEmpty(1, 3); else notEmpty13">12:20 - 13:55</div>
+                                <div class="toAdd" (click)="openChooseDisciplineDialog(1, 3)">+ Add</div>
                                 <ng-template #notEmpty13>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 3); else notSelective13">
                                         12:20 - 13:55</div>
@@ -139,11 +200,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 3)
                                     && !endOfDisc(1, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 3) && containsSelective(1, 3)"
+                                    (click)="openChooseDisciplineDialog(1, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 4); else notEmpty14">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(1, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty14>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 4); else notSelective14">
@@ -166,11 +230,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 4)
                                     && !endOfDisc(1, 4, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 4) && containsSelective(1, 4)"
+                                    (click)="openChooseDisciplineDialog(1, 4, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 5); else notEmpty15">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(1, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty15>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 5); else notSelective15">
@@ -193,11 +260,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 5)
                                     && !endOfDisc(1, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 5) && containsSelective(1, 5)"
+                                    (click)="openChooseDisciplineDialog(1, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 6); else notEmpty16">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(1, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty16>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(1, 6); else notSelective16">
@@ -220,6 +290,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(1, 6)
                                     && !endOfDisc(1, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(1, 6) && containsSelective(1, 6)"
+                                    (click)="openChooseDisciplineDialog(1, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>
@@ -227,12 +299,13 @@
                     </div>
             
                     <!-- TUESDAY -->
-                    <div class="Day" [ngClass]="isEmptyDay(2)">
+                    <div class="Day">
                         <div class="Day_Name">Tuesday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 1); else notEmpty21">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty21>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 1); else notSelective21">
@@ -255,11 +328,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 1)
                                     && !endOfDisc(2, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(2, 1) && containsSelective(2, 1)"
+                                    (click)="openChooseDisciplineDialog(2, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 2); else notEmpty22">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty22>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 2); else notSelective22">
@@ -282,11 +358,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 2)
                                     && !endOfDisc(2, 2, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(2, 2) && containsSelective(2, 2)"
+                                    (click)="openChooseDisciplineDialog(2, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 3); else notEmpty23">
                                     <div class="Classes_Time blured">12:20 - 13:55</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 3)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty23>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 3); else notSelective23">
@@ -309,11 +388,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 3)
                                     && !endOfDisc(2, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(2, 3) && containsSelective(2, 3)"
+                                    (click)="openChooseDisciplineDialog(2, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 4); else notEmpty24">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty24>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 4); else notSelective24">
@@ -336,11 +418,16 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 4)
                                     && !endOfDisc(2, 4, i)"></div>
+                                    <ng-container *ngIf="containsSelective(2, 4)">
+                                        <div class="toAdd" *ngIf="notLastInCatalog(2, 4)"
+                                        (click)="openChooseDisciplineDialog(2, 4, true)">+ Add</div>
+                                    </ng-container>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 5); else notEmpty25">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty25>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 5); else notSelective25">
@@ -363,11 +450,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 5)
                                     && !endOfDisc(2, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(2, 5) && containsSelective(2, 5)"
+                                    (click)="openChooseDisciplineDialog(2, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 6); else notEmpty26">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(2, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty26>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(2, 6); else notSelective26">
@@ -390,6 +480,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(2, 6)
                                     && !endOfDisc(2, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(2, 6) && containsSelective(2, 6)"
+                                    (click)="openChooseDisciplineDialog(2, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>
@@ -397,12 +489,13 @@
                     </div>
 
                     <!-- WEDNESDAY -->
-                    <div class="Day" [ngClass]="isEmptyDay(3)">
+                    <div class="Day">
                         <div class="Day_Name">Wednesday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 1); else notEmpty31">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty31>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 1); else notSelective31">
@@ -425,11 +518,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 1)
                                     && !endOfDisc(3, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(3, 1) && containsSelective(3, 1)"
+                                    (click)="openChooseDisciplineDialog(3, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 2); else notEmpty32">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty32>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 2); else notSelective32">
@@ -452,11 +548,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 2)
                                     && !endOfDisc(3, 2, i)"></div>
+                                <div class="toAdd" *ngIf="notLastInCatalog(3, 2) && containsSelective(3, 2)"
+                                (click)="openChooseDisciplineDialog(3, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 3); else notEmpty33">
                                     <div class="Classes_Time blured">12:20 - 13:55</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 3)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty33>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 3); else notSelective33">
@@ -479,11 +578,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 3)
                                     && !endOfDisc(3, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(3, 3) && containsSelective(3, 3)"
+                                    (click)="openChooseDisciplineDialog(3, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 4); else notEmpty34">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty34>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 4); else notSelective34">
@@ -506,11 +608,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 4)
                                     && !endOfDisc(3, 4, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(3, 4) && containsSelective(3, 4)"
+                                    (click)="openChooseDisciplineDialog(3, 4, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 5); else notEmpty35">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty35>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 5); else notSelective35">
@@ -533,11 +638,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 5)
                                     && !endOfDisc(3, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(3, 5) && containsSelective(3, 5)"
+                                    (click)="openChooseDisciplineDialog(3, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 6); else notEmpty36">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(3, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty36>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(3, 6); else notSelective36">
@@ -560,6 +668,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(3, 6)
                                     && !endOfDisc(3, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(3, 6) && containsSelective(3, 6)"
+                                    (click)="openChooseDisciplineDialog(3, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>
@@ -567,12 +677,13 @@
                     </div>
 
                      <!-- THURSDAY -->
-                     <div class="Day" [ngClass]="isEmptyDay(4)">
+                     <div class="Day">
                         <div class="Day_Name">Thursday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 1); else notEmpty41">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty41>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 1); else notSelective41">
@@ -595,11 +706,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 1)
                                     && !endOfDisc(4, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 1) && containsSelective(4, 1)"
+                                    (click)="openChooseDisciplineDialog(4, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 2); else notEmpty42">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty42>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 2); else notSelective42">
@@ -622,11 +736,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 2)
                                     && !endOfDisc(4, 2, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 2) && containsSelective(4, 2)"
+                                    (click)="openChooseDisciplineDialog(4, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 3); else notEmpty43">
                                     <div class="Classes_Time blured">12:20 - 13:55</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 3)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty43>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 3); else notSelective43">
@@ -649,11 +766,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 3)
                                     && !endOfDisc(4, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 3) && containsSelective(4, 3)"
+                                    (click)="openChooseDisciplineDialog(4, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 4); else notEmpty44">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty44>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 4); else notSelective44">
@@ -676,11 +796,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 4)
                                     && !endOfDisc(4, 4, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 4) && containsSelective(4, 4)"
+                                    (click)="openChooseDisciplineDialog(4, 4, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 5); else notEmpty45">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty45>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 5); else notSelective45">
@@ -703,11 +826,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 5)
                                     && !endOfDisc(4, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 5) && containsSelective(4, 5)"
+                                    (click)="openChooseDisciplineDialog(4, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 6); else notEmpty36">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(4, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty46>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(4, 6); else notSelective46">
@@ -730,6 +856,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(4, 6)
                                     && !endOfDisc(4, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(4, 6) && containsSelective(4, 6)"
+                                    (click)="openChooseDisciplineDialog(4, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>
@@ -737,12 +865,13 @@
                     </div>
 
                      <!-- FRIDAY -->
-                     <div class="Day" [ngClass]="isEmptyDay(5)">
+                     <div class="Day">
                         <div class="Day_Name">Friday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 1); else notEmpty51">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty51>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 1); else notSelective51">
@@ -765,11 +894,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 1)
                                     && !endOfDisc(5, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 1) && containsSelective(5, 1)"
+                                    (click)="openChooseDisciplineDialog(5, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 2); else notEmpty52">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty52>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 2); else notSelective52">
@@ -792,11 +924,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 2)
                                     && !endOfDisc(5, 2, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 2) && containsSelective(5, 2)"
+                                    (click)="openChooseDisciplineDialog(5, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 3); else notEmpty53">
                                     <div class="Classes_Time blured">12:20 - 13:55</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 3)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty53>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 3); else notSelective53">
@@ -819,11 +954,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 3)
                                     && !endOfDisc(5, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 3) && containsSelective(5, 3)"
+                                    (click)="openChooseDisciplineDialog(5, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 4); else notEmpty54">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty54>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 4); else notSelective54">
@@ -846,11 +984,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 4)
                                     && !endOfDisc(5, 4, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 4) && containsSelective(5, 4)"
+                                    (click)="openChooseDisciplineDialog(5, 4, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 5); else notEmpty55">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty55>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 5); else notSelective55">
@@ -873,11 +1014,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 5)
                                     && !endOfDisc(5, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 5) && containsSelective(5, 5)"
+                                    (click)="openChooseDisciplineDialog(5, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 6); else notEmpty56">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(5, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty56>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 6); else notSelective56">
@@ -900,6 +1044,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(5, 6)
                                     && !endOfDisc(5, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(5, 6) && containsSelective(5, 6)"
+                                    (click)="openChooseDisciplineDialog(5, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>
@@ -907,12 +1053,13 @@
                     </div>
 
                      <!-- SATURDAY -->
-                     <div class="Day" [ngClass]="isEmptyDay(6)">
+                     <div class="Day">
                         <div class="Day_Name">Saturday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 1); else notEmpty61">
                                     <div class="Classes_Time blured">8:30 - 10:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 1)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty61>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(6, 1); else notSelective61">
@@ -935,11 +1082,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 1)
                                     && !endOfDisc(6, 1, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 1) && containsSelective(6, 1)"
+                                    (click)="openChooseDisciplineDialog(6, 1, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 2); else notEmpty62">
                                     <div class="Classes_Time blured">10:25 - 12:00</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 2)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty62>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(6, 2); else notSelective62">
@@ -962,11 +1112,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 2)
                                     && !endOfDisc(6, 2, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 2) && containsSelective(6, 2)"
+                                    (click)="openChooseDisciplineDialog(6, 2, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 3); else notEmpty63">
                                     <div class="Classes_Time blured">12:20 - 13:55</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 3)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty63>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(5, 3); else notSelective63">
@@ -989,11 +1142,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 3)
                                     && !endOfDisc(6, 3, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 3) && containsSelective(6, 3)"
+                                    (click)="openChooseDisciplineDialog(6, 3, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 4); else notEmpty64">
                                     <div class="Classes_Time blured">14:15 - 15:50</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 4)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty64>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(6, 4); else notSelective64">
@@ -1016,11 +1172,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 4)
                                     && !endOfDisc(6, 4, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 4) && containsSelective(6, 4)"
+                                    (click)="openChooseDisciplineDialog(6, 4, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 5); else notEmpty65">
                                     <div class="Classes_Time blured">16:10 - 17:45</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 5)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty65>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(6, 5); else notSelective65">
@@ -1043,11 +1202,14 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 5)
                                     && !endOfDisc(6, 5, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 5) && containsSelective(6, 5)"
+                                    (click)="openChooseDisciplineDialog(6, 5, true)">+ Add</div>
                                 </div>
                             </div>
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 6); else notEmpty66">
                                     <div class="Classes_Time blured">18:30 - 20:05</div>
+                                    <div class="toAdd" (click)="openChooseDisciplineDialog(6, 6)">+ Add</div>
                                 </ng-container>
                                 <ng-template #notEmpty66>
                                     <div class="Classes_Time Selective_Class" *ngIf="containsSelective(6, 6); else notSelective66">
@@ -1070,6 +1232,8 @@
                                     <div class="Teacher">{{ disc.teacherName }}</div>
                                     <div class="Selective_Border" *ngIf="containsSelective(6, 6)
                                     && !endOfDisc(6, 6, i)"></div>
+                                    <div class="toAdd" *ngIf="notLastInCatalog(6, 6) && containsSelective(6, 6)"
+                                    (click)="openChooseDisciplineDialog(6, 6, true)">+ Add</div>
                                 </div>
                             </div>
                             <div style="height:20px;"></div>

@@ -142,7 +142,7 @@ p{
     background-color: #6DAFA7;
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -319,4 +319,108 @@ h5 {
     padding-right: 20px;
     width: 500px;
     padding-top: 10px;
+}
+
+.disciplines {
+    width: 100%;
+    border: 2px solid #6DAFA7;
+    border-radius: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.discipline-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.disc-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #22272E;
+    padding-top: 10px;
+}
+
+.discipline-item {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #22272E;
+    display: flex;
+    flex-direction: row;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+
+.label, .yellow-label {
+    border: 2px solid #FFE779;
+    border-radius: 25px;
+    padding: 2px 50px;
+}
+
+.label:first-child {
+    margin-right: 15px;
+}
+
+.yellow-label {
+    background-color: #FFE779;
+    margin-right: 15px;
+}
+
+.selective {
+    color: #F8AB5D;
+}
+
+.mandatory {
+    color: #FFE779;
+}
+
+.lecture-icon img, .practice-icon img {
+    width: 20.54px;
+    height: 23px;
+    padding-left: 10px;
+}
+
+.lined {
+    text-decoration: line-through;
+}
+
+.discip-name {
+    margin-left: 5px;
+}
+
+.toAdd {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    opacity: 100%;
+
+    color: rgba(34, 39, 46, 0.5);
+    height: 35px;
+    padding-top: 25px;
+}
+
+.toAdd:hover {
+    color:#22272E;
+    cursor: pointer;
 }

@@ -56,7 +56,7 @@ span{
     margin-bottom: 41px;
 }
 .Teachers-list{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 220px;
     width: 490px;
 }
@@ -70,7 +70,7 @@ span{
     margin-bottom: 7px;
     margin-right: 10px;
 }
-#Not-avaible{
+.Not-avaible{
     background: #D9D9D9;
     display: flex;
 }
@@ -84,7 +84,7 @@ span{
     margin-right: 0;
 }
 .Down{
-    margin-top: 31px;
+    margin-top: 51px;
 }
 .Down-text{
     font-weight: 700;
@@ -94,7 +94,7 @@ span{
 .Buttons{
     width: 471px;
     margin: auto;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
 }
@@ -107,6 +107,7 @@ span{
     font-size: 20px;
     color: #000000;
     padding: 15px;
+    cursor: pointer;
 }
 .Confirm{
     width: 229.44px;
@@ -116,7 +117,26 @@ span{
     font-weight: 700;
     font-size: 25px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 .no-item{
     margin-left: 0;
+}
+
+.Confirm:disabled {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    cursor: default;
+}
+
+.Cancel:disabled {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    cursor: default;
+}
+
+.selected-teacher {
+    background-color: #6DAFA7;
+    border-color: #6DAFA7;
+    color:#FFFFFF;
 }

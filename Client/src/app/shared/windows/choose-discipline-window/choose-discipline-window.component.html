@@ -1,31 +1,71 @@
 <div class="Offer">
     <p class="Title">Add discipline</p>
         <div class="Header">
-            <p class="Text">Group: <span>IS-01</span> </p>
-            <p class="Text">Day of week: <span>Thursday</span> </p>
-            <p class="Text">Class time: <span>08:30 - 10:05</span> </p>
+            <p class="Text">Group: <span>{{ data.group.cipher }}</span> </p>
+            <p class="Text">Day of week: <span>{{ getDayTitleByNumber(data.day - 1) }}</span> </p>
+            <p class="Text">Class time: <span>{{ getLessonTimeTitleByNumber(data.lesson - 1) }}</span> </p>
         </div>
-        <div class="Mandatory">
+        <div class="Mandatory" *ngIf="!data.addAsCatalogDisciplines">
             <p class="Mandatory-header">Mandatory</p>
-            <div class="Mandatory-list">
-                <p class="Discipline">Discipline 1</p>
-                <p class="Discipline">Discipline 2</p>
-                <p class="Discipline">Discipline 3</p>
-            </div>
+            <ng-container *ngIf="mandatory().length; else noMandatory">
+                <div class="Mandatory-list">
+                    <p class="Discipline" *ngFor="let disc of mandatory()"
+                    [ngClass]="isSelected(disc.id)" (click)="selectDiscipline(disc)">{{ disc.name }}</p>
+                </div>
+            </ng-container>
+            <ng-template #noMandatory>
+                <div class="Mandatory-list">
+                    <p class="no-disciplines">No mandatory disciplines to add</p>
+                </div>
+            </ng-template>
         </div>
         <div class="Selective">
             <p class="Selective-header">Selective</p>
-            <p class="Selective-catalog">F-01</p>
-            <div class="Selective-list">
-                <p class="Discipline">Discipline 1</p>
-                <p class="Discipline">Discipline 2</p>
-            </div>
+            <ng-container *ngIf="data.addAsCatalogDisciplines; else withoutCatalogSelect">
+                <p class="Selective-catalog"><span class="Catalog_select catalogName">{{ data.catalogName }}</span></p>
+            </ng-container>
+            <ng-template #withoutCatalogSelect>
+                <app-choose-catalog [catalogsOfDisciplinesToAdd]="catalogsOfDisciplinesToAdd"
+                (newItemEvent)="addItemCatalog($event)"></app-choose-catalog>
+            </ng-template>
+
+            <ng-container *ngIf="catalogDisciplines.length; else noSelective">
+                <ng-container *ngIf="data.addAsCatalogDisciplines; else notBigger">
+                    <div class="Selective-list bigger">
+                        <p class="Discipline" *ngFor="let discipline of catalogDisciplines"
+                        [ngClass]="isSelected(discipline.id)" (click)="selectDiscipline(discipline)">{{ discipline.name }}</p>
+                    </div>
+                </ng-container>
+                <ng-template #notBigger>
+                    <div class="Selective-list">
+                        <p class="Discipline" *ngFor="let discipline of catalogDisciplines"
+                        [ngClass]="isSelected(discipline.id)" (click)="selectDiscipline(discipline)">{{ discipline.name }}</p>
+                    </div>
+                </ng-template>
+            </ng-container>
+            <ng-template #noSelective>
+                <ng-container *ngIf="data.addAsCatalogDisciplines; else notBiggerError">
+                    <div class="Selective-list bigger">
+                        <p class="no-disciplines">No selective disciplines to add</p>
+                    </div>
+                </ng-container>
+                <ng-template #notBiggerError>
+                    <div class="Selective-list">
+                        <p class="no-disciplines">No selective disciplines to add</p>
+                    </div>
+                </ng-template>
+            </ng-template>
         </div>
         <div class="Down">
             <p class="Down-text">Step 1/3: Choose discipline</p>
             <div class="Buttons">
-                <button class="Cancel">Cancel</button>
-                <button class="Confirm">Next</button>
+                <button
+                    *ngFor="let button of data.buttons"
+                    (click)="onClick(button.onClickEvent)"
+                    class="Cancel">
+                    {{button.title}}
+                </button>
+                <button class="Confirm" (click)="toChooseType()" [disabled]="!selectedDisciplines.length">Next</button>
             </div>
         </div>
 </div>

@@ -17,6 +17,7 @@ import { SubscribeWindowComponent } from './windows/subscribe-window/subscribe-w
 import { ChooseDisciplineWindowComponent } from './windows/choose-discipline-window/choose-discipline-window.component';
 import { ChooseDisciplineTypeWindowComponent } from './windows/choose-discipline-type-window/choose-discipline-type-window.component';
 import { ChooseDisciplineTeacherWindowComponent } from './windows/choose-discipline-teacher-window/choose-discipline-teacher-window.component';
+import { ChooseCatalogComponent } from './windows/choose-discipline-window/choose-catalog/choose-catalog.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ChooseDisciplineTeacherWindowComponent } from './windows/choose-discipl
     ChooseDisciplineWindowComponent,
     ChooseDisciplineTypeWindowComponent,
     ChooseDisciplineTeacherWindowComponent,
+    ChooseCatalogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,5 +44,8 @@ import { ChooseDisciplineTeacherWindowComponent } from './windows/choose-discipl
     FormsModule,
     ReactiveFormsModule,
   ],
+  exports: [
+    ChooseDisciplineTeacherWindowComponent
+  ]
 })
 export class SharedModule { }
