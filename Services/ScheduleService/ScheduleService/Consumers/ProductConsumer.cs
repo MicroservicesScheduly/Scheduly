@@ -7,7 +7,9 @@ namespace ScheduleService.Consumers
     {
         public async Task Consume(ConsumeContext<CustomerProduct> context)
         {
-            await Task.Run(() => { var obj = context.Message; });
+            await Task.Run(() => { var obj = context.Message;
+                Console.WriteLine($"RECEIVED -> {context.Message}");
+            });
         }
     }
 }

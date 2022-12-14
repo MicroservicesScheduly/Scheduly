@@ -34,7 +34,7 @@ namespace TokenService.Controllers
            if (product is not null)
             {
                 product.AddedOnDate = DateTime.Now;
-                Uri uri = new Uri("rabbitmq://localhost/productQueue");
+                Uri uri = new Uri("rabbitmq://192.168.59.130/productQueue");
                 var endpoint = await _busService.GetSendEndpoint(uri);
                 await endpoint.Send(product);
                 return "true";

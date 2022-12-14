@@ -55,7 +55,6 @@ builder.Services.AddMassTransit(x =>
         config.ReceiveEndpoint("productQueue", oq =>
         {
             oq.PrefetchCount = 20;
-            oq.UseMessageRetry(r => r.Interval(2, 100));
             oq.ConfigureConsumer<ProductConsumer>(provider);
         });
     }));
