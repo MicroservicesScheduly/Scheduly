@@ -39,6 +39,8 @@ export class EditGroupScheduleComponent implements OnInit {
 
   allCatalogs: ICatalog[] = [];
 
+  private selectedDisciplineToManage: IDiscipline = {} as IDiscipline;
+
   constructor(private router: Router, private groupService: GroupsService, private usersService: UsersService,
     private scheduleService: ScheduleService, private route: ActivatedRoute, private facultyService: FacultyService,
     private specialtyService: SpecialtiesService, private windowService: WindowService,
@@ -199,6 +201,28 @@ export class EditGroupScheduleComponent implements OnInit {
       catalogName: addAsCatalogDisciplines ? this.searchByDayAndLesson(day, lesson)[0].catalogName : ""
   });
   }
+
+  replace(discipline: IScheduleDiscipline) {
+    console.log(discipline);
+    console.log("replace");
+  }
+
+  delete(discipline: IScheduleDiscipline) {
+    this.scheduleService.delete(discipline.id).subscribe(res => {
+      this.notificationService.showSuccessMessage("Discipline was successfully deleted!");
+      this.router.navigateByUrl("schedule/group");
+    });
+  }
+  /*selectDisciplineToManage(value: any, toAdd: boolean = true) {
+    if (toAdd) {
+      this.selectedDisciplineToManage = value;
+    } else {
+      this.selectedDisciplineToManage = {} as IDiscipline;
+    }
+
+    console.log(this.selectedDisciplineToManage);
+  }*/
+
   /*onChangeGroup(value: any) {
     this.selectedGroupId = value;
   }*/

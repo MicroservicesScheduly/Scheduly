@@ -84,6 +84,14 @@ export class UsersService {
       return this.http.post<EI>(environment.urlPrefix + environment.usersUrl + '/ei', ei);
     }
 
+    eiNameIsUnique(eiName: string): Observable<boolean> {
+      return this.http.get<boolean>(environment.urlPrefix + environment.usersUrl + `/ei/${eiName}`);
+    } 
+
+    getEILinkById(eiId: number): Observable<EI> {
+      return this.http.get<EI>(environment.urlPrefix + environment.usersUrl + `/eiById/${eiId}`);
+    }
+
     createUserEI(ei: SaveUserEI){
       return this.http.post(environment.urlPrefix + environment.usersUrl + '/userEi', ei);
     }

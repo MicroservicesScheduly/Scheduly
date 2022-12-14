@@ -25,15 +25,22 @@ export class RegistrationComponent implements OnInit {
   register(){
     this.registrationModel.PasswordRepeat = this.registrationModel.Password;
 
-    this.usersService.register(this.registrationModel)
-    .subscribe(res1 => {
-      this.usersService.createEI({ name: this.eiName}).subscribe(res2 => {
-        this.usersService.createUserEI({ eiId: res2.id, userId: res1,
-          isAccepted: true, isAdmin: true}).subscribe(res => {
-            this.notificationService.showSuccessMessage("You are successfully registered!");
-            this.router.navigate(['authorization/sign-in']);
+    this.usersService.eiNameIsUnique(this.eiName).subscribe(res => {
+      if (res == true) {
+        this.usersService.register(this.registrationModel)
+        .subscribe(res1 => {
+              this.usersService.createEI({ name: this.eiName}).subscribe(res2 => {
+                this.usersService.createUserEI({ eiId: res2.id, userId: res1,
+                  isAccepted: true, isAdmin: true}).subscribe(res => {
+                    this.notificationService.showSuccessMessage("You are successfully registered!");
+                    this.router.navigate(['authorization/sign-in']);
+                  });
+              })
           });
-      })
+      }
+      else {
+        this.notificationService.showErrorMessage("EI with this name is already created!");
+      }
     });
   }
 

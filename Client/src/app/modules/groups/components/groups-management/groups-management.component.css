@@ -116,6 +116,7 @@ p{
 
 .linka{
     color: #8E8E8E;
+    margin-left: 3px;
 }
 
 
@@ -260,4 +261,12 @@ h5 {
 
 .h5-not-found {
     margin-top: -30px;
+}
+
+.copy {
+    cursor: pointer;
+}
+
+.copy:hover {
+    filter: invert(71%) sepia(5%) saturate(2339%) hue-rotate(123deg) brightness(90%) contrast(89%);
 }

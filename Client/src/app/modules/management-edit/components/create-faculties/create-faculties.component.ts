@@ -25,6 +25,8 @@ export class CreateFacultiesComponent implements OnInit {
 
   selectedSpecialties: ISpecialty[] = [];
 
+  finishCreation: boolean = false;
+
   constructor(private router: Router, private facultyService: FacultyService,
     private route: ActivatedRoute, private specialtyService: SpecialtiesService,
     private facultySpecialtyService: FacultySpecialtyService, private usersService: UsersService) { }
@@ -38,6 +40,9 @@ export class CreateFacultiesComponent implements OnInit {
   }
 
   submit(form: NgForm) {
+
+    this.finishCreation = true;
+    
     var faculty: ISaveFaculty = { description: form.value["description"], name: form.value["name"],
     universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
 

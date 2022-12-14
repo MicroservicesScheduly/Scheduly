@@ -1,4 +1,5 @@
-﻿using TokenService.DbAccess;
+﻿using Microsoft.EntityFrameworkCore;
+using TokenService.DbAccess;
 using TokenService.Entities;
 using TokenService.Interfaces;
 
@@ -18,6 +19,11 @@ namespace TokenService.Repositories
         public EIRepository(UserDbContext authDbContext)
         {
             _userDbContext = authDbContext;
+        }
+
+        public async Task<IEnumerable<EI>> GetAllAsync()
+        {
+            return await _userDbContext.EIs.ToListAsync();
         }
 
         /// <summary>

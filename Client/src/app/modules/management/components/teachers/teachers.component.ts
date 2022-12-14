@@ -31,13 +31,11 @@ export class TeachersComponent implements OnInit {
 
     this.teachersService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.allTeachers = res);
 
-    var teacherId: number;
-
     this.disciplineTeachersService.get().subscribe((res) => {
+      console.log(res);
       res.forEach(element => {
-        teacherId = element.teacherId;
         this.disciplineService.getById(element.disciplineId).subscribe((res) => {
-          this.disciplines.push({ discipline: res, teacherId: teacherId });
+          this.disciplines.push({ discipline: res, teacherId: element.teacherId });
         });
       });
     })
@@ -57,6 +55,9 @@ export class TeachersComponent implements OnInit {
   }
 
   showDisciplinesList(teacher: ITeacher) {
+    console.log(this.disciplines.filter(p => {
+      p.teacherId == teacher.id
+    }));
     this.windowService.openShowDisciplinesListDialog({
         buttons: [
             {

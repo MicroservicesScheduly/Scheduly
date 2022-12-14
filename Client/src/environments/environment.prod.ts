@@ -16,5 +16,5 @@ export const environment = {
   scheduleUrl: 'api/schedule',
   scheduleDisciplineUrl: 'api/schedule/disciplines',
   whiteListedDomains: [''],
-  urlPrefix: 'http://192.168.59.128/',
+  urlPrefix: 'http://192.168.59.130/',
 };

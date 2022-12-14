@@ -1,6 +1,7 @@
 export class EI {
     id: number;
     name: string;
+    link?: string;
 }
 
 export class SaveEI {

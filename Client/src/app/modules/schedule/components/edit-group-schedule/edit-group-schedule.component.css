@@ -206,15 +206,26 @@ p{
     display: flex;
     justify-content: start;
     align-items: center;
-    margin-left:18px;
+    margin-left: 18px;
 }
 
 .Discipline_Name{
     margin: 2px 13px 0px 5px;
-    font-family: Inter;
+    font-family: 'Inter';
     font-size: 20px;    
     font-weight: 700;
     color: #22272E;
+    width: 120px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.Discipline_Name:hover{
+    overflow: visible; 
+    white-space: normal; 
+    width: auto;
+    background-color:#FFF;
 }
 
 .Teacher{
@@ -423,4 +434,76 @@ h5 {
 .toAdd:hover {
     color:#22272E;
     cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    max-width: 40px;
+    margin-left: -5px;
+  }
+
+.dropdown-content {
+    width: 161px;
+    border: 2px solid #6DAFA7;
+    border-radius: 20px;
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-left: -120px;
+    min-width: 160px;
+    z-index: 1;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #22272E;
+}
+
+.dropdown-item {
+    padding: 6px;
+    color: #22272E;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-item:hover .item {
+    color:#6DAFA7;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.more {
+    background-color: #FFFFFF;
+    color:#6DAFA7;
+    border: none;
+    font-family: 'Inter';
+    font-size: 20px;    
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.replace-icon {
+    width: 14.67px;
+    height: 14.69px;
+}
+
+.delete-icon {
+    width: 14px;
+    height: 16px;
+}
+
+.up:hover .replace-icon {
+    filter: invert(71%) sepia(5%) saturate(2339%) hue-rotate(123deg) brightness(90%) contrast(89%);
+}
+
+.down:hover .delete-icon {
+    filter: invert(71%) sepia(5%) saturate(2339%) hue-rotate(123deg) brightness(90%) contrast(89%);
 }

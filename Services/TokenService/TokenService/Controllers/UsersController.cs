@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -5,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using TokenService.Extentions;
 using TokenService.Interfaces;
 using TokenService.Models;
+using TokenService.RabbitMQModels;
 using TokenService.Services;
 
 namespace TokenService.Controllers
@@ -16,11 +18,29 @@ namespace TokenService.Controllers
     {
         private readonly IUserService _userAccountService;
         private readonly IEIService _eiService;
+        private readonly IBus _busService;
 
-        public UsersController(IUserService userAccountService, IEIService eiService)
+        public UsersController(IUserService userAccountService, IEIService eiService, IBus busService)
         {
             _userAccountService = userAccountService;
             _eiService = eiService;
+            _busService = busService;
+        }
+
+        [HttpPost("rabbitmq")]
+        [AllowAnonymous]
+        public async Task<string> CreateProduct(CustomerProduct product)
+        {
+           if (product is not null)
+            {
+                product.AddedOnDate = DateTime.Now;
+                Uri uri = new Uri("rabbitmq://localhost/productQueue");
+                var endpoint = await _busService.GetSendEndpoint(uri);
+                await endpoint.Send(product);
+                return "true";
+            }
+
+            return "false";
         }
 
         /// <summary>
@@ -53,6 +73,7 @@ namespace TokenService.Controllers
         /// <returns>The list of all UserModel. </returns>
         /// <response code="200">Returns the list of all UserModel.</response>
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserModel>))]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetAllAsync()
         {
@@ -160,9 +181,35 @@ namespace TokenService.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
         public async Task<ActionResult<EIModel>> AddEI([FromBody] EIModel model)
         {
+            model.Link = GenerateLink(model.Name);
+
             var ei = await _eiService.AddAsync(model);
 
             return CreatedAtAction(nameof(Register), ei);
+        }
+
+        [HttpGet("ei/{name}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(bool))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<bool>> EINameIsUnique(string name)
+        {
+            var eis = await _eiService.GetAllAsync();
+
+            var isUniqueName = !eis.Any(p => p.Name == name);
+
+            return Ok(isUniqueName);
+        }
+
+        [HttpGet("eiById/{id}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(EIModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<EIModel>> GetEiById(int id)
+        {
+            var eis = await _eiService.GetAllAsync();
+
+            return Ok(eis.FirstOrDefault(o => o.Id == id));
         }
 
         [HttpPost("userEi")]
@@ -214,6 +261,11 @@ namespace TokenService.Controllers
             await _userAccountService.UpdateAsync(id, model);
 
             return NoContent();
+        }
+
+        private string GenerateLink(string eiName)
+        {
+            return eiName.Trim().ToLower();
         }
     }
 }

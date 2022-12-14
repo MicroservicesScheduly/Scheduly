@@ -6,5 +6,6 @@ namespace TokenService.Interfaces
     {
         Task<EIModel> AddAsync(EIModel model);
         Task<UserEIModel> AddUserEIAsync(UserEIModel model);
+        Task<IEnumerable<EIModel>> GetAllAsync();
     }
 }

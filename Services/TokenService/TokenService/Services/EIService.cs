@@ -25,6 +25,13 @@ namespace TokenService.Services
             _authOptions = authOptions;
         }
 
+        public async Task<IEnumerable<EIModel>> GetAllAsync()
+        {
+            var eis = await _unitOfWork.EIRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<EIModel>>(eis);
+        }
+
         public async Task<EIModel> AddAsync(EIModel model)
         { 
             var ei = _mapper.Map<EI>(model);

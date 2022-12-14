@@ -10,7 +10,8 @@ using FluentValidation.AspNetCore;
 using Services.Validation.FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using TokenService.Interfaces;
-using TokenService.Mocks;
+using MassTransit;
+using TokenService.RabbitMQModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
     };
 });
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+    {
+        config.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
+        {
+            h.Username(RabbitMqConsts.UserName);
+            h.Password(RabbitMqConsts.Password);
+        });
+    }));
+});
+builder.Services.AddMassTransitHostedService();
+
 
 builder.Services.AddControllers().AddFluentValidation(fv =>
 {
