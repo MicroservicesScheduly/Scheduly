@@ -1,0 +1,279 @@
+p{
+    margin: 0;
+}
+.Page{
+    padding: 0px 46px 0px 46px;
+    margin-top:85px;
+}
+.Type{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 24px;
+    margin-top: 12px;
+}
+
+.Type_text{
+    margin: 2px 0px 0px 15px;
+    font-family: Inter;
+    font-size: 20px;    
+    font-weight: 700;
+    color: #22272E;
+}
+
+.ColorMarks{
+    width: 154px;
+}
+
+.Title{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+.Group_edit{
+    display: flex;
+    justify-content: space-between;
+    width: 540px;
+    margin-top: 14px;
+}
+
+.Group{
+    text-align: right;
+}
+
+.Group_text{
+    margin-bottom: 14px;
+    margin-right: 43px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #8E8E8E;
+}
+
+.Group_select{
+    width: 265px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 3px solid #6DAFA7;
+    border-radius: 50px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #22272E;
+    padding: 0 10px;
+}
+
+.ManageGroup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left:10px;
+}
+
+.ManageGroup_btn{
+    width: 225px;
+    height: 49.14px;
+    background: #FFE779;
+    border-radius: 50px;
+    border-color: transparent;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #22272E;
+    cursor: pointer;
+    margin-right:13px;
+}
+
+.Teacher_text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    color: #8E8E8E;
+    margin-bottom: 14px;
+    margin-left: 8px;
+}
+
+.Semester_select{
+    margin-top:15px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    width: 400px;
+}
+
+.Semester_select select{
+    border: none;
+    background: #FFFFFF;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #22272E;
+}
+
+.all {
+    display: flex;
+    flex-direction: column;
+}
+
+.Week{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:17px;
+}
+
+.Day{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.Day_Name{
+    width: 214px;
+    height:37px;
+    background-color: #6DAFA7;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    line-height: 37px;
+    border-radius: 25px 25px 0px 0px;
+}
+
+.Day_Schedule{
+    width: 210px;
+    min-height:790px;
+    background: #FFFFFF;
+    border-width: 0px 2px 2px 2px;
+    border-style: solid;
+    border-color: #6DAFA7;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.Classes{
+    margin-top:17px;
+    min-height: 85px;
+}
+
+.Classes_Time{
+    margin: 0 auto;
+    width: 140px;
+    height: 28px;
+    background: #FFE779;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 28px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 28px;
+    color: #22272E;
+}
+
+.Selective_Class{
+    background: #F8AB5D;
+}
+
+.Selective_Border{
+    width:140px;
+    height: 0px;
+    border-top: 3px dashed #6DAFA7;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.Class{
+    margin-top:10px;
+}
+
+.First_Selective_Class{
+    margin-top:3px;
+}
+
+.Discipline{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left:18px;
+}
+
+.Discipline_Name{
+    margin: 2px 13px 0px 5px;
+    font-family: Inter;
+    font-size: 20px;    
+    font-weight: 700;
+    color: #22272E;
+}
+
+.Teacher{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #8E8E8E;
+    margin-left:18px;
+    margin-right:18px;
+    margin-top:7px;
+}
+
+.Catalog{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #22272E;
+    text-align: center;
+    margin-top:7px;
+}
+
+h1, h2 {
+    color: #22272E;
+}
+
+h5 {
+    color: #8E8E8E;
+}
+
+.not-found-img {
+    width: 670px;
+    height: 435px;
+    margin-top: -80px;
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-left: 30px;
+}
+
+.not-found-text {
+    text-align: center;
+}
+
+.h5-not-found {
+    margin-top: -30px;
+}
+
+.Group_text:hover {
+    cursor: pointer;
+}

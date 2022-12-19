@@ -24,7 +24,7 @@
 .Subscribe-text{
     background: #FFE779;
     border-radius: 25px;
-    width: 443px;
+    width: 243px;
     padding: 12px;
     margin: auto;
     color: #22272E;
@@ -38,10 +38,11 @@
 }
 
 .Center{
-    width: 443px;
+    width: 243px;
     margin: auto;
-    margin-top: 53px;
+    margin-top: 13px;
 }
+
 .Center-semester{
     border: 2px solid #6DAFA7;
     border-radius: 25px;
@@ -56,8 +57,8 @@
 }
 
 .Center-line{
-    width: 400px;
-    margin-top: 128px;
+    width: 200px;
+    margin-top: 48px;
     border-top: 2px dotted #6DAFA7;
 }
 
@@ -67,7 +68,7 @@
     font-size: 24px;
     text-align: center;
     color: #22272E;
-    margin-top: 11px;
+    margin-top: 31px;
     margin-bottom: 0;
 }
 
@@ -82,20 +83,20 @@
     padding: 8px 20px 8px;
     margin-top: 7px;
     text-align: left;
-    width: 399px;
+    width: 199px;
 }
 
 .Buttons{
     width: 471px;
     margin: auto;
-    margin-top: 125px;
+    margin-top: 75px;
     margin-bottom: 35px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .Cancel{
-    width: 229.26px;
+    width: 179.44px;
     background: #FFFFFF;
     border: 2px solid #6DAFA7;
     border-radius: 50px;
@@ -104,10 +105,12 @@
     font-size: 20px;
     color: #000000;
     padding: 15px;
+    cursor: pointer;
+    margin-right: 15px;
 }
 
 .Confirm{
-    width: 229.44px;
+    width: 179.44px;
     background: #6DAFA7;
     border-radius: 50px;
     border: #6DAFA7;
@@ -115,4 +118,16 @@
     font-weight: 700;
     font-size: 25px;
     color: #FFFFFF;
+    cursor: pointer;
+}
+
+.Confirm:disabled {
+    background-color: #D9D9D9;
+    border-color: #D9D9D9;
+    cursor: default;
+}
+
+.Offer {
+    width: 500px;
+    height: 600px;
 }

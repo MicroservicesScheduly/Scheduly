@@ -13,6 +13,10 @@ import { ChooseSemesterComponent } from './components/group/choose-semester/choo
 import { EditGroupScheduleComponent } from './components/edit-group-schedule/edit-group-schedule.component';
 import { ChooseDisciplineTeacherWindowComponent } from 'src/app/shared/windows/choose-discipline-teacher-window/choose-discipline-teacher-window.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TeacherComponent } from './components/teacher/teacher.component';
+import { ChooseTeacherComponent } from './components/teacher/choose-teacher/choose-teacher.component';
+import { ExternalSchedulePageComponent } from './external-schedule-page/external-schedule-page.component';
+import { ExternalHeaderModule } from 'src/app/shared/external-header/external-header.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     GroupComponent,
     ChooseGroupComponent,
     ChooseSemesterComponent,
-    EditGroupScheduleComponent
+    EditGroupScheduleComponent,
+    TeacherComponent,
+    ChooseTeacherComponent,
+    ExternalSchedulePageComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +35,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    HeaderModule
+    HeaderModule,
+    ExternalHeaderModule
   ],
   providers: [],
 })

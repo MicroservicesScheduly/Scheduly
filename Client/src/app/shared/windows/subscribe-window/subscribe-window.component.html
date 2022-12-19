@@ -7,13 +7,13 @@
         </div>
     </div>
     <div class="Center">
-        <p class="Center-semester">Semester: 1</p>
+        <p class="Center-semester">Semester: {{ data.semester }}</p>
         <hr class="Center-line">
-        <p class="Center-Email">Email for reminders</p>
-        <input type="email" placeholder="Enter email" id="email">
+        <p class="Center-Email">Email for reminder</p>
+        <input type="email" placeholder="Enter email" id="email" [(ngModel)]="email">
     </div>
     <div class="Buttons">
-        <button class="Cancel">Cancel</button>
-        <button class="Confirm">OK</button>
+        <button class="Cancel" (click)="closeDialog()">Cancel</button>
+        <button class="Confirm" [disabled]="emailIsEmpty()" (click)="subscribe()">OK</button>
     </div>
 </div>

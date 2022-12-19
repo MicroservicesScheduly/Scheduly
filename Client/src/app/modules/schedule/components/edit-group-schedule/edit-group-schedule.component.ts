@@ -208,6 +208,7 @@ export class EditGroupScheduleComponent implements OnInit {
   }
 
   delete(discipline: IScheduleDiscipline) {
+    console.log(discipline);
     this.scheduleService.delete(discipline.id).subscribe(res => {
       this.notificationService.showSuccessMessage("Discipline was successfully deleted!");
       this.router.navigateByUrl("schedule/group");

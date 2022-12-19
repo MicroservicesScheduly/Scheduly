@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emailer-config
+data:
+  PORT: "8080"
+  POSTGRES_DB: emailerservice
+  DB_HOST: emailer-postgres
+  DB_DIALECT: postgres
+  DB_PORT: "5432"

@@ -17,6 +17,7 @@ namespace GroupService.Controllers
             _groupService = groupService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GroupModel>>> Get()
         {
@@ -25,6 +26,7 @@ namespace GroupService.Controllers
             return Ok(groups);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<GroupModel>> Get(int id)
         {
@@ -33,6 +35,7 @@ namespace GroupService.Controllers
             return Ok(group);
         }
 
+        [AllowAnonymous]
         [HttpGet("byEI/{id}")]
         public async Task<ActionResult<IEnumerable<GroupModel>>> GetByEI(int id)
         {

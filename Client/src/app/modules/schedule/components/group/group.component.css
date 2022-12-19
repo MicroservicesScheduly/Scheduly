@@ -92,6 +92,11 @@ p{
     margin-right:13px;
 }
 
+
+.today {
+    background-color: #E86484 !important;
+}
+
 .Teacher_text{
     font-family: 'Inter';
     font-style: normal;
@@ -285,4 +290,8 @@ h5 {
 
 .disabled-edit:hover {
     cursor: auto;
+}
+
+.Teacher_text:hover {
+    cursor: pointer;
 }

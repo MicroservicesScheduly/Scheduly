@@ -68,6 +68,10 @@ p{
     padding: 0 10px;
 }
 
+.external-group-select {
+    margin-left: 200px;
+}
+
 .ManageGroup{
     display: flex;
     align-items: center;

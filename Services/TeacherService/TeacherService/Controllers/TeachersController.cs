@@ -37,6 +37,7 @@ namespace SimpleService.Controllers
             return Ok(teacher);
         }
 
+        [AllowAnonymous]
         [HttpGet("byEI/{id}")]
         public async Task<ActionResult<IEnumerable<TeacherModel>>> GetByEI(int id)
         {

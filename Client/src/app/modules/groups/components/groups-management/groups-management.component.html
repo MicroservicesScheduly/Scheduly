@@ -4,7 +4,7 @@
             <div class="Schedule">
                 <p class="Schedule_head">Schedule is</p>
                 <div class="Type">
-                    <img src="assets/green.jpg" alt="">
+                    <img src="assets/green.png" alt="">
                     <p class="Type_text">Filled</p>
                 </div>
                 <div class="Type">
@@ -49,7 +49,9 @@
                 <div class="i" *ngFor="let group of groups">
                     <div class="Item">
                         <div class="Is">
-                            <img src="assets/orange.png" alt="">
+                            <img *ngIf="currentSemesterScheduleStatus(group) == 'Filled'" src="assets/green.png" alt="">
+                            <img *ngIf="currentSemesterScheduleStatus(group) == 'In progress'" src="assets/orange.png" alt="">
+                            <img *ngIf="currentSemesterScheduleStatus(group) == 'Empty'" src="assets/red.png" alt="">
                             <p class="Item_group">{{ group.cipher }}</p>
                         </div>
                         <div class="Course"><span class="course">{{ group.course }}</span></div>

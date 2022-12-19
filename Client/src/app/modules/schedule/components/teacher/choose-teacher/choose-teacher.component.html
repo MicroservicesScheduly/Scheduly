@@ -1,0 +1,9 @@
+<div class="Group">
+    <p class="Group_text" (click)="redirectToGroupSchedule()">Group</p>
+    <select class="Group_select" name="teacher" #teacher (change)="onChangeTeacher(teacher.value)">
+        <option>Select teacher</option>
+        <option *ngFor="let teacher of getFilteredTeachers()" [value]="teacher.id">
+            {{ teacher.surname }} {{ teacher.name }} {{ teacher.patronymic }}
+        </option>
+    </select>
+</div>

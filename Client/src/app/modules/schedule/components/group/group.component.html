@@ -15,7 +15,7 @@
             <div class="Group_edit">
                 <app-choose-group (newItemEvent)="addItemGroup($event)"></app-choose-group>
                 <div class="Teacher">
-                    <p class="Teacher_text">Teacher</p>
+                    <p class="Teacher_text" (click)="redirectToTeacherSchedule()">Teacher</p>
                     <div class="ManageGroup">
                         <button class="ManageGroup_btn" (click)="redirectToGroupManagement()">+ Manage Groups</button>
                         <img src="assets/Vector.png" alt="" class="edit-btn" (click)="redirectToEditSchedule()"
@@ -44,7 +44,7 @@
 
                     <!-- MONDAY -->
                     <div class="Day" [ngClass]="isEmptyDay(1)">
-                        <div class="Day_Name">Monday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(1)">Monday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(1, 1); else notEmpty11">
@@ -211,7 +211,7 @@
             
                     <!-- TUESDAY -->
                     <div class="Day" [ngClass]="isEmptyDay(2)">
-                        <div class="Day_Name">Tuesday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(2)">Tuesday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(2, 1); else notEmpty21">
@@ -381,7 +381,7 @@
 
                     <!-- WEDNESDAY -->
                     <div class="Day" [ngClass]="isEmptyDay(3)">
-                        <div class="Day_Name">Wednesday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(3)">Wednesday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(3, 1); else notEmpty31">
@@ -551,7 +551,7 @@
 
                      <!-- THURSDAY -->
                      <div class="Day" [ngClass]="isEmptyDay(4)">
-                        <div class="Day_Name">Thursday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(4)">Thursday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(4, 1); else notEmpty41">
@@ -721,7 +721,7 @@
 
                      <!-- FRIDAY -->
                      <div class="Day" [ngClass]="isEmptyDay(5)">
-                        <div class="Day_Name">Friday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(5)">Friday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(5, 1); else notEmpty51">
@@ -891,7 +891,7 @@
 
                      <!-- SATURDAY -->
                      <div class="Day" [ngClass]="isEmptyDay(6)">
-                        <div class="Day_Name">Saturday</div>
+                        <div class="Day_Name" [ngClass]="isTodayForExternal(6)">Saturday</div>
                         <div class="Day_Schedule">
                             <div class="Classes">
                                 <ng-container *ngIf="isEmpty(6, 1); else notEmpty61">
@@ -1066,7 +1066,7 @@
             <div class="not-found">
                 <div class="not-found-text">
                     <h1>NOT FOUND</h1>
-                    <h5 class="h5-not-found">Please add at least one discipline to see the list</h5>
+                    <h5 class="h5-not-found">Please choose group to see the schedule</h5>
                 </div>
                 <div class="not-found-img-container">
                     <img class="not-found-img" src="assets/Not-Found.png" />

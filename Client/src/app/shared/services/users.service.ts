@@ -84,6 +84,10 @@ export class UsersService {
       return this.http.post<EI>(environment.urlPrefix + environment.usersUrl + '/ei', ei);
     }
 
+    getEI(): Observable<EI[]> {
+      return this.http.get<EI[]>(environment.urlPrefix + environment.usersUrl + '/ei');
+    }
+
     eiNameIsUnique(eiName: string): Observable<boolean> {
       return this.http.get<boolean>(environment.urlPrefix + environment.usersUrl + `/ei/${eiName}`);
     } 

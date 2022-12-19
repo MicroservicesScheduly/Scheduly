@@ -27,16 +27,14 @@ namespace TokenService.Controllers
             _busService = busService;
         }
 
-        [HttpPost("rabbitmq")]
-        [AllowAnonymous]
-        public async Task<string> CreateProduct(CustomerProduct product)
+        [HttpPost("addUserToEIEmail")]
+        public async Task<string> SendAddUserToEIEmailTemplate(AddUserToEIEmailTemplate emailData)
         {
-           if (product is not null)
+           if (emailData is not null)
             {
-                product.AddedOnDate = DateTime.Now;
-                Uri uri = new Uri("rabbitmq://192.168.59.130/productQueue");
+                Uri uri = new Uri("rabbitmq://192.168.59.130/addUserToEIQueue");
                 var endpoint = await _busService.GetSendEndpoint(uri);
-                await endpoint.Send(product);
+                await endpoint.Send(emailData);
                 return "true";
             }
 
@@ -199,6 +197,17 @@ namespace TokenService.Controllers
             var isUniqueName = !eis.Any(p => p.Name == name);
 
             return Ok(isUniqueName);
+        }
+
+        [HttpGet("ei")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<EIModel>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<IEnumerable<EIModel>>> GetAllEis()
+        {
+            var eis = await _eiService.GetAllAsync();
+
+            return Ok(eis);
         }
 
         [HttpGet("eiById/{id}")]

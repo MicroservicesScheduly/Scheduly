@@ -5,6 +5,7 @@ import { IDialogDisciplinesData } from '../models/IDalogDisciplinesData.model';
 import { IDialogTeachersData } from '../models/IDalogTeachersData.model';
 import { IDialogData } from '../models/IDialogData.model';
 import { IDialogFacultiesData } from '../models/IDialogFacultiesData.model';
+import { ISubscribeData } from '../models/ISubscribeData.model';
 import { AddCatalogWindowComponent } from '../windows/add-catalog-window/add-catalog-window.component';
 import { AddTeacherWindowComponent } from '../windows/add-teacher-window/add-teacher-window.component';
 import { ChangeCatalogWindowComponent } from '../windows/change-catalog-window/change-catalog-window.component';
@@ -83,7 +84,7 @@ export class WindowService {
         })
     }
 
-    openSubscribeDialog(data: IDialogData) {
+    openSubscribeDialog(data: ISubscribeData) {
         return this.dialog
         .open(SubscribeWindowComponent, {
             data,

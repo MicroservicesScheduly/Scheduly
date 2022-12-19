@@ -20,12 +20,17 @@ export class SigninComponent implements OnInit {
   }
 
   login(){
-    console.log("login");
     this.usersService.login(this.loginModel.Email, this.loginModel.Password).subscribe(
-      result => {
+      (result) => 
+      {
         this.notificationService.showSuccessMessage("You are successfully logged in!");
         this.router.navigate(['/management/faculties']);
-      })
+      },
+      (error) => 
+      {
+        this.notificationService.showErrorMessage("No users with entered credentials!");
+      }
+      )
   }
 
   isAuthenticated(){

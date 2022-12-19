@@ -1,0 +1,19 @@
+<header>
+    <div class="logo-container">
+        <img class="logo" src="assets/Logo.png" />
+        <h4>Scheduly</h4>
+        <div class="try" (click)="redirectToTry()">
+            <h4>Try</h4>
+        </div>
+    </div>
+    <div class="nav-bar">
+        <nav>
+        <a class="">{{ eiName }} Schedule</a>
+        </nav>
+    </div>
+    <div class="avatar-container">
+        <div class="subscribe" *ngIf="isExternalRouteForGroupAndGroupIsSelected()" (click)="openSubscribeWindow()">
+            <h4>Subscribe for updates</h4>
+        </div>
+    </div>
+</header>

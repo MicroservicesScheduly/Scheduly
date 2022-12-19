@@ -9,7 +9,6 @@ using GreenPipes;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using ScheduleService.Consumers;
 using SimpleService.Interfaces;
 using TokenService.RabbitMQModels;
 
@@ -41,21 +40,14 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<ProductConsumer>();
     x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
     {
         config.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
         {
             h.Username(RabbitMqConsts.UserName);
             h.Password(RabbitMqConsts.Password);
-        });
-        config.ReceiveEndpoint("productQueue", oq =>
-        {
-            oq.PrefetchCount = 20;
-            oq.ConfigureConsumer<ProductConsumer>(provider);
         });
     }));
 });

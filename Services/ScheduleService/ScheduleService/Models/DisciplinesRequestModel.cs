@@ -2,9 +2,9 @@
 
 namespace ScheduleService.Models
 {
-    public class DisciplinesRequestModel : BaseModel
+    public class TeacherDisciplinesRequestModel : BaseModel
     {
-        public int GroupId { get; set; }
+        public int TeacherId { get; set; }
         public int Semester { get; set; }
     }
 }

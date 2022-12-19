@@ -5,6 +5,8 @@ using Business.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
 using ScheduleService.Models;
+using MassTransit;
+using TokenService.RabbitMQModels;
 
 namespace SimpleService.Controllers
 {
@@ -14,12 +16,29 @@ namespace SimpleService.Controllers
     public class ScheduleController : ControllerBase
     {
         private IScheduleService _scheduleService;
+        private readonly IBus _busService;
 
-        public ScheduleController(IScheduleService scheduleService)
+        public ScheduleController(IScheduleService scheduleService, IBus busService)
         {
             _scheduleService = scheduleService;
+            _busService = busService;
         }
 
+        [HttpPost("sendSubscriptionEmail")]
+        public async Task<string> SendAddUserToEIEmailTemplate(ScheduleSubscriptionEmailTemplate emailData)
+        {
+            if (emailData is not null)
+            {
+                Uri uri = new Uri("rabbitmq://192.168.59.130/subscriptionQueue");
+                var endpoint = await _busService.GetSendEndpoint(uri);
+                await endpoint.Send(emailData);
+                return "true";
+            }
+
+            return "false";
+        }
+
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ScheduleModel>>> Get()
         {
@@ -61,12 +80,22 @@ namespace SimpleService.Controllers
         }
 
         /* schedule discipline */
+        [AllowAnonymous]
         [HttpPost("disciplines/groupsemester")]
         public async Task<ActionResult<IEnumerable<ScheduleDisciplineModel>>> GetByGroupAndSemesterId(DisciplinesRequestModel model)
         {
             var scheduleDisciplines = await _scheduleService.GetAllDisciplinesAsync();
 
             return Ok(scheduleDisciplines.Where(p => _scheduleService.GetByIdAsync(p.ScheduleId).Result.GroupId == model.GroupId && p.Semester == model.Semester));
+        }
+
+        [AllowAnonymous]
+        [HttpPost("disciplines/teachersemester")]
+        public async Task<ActionResult<IEnumerable<ScheduleDisciplineModel>>> GetByTeacherAndSemesterId(TeacherDisciplinesRequestModel model)
+        {
+            var scheduleDisciplines = await _scheduleService.GetAllDisciplinesAsync();
+
+            return Ok(scheduleDisciplines.Where(p => p.TeacherId == model.TeacherId && p.Semester == model.Semester));
         }
 
         [HttpGet("disciplines")]

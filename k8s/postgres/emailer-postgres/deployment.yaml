@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailer-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emailer-postgres
+  template:
+    metadata:
+      labels:
+        app: emailer-postgres
+    spec:
+      containers:
+        - name: emailer-postgres
+          image: postgres:14.1-alpine3.15
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: emailer-postgres-config
+            - secretRef:
+                name: postgres-secret-emailer
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: emailerservice
+      volumes:
+        - name: emailerservice
+          persistentVolumeClaim:
+            claimName: emailer-postgres-pv-claim
+
+        

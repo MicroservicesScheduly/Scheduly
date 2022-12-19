@@ -183,6 +183,8 @@ export class ChooseDisciplineWindowComponent implements OnInit {
       else {
         if (discipline.isSelective && this.selectedDisciplines.some(p => p.catalogId == discipline.catalogId)) {
           this.notificationService.showErrorMessage("You can not choose a few selective disciplines simultaneously!");
+        } else if (!discipline.isSelective && this.selectedDisciplines.length) {
+          this.notificationService.showErrorMessage("You can not choose a few mandatory disciplines simultaneously!");
         } else {
           this.selectedDisciplines.push(discipline);
         }
@@ -198,6 +200,8 @@ export class ChooseDisciplineWindowComponent implements OnInit {
     let selective: IDiscipline[] = this.getSelectiveDisciplinesByCatalogId(value);
 
     let finalSelective: IDiscipline[] = [];
+
+    this.selectedDisciplines = [];
 
     selective.forEach(element => {
       if (!(this.data.scheduleDisciplines?.some(o => (o.disciplineId == element.id && o.semester == this.data.semester

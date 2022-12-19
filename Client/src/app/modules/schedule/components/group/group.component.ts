@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IGroup } from 'src/app/modules/management/models/group.model';
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
 import { NotificationService } from 'src/app/modules/management/services/notification.service';
@@ -23,21 +23,57 @@ export class GroupComponent implements OnInit {
 
   scheduleDisciplines: IScheduleDiscipline[] = [];
 
+  private link: string;
+
   constructor(private router: Router, private groupService: GroupsService, private usersService: UsersService,
-    private scheduleService: ScheduleService, private notificationService: NotificationService) { }
+    private scheduleService: ScheduleService, private notificationService: NotificationService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.groupService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
-      this.groups = res;
-    });
+
+    localStorage.setItem('externalGroupId', JSON.stringify(-1));
+    localStorage.setItem('externalSemester', JSON.stringify(1));
 
     if (!this.selectedSemester) {
       this.selectedSemester = 1;
     }
+
+    this.route.params.subscribe(params => {
+      this.link = params['id'];
+      if (params['id']) {
+        this.usersService.getEI().subscribe(res => {
+          const eiByRouteLink = res.find(p => p.link == params['id']);
+          if (eiByRouteLink) {
+            this.groupService.getByEIId(eiByRouteLink.id).subscribe(res => {
+              this.groups = res;
+            });
+          }
+        });
+      } else {
+        this.groupService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
+          this.groups = res;
+        });
+      }
+    });
+  }
+
+  isExternalRoute() {
+    return this.router.url.includes("external");
   }
 
   redirectToGroupManagement() {
     this.router.navigateByUrl("groups/management");
+  }
+
+  redirectToTeacherSchedule() {
+    localStorage.setItem('externalGroupId', JSON.stringify(-1));
+    localStorage.setItem('externalSemester', JSON.stringify(-1));
+
+    if (this.isExternalRoute() && this.link) {
+      this.router.navigateByUrl(`schedule/external/teacher/${this.link}`);
+    } else {
+      this.router.navigateByUrl("schedule/teacher");
+    }
   }
 
   redirectToEditSchedule() {
@@ -96,8 +132,10 @@ export class GroupComponent implements OnInit {
   addItemGroup(newItem: any) {
     if (newItem == 'Select Group') {
       this.selectedGroupId = -1;
+      localStorage.setItem('externalGroupId', JSON.stringify(-1));
     } else {
       this.selectedGroupId = newItem;
+      localStorage.setItem('externalGroupId', JSON.stringify(newItem));
       var request: IDisciplinesRequest = { groupId: this.selectedGroupId, semester: this.selectedSemester };
       this.scheduleService.getScheduleDisciplinesByGroupAndSemesterId(request).subscribe(res => {
         this.scheduleDisciplines = res;
@@ -107,6 +145,7 @@ export class GroupComponent implements OnInit {
 
   addItemSemester(newItem: any) {
     this.selectedSemester = newItem;
+    localStorage.setItem('externalSemester', JSON.stringify(newItem));
     var request: IDisciplinesRequest = { groupId: this.selectedGroupId, semester: this.selectedSemester };
     this.scheduleService.getScheduleDisciplinesByGroupAndSemesterId(request).subscribe(res => {
       this.scheduleDisciplines = res;
@@ -145,5 +184,15 @@ export class GroupComponent implements OnInit {
 
   addItemFinish(value: any) {
     console.log(value);
+  }
+
+  isTodayForExternal(day: number) {
+    var now = new Date();
+    if (this.isExternalRoute() && now.getDay() == day) {
+      return { 'today' : true }
+    }
+    else {
+      return { 'today' : false }
+    }
   }
 }
