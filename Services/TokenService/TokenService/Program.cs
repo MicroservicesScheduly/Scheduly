@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using TokenService.Interfaces;
 using MassTransit;
 using TokenService.RabbitMQModels;
+using Serilog;
+using Serilog.Exceptions;
+using Serilog.Sinks.Elasticsearch;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,6 +60,8 @@ builder.Services.AddMassTransit(x =>
 });
 builder.Services.AddMassTransitHostedService();
 
+ConfigureLogs();
+builder.Host.UseSerilog();
 
 builder.Services.AddControllers().AddFluentValidation(fv =>
 {
@@ -125,3 +131,33 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+#region helper
+void ConfigureLogs()
+{
+    var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+    /*var configuration = new ConfigurationBinder()
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .Build();*/
+
+    var configuration = "http://localhost:9200";
+
+    Log.Logger = new LoggerConfiguration()
+        .Enrich.FromLogContext()
+        .Enrich.WithExceptionDetails()
+        .WriteTo.Debug()
+        .WriteTo.Console()
+        .WriteTo.Elasticsearch(ConfigureELS(configuration))
+        .CreateLogger();
+}
+
+ElasticsearchSinkOptions ConfigureELS(string configuration)
+{
+    return new ElasticsearchSinkOptions(new Uri(configuration))
+    {
+        AutoRegisterTemplate = true,
+        IndexFormat = $"indexforlogstash"
+    };
+}
+#endregion

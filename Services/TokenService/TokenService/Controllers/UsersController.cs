@@ -20,11 +20,16 @@ namespace TokenService.Controllers
         private readonly IEIService _eiService;
         private readonly IBus _busService;
 
-        public UsersController(IUserService userAccountService, IEIService eiService, IBus busService)
+        private readonly ILogger<UsersController> _logger;
+
+        public UsersController(IUserService userAccountService, IEIService eiService, IBus busService,
+            ILogger<UsersController> logger)
         {
             _userAccountService = userAccountService;
             _eiService = eiService;
             _busService = busService;
+
+            _logger = logger;
         }
 
         [HttpPost("addUserToEIEmail")]
@@ -75,6 +80,8 @@ namespace TokenService.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserModel>))]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetAllAsync()
         {
+            _logger.LogInformation("UsersController GetAll K8S", DateTime.UtcNow);
+
             var users = await _userAccountService.GetAllAsync();
 
             return Ok(users);

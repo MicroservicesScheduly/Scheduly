@@ -1,0 +1,34 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: seq
+  labels:
+    app: seq
+spec:
+  containers:
+  - name: seq
+    image: datalust/seq:latest
+    ports:
+    - containerPort: 80
+    - containerPort: 5341
+    env:
+    - name: ACCEPT_EULA
+      value: "Y"
+    volumeMounts:
+    - mountPath: "/data"
+      name: volume
+  volumes:
+    - name: volume
+      persistentVolumeClaim:
+        claimName: azure-managed-disk
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: seq
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: seq    

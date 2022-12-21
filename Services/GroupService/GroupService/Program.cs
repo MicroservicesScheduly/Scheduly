@@ -6,7 +6,9 @@ using DisciplineService.Interfaces;
 using DisciplineService.Repositories;
 using GroupService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+/*builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.AllowSynchronousIO = true;
+});*/
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -61,6 +68,8 @@ builder.Services.AddSingleton(mapper);
 var app = builder.Build();
 app.ApplyMigrations();
 
+app.UseMetricServer("/metrics");
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -78,10 +87,15 @@ app.UseCors(builder =>
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+app.UseHttpMetrics();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapMetrics();
 
 app.Run();
