@@ -20,5 +20,5 @@ exports.environment = {
     scheduleDisciplineUrl: 'api/schedule/disciplines',
     whiteListedDomains: [''],
     usersUrl: 'api/users',
-    urlPrefix: 'http://192.168.59.132/'
+    urlPrefix: 'http://192.168.59.147/'
 };

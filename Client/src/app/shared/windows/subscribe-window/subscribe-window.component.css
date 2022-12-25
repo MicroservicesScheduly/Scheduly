@@ -69,7 +69,7 @@
     text-align: center;
     color: #22272E;
     margin-top: 31px;
-    margin-bottom: 0;
+    margin-bottom: -5px;
 }
 
 #email{
@@ -89,7 +89,7 @@
 .Buttons{
     width: 471px;
     margin: auto;
-    margin-top: 75px;
+    margin-top: 55px;
     margin-bottom: 35px;
     display: flex;
     justify-content: center;
@@ -130,4 +130,17 @@
 .Offer {
     width: 500px;
     height: 600px;
+}
+
+.error {
+    color: red;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+}
+
+.errors-container {
+    min-height: 25px;
+    padding-left: 10px;
 }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TeachersComponent } from 'src/app/modules/management/components/teachers/teachers.component';
@@ -16,8 +16,10 @@ import { DisciplineTeacherService } from 'src/app/modules/management/services/di
 import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
 import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { TeachersService } from 'src/app/modules/management/services/teachers.service';
+import { IDialogData } from 'src/app/shared/models/IDialogData.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
+import { AddCatalogWindowComponent } from 'src/app/shared/windows/add-catalog-window/add-catalog-window.component';
 import { ChangeCatalogWindowComponent } from 'src/app/shared/windows/change-catalog-window/change-catalog-window.component';
 import { getCatalogs } from '../../catalogs.helper';
 
@@ -57,11 +59,13 @@ export class CreateDisciplinesComponent implements OnInit {
 
   private tch: ITeacher = {} as ITeacher;
 
+  private disciplines: IDiscipline[] = [];
+
   constructor(private router: Router, private windowService: WindowService,
     private disciplineService: DisciplinesService, private notificationService: NotificationService,
     private catalogsService: CatalogsService, private catalogDisciplineService: CatalogDisciplineService,
     private teacherService: TeachersService, private disciplineTeacherService: DisciplineTeacherService,
-    private usersService: UsersService) { }
+    private usersService: UsersService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (!this.discipline.creditType) {
@@ -77,69 +81,26 @@ export class CreateDisciplinesComponent implements OnInit {
     this.disciplineTeacherService.getPracticiansByDisciplineId(this.discipline.id).subscribe(res =>
       this.practicians = res);
 
+    this.disciplineService.get().subscribe(res => this.disciplines = res);
+
   }
 
   submit(form: NgForm) {
-    var discipline: ISaveDiscipline = { name: form.value["name"], description: form.value["description"],
-        course: form.value["course"], creditType: form.value["creditType"] == "Test" ? 0 : 1, hours: form.value["hours"], 
-        isSelective: form.value["isSelective"], catalogId: this.selectedCatalogId ? this.selectedCatalogId : undefined,
-        universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
-
-    /*this.disciplineService.create(discipline)
-    .subscribe((res) => {
-      const catalogDiscipline: ISaveCatalogDiscipline = { catalogId: this.selectedCatalogId,
-        disciplineId: res.id };
-      this.catalogDisciplineService.create(catalogDiscipline)
-      .subscribe(() => {
-        if (this.lecturers) {
-          this.lecturers.forEach(element => {
-            const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
-              isLecturer: true };
-            this.disciplineTeacherService.create(disciplineTeacher).subscribe();
-          });
-        }
-
-        if (this.practicians) {
-          this.practicians.forEach(element => {
-            const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
-              isLecturer: false };
-            this.disciplineTeacherService.create(disciplineTeacher).subscribe();
-          });
-        }
-
-        this.redirectToManagement();
-      });
-    });*/
-
-    if (discipline.isSelective) {
-        this.disciplineService.create(discipline)
-        .subscribe((res) => {
-          const catalogDiscipline: ISaveCatalogDiscipline = { catalogId: this.selectedCatalogId,
-            disciplineId: res.id };
-          this.catalogDisciplineService.create(catalogDiscipline)
-          .subscribe(() => {
-            if (this.lecturers) {
-              this.lecturers.forEach(element => {
-                const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
-                  isLecturer: true };
-                this.disciplineTeacherService.create(disciplineTeacher).subscribe();
-              });
-            }
-
-            if (this.practicians) {
-              this.practicians.forEach(element => {
-                const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
-                  isLecturer: false };
-                this.disciplineTeacherService.create(disciplineTeacher).subscribe();
-              });
-            }
-
-          this.redirectToManagement();
-        });
-      });
+    if (this.disciplines.some(p => p.name == form.value["name"])) {
+      this.notificationService.showErrorMessage("Discipline with this name already exists!");
     } else {
+      var discipline: ISaveDiscipline = { name: form.value["name"], description: form.value["description"],
+      course: form.value["course"], creditType: form.value["creditType"] == "Test" ? 0 : 1, hours: form.value["hours"], 
+      isSelective: form.value["isSelective"], catalogId: this.selectedCatalogId ? this.selectedCatalogId : undefined,
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+
+  if (discipline.isSelective) {
       this.disciplineService.create(discipline)
       .subscribe((res) => {
+        const catalogDiscipline: ISaveCatalogDiscipline = { catalogId: this.selectedCatalogId,
+          disciplineId: res.id };
+        this.catalogDisciplineService.create(catalogDiscipline)
+        .subscribe(() => {
           if (this.lecturers) {
             this.lecturers.forEach(element => {
               const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
@@ -158,6 +119,29 @@ export class CreateDisciplinesComponent implements OnInit {
 
         this.redirectToManagement();
       });
+    });
+  } else {
+    this.disciplineService.create(discipline)
+    .subscribe((res) => {
+        if (this.lecturers) {
+          this.lecturers.forEach(element => {
+            const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+              isLecturer: true };
+            this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+          });
+        }
+
+        if (this.practicians) {
+          this.practicians.forEach(element => {
+            const disciplineTeacher: ISaveDisciplineTeacher = { teacherId: element.id, disciplineId: res.id,
+              isLecturer: false };
+            this.disciplineTeacherService.create(disciplineTeacher).subscribe();
+          });
+        }
+
+      this.redirectToManagement();
+    });
+  }
     }
   }
 
@@ -189,7 +173,7 @@ export class CreateDisciplinesComponent implements OnInit {
   }
 
   addCatalog() {
-    this.windowService.openAddCatalogDialog({
+    /*let dialogRef = this.windowService.openAddCatalogDialog({
       buttons: [
           {
             title: "Cancel",
@@ -198,9 +182,25 @@ export class CreateDisciplinesComponent implements OnInit {
       ],
       title: 'Add Catalog',
       message: 'Enter name for the new catalog'
-    });
+    });*/
 
-    this.catalogsService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.catalogs = res);
+    let data: IDialogData = {
+      buttons: [
+          {
+            title: "Cancel",
+            onClickEvent: new EventEmitter<void>(),
+          },
+      ],
+      title: 'Add Catalog',
+      message: 'Enter name for the new catalog'
+    };
+
+    return this.dialog
+      .open(AddCatalogWindowComponent, {
+          data,
+          disableClose: true,
+      })
+      .afterClosed().subscribe(res => this.catalogsService.get().subscribe(p => this.catalogs = p));
   }
 
   changeCatalog() {

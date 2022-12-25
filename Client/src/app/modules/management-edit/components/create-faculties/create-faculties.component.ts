@@ -6,6 +6,7 @@ import { ISaveFacultySpecialty } from 'src/app/modules/management/models/faculty
 import { ISpecialty } from 'src/app/modules/management/models/specialty.model';
 import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
 import { FacultyService } from 'src/app/modules/management/services/faculty.service';
+import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
@@ -27,9 +28,12 @@ export class CreateFacultiesComponent implements OnInit {
 
   finishCreation: boolean = false;
 
+  private faculties: Faculty[] = [];
+
   constructor(private router: Router, private facultyService: FacultyService,
     private route: ActivatedRoute, private specialtyService: SpecialtiesService,
-    private facultySpecialtyService: FacultySpecialtyService, private usersService: UsersService) { }
+    private facultySpecialtyService: FacultySpecialtyService, private usersService: UsersService,
+    private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -37,9 +41,14 @@ export class CreateFacultiesComponent implements OnInit {
    }); 
 
    this.specialtyService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.specialties = res);
+
+   this.facultyService.get().subscribe(res => this.faculties = res);
   }
 
   submit(form: NgForm) {
+    if (this.faculties.some(p => p.name == form.value["name"])) {
+      this.notificationService.showErrorMessage("Faculty with this name already exists!");
+    } else {
 
     this.finishCreation = true;
     
@@ -57,10 +66,7 @@ export class CreateFacultiesComponent implements OnInit {
       });
     });
 
-    /*this.facultyService.update(this.id, form.value)
-    .subscribe((s) => {
-      this.redirectToManagement();
-    });*/
+    }
   }
 
   redirectToManagement() {

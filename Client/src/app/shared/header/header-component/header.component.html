@@ -5,8 +5,8 @@
     </div>
     <div class="nav-bar">
         <nav>
-        <a href="management/faculties" class="">Management</a>
-        <a href="schedule/group" class="" >Schedule</a>
+        <a href="management/faculties" class="" [ngClass]="isManagementSection()">Management</a>
+        <a href="schedule/group" class="" [ngClass]="isScheduleSection()">Schedule</a>
         </nav>
     </div>
     <div class="avatar-container">

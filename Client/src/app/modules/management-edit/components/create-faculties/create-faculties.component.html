@@ -32,7 +32,7 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input class="form-control" name="name" [(ngModel)]="faculty.name" required
-                    #name="ngModel" placeholder="Enter name"/>
+                    #name="ngModel" placeholder="Enter name" [maxlength]="200"/>
                 </div>
                 <div class="errors-container">
                     <div *ngIf="name.errors?.['required']" class="error">
@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label>Description</label>
                     <input class="form-control" name="description" [(ngModel)]="faculty.description" required
-                    #description="ngModel" placeholder="Enter description"/>
+                    #description="ngModel" placeholder="Enter description" [maxlength]="300"/>
                 </div>
                 <div class="errors-container">
                     <div *ngIf="description.errors?.['required']" class="error">

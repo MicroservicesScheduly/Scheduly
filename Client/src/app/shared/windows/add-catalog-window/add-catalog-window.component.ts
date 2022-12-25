@@ -32,18 +32,21 @@ export class AddCatalogWindowComponent implements OnInit {
 
   onClick(event: EventEmitter<void>) {
       event?.next();
-      this.dialogRef.close();
+      this.dialogRef.close(this.data);
   }
 
   addNewCatalog(form: NgForm) {
     var catalog: ISaveCatalog = { name: form.value["name"],
       universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
 
-    this.catalogsService.create(catalog)
-    .subscribe(() => {
-      this.dialogRef.close();
-      this.notificationService.showSuccessMessage("New catalog was added successfully");
-    });
-
+    if (this.catalogs.some(p => p.name == catalog.name)) {
+      this.notificationService.showErrorMessage("Catalog with this name already exists!");
+    } else {
+      this.catalogsService.create(catalog)
+      .subscribe(() => {
+        this.dialogRef.close();
+        this.notificationService.showSuccessMessage("New catalog was added successfully");
+      });
+    }
   }
 }

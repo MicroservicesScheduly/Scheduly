@@ -10,10 +10,19 @@
         <p class="Center-semester">Semester: {{ data.semester }}</p>
         <hr class="Center-line">
         <p class="Center-Email">Email for reminder</p>
-        <input type="email" placeholder="Enter email" id="email" [(ngModel)]="email">
+        <input type="email" placeholder="Enter email" id="email" [(ngModel)]="email" required #subsEmail="ngModel"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div class="errors-container">
+            <div *ngIf="subsEmail.errors?.['required']" class="error">
+                Email for reminder is required.
+            </div>
+            <div *ngIf="subsEmail.errors?.['pattern']" class="error">
+                Email for reminder must contain a @ and . symbols.
+            </div>
+        </div>
     </div>
     <div class="Buttons">
         <button class="Cancel" (click)="closeDialog()">Cancel</button>
-        <button class="Confirm" [disabled]="emailIsEmpty()" (click)="subscribe()">OK</button>
+        <button class="Confirm" [disabled]="emailIsEmpty() || subsEmail.errors" (click)="subscribe()">OK</button>
     </div>
 </div>

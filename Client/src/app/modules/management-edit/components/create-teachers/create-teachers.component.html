@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input class="form-control" name="name" [(ngModel)]="teacher.name" required
-                    #name="ngModel" placeholder="Enter name"/>
+                    #name="ngModel" placeholder="Enter name" [maxlength]="50"/>
                 </div>
                 <div class="errors-container">
                     <div *ngIf="name.errors?.['required']" class="error">
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label>Surname</label>
                     <input class="form-control" name="surname" [(ngModel)]="teacher.surname" required
-                    #surname="ngModel" placeholder="Enter surname"/>
+                    #surname="ngModel" placeholder="Enter surname" [maxlength]="50"/>
                 </div>
                 <div class="errors-container">
                     <div *ngIf="surname.errors?.['required']" class="error">
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label>Patronymic</label>
                     <input class="form-control" name="patronymic" [(ngModel)]="teacher.patronymic" required
-                    #patronymic="ngModel" placeholder="Enter patronymic"/>
+                    #patronymic="ngModel" placeholder="Enter patronymic" [maxlength]="50"/>
                 </div>
                 <div class="errors-container">
                     <div *ngIf="patronymic.errors?.['required']" class="error">

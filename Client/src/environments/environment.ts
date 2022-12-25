@@ -22,7 +22,7 @@ export const environment = {
   scheduleUrl: 'api/schedule',
   scheduleDisciplineUrl: 'api/schedule/disciplines',
   whiteListedDomains: [''],
-  urlPrefix: 'http://192.168.59.132/',
+  urlPrefix: 'http://192.168.59.147/',
 };
 
 export const HEADERS = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');

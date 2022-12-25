@@ -69,3 +69,9 @@ header {
     background-color: #6DAFA7;
     border: none;
 }
+
+.active-path {
+    font-weight: 500 !important;
+    font-size: 25px !important;
+    text-decoration-line: none !important;
+}

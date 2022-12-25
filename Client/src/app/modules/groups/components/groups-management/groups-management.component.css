@@ -218,6 +218,10 @@ p{
     cursor: pointer;
 }
 
+.Item_img:hover {
+    filter: invert(71%) sepia(43%) saturate(310%) hue-rotate(123deg) brightness(85%) contrast(82%);
+}
+
 .Images{
     display: flex;
     justify-content: space-between;

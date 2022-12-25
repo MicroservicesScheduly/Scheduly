@@ -22,18 +22,40 @@
                         <label>E-mail</label>
                         <input [(ngModel)]="loginModel.Email"
                         class="form-control" name="email" required
-                        placeholder="Enter e-mail"/>
+                        placeholder="Enter e-mail" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+                        <div class="errors-container">
+                            <div *ngIf="email.errors?.['required']" class="error">
+                                Email is required.
+                            </div>
+                            <div *ngIf="email.errors?.['pattern']" class="error">
+                                Email address must contain a @ and . symbols.
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
                         <input [(ngModel)]="loginModel.Password"
-                        class="form-control" name="password" type="password" required
-                        placeholder="Enter password"/>
+                        class="form-control" name="password" type="password" required #password="ngModel"
+                        placeholder="Enter password" [maxlength]="16" [minlength]="8" pattern="(?=.*\d)(?=.*[a-zA-Z]).*"/>
+                        <div class="errors-container">
+                            <div *ngIf="password.errors?.['required']" class="error">
+                                Password is required.
+                            </div>
+                            <div *ngIf="password.errors?.['minlength']" class="error">
+                                Password must contain 8-16 characters.
+                            </div>
+                            <div *ngIf="password.errors?.['maxlength']" class="error">
+                                Password must contain 8-16 characters.
+                            </div>
+                            <div *ngIf="password.errors?.['pattern']" class="error">
+                                Password must contain at least one letter and one number.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="buttons">
                     <div class="form-group sign-btn">
-                        <button class="sign-button" type="submit">Sign in</button>
+                        <button class="sign-button" type="submit" [disabled]="password.errors || email.errors">Sign in</button>
                     </div>
                 </div>
             </div>

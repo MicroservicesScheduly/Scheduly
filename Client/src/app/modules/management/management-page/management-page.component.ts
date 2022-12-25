@@ -85,4 +85,20 @@ export class ManagementPageComponent implements OnInit {
       }
     }
   }
+
+  isFacultiesSection() {
+    return { 'active-path': !this.router.url.includes("/management/faculties") };
+  }
+
+  isDisciplinesSection() {
+    return { 'active-path': !this.router.url.includes("/management/disciplines") };
+  }
+
+  isSpecialtiesSection() {
+    return { 'active-path': !this.router.url.includes("/management/specialties") };
+  }
+
+  isTeachersSection() {
+    return { 'active-path': !this.router.url.includes("/management/teachers") };
+  }
 }

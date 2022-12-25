@@ -55,9 +55,14 @@ export class TeachersComponent implements OnInit {
   }
 
   showDisciplinesList(teacher: ITeacher) {
-    console.log(this.disciplines.filter(p => {
-      p.teacherId == teacher.id
-    }));
+    var teacherUniqueDisciplines: IDiscipline[] = [];
+
+    this.disciplines.filter(p => p.teacherId == teacher.id).map(i => i.discipline).forEach(element => {
+      if (!teacherUniqueDisciplines.some(p => p.id == element.id)) {
+        teacherUniqueDisciplines.push(element);
+      }
+    }); 
+
     this.windowService.openShowDisciplinesListDialog({
         buttons: [
             {
@@ -66,9 +71,9 @@ export class TeachersComponent implements OnInit {
             },
         ],
         title: 'Disciplines list',
-        message: `Teacher name:\n${teacher.name} ${teacher.surname} ${teacher.patronymic}`,
+        message: `${teacher.name} ${teacher.surname} ${teacher.patronymic}`,
         teacher: teacher,
-        disciplinesOfTeacher: this.disciplines.filter(p => p.teacherId == teacher.id).map(i => i.discipline)
+        disciplinesOfTeacher: teacherUniqueDisciplines
     });
   }
 

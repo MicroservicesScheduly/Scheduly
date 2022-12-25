@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input class="form-control" name="name" [(ngModel)]="specialty.name" required
-                    #name="ngModel" placeholder="Enter name"/>
+                    #name="ngModel" placeholder="Enter name" [maxlength]="200"/>
                  <div class="errors-container">
                     <div *ngIf="name.errors?.['required']" class="error">
                         Name is required.
@@ -38,7 +38,7 @@
                 <div class="form-group">
                     <label>Description</label>
                     <input class="form-control" name="description" [(ngModel)]="specialty.description" required
-                    #description="ngModel" placeholder="Enter description"/>
+                    #description="ngModel" placeholder="Enter description" [maxlength]="300"/>
                   <div class="errors-container">
                     <div *ngIf="description.errors?.['required']" class="error">
                         Description is required.
@@ -233,7 +233,7 @@
         </div>
         <div class="buttons">
             <div class="form-group save-btn">
-                <button [disabled]="createSpecialtyForm.invalid" 
+                <button [disabled]="createSpecialtyForm.invalid || !semestersDisciplines.length" 
                         class="save-button" (click)="submit(createSpecialtyForm)">Save</button>
             </div>
             <div class="form-group cancel-btn">

@@ -5,6 +5,7 @@ import { IDiscipline } from 'src/app/modules/management/models/discipline.model'
 import { ISaveSpecialty, ISpecialty } from 'src/app/modules/management/models/specialty.model';
 import { ISaveSpecialtyDiscipline, ISpecialtyDiscipline } from 'src/app/modules/management/models/specialtyDiscipline.model';
 import { DisciplinesService } from 'src/app/modules/management/services/disciplines.service';
+import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
 import { SpecialtyDisciplineService } from 'src/app/modules/management/services/specialty-discipline.service';
 import { UsersService } from 'src/app/shared/services/users.service';
@@ -25,15 +26,25 @@ export class CreateSpecialtiesComponent implements OnInit {
 
   notfirst: boolean = false;
 
+  private specialties: ISpecialty[] = [];
+
   constructor(private router: Router, private specialtyService: SpecialtiesService,
     private disciplineService: DisciplinesService, private specialtyDisciplineService: SpecialtyDisciplineService,
-    private usersService: UsersService) { }
+    private usersService: UsersService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.disciplineService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.disciplines = res);
+
+    this.specialtyService.get().subscribe(res => this.specialties = res);
   }
 
   submit(form: NgForm) {
+    if (this.specialties.some(p => p.name == form.value["name"])) {
+      this.notificationService.showErrorMessage("Specialty with this name already exists!");
+    } else if(this.specialties.some(p => p.cipher == form.value["cipher"])) {
+      this.notificationService.showErrorMessage("Specialty with this cipher already exists!");
+    }
+    else {
     var specialty: ISaveSpecialty = { cipher: form.value["cipher"], description: form.value["description"],
     name: form.value["name"], universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
 
@@ -46,11 +57,7 @@ export class CreateSpecialtiesComponent implements OnInit {
         this.specialtyDisciplineService.create(specialtyDiscipline).subscribe();
       });
     });
-
-    /*this.specialtyService.update(this.id, form.value)
-    .subscribe((s) => {
-      this.redirectToManagement();
-    });*/
+  }
   }
 
   redirectToManagement() {

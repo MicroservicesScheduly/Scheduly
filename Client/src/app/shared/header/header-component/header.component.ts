@@ -13,6 +13,10 @@ export class HeaderComponent implements OnInit {
 
   eis: EI[];
 
+  managementRoutes: string[] = ["/management/teachers", "/management/disciplines", "/management/specialties",
+  "/management/faculties", "/create-teacher", "/edit-teacher", "/create-discipline", "/edit-discipline",
+  "/create-specialty", "/edit-specialty", "/create-faculty", "/edit-faculty"];
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -36,6 +40,14 @@ export class HeaderComponent implements OnInit {
   changeEI(newEI: any) {
     localStorage.setItem('selectedEI', newEI);
     window.location.reload();
+  }
+
+  isManagementSection() {
+    return { 'active-path': !this.managementRoutes.some(p => this.router.url.includes(p)) };
+  }
+
+  isScheduleSection() {
+    return { 'active-path': this.managementRoutes.some(p => this.router.url.includes(p)) };
   }
 
 }

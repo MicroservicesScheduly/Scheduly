@@ -11,6 +11,7 @@ import { SpecialtiesService } from 'src/app/modules/management/services/specialt
 import { FacultySpecialtyService } from 'src/app/modules/management/services/faculty-specialty.service';
 import { ScheduleService } from 'src/app/modules/schedule/services/schedule.service';
 import { ISaveSchedule } from 'src/app/modules/schedule/models/schedule.model';
+import { NotificationService } from 'src/app/modules/management/services/notification.service';
 
 @Component({
   selector: 'app-create-group',
@@ -31,18 +32,26 @@ export class CreateGroupComponent implements OnInit {
 
   facultyId: number;
 
+  private groups: IGroup[] = [];
+
   constructor(private router: Router, private groupService: GroupsService,
     private route: ActivatedRoute, private facultyService: FacultyService,
     private specialtyService: SpecialtiesService, private facultySpecialties: FacultySpecialtyService,
-    private scheduleService: ScheduleService) { }
+    private scheduleService: ScheduleService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     }); 
+
+    this.groupService.get().subscribe(res => this.groups = res);
   }
 
   submit(form: NgForm) {
+    if (this.groups.some(p => p.cipher == form.value["cipher"])) {
+      this.notificationService.showErrorMessage("Group with this cipher already exists!");
+    } else {
+
     var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
     specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
     universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
@@ -52,10 +61,7 @@ export class CreateGroupComponent implements OnInit {
       this.scheduleService.create(schedule).subscribe(res => this.redirectToGroups());
     });
 
-    /*this.groupService.create(form.value)
-    .subscribe(() => {
-      this.redirectToManagement();
-    });*/
+  }
   }
 
   redirectToManagement() {

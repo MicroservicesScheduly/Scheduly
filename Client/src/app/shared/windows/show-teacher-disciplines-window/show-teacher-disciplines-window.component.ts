@@ -34,8 +34,6 @@ export class ShowTeacherDisciplinesWindowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    console.log(this.data.disciplinesOfTeacher);
     /*this.disciplineTeachersService.getLecturersByDisciplineId(this.data.discipline.id)
       .subscribe(res => this.lecturers = res);
 

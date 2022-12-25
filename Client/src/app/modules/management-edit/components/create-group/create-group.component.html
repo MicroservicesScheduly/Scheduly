@@ -22,7 +22,7 @@
                         <div class="form-group">
                             <label class="row-form-label">Cipher</label>
                             <input class="form-control" name="cipher" [(ngModel)]="group.cipher" required
-                            #cipher="ngModel" placeholder="Enter cipher"/>
+                            #cipher="ngModel" placeholder="Enter cipher" [maxlength]="10"/>
                         </div>
                         <div class="form-group">
                             <label style="margin-left: 3px;">Course</label>

@@ -63,3 +63,11 @@ a {
     padding: 25px 50px;
     width: 100%;
 }
+
+.active-path {
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    color: #8E8E8E;
+    text-decoration: none;
+}
