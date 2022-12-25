@@ -177,7 +177,7 @@ export class DisciplinesComponent implements OnInit {
               },
           ],
           title: 'Teachers list',
-          message: 'Discipline name: ' + discipline.name,
+          message: discipline.name,
           discipline: discipline,
           showLecturers: showLecturers,
       });

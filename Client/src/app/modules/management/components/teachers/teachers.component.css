@@ -91,7 +91,8 @@ h5 {
 
 .name {
     margin-top: -40px;
-    text-align:center;
+    text-align: center;
+    min-height: 125px;
 }
 
 .name h2{
@@ -210,8 +211,8 @@ li:before {
 
 .show-disciplines:hover {
     border-color: #6DAFA7;
+    color:#22272E;
 }
-
 
 .search-button {
     width: 24px;

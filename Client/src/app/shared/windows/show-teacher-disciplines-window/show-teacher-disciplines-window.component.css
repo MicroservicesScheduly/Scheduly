@@ -197,8 +197,6 @@ input.ng-dirty.ng-invalid {
 }
 
 .disciplines-list {
-    /*border: 3px solid #22272E;
-    border-radius: 20px;*/
     height: 170px;
     padding: 10px;
 }

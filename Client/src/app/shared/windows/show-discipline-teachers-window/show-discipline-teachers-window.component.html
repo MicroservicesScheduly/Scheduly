@@ -4,17 +4,17 @@
         <div class="title"><span>{{data.title}}</span></div>
     </div>
     <div class="message-container">
-        <div class="message"><span>{{data.message}}</span></div>
+        <div class="message"><span>Discipline name:<br><b>{{data.message}}</b></span></div>
     </div>
-   <div class="lecturers-list" *ngIf="data.showLecturers">
-    Lecturers
-        <div *ngFor="let lecturer of lecturers">
+   <div class="lecturers-list teachers-list" *ngIf="data.showLecturers">
+    <div class="label">Lecturers</div>
+        <div *ngFor="let lecturer of lecturers" class="teacher-item">
             {{lecturer.name}}
         </div>
    </div>
-   <div class="practicians-list" *ngIf="!data.showLecturers">
-    Practicians
-    <div *ngFor="let practician of practicians">
+   <div class="practicians-list teachers-list" *ngIf="!data.showLecturers">
+    <div class="label">Practicians</div>
+    <div *ngFor="let practician of practicians" class="teacher-item">
         {{practician.name}}
     </div>
 </div>

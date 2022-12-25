@@ -41,13 +41,13 @@
 
 .message {
     font-weight: 500;
-    font-size: 20px;
-    padding-top: 10px;
+    font-size: 22px;
+    color:#6DAFA7;
 }
 
 .message-container {
     margin-bottom: 20px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .buttons {
@@ -194,4 +194,33 @@
 
 input.ng-dirty.ng-invalid {
     border-color: red;
+}
+
+
+.teachers-list {
+    height: 170px;
+    padding: 10px;
+}
+
+.teacher-item {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    width: 94%;
+    border: 2px solid #22272E;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.label {
+    text-align: center;
+    color: #22272E;
+    font-family: 'Inter';
+    font-style: normal;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 18px;
 }

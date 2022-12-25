@@ -87,17 +87,6 @@
                 </div>
                 <div class="form-group row-form-group" *ngIf="discipline.isSelective">
                     <label>Catalog</label>
-                    <!--
-                    <button class="form-control catalog-btn" name="catalog" required
-                    (click)="changeCatalog()">
-                        <ng-container *ngIf="discipline.catalogId; else noCatalog">
-                            {{getCatalogNameById(discipline.catalogId)}}
-                        </ng-container>
-                        <ng-template #noCatalog>
-                            None
-                        </ng-template>
-                    </button>
-                    -->
                     <div class="select-container">
                         <select class="select-catalog" #ctl (change)="checkCatalog($event, ctl.value)">
                             <option>None</option>
@@ -115,11 +104,10 @@
         <div class="lecturers">
             <div class="form-group">
                 <label>Lecturers</label>
-                <!--<button (click)="addTeacher()" class="add-teacher-btn">Add lecturer</button>-->
                 <select class="add-teacher-btn" #takeInputLe (change)="onAddTeacher($event, takeInputLe.value, true)">
                     <option>Select teacher to add</option>
                     <option *ngFor="let teacher of getFilteredTeachers(true)" [value]="teacher.id">
-                        {{teacher.name}}{{teacher.surname}}{{teacher.patronymic}}
+                        {{teacher.name}} {{teacher.surname}} {{teacher.patronymic}}
                     </option>
                 </select>
             </div>
@@ -139,11 +127,10 @@
         <div class="practicians">
             <div class="form-group">
                 <label>Practicians</label>
-                <!--<button (click)="addTeacher(false)" class="add-teacher-btn">Add practician</button>-->
                 <select class="add-teacher-btn" #takeInputPr (change)="onAddTeacher($event, takeInputPr.value, false)">
                     <option>Select teacher to add</option>
                     <option *ngFor="let teacher of getFilteredTeachers(false)" [value]="teacher.id">
-                        {{teacher.name}}{{teacher.surname}}{{teacher.patronymic}}
+                        {{teacher.name}} {{teacher.surname}} {{teacher.patronymic}}
                     </option>
                 </select>
             </div>

@@ -24,7 +24,7 @@ import { IDialogFacultiesData } from '../../models/IDialogFacultiesData.model';
 })
 export class ShowFacultyTeachersWindowComponent implements OnInit {
 
-  teachers: ITeacher[] = []
+  teachers: ITeacher[] = [];
 
   constructor(
       @Inject(MAT_DIALOG_DATA) public data: IDialogFacultiesData,
@@ -33,7 +33,13 @@ export class ShowFacultyTeachersWindowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.facultyItemsService.getTeachersByFacultyId(this.data.faculty.id).subscribe(res => this.teachers = res);
+    this.facultyItemsService.getTeachersByFacultyId(this.data.faculty.id).subscribe(res => {
+      res.forEach(element => {
+        if (!this.teachers.some(p => p.id == element.id)) {
+          this.teachers.push(element);
+        }
+      }); 
+    });
   }
 
   onClick(event: EventEmitter<void>) {

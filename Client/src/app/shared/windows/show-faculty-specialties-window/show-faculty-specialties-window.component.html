@@ -4,17 +4,10 @@
         <div class="title"><span>{{data.title}}</span></div>
     </div>
     <div class="message-container">
-        <div class="message"><span>{{data.message}}</span></div>
+        <div class="message"><span>Faculty name:<br><b>{{data.message}}</b></span></div>
     </div>
-   <!--<div class="lecturers-list" *ngIf="data.showLecturers">
-    Lecturers
-        <div *ngFor="let lecturer of lecturers">
-            {{lecturer.name}}
-        </div>
-   </div>-->
-   <div class="disciplines-list">
-    Specialties
-    <div *ngFor="let specialty of specialties">
+   <div class="disciplines-list specialties-list">
+    <div *ngFor="let specialty of specialties" class="specialty-item">
         {{specialty.cipher}} {{specialty.name}}
     </div>
 </div>

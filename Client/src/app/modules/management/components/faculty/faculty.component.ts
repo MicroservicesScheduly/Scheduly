@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CreateDisciplinesComponent } from 'src/app/modules/management-edit/components/create-disciplines/create-disciplines.component';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
+import { IDiscipline } from '../../models/discipline.model';
 import { Faculty } from '../../models/faculty.model';
 import { FacultyService } from '../../services/faculty.service';
 import { NotificationService } from '../../services/notification.service';
@@ -60,7 +61,7 @@ export class FacultyComponent implements OnInit {
             },
         ],
         title: 'Disciplines list',
-        message: `Faculty name:\n${faculty.name}`,
+        message: faculty.name,
         faculty: faculty,
     });
   }
@@ -74,7 +75,7 @@ export class FacultyComponent implements OnInit {
             },
         ],
         title: 'Teachers list',
-        message: `Faculty name:\n${faculty.name}`,
+        message: faculty.name,
         faculty: faculty,
     });
   }
@@ -88,7 +89,7 @@ export class FacultyComponent implements OnInit {
             },
         ],
         title: 'Specialties list',
-        message: `Faculty name:\n${faculty.name}`,
+        message: faculty.name,
         faculty: faculty,
     });
   }

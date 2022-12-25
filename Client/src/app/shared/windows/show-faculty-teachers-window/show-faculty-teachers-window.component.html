@@ -4,7 +4,7 @@
         <div class="title"><span>{{data.title}}</span></div>
     </div>
     <div class="message-container">
-        <div class="message"><span>{{data.message}}</span></div>
+        <div class="message"><span>Faculty name:<br><b>{{data.message}}</b></span></div>
     </div>
    <!--<div class="lecturers-list" *ngIf="data.showLecturers">
     Lecturers
@@ -12,12 +12,11 @@
             {{lecturer.name}}
         </div>
    </div>-->
-   <div class="disciplines-list">
-    Teachers
-    <div *ngFor="let teacher of teachers">
-        {{teacher.name}} {{teacher.surname}} {{teacher.patronymic}}
+   <div class="disciplines-list teachers-list">
+        <div *ngFor="let teacher of teachers" class="teacher-item">
+            {{teacher.name}} {{teacher.surname}} {{teacher.patronymic}}
+        </div>
     </div>
-</div>
     <div *ngIf="data.buttons" class="buttons">
         <button
             *ngFor="let button of data.buttons"

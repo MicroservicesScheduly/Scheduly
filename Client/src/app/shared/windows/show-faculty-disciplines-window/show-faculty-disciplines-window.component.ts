@@ -33,7 +33,13 @@ export class ShowFacultyDisciplinesWindowComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.facultyItemsService.getDisciplinesByFacultyId(this.data.faculty.id).subscribe(res => this.disciplines = res);
+    this.facultyItemsService.getDisciplinesByFacultyId(this.data.faculty.id).subscribe(res => {
+      res.forEach(element => {
+        if (!this.disciplines.some(p => p.id == element.id)) {
+          this.disciplines.push(element);
+        }
+      }); 
+    });
   }
 
   onClick(event: EventEmitter<void>) {

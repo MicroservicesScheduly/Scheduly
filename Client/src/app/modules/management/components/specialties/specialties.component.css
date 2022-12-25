@@ -119,13 +119,14 @@ h5 {
 .speciality-description {
     margin-top: -22px;
     margin-bottom: 23px;
-    max-height: 50px;
+    max-height: 80px;
     text-align:center;
     color: #8E8E8E;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
+    min-height: 40px;
 }
 
 .button {
