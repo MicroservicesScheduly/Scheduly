@@ -67,4 +67,7 @@ kubectl apply -f k8s/rabbitmq
 ```
 
 #### Результати: Додано асинхронну комунікацію між деякими мікросервісами для відправки електронної пошти за допомогою брокера RabbitMQ. Consumers/producer налаштовані за допомогою фреймворку MassTransit мови програмування C#, електронна пошта відправляється з інтеграцією MailKit.Net.
+------
+## Матеріали лабораторної роботи №6
 
+#### Результати: Додано системи логування та метрик. Як систему централізованого логування використано Elastic Stack (ElasticSearch/Kibana/Logstash). Як систему метрик використано Prometheus/Grafana. Для цього використовувались такі nuget пакеті .NET, як App.Metrics.Formatters.Prometheus, Serilog.AspNetCore та Serilog.Sinks.
