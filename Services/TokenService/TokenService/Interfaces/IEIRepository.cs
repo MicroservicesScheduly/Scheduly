@@ -7,5 +7,8 @@ namespace TokenService.Interfaces
         Task<EI> AddAsync(EI entity);
         Task<UserEI> AddUserEIAsync(UserEI entity);
         Task<IEnumerable<EI>> GetAllAsync();
+        Task<IEnumerable<UserEI>> GetAllUserEIAsync();
+        Task<UserEI> DeleteUserEIByIdAsync(int id);
+        void UpdateUserEI(UserEI entity);
     }
 }

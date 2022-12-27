@@ -18,6 +18,9 @@ import { ChooseDisciplineWindowComponent } from './windows/choose-discipline-win
 import { ChooseDisciplineTypeWindowComponent } from './windows/choose-discipline-type-window/choose-discipline-type-window.component';
 import { ChooseDisciplineTeacherWindowComponent } from './windows/choose-discipline-teacher-window/choose-discipline-teacher-window.component';
 import { ChooseCatalogComponent } from './windows/choose-discipline-window/choose-catalog/choose-catalog.component';
+import { EIInvitationWindowComponent } from './windows/ei-invitation-window/ei-invitation-window.component';
+import { ShowInvitationWindowComponent } from './windows/show-invitation-window/show-invitation-window.component';
+import { ReplaceWindowComponent } from './windows/replace-window/replace-window.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ChooseCatalogComponent } from './windows/choose-discipline-window/choos
     ChooseDisciplineWindowComponent,
     ChooseDisciplineTypeWindowComponent,
     ChooseDisciplineTeacherWindowComponent,
-    ChooseCatalogComponent
+    ChooseCatalogComponent,
+    EIInvitationWindowComponent,
+    ShowInvitationWindowComponent,
+    ReplaceWindowComponent
   ],
   imports: [
     BrowserModule,

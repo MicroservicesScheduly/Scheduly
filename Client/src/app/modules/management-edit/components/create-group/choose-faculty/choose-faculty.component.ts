@@ -26,6 +26,7 @@ export class ChooseFacultyComponent implements OnInit {
   constructor(private facultyService: FacultyService) { }
 
   ngOnInit(): void {
+
     this.facultyService.get().subscribe(res => {
       this.faculties = res;
     });

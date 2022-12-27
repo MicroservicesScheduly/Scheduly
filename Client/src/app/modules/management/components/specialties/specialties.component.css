@@ -38,13 +38,13 @@ h5 {
 .speciality-cards {
     margin-top: 10px;;
     max-height: 450px;
+    min-height: 450px;
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
 }
 
 .specialities-container-header {
@@ -151,12 +151,12 @@ h5 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -10px;
+    margin-top: 10px;
 }
 
 .specialities-image img {
-    width: 40%;
-    height: 30%;
+    width: 29%;
+    height: 29%;
 }
 
 .search-name {

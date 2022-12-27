@@ -37,7 +37,10 @@ export class CreateFacultiesComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      if (params['id']) {
+        this.facultySpecialtyService.getSpecialtiesByFacultyId(params['id']).subscribe(res => this.selectedSpecialties = res);
+        this.id = params['id'];
+      }
    }); 
 
    this.specialtyService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => this.specialties = res);
@@ -46,26 +49,51 @@ export class CreateFacultiesComponent implements OnInit {
   }
 
   submit(form: NgForm) {
-    if (this.faculties.some(p => p.name == form.value["name"])) {
+    if (this.faculties.some(p => p.name == form.value["name"]) && !this.isEditRoute()) {
       this.notificationService.showErrorMessage("Faculty with this name already exists!");
-    } else {
-
-    this.finishCreation = true;
+    } else if (!this.isEditRoute()) {
+      this.finishCreation = true;
     
-    var faculty: ISaveFaculty = { description: form.value["description"], name: form.value["name"],
-    universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+      var faculty: ISaveFaculty = { description: form.value["description"], name: form.value["name"],
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+  
+      this.facultyService.create(faculty)
+      .subscribe((res) => {
+        this.redirectToManagement();
+        this.selectedSpecialties.forEach(element => {
+          const facultySpecialty: ISaveFacultySpecialty = { specialtyId: element.id, facultyId: res.id };
+          this.facultySpecialtyService.create(facultySpecialty).subscribe();
+        });
+      });
+    } else {
+      var facultyEdit: Faculty = { description: form.value["description"], name: form.value["name"],
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string), id: this.faculty.id };
+  
+      const deletedSpecialties: ISpecialty[] = this.specialties
+      .filter(o => !this.selectedSpecialties.some(k => k.id == o.id));
 
-    console.log(faculty);
+      deletedSpecialties.forEach(element => {
+        const spec = this.specialties.filter(o =>
+            o.id == element.id)[0];
 
-    this.facultyService.create(faculty)
-    .subscribe((res) => {
-      this.redirectToManagement();
-      this.selectedSpecialties.forEach(element => {
-        const facultySpecialty: ISaveFacultySpecialty = { specialtyId: element.id, facultyId: res.id };
+          this.facultySpecialtyService.delete(spec.id).subscribe();
+        });
+
+      const addedSpecialties: ISpecialty[] = this.selectedSpecialties
+        .filter(o => !this.specialties.some(k => k.id == o.id));
+
+        addedSpecialties.forEach(element => {
+        const facultySpecialty: ISaveFacultySpecialty = { specialtyId: element.id, facultyId: this.faculty.id };
+
         this.facultySpecialtyService.create(facultySpecialty).subscribe();
       });
-    });
 
+      this.facultyService.update(this.faculty.id, facultyEdit)
+      .subscribe((res) => {
+        this.notificationService.showSuccessMessage("Faculty was successfully updated!");
+        this.redirectToManagement();
+      });
+   
     }
   }
 

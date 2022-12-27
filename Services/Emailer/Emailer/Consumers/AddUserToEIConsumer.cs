@@ -20,10 +20,10 @@ namespace ScheduleService.Consumers
                 Console.WriteLine($"RECEIVED -> {context.Message}");
             });
 
-            var message = new Message(new string[] { "vzlobinkov@gmail.com" }, "SCHEDULY: Management request",
+            var message = new Message(new string[] { context.Message.UserToAdd }, "SCHEDULY: Management request",
                 $"Hello, {context.Message.UserToAdd}!" + "\n" + $"User {context.Message.UserWantsToAdd} invited you to edit the schedule {context.Message.EiName} together." + "\n" +
-                $"You can accept or decline the invitation in Scheduly app:" + "\n" +
-                $"http://localhost:4200/authorization/signin");
+                $"You can accept or reject the invitation in Scheduly app:" + "\n" +
+                $"http://localhost:4200/management/faculties");
             await _emailSender.SendEmailAsync(message);
         }
     }

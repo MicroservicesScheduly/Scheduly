@@ -33,4 +33,8 @@ export class DisciplineTeacherService {
     create(disciplineTeacher: ISaveDisciplineTeacher) {
       return this._http.post<IDisciplineTeacher>(environment.urlPrefix + environment.disciplineTeachersUrl, disciplineTeacher);
     } 
+
+    delete(id: number) {
+      return this._http.delete(environment.urlPrefix + environment.disciplineTeachersUrl + `/${id}`);
+    }
 }

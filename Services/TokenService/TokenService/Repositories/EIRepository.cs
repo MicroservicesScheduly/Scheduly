@@ -43,5 +43,27 @@ namespace TokenService.Repositories
 
             return entity;
         }
+
+        public async Task<IEnumerable<UserEI>> GetAllUserEIAsync()
+        {
+            return await _userDbContext.UserEIs.ToListAsync();
+        }
+
+        public void UpdateUserEI(UserEI entity)
+        {
+            _userDbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public async Task<UserEI> DeleteUserEIByIdAsync(int id)
+        {
+            var entity = await _userDbContext.UserEIs.FindAsync(id);
+
+            if (entity != null)
+            {
+                _userDbContext.Entry(entity).State = EntityState.Deleted;
+            }
+
+            return entity;
+        }
     }
 }

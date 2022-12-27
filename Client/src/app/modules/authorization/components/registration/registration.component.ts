@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
         .subscribe(res1 => {
               this.usersService.createEI({ name: this.eiName}).subscribe(res2 => {
                 this.usersService.createUserEI({ eiId: res2.id, userId: res1,
-                  isAccepted: true, isAdmin: true}).subscribe(res => {
+                  isAccepted: true, isAdmin: true, isAnswered: true }).subscribe(res => {
                     this.notificationService.showSuccessMessage("You are successfully registered!");
                     this.router.navigate(['authorization/sign-in']);
                   });

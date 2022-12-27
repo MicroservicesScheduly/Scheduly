@@ -72,5 +72,9 @@ export class ScheduleService {
       return this._http.post<string>(environment.urlPrefix + environment.scheduleUrl + `/sendSubscriptionEmail`, emailData);
     }
 
+    updateScheduleDiscipline(id: number, scheduleDiscipline: IScheduleDiscipline) {
+      return this._http.put<ISchedule>(environment.urlPrefix + environment.scheduleDisciplineUrl + `/${id}`, scheduleDiscipline);
+    } 
+
 
 }

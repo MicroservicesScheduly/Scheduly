@@ -13,4 +13,16 @@ export class SaveUserEI {
     eiId: number;
     isAccepted: boolean;
     isAdmin: boolean;
+    isAnswered: boolean;
+    userEmailWhoSendInvite?: string;
+}
+
+export class UserEI {
+    id: number;
+    userId: number;
+    eiId: number;
+    isAccepted: boolean;
+    isAdmin: boolean;
+    isAnswered: boolean;
+    userEmailWhoSendInvite?: string;
 }

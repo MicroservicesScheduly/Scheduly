@@ -51,8 +51,10 @@
 }
 
 .disciplines-list {
-    height: 170px;
+    max-height: 170px;
     padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .discipline-item {

@@ -41,27 +41,42 @@ export class CreateGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      if (params['id']) {
+        this.id = params['id'];
+        this.groupService.getById(params['id']).subscribe(res => {
+          this.group = res;
+          this.facultySpecialties.getSpecialtiesByFacultyId(res.facultyId).subscribe(res => this.specialties = res);
+          this.facultyId = res.facultyId;
+          this.facultyChoosed = true;
+        });
+      }
     }); 
 
     this.groupService.get().subscribe(res => this.groups = res);
   }
 
   submit(form: NgForm) {
-    if (this.groups.some(p => p.cipher == form.value["cipher"])) {
+    if (this.groups.some(p => p.cipher == form.value["cipher"]) && !this.isEditRoute()) {
       this.notificationService.showErrorMessage("Group with this cipher already exists!");
+    } else if (!this.isEditRoute()) {
+      var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
+      specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
+      
+      this.groupService.create(group).subscribe(res => {
+        var schedule: ISaveSchedule = { groupId: res.id };
+        this.scheduleService.create(schedule).subscribe(res => this.redirectToGroups());
+      });
     } else {
-
-    var group: ISaveGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
-    specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
-    universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
-    
-    this.groupService.create(group).subscribe(res => {
-      var schedule: ISaveSchedule = { groupId: res.id };
-      this.scheduleService.create(schedule).subscribe(res => this.redirectToGroups());
-    });
-
-  }
+      var groupEdit: IGroup = { cipher: form.value["cipher"], course: form.value["course"] as number,
+      specialtyId: form.value["specialtyId"] as number, facultyId: this.facultyId,
+      universityId: JSON.parse(localStorage.getItem('selectedEI') as string), id: this.group.id };
+      
+      this.groupService.update(this.group.id, groupEdit).subscribe(res => {
+        this.notificationService.showSuccessMessage("Group was successfully updated!");
+        this.redirectToGroups();
+      });
+    }
   }
 
   redirectToManagement() {
@@ -76,5 +91,9 @@ export class CreateGroupComponent implements OnInit {
     this.facultySpecialties.getSpecialtiesByFacultyId(newItem).subscribe(res => this.specialties = res);
     this.facultyId = newItem;
     this.facultyChoosed = true;
+  }
+
+  isEditRoute() {
+    return this.router.url.includes("edit-");
   }
 }

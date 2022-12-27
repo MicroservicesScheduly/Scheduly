@@ -27,4 +27,8 @@ export class FacultySpecialtyService {
     create(facultySpecialty: ISaveFacultySpecialty) {
       return this._http.post<IFacultySpecialty>(environment.urlPrefix + environment.facultySpecialtyUrl, facultySpecialty);
     } 
+
+    delete(id: number) {
+      return this._http.delete(environment.urlPrefix + environment.facultySpecialtyUrl + `/${id}`);
+    }
 }

@@ -34,13 +34,23 @@ export class CreateTeachersComponent implements OnInit {
 
   submit(form: NgForm) {
     if (this.teachers.some(p => p.name == form.value["name"] && p.surname == form.value["surname"]
-    && p.patronymic == form.value["patronymic"])) {
+    && p.patronymic == form.value["patronymic"]) && !this.isEditRoute()) {
       this.notificationService.showErrorMessage("Teacher with this name, surname and patronymic already exists!");
+    } else if (this.isEditRoute()) {
+      var teacher: ITeacher = { name: form.value["name"], surname: form.value["surname"],
+      patronymic: form.value["patronymic"], universityId: JSON.parse(localStorage.getItem('selectedEI') as string),
+      id: this.id };
+  
+      this.teacherService.update(this.id, teacher)
+      .subscribe(() => {
+        this.notificationService.showSuccessMessage("Teacher was successfully updated!");
+        this.redirectToManagement();
+      });
     } else {
-      var teacher: ISaveTeacher = { name: form.value["name"], surname: form.value["surname"],
+      var saveTeacher: ISaveTeacher = { name: form.value["name"], surname: form.value["surname"],
       patronymic: form.value["patronymic"], universityId: JSON.parse(localStorage.getItem('selectedEI') as string) };
   
-      this.teacherService.create(teacher)
+      this.teacherService.create(saveTeacher)
       .subscribe(() => {
         this.redirectToManagement();
       });

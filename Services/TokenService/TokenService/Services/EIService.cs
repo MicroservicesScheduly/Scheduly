@@ -53,5 +53,34 @@ namespace TokenService.Services
 
             return _mapper.Map<UserEIModel>(userEICreated);
         }
+
+        public async Task<IEnumerable<UserEIModel>> GetAllUserEIAsync()
+        {
+            var userEiModels = await _unitOfWork.EIRepository.GetAllUserEIAsync();
+
+            return _mapper.Map<IEnumerable<UserEIModel>>(userEiModels);
+        }
+
+        public async Task DeleteUserEIByIdAsync(int userId)
+        {
+            var user = await _unitOfWork.EIRepository.DeleteUserEIByIdAsync(userId);
+
+            if (user == null)
+            {
+                throw new Exception("User not found.");
+            }
+
+            await _unitOfWork.EIRepository.DeleteUserEIByIdAsync(userId);
+            await _unitOfWork.SaveAsync();
+        }
+
+        public async Task UpdateUserEIAsync(int id, UserEIModel model)
+        {
+            var userEI = _mapper.Map<UserEI>(model);
+
+            await Task.Run(() => _unitOfWork.EIRepository.UpdateUserEI(userEI));
+
+            await _unitOfWork.SaveAsync();
+        }
     }
 }

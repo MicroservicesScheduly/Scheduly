@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="label">Settings</div>
+    <div class="management">
+        <div class="eis">
+            <div class="label-2">EIs list</div>
+            <div class="eis-list">
+                <app-choose-ei (newItemEvent)="changeItemEI($event)"></app-choose-ei>
+            </div>
+            <hr class="dot_line">
+            <div class="invite-btn" (click)="createInvitation()">+ Invite</div>
+        </div>
+        <div class="team">
+            <div class="label-2">Team members</div>
+            <div class="team-members-list">
+                <div class="member-item" *ngFor="let eiTeamMember of getTeamMembers()">
+                    <div class="mark-email"><i class="fa-solid fa-check fa-lg member-mark"></i> {{ eiTeamMember.user.email }}</div>
+                    <div class="role">
+                        <ng-container *ngIf="eiTeamMember.isAdmin; else member">
+                            Admin
+                        </ng-container>
+                        <ng-template #member>
+                            Member
+                        </ng-template>
+                    </div>
+                    <div class="delete-icon" (click)="deleteMember(eiTeamMember)"
+                    *ngIf="!eiTeamMember.isAdmin"><i class="fa-solid fa-lg fa-xmark delete-icon"></i></div>
+                </div>
+            </div>
+            <div class="label-2" *ngIf="getWaitingMembers().length">Waiting</div>
+            <div class="team-members-list" *ngIf="getWaitingMembers().length">
+                <div class="member-item" *ngFor="let eiTeamMember of getWaitingMembers()">
+                    <div class="mark-email"><i class="fa-solid fa-spinner fa-lg spinner-mark"></i> {{ eiTeamMember.user.email }}</div>
+                    <div class="role">Member</div>
+                    <div class="delete-icon" (click)="deleteMember(eiTeamMember)"
+                    *ngIf="!eiTeamMember.isAdmin"><i class="fa-solid fa-lg fa-xmark delete-icon"></i></div>
+                </div>
+            </div>
+            <div class="label-2" *ngIf="getRejectedMembers().length">Rejected</div>
+            <div class="team-members-list" *ngIf="getRejectedMembers().length">
+                <div class="member-item" *ngFor="let eiTeamMember of getRejectedMembers()">
+                    <div class="mark-email"><i class="fa-solid fa-xmark fa-lg rejected-mark"></i> {{ eiTeamMember.user.email }}</div>
+                    <div class="role">Member</div>
+                    <div class="delete-icon" (click)="resendInvitation(eiTeamMember.user.email)"
+                    *ngIf="!eiTeamMember.isAdmin"><i class="fa-solid fa-lg fa-rotate-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

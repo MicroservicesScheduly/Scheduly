@@ -1,22 +1,3 @@
-<!--
-     <div class="form-group">
-                    <label>Speciality</label>
-                    <select class="form-control" name="specialityId"
-                    [(ngModel)]="group.specialityId" required
-                    #newItem="ngModel" placeholder="Select faculty" (change)="addNewItem(newItem.value)">
-                        <option class="form-control centered"  *ngFor="let spec of specialties"
-                        [value]="spec.id">
-                        {{spec.cipher}}
-                        </option>
-                    </select>
-                </div>
-                <div class="errors-container">
-                    <div *ngIf="newItem.errors?.['required']" class="error">
-                        Speciality is required.
-                    </div>
-                </div>
--->
-
 <div class="form-group">
     <label>Faculty</label>
     <select class="form-control" name="facultyId" [(ngModel)]="group.facultyId" required

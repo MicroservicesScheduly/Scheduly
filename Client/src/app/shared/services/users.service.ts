@@ -11,7 +11,9 @@ import { Registration } from '../models/registration.model';
 import { User } from '../models/user.model';
 import { Role } from '../models/role.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { EI, SaveEI, SaveUserEI } from '../models/EI.model';
+import { EI, SaveEI, SaveUserEI, UserEI } from '../models/EI.model';
+import { IInvitationEmail } from '../models/invitation-email.model';
+import { IUserEIFull } from '../models/IFullEIUset.model';
 
 export const ACCESS_TOKEN = 'jwt acces token';
 
@@ -36,10 +38,10 @@ export class UsersService {
         Email: email, Password: password
       }, this.options).pipe(
         tap(token => {
-          console.log(token);
+          const allEis: EI[] = token.eis;
           localStorage.setItem(ACCESS_TOKEN, token.access_token);
           localStorage.setItem('id', token.id);
-          localStorage.setItem('userEIs', JSON.stringify(token.eis));
+          localStorage.setItem('userEIs', JSON.stringify(allEis.filter(p => p)));
           localStorage.setItem('selectedEI', JSON.stringify(token.eis[0].id));
           this.user = this.getUser(token.access_token)
         })
@@ -104,6 +106,22 @@ export class UsersService {
       return this.http.get<User>(environment.urlPrefix + environment.usersUrl + `/${id}`, this.options);
     }
 
+    getUserssByEIId(id: number) :Observable<User[]>{
+      return this.http.get<User[]>(environment.urlPrefix + environment.usersUrl + `/eiMembers/${id}`);
+    }
+
+    getAllUserEis() :Observable<UserEI[]>{
+      return this.http.get<UserEI[]>(environment.urlPrefix + environment.usersUrl + "/userEi");
+    }
+
+    getAllUserEisFullInfoByEIId(eiId: number): Observable<IUserEIFull[]>{
+      return this.http.get<IUserEIFull[]>(environment.urlPrefix + environment.usersUrl + `/eiMembersFull/${eiId}`);
+    }
+
+    deleteUserEI(userEIId: number): Observable<any>{
+      return this.http.delete(environment.urlPrefix + environment.usersUrl + `/userEi/${userEIId}`);
+    }
+
     get(): Observable<User[]>{
       return this.http.get<User[]>(environment.urlPrefix + environment.usersUrl, this.options)
     }
@@ -120,6 +138,10 @@ export class UsersService {
       return this.http.put(environment.urlPrefix + environment.usersUrl + `${userId}/role/${roleId}`, this.options)
     }
 
+    updateUserEI(userEIId: number, userEI: UserEI): Observable<any>{
+      return this.http.put(environment.urlPrefix + environment.usersUrl + `/userEi/${userEIId}`, userEI)
+    }
+
     deleteUser(userId: number): Observable<any>{
       return this.http.delete(environment.urlPrefix + environment.usersUrl + `${userId}`);
     }
@@ -132,6 +154,10 @@ export class UsersService {
 
     getCurrentEIId(): number {
       return JSON.parse(localStorage.getItem('selectedEI') as string);
+    }
+
+    sendInvitationEmail(template: IInvitationEmail) {
+      return this.http.post(environment.urlPrefix + environment.usersUrl + '/addUserToEIEmail', template);
     }
 
     private getUser(token:string): UserToken{

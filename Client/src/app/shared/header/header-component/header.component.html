@@ -1,5 +1,5 @@
 <header>
-    <div class="logo-container">
+    <div class="logo-container" (click)="redirectToManagement()">
         <img class="logo" src="assets/Logo.png" />
         <h4>Scheduly</h4>
     </div>
@@ -15,6 +15,15 @@
                 {{ ei.name }}
             </option>
         </select>
-        <img class="logo" src="assets/Avatar.png" />
+        <!--<img class="logo" src="assets/Avatar.png" />-->
+        <div class="dropdown">
+            <i class="fa-sharp fa-solid fa-user-gear fa-xl logo-icon"></i>
+            <div class="dropdown-content">
+            <p class="dropdown-item" (click)="redirectToSettings()">
+                <i class="fa-sharp fa-solid fa-gear drop-icon"></i>Settings</p>
+            <p class="dropdown-item" (click)="logout()">
+                <i class="fa-sharp fa-solid fa-right-from-bracket drop-icon"></i>Log out</p>
+            </div>
+        </div>
     </div>
 </header>

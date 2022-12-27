@@ -28,6 +28,7 @@ h5 {
 
 .discipline-cards {
     max-height: 450px;
+    min-height: 450px;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -200,7 +201,7 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -40px;
+    margin-top: -33px;
 }
 
 .disciplines-image img {
@@ -308,3 +309,4 @@ option {
     color: #22272E;
     cursor: pointer;
 }
+

@@ -143,8 +143,14 @@ namespace TokenService.Migrations
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsAnswered")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("userEmailWhoSendInvite")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

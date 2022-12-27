@@ -1,0 +1,58 @@
+<div class="window-container">
+    <div class="logo-container">
+        <div class="logo"><img class="logo-img" src="assets/Logo.png" /></div>
+        <div class="title"><span>{{data.title}}</span></div>
+    </div>
+    <div class="message-container">
+        <div class="message"><span>{{data.message}}</span></div>
+    </div>
+    <div class="add-catalog">
+            <div class="form">
+                <div class="form-item">
+                    <div class="form-group">
+                        <label>Day</label>
+                        <select class="select-day" #day (change)="changeDay(day.value)" name="day">
+                            <option [value]="1">Monday</option>
+                            <option [value]="2">Tuesday</option>
+                            <option [value]="3">Wednesday</option>
+                            <option [value]="4">Thursday</option>
+                            <option [value]="5">Friday</option>
+                            <option [value]="6">Saturday</option>
+                        </select>
+                    </div>
+                    <div class="errors-container">
+                        <div *ngIf="!day" class="error">
+                            Day is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <div class="form-group">
+                        <label>Lesson</label>
+                        <select class="select-lesson" #lesson (change)="changeLesson(lesson.value)" name="lesson">
+                            <option [value]="1" *ngIf="isAvailableLessonForDay(1)">08:30 - 10:05</option>
+                            <option [value]="2" *ngIf="isAvailableLessonForDay(2)">10:25 - 12:00</option>
+                            <option [value]="3" *ngIf="isAvailableLessonForDay(3)">12:20 - 13:55</option>
+                            <option [value]="4" *ngIf="isAvailableLessonForDay(4)">14:15 - 15:50</option>
+                            <option [value]="5" *ngIf="isAvailableLessonForDay(5)">16:10 - 17:45</option>
+                            <option [value]="6" *ngIf="isAvailableLessonForDay(6)">18:30 - 20:05</option>
+                        </select>
+                    </div>
+                    <div class="errors-container">
+                        <div *ngIf="!lesson" class="error">
+                            Lesson is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div *ngIf="data.buttons" class="buttons">
+        <button [disabled]="!day || !lesson" class="save-button" (click)="replace()">Save</button>
+        <button
+            *ngFor="let button of data.buttons"
+            (click)="onClick(button.onClickEvent)"
+            class="window-button">
+            {{button.title}}
+        </button>
+    </div>
+</div>

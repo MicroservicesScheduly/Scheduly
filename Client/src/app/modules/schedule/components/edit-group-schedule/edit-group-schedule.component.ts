@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { ICatalog } from 'src/app/modules/management/models/catalog.model';
@@ -10,8 +11,10 @@ import { FacultyService } from 'src/app/modules/management/services/faculty.serv
 import { GroupsService } from 'src/app/modules/management/services/groups.service';
 import { NotificationService } from 'src/app/modules/management/services/notification.service';
 import { SpecialtiesService } from 'src/app/modules/management/services/specialties.service';
+import { IReplaceDialogData } from 'src/app/shared/models/IReplaceDialogData.model';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { WindowService } from 'src/app/shared/services/window.service';
+import { ReplaceWindowComponent } from 'src/app/shared/windows/replace-window/replace-window.component';
 import { IDisciplinesRequest } from '../../models/disciplinesRequest.model';
 import { IScheduleDiscipline } from '../../models/schedule.model';
 import { ScheduleService } from '../../services/schedule.service';
@@ -45,7 +48,7 @@ export class EditGroupScheduleComponent implements OnInit {
     private scheduleService: ScheduleService, private route: ActivatedRoute, private facultyService: FacultyService,
     private specialtyService: SpecialtiesService, private windowService: WindowService,
     private catalogDisciplineService: CatalogDisciplineService, private catalogService: CatalogsService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.groupService.getByEIId(this.usersService.getCurrentEIId()).subscribe(res => {
@@ -205,6 +208,25 @@ export class EditGroupScheduleComponent implements OnInit {
   replace(discipline: IScheduleDiscipline) {
     console.log(discipline);
     console.log("replace");
+    let data: IReplaceDialogData = {
+      buttons: [
+          {
+            title: "Cancel",
+            onClickEvent: new EventEmitter<void>(),
+          },
+      ],
+      title: 'Replace Discipline',
+      message: `Choose new day (lesson) for ${discipline.disciplineName} discipline replacing `,
+      disciplineToReplace: discipline,
+      scheduleDisciplines: this.scheduleDisciplines
+    };
+
+    this.dialog
+      .open(ReplaceWindowComponent, {
+          data,
+          disableClose: true,
+      })
+      .afterClosed().subscribe();
   }
 
   delete(discipline: IScheduleDiscipline) {
@@ -214,6 +236,7 @@ export class EditGroupScheduleComponent implements OnInit {
       this.router.navigateByUrl("schedule/group");
     });
   }
+  
   /*selectDisciplineToManage(value: any, toAdd: boolean = true) {
     if (toAdd) {
       this.selectedDisciplineToManage = value;

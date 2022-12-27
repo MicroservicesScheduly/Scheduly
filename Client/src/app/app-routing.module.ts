@@ -28,6 +28,10 @@ const routes: Routes = [{
     path: 'schedule',
     loadChildren: () => import('./modules/schedule/schedule.module').then((m) => m.ScheduleModule),
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

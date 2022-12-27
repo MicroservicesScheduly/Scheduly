@@ -67,7 +67,19 @@ namespace TokenService.Controllers
 
             var user = await _userAccountService.GetByIdAsync(loginedId);
 
-            return Ok(new { access_token = token, id = loginedId, eis = user.EIs });
+            var allUserEIs = await _eiService.GetAllUserEIAsync();
+
+            List<EIModel> accepted = new List<EIModel>();
+
+            foreach(var userEI in user.EIs)
+            {
+                if (allUserEIs.FirstOrDefault(p => p.UserId == user.Id && p.EIId == userEI.Id).IsAccepted)
+                {
+                    accepted.Add(userEI);
+                }
+            }
+
+            return Ok(new { access_token = token, id = loginedId, eis = accepted });
         }
 
         /// <summary>
@@ -171,15 +183,6 @@ namespace TokenService.Controllers
             return CreatedAtAction(nameof(Register), user.Id);
         }
 
-        /*[HttpGet("ei")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<EIModel>))]
-        public async Task<ActionResult<IEnumerable<EIModel>>> GetAllEIsAsync()
-        {
-            var eis = await _userAccountService.GetAllEisAsync();
-
-            return Ok(eis);
-        }*/
-
         [HttpPost("ei")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(EIModel))]
@@ -228,6 +231,32 @@ namespace TokenService.Controllers
             return Ok(eis.FirstOrDefault(o => o.Id == id));
         }
 
+        [HttpGet("eiMembers/{id}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<UserModel>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<IEnumerable<UserModel>>> GetAllMembersByEiId(int id)
+        {
+            var eis = await _eiService.GetAllAsync();
+
+            var ei = eis.FirstOrDefault(o => o.Id == id);
+
+            var eiUsers = await _eiService.GetAllUserEIAsync();
+
+            List<UserModel> users = new List<UserModel>();
+
+            foreach (var eiUser in eiUsers)
+            {
+                if (eiUser.EIId == id)
+                {
+                    var u = await _userAccountService.GetByIdAsync(eiUser.UserId);
+                    users.Add(u);
+                }
+            }
+
+            return Ok(users);
+        }
+
         [HttpPost("userEi")]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(EIModel))]
@@ -237,6 +266,67 @@ namespace TokenService.Controllers
             var ei = await _eiService.AddUserEIAsync(model);
 
             return CreatedAtAction(nameof(Register), ei);
+        }
+
+        [HttpGet("userEi")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<EIModel>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<UserEIModel>> GetAllUserEIs()
+        {
+            var userEis = await _eiService.GetAllUserEIAsync();
+
+            return Ok(userEis);
+        }
+
+        [HttpPut("userEi/{id}")]
+        [AllowAnonymous]
+        public async Task<ActionResult> Update(int id, UserEIModel model)
+        {
+            await _eiService.UpdateUserEIAsync(id, model);
+
+            return NoContent();
+        }
+
+        [HttpGet("eiMembersFull/{id}")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(IEnumerable<EIModel>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult<UserEIFullDto>> GetAllUserFullInfoEIs(int id)
+        {
+            var userEis = await _eiService.GetAllUserEIAsync();
+
+            var EIusersEis = userEis.Where(o => o.EIId == id);
+
+            List<UserEIFullDto> users = new List<UserEIFullDto>();
+
+            foreach (var i in EIusersEis)
+            {
+                UserEIFullDto user = new UserEIFullDto()
+                {
+                    EIId = i.EIId,
+                    Id = i.Id,
+                    IsAnswered = i.IsAnswered,
+                    IsAccepted = i.IsAccepted,
+                    IsAdmin = i.IsAdmin,
+                    UserId = i.UserId,
+                    User = await _userAccountService.GetByIdAsync(i.UserId)
+                };
+
+                users.Add(user);
+            }
+
+            return Ok(users);
+        }
+
+        [HttpDelete("userEi/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorDetails))]
+        public async Task<ActionResult> DeleteUserEI(int id)
+        {
+            await _eiService.DeleteUserEIByIdAsync(id);
+
+            return NoContent();
         }
 
         /// <summary>
